@@ -1,0 +1,66 @@
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+body{
+    background-color: #EBEBEB;
+    /* font-family: sans-serif; */
+    color: #131e3f;
+    font-family: 'Cascadia Code';
+    border-top: #b49090;
+    border-top-width: 40px;
+    border-top-style: solid;
+    margin: 0%;
+
+}
+header, nav, main, footer, .subpages {
+    margin-bottom: 20px;
+}
+
+/* Mobile-first styles */
+@media (min-width: 460px) { /* For tablets and larger */
+/* The navigation bar */
+    header{
+    display: flexbox;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 40%;
+}
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    float: right;
+    /* position: fixed; */
+    /* padding-left: 80%; */
+    margin: 0%;
+}
+nav ul{
+    /* background-color: rgba(180, 144, 144, 0.81); */
+    border-radius: 10px;
+    padding: 10% 20% 10% 10%;
+}
+nav ul li{
+    list-style-type: none;
+    font-weight: 100;
+    padding: 20% 0% 20% 0%;
+    /* color: white; */
+    color: #131e3f;
+}
+#email{
+    font-weight: 600;
+}
+.subpages {
+    all: unset;
+    text-decoration: none;
+}
+}
+
+@media (min-width: 1024px) { /* For desktops */
+    /* Additional styles for larger screens */
+    main {
+        display: flex;
+        justify-content: space-between;
+    }
+    }
+    
