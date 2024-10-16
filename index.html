@@ -80,66 +80,84 @@
               <img src="./images/azure-aks-svgrepo-com.svg">
             </div>
             <div class="example-link">
-              <button id="openOverlayBtn">Veiw example work >></button>
-              <div id="overlay" class="overlay">
+              <button id="openOverlayBtn">Veiw My Work >></button>
+              <div id="overlay1" class="overlay1">
                 <div class="overlay-content">
-                  <span class="closeBtn" onclick="closeOverlay()">&times;</span>
+                  <span class="closeBtn" onclick="closeOverlay1()">&times;</span>
                   <br>
                   <br>
                   <span class="content-title">
-                    <h1 >using Terraform & Gitugaction to deploy Azure Resource Group</h1>
+                    <h1 >Cloud Infrastructure</h1>
+                    <h5>Related Work Example</h5>
+                    <div class="tags">
+                      <button>Azure</button>
+                      <button>AWS</button>
+                      <button>GCP</button>
+                      <button>Terraform</button>
+                      <button>Github Action</button>
+                    </div>
                   </span>
+                  <hr/>
                   <span class="content-section">
-                    <h2>Step 01 | Setting up Service Princple</h2>
-                    <p class="note">
-                      In order to let Github workflow and terraform to work with Azure Resource Management, the CLIENT_ID, CLIENT_SECRET_VALUE, TENANT_ID and SUBSCRIPTION_ID will have to be assigned in the workflow files. Therefore, setting up a Service Principle with the Subscription assigned is the first step of the RG creation. The 2 methods I know of setting up the Service Principle is through EntraID App Registration & Azure Arc. I have tried the EntraID App registration with an Azure Enterprise Tenant and tried the Azure Arc with my personal Azure free account. Here I am demonstrating the later method:
-                    </p>
-                    <p class="pics">
-                      <ol>
-                        <li>Go to Azure Portal and find Azure Arc in the Azure services catalogue<br><img src="./works-pages/terraform-rg/rg_images/image 1.png"></li>
-                        
-                        <li>After entering the Azure Arc page, navigate to Service Principle option under Management tab in the left Pane of the portal page. Click the “+Add” option.<br><img src="./works-pages/terraform-rg/rg_images/image 2.png"></li>
-                      </ol>
-                    </p>
-                    <p class="code">
-                      <code>
-                        ctx.fillStyle = 'rgba(0, 0, 255, 1)'; // Set the fill color (blue with 50% opacity)
-                        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
-                        
-                        
-                        document.getElementById('openOverlayBtn').onclick = function() {
-                        document.getElementById('overlay').style.display = 'flex';
-                        };
-                        
-                        function closeOverlay() {
-                        document.getElementById('overlay').style.display = 'none';
-                        }
-                      </code>
-                    </p>
-                    <br>
-                    <h2>Step 02 | Setting up Service Princple</h2>
-                    <p class="note">
-                      logging into the Azure portal and sign in with your user credential.
-                    </p>
-                    <p class="code">
-                      <code>
-                        ctx.fillStyle = 'rgba(0, 0, 255, 1)'; // Set the fill color (blue with 50% opacity)
-                        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
-                        
-                        
-                        document.getElementById('openOverlayBtn').onclick = function() {
-                        document.getElementById('overlay').style.display = 'flex';
-                        };
-                        
-                        function closeOverlay() {
-                        document.getElementById('overlay').style.display = 'none';
-                        }
-                      </code>
-                    </p>
+                    <article>
+                      <div class="works-order">
+                        <h2>01/</h2>
+                        <h4>13.10.2024</h4>
+                      </div>
+                      <div class="work-title">
+                        <h2>Deploying Resource Group using CI/CD with Terraform and Github Action</h2>
+                        <p>My reflection and take-away from the Openshift fundamental training.</p>
+                      </div>
+                      <a class="read-works" href="#">Read More >></a>
+                    </article>
+                  </span>
+                  <hr/>
+                  <span class="content-section">
+                    <article>
+                      <div class="works-order">
+                        <h2>02/</h2>
+                        <h4>13.10.2024</h4>
+                      </div>
+                      <div class="work-title">
+                        <h2>Deploying Azure VM & Vnet using CI/CD with Terraform and Github Action</h2>
+                        <p>My reflection and take-away from the Openshift fundamental training.</p>
+                      </div>
+                    </article>
+                    <a class="read-works" href="#">Read More >></a>
+                  </span>
+                  <hr/>
+                  <span class="content-section">
+                    <article>
+                      <div class="works-order">
+                        <h2>03/</h2>
+                        <h4>13.10.2024</h4>
+                      </div>
+                      <div class="work-title">
+                        <h2>Configuring Azure SQL DB via Terraform & Github Action.</h2>
+                        <p>My reflection and take-away from the Openshift fundamental training.</p>
+                      </div>
+                    </article>
+                    <a class="read-works" href="#">Read More >></a>
+                  </span>
+                  <hr/>
+                  <span class="content-section">
+                    <article>
+                      <div class="works-order">
+                        <h2>04/</h2>
+                        <h4>13.10.2024</h4>
+                      </div>
+                      <div class="work-title">
+                        <h2>Managing AWS VM through Red Hat Ansible.</h2>
+                        <p>My reflection and take-away from the Openshift fundamental training.</p>
+                      </div>
+                    </article>
+                    <a class="read-works" href="#">Read More >></a>
                   </span>
                   <br>
-                  <p>This is the overlay content. It can include links, images, or any other HTML elements.</p>
-                  <a href="https://example.com">Visit Example.com</a>
+                  <!-- the end of the works page. -->
+                  <div class="all-works">
+                    <a href="#">Veiw All My Works >></a>
+                  </div>
               </div>
             </div>
             </div>
@@ -158,9 +176,9 @@
             </div>
             <div class="example-link">
               <button id="openOverlayBtn2">Veiw example work >></button>
-              <div id="overlay" class="overlay">
+              <div id="overlay" class="overlay2">
                 <div class="overlay-content">
-                  <span class="closeBtn" onclick="closeOverlay()">&times;</span>
+                  <span class="closeBtn" onclick="closeOverlay2()">&times;</span>
                   <br>
                   <br>
                   <span class="content-title">
@@ -227,9 +245,9 @@
             </div>
             <div class="example-link">
               <button id="openOverlayBtn3">Veiw example work >></button>
-              <div id="overlay" class="overlay">
+              <div id="overlay3" class="overlay3">
                 <div class="overlay-content">
-                  <span class="closeBtn" onclick="closeOverlay()">&times;</span>
+                  <span class="closeBtn" onclick="closeOverlay3()">&times;</span>
                   <br>
                   <br>
                   <span class="content-title">
@@ -297,9 +315,9 @@
             </div>
             <div class="example-link">
               <button id="openOverlayBtn4">Veiw example work >></button>
-              <div id="overlay" class="overlay">
+              <div id="overlay4" class="overlay4">
                 <div class="overlay-content">
-                  <span class="closeBtn" onclick="closeOverlay()">&times;</span>
+                  <span class="closeBtn" onclick="closeOverlay4()">&times;</span>
                   <br>
                   <br>
                   <span class="content-title">
@@ -366,68 +384,35 @@
               <img src="./images/python-svgrepo-com.svg">
             </div>
             <div class="example-link">
-              <button id="openOverlayBtn5">Veiw example work >></button>
-              <div id="overlay" class="overlay">
+              <button id="openOverlayBtn5">Veiw My Works >></button>
+              <div id="overlay5" class="overlay5">
                 <div class="overlay-content">
-                  <span class="closeBtn" onclick="closeOverlay()">&times;</span>
+                  <span class="closeBtn" onclick="closeOverlay5()">&times;</span>
                   <br>
                   <br>
                   <span class="content-title">
-                    <h1 >using Terraform & Gitugaction to deploy RG and VM</h1>
+                    <h1 >Cloud Infrastructure</h1>
+                    <sub>Work Examples</sub>
                   </span>
                   <span class="content-section">
-                    <h2>Step 01 | Setting up Service Princple</h2>
+                    <hr>
+                    <h2>Deploying Azure Resource Group using CI/CD with Terrafrom & Github Action</h2>
                     <p class="note">
                       logging into the Azure portal and sign in with your user credential.
                     </p>
-                    <p class="code">
-                      <code>
-                        ctx.fillStyle = 'rgba(0, 0, 255, 1)'; // Set the fill color (blue with 50% opacity)
-                        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
-                        
-                        
-                        document.getElementById('openOverlayBtn').onclick = function() {
-                        document.getElementById('overlay').style.display = 'flex';
-                        };
-                        
-                        function closeOverlay() {
-                        document.getElementById('overlay').style.display = 'none';
-                        }
-                      </code>
-                    </p>
-                    <br>
-                    <h2>Step 02 | Setting up Service Princple</h2>
-                    <p class="note">
-                      logging into the Azure portal and sign in with your user credential.
-                    </p>
-                    <p class="code">
-                      <code>
-                        ctx.fillStyle = 'rgba(0, 0, 255, 1)'; // Set the fill color (blue with 50% opacity)
-                        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
-                        
-                        
-                        document.getElementById('openOverlayBtn').onclick = function() {
-                        document.getElementById('overlay').style.display = 'flex';
-                        };
-                        
-                        function closeOverlay() {
-                        document.getElementById('overlay').style.display = 'none';
-                        }
-                      </code>
-                    </p>
+                    <hr>
+
                   </span>
-                  <br>
-                  <p>This is the overlay content. It can include links, images, or any other HTML elements.</p>
-                  <a href="https://example.com">Visit Example.com</a>
+                  <div class="all-works">
+                    <a href="#">Veiw All My Works >></a>
+                  </div>
+            
                 </div>
               </div>
             </div>
           </article>
 
         </section>
-      </div>
-      <div class="all-works">
-        <a href="#">Veiw All My Works >></a>
       </div>
     </div>
     <section class="journals">

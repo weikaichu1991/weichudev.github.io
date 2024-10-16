@@ -25,23 +25,35 @@ ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
 
 document.getElementById('openOverlayBtn').onclick = function() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay1').style.display = 'flex';
 };
 document.getElementById('openOverlayBtn2').onclick = function() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay2').style.display = 'flex';
 };
 document.getElementById('openOverlayBtn3').onclick = function() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay3').style.display = 'flex';
 };
 document.getElementById('openOverlayBtn4').onclick = function() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay4').style.display = 'flex';
 };
 document.getElementById('openOverlayBtn5').onclick = function() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay5').style.display = 'flex';
 };
 
-function closeOverlay() {
-    document.getElementById('overlay').style.display = 'none';
+function closeOverlay1() {
+    document.getElementById('overlay1').style.display = 'none';
+}
+function closeOverlay2() {
+    document.getElementById('overlay2').style.display = 'none';
+}
+function closeOverlay3() {
+    document.getElementById('overlay3').style.display = 'none';
+}
+function closeOverlay4() {
+    document.getElementById('overlay4').style.display = 'none';
+}
+function closeOverlay5() {
+    document.getElementById('overlay5').style.display = 'none';
 }
 
 document.getElementById('menu-icon').addEventListener('click', function() {
