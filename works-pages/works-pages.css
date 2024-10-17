@@ -3,11 +3,27 @@
     margin: 0 auto;
     padding: 20px;
 }
+@font-face{
+    font-family: 'Cascadia Code';
+    src: url('../CascadiaCode/woff2/CascadiaCode.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeNF.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeNFItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodePL.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodePLItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMono.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoNF.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoNFItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoPL.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoPLItalic.woff2'),
+    url('../CascadiaCode/ttf/CascadiaCode.ttf');
+}
 body{
     background-color: #EBEBEB;
     /* font-family: sans-serif; */
     color: #131e3f;
-    font-family: 'Cascadia Code';
+    font-family: 'Cascadia Code', sans-serif;
     border-top: #b49090;
     border-top-width: 40px;
     border-top-style: solid;
@@ -92,7 +108,7 @@ header, nav, main, footer, .subpages {
                 text-transform: capitalize;
             }
             .note{
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-family:Arial, Helvetica, sans-serif;
                 line-height: 150%;
                 strong{
                     text-transform: capitalize;
@@ -309,7 +325,7 @@ header, nav, main, footer, .subpages {
                 text-transform: capitalize;
             }
             .note{
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-family: Arial, Helvetica, sans-serif;
                 line-height: 150%;
                 strong{
                     text-transform: capitalize;
