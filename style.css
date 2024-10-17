@@ -224,6 +224,20 @@ nav ul li{
                 border-radius: 5px;
                 text-align: center;
                 padding: 10%;
+                .all-works{
+                    text-align: center;
+                    padding: 7% 0%;
+                }
+                .all-works a{
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                    background-color: #131e3f;
+                    padding: 2% ;
+                    border-radius: 10px;
+                    color: white;
+                    margin: 0 auto;
+                }
 
                 .content-title{
                     h1{
@@ -307,24 +321,7 @@ nav ul li{
     }
 }
 }
-.all-works{
-    text-align: center;
-    padding: 5% 0%;
-}
-.all-works a{
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    background-color: #131e3f;
-    padding: 2% ;
-    border-radius: 10px;
-    color: white;
-    margin: 0 auto;
-    }
-
-
-
-
+/* The blog sections */
 .journals{
         text-transform:capitalize;
         h1{
@@ -371,7 +368,12 @@ nav ul li{
                 margin: 0%
             }
             p{
-                margin: 0%
+                margin: 5% 0% 5% 0%;
+            }
+            .read-more{
+                text-decoration: none;
+                color:#131e3f;
+                font-weight: 900;
             }
         }
         .blogs-order{
@@ -388,11 +390,6 @@ nav ul li{
                 margin: 0%;
                 margin-bottom:15%;
                 font-weight: 300;
-            }
-            .read-more{
-                text-decoration: none;
-                color:#131e3f;
-                font-weight: 900;
             }
         }
         .dashed-line{
@@ -784,7 +781,8 @@ main {
             }
         }
     }
-    }
+}
+
     
     
     
@@ -837,8 +835,18 @@ main {
                     margin: 0%;
                 }
                 p{
-                    margin: 0%;
+                    margin: 5% 0%;
                     font-size: 90%;
+                }
+                .read-more{
+                    text-decoration: none;
+                    color:#131e3f;
+                    font-weight: 900;
+                }
+                .coming-soon{
+                    text-decoration: none;
+                    color:#131e3f;
+                    font-weight: 900;
                 }
             }
             .blogs-order{
@@ -856,11 +864,6 @@ main {
                     margin-bottom:50%;
                     margin-top: 5%;
                     font-weight: 300;
-                }
-                .read-more{
-                    text-decoration: none;
-                    color:#131e3f;
-                    font-weight: 900;
                 }
             }
             .dashed-line{
