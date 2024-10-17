@@ -19,7 +19,7 @@ header, nav, main, footer, .subpages {
 }
 
 /* Mobile-first styles */
-@media (min-width: 700px) { /* For tablets and larger */
+@media (min-width: 600px) { /* For tablets and larger */
     /* The navigation bar */
     header{
     display: flexbox;
@@ -222,8 +222,8 @@ header, nav, main, footer, .subpages {
     }
 }
 
-@media (max-width: 600px) { /* For desktops */
-    /* Additional styles for larger screens */
+@media (max-width: 600px) { /* For phones */
+    /* Additional styles for mobile screens */
     header{
         display: flexbox;
         justify-content: space-between;
