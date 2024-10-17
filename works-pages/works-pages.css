@@ -38,10 +38,15 @@ header, nav, main, footer, .subpages {
 @media (min-width: 600px) { /* For tablets and larger */
     /* The navigation bar */
     header{
-    display: flexbox;
+    display: flex;
     justify-content: space-between;
-    text-align: center;
+    text-align: left;
     font-size: 40%;
+    background-color: #131e3f;
+    color: white;
+    width: 10%;
+    padding: 0.5%;
+    border-radius: 10px;
     }    
     .topnav{
         nav {
@@ -241,10 +246,15 @@ header, nav, main, footer, .subpages {
 @media (max-width: 600px) { /* For phones */
     /* Additional styles for mobile screens */
     header{
-        display: flexbox;
-        justify-content: space-between;
-        text-align: center;
-        font-size: 40%;
+        display: flex;
+        justify-content:space-evenly;
+        text-align: left;
+        font-size: 80%;
+        background-color: #131e3f;
+        color: white;
+        width: 30%;
+        padding: 1%;
+        border-radius: 10px;
         }    
     .topnav{
         height: fit-content;
