@@ -19,7 +19,7 @@ header, nav, main, footer, .subpages {
 }
 
 /* Mobile-first styles */
-@media (min-width: 600px) { /* For tablets and larger */
+@media (min-width: 700px) { /* For tablets and larger */
     /* The navigation bar */
     header{
     display: flexbox;
