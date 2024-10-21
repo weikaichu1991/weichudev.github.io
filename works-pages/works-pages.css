@@ -233,6 +233,45 @@ header, nav, main, footer, .subpages {
             }
         }
     }
+    .comments {
+        margin: 20px 0;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 5%;
+        .form-group {
+            margin-bottom: 15px;
+            
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                background-color:#c9c9c900;
+                border-style:none;
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+        }
+        button {
+            padding: 10px 15px;
+            background-color:#131e3f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color:#b49090;
+        }
+    }
+    
+    
+    
+
+    
 }
 
 @media (min-width: 1024px) { /* For desktops */
@@ -429,6 +468,45 @@ header, nav, main, footer, .subpages {
             cursor: pointer;
         }
     }
+    .comments {
+        margin: 20px 0;
+        border-style: solid;
+        border-radius: 10px;
+        margin: 20px 0;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 5%;
+        .form-group {
+            margin-bottom: 15px;
+            
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                background-color:#c9c9c900;
+                border-style:none;
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+        }
+        button {
+            padding: 10px 15px;
+            background-color:#131e3f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color:#b49090;
+        }
+    
+    }
+
     .footer{
         text-align: center;
         padding-bottom: 10%;
