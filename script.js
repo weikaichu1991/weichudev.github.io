@@ -60,3 +60,87 @@ document.getElementById('menu-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('active');
 });
+
+// The api connection for MongoDB
+const APILINK = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=a30bc4e789ef3e55028db8a57ac2e6c8&page=1';
+const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=a30bc4e789ef3e55028db8a57ac2e6c8&query=";
+
+const main = document.getElementById("section");
+const form = document.getElementById("form");
+const search = document.getElementById("query");
+
+const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBiYzRlNzg5ZWYzZTU1MDI4ZGI4YTU3YWMyZTZjOCIsIm5iZiI6MTcyODA4OTUwMy41MjMwMywic3ViIjoiNjcwMDA1YTQ2N2M2ZmIwOWZmZjgxMDNhIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.evcYha0zSMU8nwrcN2HLkBTgezMBqdUPRWbrckzfjgY'
+    }
+  };
+  
+//   fetch('https://api.themoviedb.org/3/configuration', options)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+
+returnMovies(APILINK);
+function returnMovies(url) {
+    fetch(url, options)
+    .then(response => response.json())
+    .then(function(data){
+        console.log(data.results);
+        data.results.forEach(element => {
+            const div_card = document.createElement('div');
+            div_card.setAttribute('class', 'card');
+
+            const div_row = document.createElement('div');
+            div_row.setAttribute('class','row');
+
+            const div_column = document.createElement('div');
+            div_column.setAttribute('class', 'column');
+
+            const image = document.createElement('img');
+            image.setAttribute('class', 'thumbnail');
+            image.setAttribute('id', 'image');
+
+            const title = document.createElement('h3');
+            title.setAttribute('id', 'title');
+
+            const center = document.createElement('center');
+
+            title.innerHTML = `${element.title}<br><a href="movie.html?id=${element.id}&title=${element.title}">reviews</a>`;
+            image.src = IMG_PATH + element.poster_path;
+
+            center.appendChild(image);
+            div_card.appendChild(center);
+            div_card.appendChild(title);
+            div_column.appendChild(div_card);
+            div_row.appendChild(div_column);
+
+            main.appendChild(div_row);
+        });
+    });
+}
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    main.innerHTML = '';
+    
+    const searchItem = search.value;
+    
+    if (searchItem) {
+        returnMovies(SEARCHAPI + searchItem);
+            search.value = "";
+    }
+});
+
+// // To be resolved: clicking returned search result image for more info of the movie.
+// form.getElementById('main').addEventListener('click', (e) => {
+//     // Check if the clicked element or its parent has a data-id attribute
+//     let target = e.target;
+//     if (target.getAttribute('data-id') || target.parentElement.getAttribute('data-id')) {
+//         const movieId = target.getAttribute('data-id') || target.parentElement.getAttribute('data-id');
+//         fetchMovieDetails(movieId);
+//     }
+// });
+
+
