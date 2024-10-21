@@ -2,7 +2,7 @@
 //mongoDB Clusterpsw: AXAWbd3hvnrLGKWX
 import app from "./server.js"
 import mongodb from "mongodb"
-import ReviewsDAO from "./dao/reviewsDAO.js"
+import CommentsDAO from "./dao/commentsDAO.js"
 import dotenv from 'dotenv';
 
 
@@ -11,7 +11,7 @@ dotenv.config();
 const MongoClient = mongodb.MongoClient;
 const dbUsername = process.env.DB_username;
 const dbPassword = process.env.DB_passwords;
-const uri = `mongodb+srv://${dbUsername}:${dbPassword}@cluster0.inwfs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const uri = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
 const port = 8000 
 
@@ -28,7 +28,7 @@ MongoClient.connect(
     })
     .then(async client => {
         // async is a function, meaning it doesnt have to wait until something to happen before it start working on something.
-        await ReviewsDAO.injectDB(client)
+        await CommentsDAO.injectDB(client)
         app.listen(port, () => {
             console.log(`listening on port ${port}`)
         })

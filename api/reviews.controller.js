@@ -1,5 +1,5 @@
 import { error } from "console"
-import ReviewsDAO from "../dao/reviewsDAO.js"
+import CommentsDAO from "../dao/commentsDAO.js"
 // This is the part that shows the database will be connected.
 
 export default class ReviewsController {
@@ -9,7 +9,7 @@ export default class ReviewsController {
             const review = req.body.review
             const user = req.body.user
 
-            const reviewResponse = await ReviewsDAO.addReview(
+            const reviewResponse = await CommentsDAO.addReview(
                 movieId,
                 user,
                 review
@@ -22,7 +22,7 @@ export default class ReviewsController {
     static async apiGetReview(req, res, next) {
         try {
             let id = req.params.id || {}
-            let review = await ReviewsDAO.getReview(id)
+            let review = await CommentsDAO.getReview(id)
             if (!review) {
                 res.status(404).json({ error:"Not found"})
                 return
@@ -39,7 +39,7 @@ export default class ReviewsController {
             const review = req.body.review
             const user = req.body.user
 
-            const reviewResponse = await ReviewsDAO.updateReview(
+            const reviewResponse = await CommentsDAO.updateReview(
                 reviewId,
                 user,
                 review
@@ -63,7 +63,7 @@ export default class ReviewsController {
     static async apiDeleteReview(req, res, next) {
         try {
             const reviewId = req.params.id
-            const reviewResponse = await ReviewsDAO.deleteReview(reviewId)
+            const reviewResponse = await CommentsDAO.deleteReview(reviewId)
             res.json({status: "success"})
         } catch(e){
             res.status(500).json({error:e.message})
@@ -72,7 +72,7 @@ export default class ReviewsController {
     static async apiGetReviews(req, res, next) {
         try {
             let id = req.params.id || {}
-            let reviews = await ReviewsDAO.getReviewsByMovieId(id)
+            let reviews = await CommentsDAO.getReviewsByMovieId(id)
             if (!reviews){
                 res.status(404).json({error:"Not Found"})
                 return
