@@ -26,44 +26,45 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-const url = new URL(location.href);
-const commentId = Math.floor(100000 + Math.random() * 900000);
-// This code ensures that movieId will always be a 6-digit number. Here's how it works:
-// Math.random() generates a random number between 0 (inclusive) and 1 (exclusive).
-// Multiplying by 900000 scales this to a range of 0 to 899999.
-// Adding 100000 shifts the range to 100000 to 999999.
-// Math.floor() rounds down to the nearest whole number, ensuring a 6-digit integer.
-// 
-const commentSubject = document.getElementById("subject");
-const commentFrom = document.getElementById("name");
-const commentEmail= document.getElementById("email");
-const commentContent=document.getElementById("comment")
-const APILINK = 'http://localhost:8000/api/v1/reviews/';
-const main = document.getElementById("comments");
+document.getElementById('commentForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-const div_new = document.createElement('div');
-// div_new.innerHTML = `
-//     <div class="row">
-//         <div class="column">
-//             <div class="card">
-//                 ${commentSubject}
-//                 <p><strong>Comment: </strong>
-//                     ${commentContent}
-//                 </p>
-//                 <p><strong>From: </strong>
-//                     ${commentFrom}
-//                 </p>
-//                 <p><strong>email: </strong>
-//                     ${commentEmail}
-//                 </p>
-//                 <p><strong>CommentID: </strong>
-//                     ${commentId}
-//                 </p>
-//                 <p><a href="#" onclick="saveReview('new_comment', 'new_user')">💾</a>
-//                 </p>
-//             </div>
-//         </div>
-//     </div>
-// `
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const comment = document.getElementById('comment').value;
 
-main.appendChild(div_new)
+    const response = await fetch('http://localhost:8000/api/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, subject, comment })
+    });
+
+    if (response.ok) {
+        loadComments();
+    }
+});
+
+async function loadComments() {
+    const response = await fetch('http://localhost:8000/api/comments');
+    const comments = await response.json();
+
+    const commentsSection = document.getElementById('commentsSection');
+    commentsSection.innerHTML = '';
+
+    comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `
+            <h3>${comment.subject}</h3>
+            <p>${comment.comment}</p>
+            <p><strong>${comment.name}</strong> - ${new Date(comment.date).toLocaleString()}</p>
+        `;
+        commentsSection.appendChild(commentDiv);
+    });
+}
+
+// Load comments when the page loads
+document.addEventListener('DOMContentLoaded', loadComments);
