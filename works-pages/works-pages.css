@@ -233,7 +233,7 @@ header, nav, main, footer, .subpages {
             }
         }
     }
-    .comments {
+    .comments_form {
         margin: 20px 0;
         border-style: solid;
         border-radius: 10px;
@@ -468,7 +468,7 @@ header, nav, main, footer, .subpages {
             cursor: pointer;
         }
     }
-    .comments {
+    .comments_form {
         margin: 20px 0;
         border-style: solid;
         border-radius: 10px;

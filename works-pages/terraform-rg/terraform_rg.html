@@ -266,7 +266,7 @@ terraform {
                 <img src="../terraform-rg/rg_images/image 19.png" class="enlargeable-image" alt="Image 6">
             </div>
             
-            <div class="comments" id="comments">
+            <div class="comments_form" id="comments_form">
                 <h2>Leave a Comment</h2>
                 <form id="commentForm">
                     <div class="form-group">
@@ -275,7 +275,11 @@ terraform {
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form-group">
                         <label for="comment">Comment:</label>
@@ -284,6 +288,9 @@ terraform {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+            <section id="comments">
+
+            </section>
         </div>
 
         <!-- The end of content section -->
