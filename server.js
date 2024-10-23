@@ -50,14 +50,24 @@ const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongo
                 return res.status(400).send('Missing required fields');
             }
             const newComment = { name, email, subject, comment, date: new Date() };
-            const result = await collection.insertOne(newComment);
-            res.status(201).send(result.ops[0]);
+            try{
+                const result = await collection.insertOne(newComment);
+                res.status(201).send(result.ops[0]);
+            } catch (error) {
+                console.error('Error inserting comment:', error);
+                res.status(500).send('Internal Server Error');
+            }
         });
 
         // GET /api/comments
         app.get('/api/comments', async (req, res) => {
-            const comments = await collection.find().sort({ date: -1 }).toArray();
-            res.status(200).send(comments);
+            try{
+                const comments = await collection.find().sort({ date: -1 }).toArray();
+                res.status(200).send(comments);
+            } catch (error) {
+                console.error('Error fetching comments:', error);
+                res.status(500).send('Internal Server Error');
+            }
         });
 
         app.listen(port, () => {

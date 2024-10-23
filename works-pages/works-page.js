@@ -34,6 +34,8 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
     const subject = form.getElementById('subject').value;
     const comment = form.getElementById('comment').value;
 
+    console.log('Submitting form:', { name, email, subject, comment });
+
     const response = await fetch('http://localhost:8000/api/comments', {
         method: 'POST',
         headers: {
@@ -43,7 +45,10 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
     });
 
     if (response.ok) {
+        console.log('Form submitted successfully');
         loadComments();
+    } else {
+        console.error('Error submitting form:', response.statusText);
     }
 });
 
