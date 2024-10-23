@@ -26,13 +26,13 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-document.getElementById('commentForm').addEventListener('submit', async function(event) {
+form.getElementById('commentForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const comment = document.getElementById('comment').value;
+    const name = form.getElementById('name').value;
+    const email = form.getElementById('email').value;
+    const subject = form.getElementById('subject').value;
+    const comment = form.getElementById('comment').value;
 
     const response = await fetch('http://localhost:8000/api/comments', {
         method: 'POST',
