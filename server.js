@@ -38,6 +38,11 @@ const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongo
 
         const collection = db.collection(collectionName);
 
+        // Add this route before the other routes
+        app.get('/', (req, res) => {
+            res.send('Welcome to the home page!');
+        });
+
         // POST /api/comments
         app.post('/api/comments', async (req, res) => {
             const { name, email, subject, comment } = req.body;
