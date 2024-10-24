@@ -26,8 +26,7 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-const url = new URL(location.href);
-const APILINK = 'http://localhost:8000/api/v1/comments/';
+const APILINK = 'http://localhost:8000/api/comments/';
 
 form.getElementById('commentForm').addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -39,7 +38,7 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
 
     console.log('Submitting form:', { name, email, subject, comment });
 
-    const response = await fetch (APILINK + "new", {
+    const response = await fetch (APILINK, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -56,7 +55,7 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
 });
 
 async function loadComments() {
-    const response = await fetch(APILINK + "existed");
+    const response = await fetch(APILINK);
     const comments = await response.json();
 
     const commentsSection = document.getElementById('commentsSection');
@@ -66,9 +65,16 @@ async function loadComments() {
         const commentDiv = document.createElement('div');
         commentDiv.classList.add('comment');
         commentDiv.innerHTML = `
-            <h3>${comment.subject}</h3>
-            <p>${comment.comment}</p>
-            <p><strong>${comment.name}</strong> - ${new Date(comment.date).toLocaleString()}</p>
+        <div class ="row>
+            <div class = "column">
+                <div class = "card" id= "${comment._id}"
+                    <h3>${comment.subject}</h3>
+                    <p>${comment.comment}</p>
+                    <p><strong>${comment.name}</strong></p>
+                    <p>${comment.date}</p>
+                </div>
+            </div>
+        </div>
         `;
         commentsSection.appendChild(commentDiv);
     });
