@@ -26,59 +26,131 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-const APILINK = 'http://localhost:8000/api/comments/';
+const url = new URL(location.href);
+const APILINK = 'http://localhost:8000/api/comments';
+const main = document.getElementById("commentsSection");
 
-form.getElementById('commentForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
+const div_new = document.createElement('div');
+div_new.innerHTML = `
+<div class="row">
+<div class="column">
+    <div class="card">
+        New Comment
+        <p><strong>Name: </strong>
+            <input type="text" id="new_name" value="">
+        </p>
+        <p><strong>Email: </strong>
+            <input type="text" id="new_email" value="">
+        </p>
+        <p><strong>Subject: </strong>
+            <input type="text" id="new_subject" value="">
+        </p>
+        <p><strong>Comment: </strong>
+            <input type="text" id="new_comment" value="">
+        </p>
+        <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')">Submit</a>
+        </p>
+    </div>
+</div>
+</div>
+`
+main.appendChild(div_new)
 
-    const name = form.getElementById('name').value;
-    const email = form.getElementById('email').value;
-    const subject = form.getElementById('subject').value;
-    const comment = form.getElementById('comment').value;
+returnComments(APILINK);
+function returnComments(url) {
+    fetch(url)
+    .then(response => response.json())
+    .then(function(data){
+        console.log(data);
+        data.forEach(comment => {
+            const div_card = document.createElement('div');
+            div_card.innerHTML = `
+                    <div class = "row">
+                        <div class = "column">
+                            <div class = "card" id = "${comment._id}">
+                                <p><strong>Subject: </strong>${comment.subject}</p>
+                                <p><strong>Comment: </strong>${comment.comment_text}</p>
+                                <p>${comment.name}</p>
+                                <p>${comment.date}</p>
+                                <p><a href="#" onclick="editComment('${comment._id}', '${comment.subject}', '${comment.comment_text}', '${comment.name}', '${comment.email}')">&#9999</a> <a href = "#" onclick = "deleteComment('${comment._id}')">&#x1F5D1;&#xFE0F</a></p>
+                            </div>
+                        </div>
+                    </div>
+                `
 
-    console.log('Submitting form:', { name, email, subject, comment });
-
-    const response = await fetch (APILINK, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, email, subject, comment })
-    });
-
-    if (response.ok) {
-        console.log('Form submitted successfully');
-        loadComments();
-    } else {
-        console.error('Error submitting form:', response.statusText);
-    }
-});
-
-async function loadComments() {
-    const response = await fetch(APILINK);
-    const comments = await response.json();
-
-    const commentsSection = document.getElementById('commentsSection');
-    commentsSection.innerHTML = '';
-
-    comments.forEach(comment => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `
-        <div class ="row>
-            <div class = "column">
-                <div class = "card" id= "${comment._id}"
-                    <h3>${comment.subject}</h3>
-                    <p>${comment.comment}</p>
-                    <p><strong>${comment.name}</strong></p>
-                    <p>${comment.date}</p>
-                </div>
-            </div>
-        </div>
-        `;
-        commentsSection.appendChild(commentDiv);
+            main.appendChild(div_card);
+        });
     });
 }
 
-// Load comments when the page loads
-document.addEventListener('DOMContentLoaded', loadComments);
+
+function editComment(id, subject, comment, name, email) {
+    const element = document.getElementById(id);
+    const subjectInputId = "subject" + id
+    const commentInputId = "comment" + id
+    const nameInputId = "name" + id
+    const emailInputId = "email" + id
+
+    // creating editing function with 2 input boxes shown up.
+    element.innerHTML = `
+                <p><strong>Subject: </strong>
+                <input type = "text" id = "${subjectInputId}" value = "${subject}">
+                </p>
+                <p><strong>Subject: </strong>
+                <input type = "text" id = "${commentInputId}" value = "${comment}">
+                </p>
+                <p><strong>User: </strong>
+                <input type = "text" id = "${nameInputId}" value = "${name}">
+                </p>
+                <p><strong>Subject: </strong>
+                <input type = "text" id = "${emailInputId}" value = "${email}">
+                </p>
+                <p><a href = "#" onclick = "saveComment('${subjectInputId}', '${commentInputId}', '${nameInputId}', '${emailInputId}', '${id}',)">💾</a>
+                </p>
+    `
+}
+// creating save the editted review function
+function saveComment(subjectInputId, commentInputId, nameInputId, emailInputId, id="") {
+    const subject = document.getElementById(subjectInputId).value;
+    const comment = document.getElementById(commentInputId).value;
+    const name = document.getElementById(nameInputId).value;
+    const email = document.getElementById(emailInputId).value;
+
+    if(id){
+        fetch(APILINK + id, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({"name": name, "email": email, "subject": subject, "comment_text": comment})
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res)
+                location.reload();
+            });
+    } else {
+        fetch(APILINK, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({"name": name, "email": email, "subject": subject, "comment_text": comment})
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res)
+                location.reload();
+            });
+    }
+}
+// creating the function for deleting the review
+function deleteComment(id){
+    fetch(APILINK + id, {
+        method: 'DELETE'
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res)
+        location.reload();
+    });
+}
