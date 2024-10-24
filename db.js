@@ -21,13 +21,11 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     });
     console.log('MongoDB connected');
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (err) {
     console.error(err.message);
     process.exit(1);
   }
 };
-
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
+connectDB();
 export default connectDB;

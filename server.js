@@ -5,8 +5,6 @@ import Comment from'./Comment.js';
 
 const app = express();
 
-connectDB();
-
 // Middleware
 app.use(express.json());
 
