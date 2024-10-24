@@ -1,8 +1,3 @@
-import mongodb from "mongodb"
-import dotenv from 'dotenv';
-import app from "../server.js"
-import commentsDAO from "../dao/commentsDAO.js"
-
 // Get the modal
 var modal = document.getElementById("imageModal");
 
@@ -31,35 +26,9 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-dotenv.config();
-// require('dotenv').config();
-const MongoClient = mongodb.MongoClient;
-const dbUsername = process.env.DB_username;
-const dbPassword = process.env.DB_passwords;
-const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
+const url = new URL(location.href);
+const APILINK = 'http://localhost:8000/api/v1/comments/';
 
-const port = 8000
-
-MongoClient.connect(
-    mongoURI,
-    {
-        maxPoolSize: 50,
-        wtimeoutMS: 2500,
-        useNewUrlParser: true
-    })
-    .catch( err => {
-        console.error(err.stack)
-        process.exit(1)
-    })
-    .then(async client => {
-        // async is a function, meaning it doesnt have to wait until something to happen before it start working on something.
-        await commentsDAO.injectDB(client)
-        app.listen(port, () => {
-            console.log(`listening on port ${port}`)
-        })
-    })
-
-// -------------------------------------------------
 form.getElementById('commentForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -70,7 +39,7 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
 
     console.log('Submitting form:', { name, email, subject, comment });
 
-    const response = await fetch('http://localhost:8000/api/comments', {
+    const response = await fetch (APILINK + "new", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -87,7 +56,7 @@ form.getElementById('commentForm').addEventListener('submit', async function(eve
 });
 
 async function loadComments() {
-    const response = await fetch('http://localhost:8000/api/comments');
+    const response = await fetch(APILINK + "existed");
     const comments = await response.json();
 
     const commentsSection = document.getElementById('commentsSection');

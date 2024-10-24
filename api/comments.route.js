@@ -5,14 +5,14 @@ import commentsCtrl from "./comments.controller.js"
 const router = express.Router()
 
 // The folling line is just for testing how the browser responds initially.
-// router.route("/").get((req, res) => res.send("Hello world"))
+router.route("/").get((req, res) => res.send("Hello world"))
 
 // --- wait until all the article is assigned to an ID later. ---
 // router.route("/article/:id").get(commentsCtrl.apiGetComments)
 router.route("/new").post(commentsCtrl.apiPostComment)
-router.route("/:id")
+router.route("/existed")
         .get(commentsCtrl.apiGetComment)
         .put(commentsCtrl.apiUpdateComment)
-        .delete(commentsCtrl.apiDeleteComment)
+        // .delete(commentsCtrl.apiDeleteComment)
 
 export default router
