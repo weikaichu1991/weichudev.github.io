@@ -72,10 +72,7 @@ function returnComments(url) {
                                 <p><strong>Subject: </strong>${comment.subject}</p>
                                 <p><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p>${comment.name} - ${comment.date}</p>
-                                <p>
-                                    <a href="#" onclick="showEmailVerification('${comment._id}', 'edit')">Edit</a>
-                                    <a href="#" onclick="showEmailVerification('${comment._id}', 'delete')">Delete</a>
-                                </p>
+                                <p><a href="#" onclick="editComment('${comment._id}', '${comment.name}', '${comment.email}', '${comment.subject}', '${comment.comment_text}')">Edit</a>  <a href = "#" onclick = "deleteComment('${comment._id}')">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -86,41 +83,31 @@ function returnComments(url) {
     });
 }
 
-function showEmailVerification(commentId, action) {
-    const element = document.getElementById(commentId);
-    element.innerHTML += `
-        <div id="verify-email-${commentId}">
+function showEmailVerification(id, action){
+    div_card.innerHTML += `
+        <div id="verifyEmail-${id}">
             <p><strong>Verify Email: </strong>
-            <input type="text" id="verify-email-input-${commentId}" placeholder="Enter your email to verify">
-            <button onclick="verifyEmail('${commentId}', '${action}')">Verify</button>
+                <input type= "text" id = "verifyInput-${id}" placeholder="Enter your email to verify">
+                <a href="#" onclick="verifyEmail('${id}', '${action}')">Verify</a>
             </p>
         </div>
-    `;
+    `
 }
 
-function verifyEmail(commentId, action) {
-    const verifyEmailInput = document.getElementById(`verify-email-input-${commentId}`).value.trim().toLowerCase();
-    fetch(`${APILINK}/${commentId}`)
-        .then(response => response.json())
-        .then(comment => {
-            const storedEmail = comment.email.trim().toLowerCase();
-            console.log(`Stored Email: ${storedEmail}, Entered Email: ${verifyEmailInput}`);
-            if (storedEmail === verifyEmailInput) {
-                if (action === 'edit') {
-                    editComment(comment._id, comment.subject, comment.comment_text, comment.name, comment.email);
-                } else if (action === 'delete') {
-                    deleteComment(comment._id, verifyEmailInput);
-                }
-            } else {
-                alert('Email verification failed. Please enter the correct email.');
+function verifyEmail(id, action){
+    const verifyInput = document.getElementById(`verifyInput-${id}`).value;
+    const element = document.getElementById(id);
+        if (element.email === verifyInput) {
+            if (action === 'edit') {
+                editComment(id, element.name, element.email, element.subject, element.comment_text);
+            } else if (action === 'delete') {
+                deleteComment(id);
             }
-        })
-        .catch(error => {
-            console.error('Error fetching comment:', error);
-            alert('Error fetching comment. Please try again.');
-        });
-}
+        } else {
+            alert('Email verification failed. Please enter the correct email.');
+        }
 
+}
 
 function editComment(id, name, email, subject, comment_text ) {
     const element = document.getElementById(id);
@@ -128,6 +115,7 @@ function editComment(id, name, email, subject, comment_text ) {
     const commentInputId = "comment_text" + id
     const nameInputId = "name" + id
     const emailInputId = "email" + id
+    const verifyEmailInputId = "verify_email" + id;
     // creating editing function with 2 input boxes shown up.
     element.innerHTML = `
         <p><strong>Name: </strong>
