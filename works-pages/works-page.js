@@ -72,10 +72,7 @@ function returnComments(url) {
                                 <p><strong>Subject: </strong>${comment.subject}</p>
                                 <p><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p>${comment.name} - ${comment.date}</p>
-                                <p>
-                                    <a href="#" onclick="editComment('${comment._id}', '${comment.subject}', '${comment.comment_text}', '${comment.name}', '${comment.email}')">Edit</a>
-                                    <a href = "#" onclick = "deleteComment('${comment._id}')">Delete</a>
-                                </p>
+                                <p><a href="#" onclick="editComment('${comment._id}', '${comment.subject}', '${comment.comment_text}', '${comment.name}', '${comment.email}')">Edit</a>  <a href = "#" onclick = "deleteComment('${comment._id}')">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -152,4 +149,5 @@ async function deleteComment(id) {
 }
 
 // Load comments when the page loads
-document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
+document.addEventListener('DOMContentLoaded');
+// document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
