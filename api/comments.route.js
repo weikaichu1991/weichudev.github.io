@@ -13,6 +13,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get single comment
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const comment = await Comment.findById(id);
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' });
+    }
+    res.status(200).json(comment);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // Create a new comment
 router.post('/', async (req, res) => {
   const { name, email, subject, comment_text } = req.body;

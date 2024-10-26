@@ -72,7 +72,7 @@ function returnComments(url) {
                                 <p><strong>Subject: </strong>${comment.subject}</p>
                                 <p><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p>${comment.name} - ${comment.date}</p>
-                                <p><a href="#" onclick="editComment('${comment._id}', '${comment.name}', '${comment.email}', '${comment.subject}', '${comment.comment_text}')">Edit</a>  <a href = "#" onclick = "deleteComment('${comment._id}')">Delete</a></p>
+                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')">Edit</a>  <a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -83,30 +83,34 @@ function returnComments(url) {
     });
 }
 
-function showEmailVerification(id, action){
-    div_card.innerHTML += `
-        <div id="verifyEmail-${id}">
+function showEmailVerification(commentId, action){
+    const element = document.getElementById(commentId);
+    element.innerHTML += `
+        <div id="verifyEmail-${commentId}">
             <p><strong>Verify Email: </strong>
-                <input type= "text" id = "verifyInput-${id}" placeholder="Enter your email to verify">
-                <a href="#" onclick="verifyEmail('${id}', '${action}')">Verify</a>
+                <input type= "text" id = "verifyInput-${commentId}" placeholder="Enter your email to verify">
+                <a href="#" onclick="verifyEmail('${commentId}', '${action}')">Verify</a>
             </p>
         </div>
     `
 }
 
-function verifyEmail(id, action){
-    const verifyInput = document.getElementById(`verifyInput-${id}`).value;
-    const element = document.getElementById(id);
-        if (element.email === verifyInput) {
-            if (action === 'edit') {
-                editComment(id, element.name, element.email, element.subject, element.comment_text);
-            } else if (action === 'delete') {
-                deleteComment(id);
+function verifyEmail(commentId, action){
+    const verifyInput = document.getElementById(`verifyInput-${commentId}`).value;
+    fetch(`${APILINK}/${commentId}`)
+    .then(response => response.json())
+    .then(comment => {
+            if (comment.email === verifyInput) {
+                if (action === 'edit') {
+                    editComment(commentId, element.name, element.email, element.subject, element.comment_text);
+                } else if (action === 'delete') {
+                    deleteComment(commentId);
+                }
+            } else {
+                alert('Email verification failed. Please enter the correct email.');
             }
-        } else {
-            alert('Email verification failed. Please enter the correct email.');
         }
-
+    )
 }
 
 function editComment(id, name, email, subject, comment_text ) {
