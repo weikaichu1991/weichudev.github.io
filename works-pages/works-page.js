@@ -72,7 +72,10 @@ function returnComments(url) {
                                 <p><strong>Subject: </strong>${comment.subject}</p>
                                 <p><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p>${comment.name} - ${comment.date}</p>
-                                <p><a href="#" onclick="editComment('${comment._id}', '${comment.subject}', '${comment.comment_text}', '${comment.name}', '${comment.email}')">Edit</a>  <a href = "#" onclick = "deleteComment('${comment._id}')">Delete</a></p>
+                                <p>
+                                    <a href="#" onclick="showEmailVerification('${comment._id}', 'edit')">Edit</a>
+                                    <a href="#" onclick="showEmailVerification('${comment._id}', 'delete')">Delete</a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -81,6 +84,41 @@ function returnComments(url) {
             main.appendChild(div_card);
         });
     });
+}
+
+function showEmailVerification(commentId, action) {
+    const element = document.getElementById(commentId);
+    element.innerHTML += `
+        <div id="verify-email-${commentId}">
+            <p><strong>Verify Email: </strong>
+            <input type="text" id="verify-email-input-${commentId}" placeholder="Enter your email to verify">
+            <button onclick="verifyEmail('${commentId}', '${action}')">Verify</button>
+            </p>
+        </div>
+    `;
+}
+
+function verifyEmail(commentId, action) {
+    const verifyEmailInput = document.getElementById(`verify-email-input-${commentId}`).value.trim().toLowerCase();
+    fetch(`${APILINK}/${commentId}`)
+        .then(response => response.json())
+        .then(comment => {
+            const storedEmail = comment.email.trim().toLowerCase();
+            console.log(`Stored Email: ${storedEmail}, Entered Email: ${verifyEmailInput}`);
+            if (storedEmail === verifyEmailInput) {
+                if (action === 'edit') {
+                    editComment(comment._id, comment.subject, comment.comment_text, comment.name, comment.email);
+                } else if (action === 'delete') {
+                    deleteComment(comment._id, verifyEmailInput);
+                }
+            } else {
+                alert('Email verification failed. Please enter the correct email.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching comment:', error);
+            alert('Error fetching comment. Please try again.');
+        });
 }
 
 
@@ -92,20 +130,20 @@ function editComment(id, name, email, subject, comment_text ) {
     const emailInputId = "email" + id
     // creating editing function with 2 input boxes shown up.
     element.innerHTML = `
-                <p><strong>Subject: </strong>
-                <input type = "text" id = "${subjectInputId}" value = "${subject}">
-                </p>
-                <p><strong>Subject: </strong>
-                <input type = "text" id = "${commentInputId}" value = "${comment_text}">
-                </p>
-                <p><strong>User: </strong>
-                <input type = "text" id = "${nameInputId}" value = "${name}">
-                </p>
-                <p><strong>Subject: </strong>
-                <input type = "text" id = "${emailInputId}" value = "${email}">
-                </p>
-                <p><a href = "#" onclick = "saveComment('${subjectInputId}', '${commentInputId}', '${nameInputId}', '${emailInputId}', '${id}')">Save</a>
-                </p>
+        <p><strong>Name: </strong>
+        <input type="text" id="${nameInputId}" value="${name}">
+        </p>
+        <p><strong>Email: </strong>
+        <input type="text" id="${emailInputId}" value="${email}">
+        </p>
+        <p><strong>Subject: </strong>
+        <input type="text" id="${subjectInputId}" value="${subject}">
+        </p>
+        <p><strong>Comment: </strong>
+        <input type="text" id="${commentInputId}" value="${comment_text}">
+        </p>
+        <p><a href = "#" onclick = "saveComment('${nameInputId}', '${emailInputId}', '${subjectInputId}', '${commentInputId}', '${id}')">Save</a>
+        </p>
     `
 }
 // creating save the editted review function
