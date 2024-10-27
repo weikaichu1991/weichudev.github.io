@@ -214,6 +214,60 @@ header, nav, main, footer, .subpages {
             text-decoration: none;
             cursor: pointer;
         }
+
+        #commentsSection{
+            margin-top: 5%;
+            border-style: solid;
+            border-width: 2px;
+            border-color:#131e3f;
+            padding: 3%;
+            border-radius: 10px;
+            h1{
+                text-transform: uppercase;
+            }
+            hr{
+                border-width: 1px;
+                fill: none;
+                border-color: #131e3f;
+            }
+            .card{
+                input{
+                    border-style: none;
+                    background: none;
+                }
+                a{
+                    text-decoration: none;
+                    font-size: 80%;
+                    color: white;
+                    font-weight: 900;
+                    background-color: #131e3f;
+                    padding: 1%;
+                    border-radius: 5px;
+                }
+                .terms{
+                    text-wrap:wrap;
+                    font-size: 70%;
+                    font-style: italic;
+                    padding: 2% 0%;
+                }
+            }
+            .div_card{
+                margin-top: 5%;
+                a{
+                    text-decoration: none;
+                    font-size: 80%;
+                    color: #b49090;
+                    font-weight: 900;
+                }
+                .comment_subject{
+                    text-transform: uppercase;
+                    font-weight: 900;
+                }
+                .commentator{
+                    font-size: 80%;
+                }
+            }
+        }
     }
     .footer{
         text-align: center;
@@ -550,6 +604,27 @@ header, nav, main, footer, .subpages {
             border-width: 1px;
             fill: none;
             border-color: #131e3f;
+        }
+        .card{
+            input{
+                border-style: none;
+                background: none;
+            }
+            a{
+                text-decoration: none;
+                font-size: 80%;
+                color: white;
+                font-weight: 900;
+                background-color: #131e3f;
+                padding: 1%;
+                border-radius: 5px;
+            }
+            .terms{
+                text-wrap:wrap;
+                font-size: 70%;
+                font-style: italic;
+                padding: 2% 0%;
+            }
         }
         .div_card{
             margin-top: 10%;

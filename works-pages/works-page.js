@@ -37,19 +37,21 @@ div_new.innerHTML = `
         <div class="card">
             <h1>New Comment</h1>
             <p><strong>Name: </strong>
-                <input type="text" id="new_name" value="">
+                <input type="text" id="new_name" value="" placeholder="*Required">
             </p>
             <p><strong>Email: </strong>
-                <input type="text" id="new_email" value="">
+                <input type="text" id="new_email" value="" placeholder="(optional)">
             </p>
             <p><strong>Subject: </strong>
-                <input type="text" id="new_subject" value="">
+                <input type="text" id="new_subject" value="" placeholder="*Required">
             </p>
             <p><strong>Comment: </strong>
-                <input type="text" id="new_comment" value="">
+                <input type="text" id="new_comment" value="" placeholder="*Required">
             </p>
+            <br>
             <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" target="_blank">Submit</a>
             </p>
+            <p class="terms">* Email address is only for validation purpose which will be required when you need to edit or delete your comment. Therefore, for security reason, it is recommended to provide email address. The address won't be used for any marketing or social communication without your consent.  </p>
             <hr>
         </div>
     </div>
