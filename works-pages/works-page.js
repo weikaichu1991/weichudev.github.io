@@ -35,7 +35,7 @@ div_new.innerHTML = `
 <div class="row">
     <div class="column">
         <div class="card">
-            New Comment
+            <h1>New Comment</h1>
             <p><strong>Name: </strong>
                 <input type="text" id="new_name" value="">
             </p>
@@ -50,6 +50,7 @@ div_new.innerHTML = `
             </p>
             <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" target="_blank">Submit</a>
             </p>
+            <hr>
         </div>
     </div>
 </div>
@@ -66,14 +67,15 @@ function returnComments(url) {
         data.forEach(comment => {
             const div_card = document.createElement('div');
             const comment_id = comment._id;
+            const formattedDate = formatDate(comment.date);
             div_card.innerHTML = `
                     <div class = "row">
                         <div class = "column">
-                            <div class = "card" id = "${comment_id}">
-                                <p><strong>Subject: </strong>${comment.subject}</p>
-                                <p><strong>Comment: </strong>${comment.comment_text}</p>
-                                <p>${comment.name} - ${comment.date}</p>
-                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" target="_blank">Edit</a>  <a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target="_blank">Delete</a></p>
+                            <div class = "div_card" id = "${comment_id}">
+                                <p class="comment_subject"><strong>Subject: </strong>${comment.subject}</p>
+                                <p class="comment_text"><strong>Comment: </strong>${comment.comment_text}</p>
+                                <p class="commentator">${comment.name} - ${formattedDate}</p>
+                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn "target="_blank">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target="_blank">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -191,6 +193,22 @@ async function deleteComment(id) {
         console.error('Error deleting comment:', response.statusText);
     }
 }
+
+// Function to format the date and time zone
+function formatDate(dateString) {
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        // hour: '2-digit',
+        // minute: '2-digit',
+        // second: '2-digit',
+        timeZoneName: 'short'
+    };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', options);
+}
+
 
 // Load comments when the page loads
 document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));

@@ -8,22 +8,24 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class = "topnav">
             <nav class = "subpagesMenu">
                 <div class="menu-icon" id="menu-icon">
                     &#9776; <!-- Unicode for the menu icon -->
                 </div>
                 <ul class="nav-links" id="nav-links">
-                    <li><a class = "subpages" href="../../index.html">Home</a></li>
-                    <li><a class = "subpages" href="#" target="_blank">About</a></li>
-                    <li><a class = "subpages" href="#" target="_blank">Works</a></li>
-                    <li><a class = "subpages" href="#" target="_blank">Blogs</a></li>
-                    <li><a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a></li>
-                    <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email-Me</a></li>
+                    <li><a class = "subpages" href="../../index.html" id="home">Home</a></li>
+                    <li><a class = "subpages" href="#" target="_blank" id="about">About</a></li>
+                    <li><a class = "subpages" href="#" target="_blank" id="works">Works</a></li>
+                    <li><a class = "subpages" href="#" target="_blank" id="blogs">Blogs</a></li>
+                    <li><a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" id="linkedin" target="_blank">LinkedIn</a></li>
+                    <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email</a></li>
+                    <li><button class = "subpages" onclick="location.href='#commentsSection'" id="commentButton">Comment</button></li>
+                    <li><button class = "subpages" onclick="location.href='#container'" id="backButton">&#8657</button></li>
                 </ul>
-                <div>
-                    <button onclick="location.href='#commentsSection'" class="reviewSection">Review</button>
+                <div class="mobile-top-icon" id="mobile-top-icon">
+                    <button onclick="location.href='#container'">&#8657</button>
                 </div>
             </nav>
         </div>
@@ -31,6 +33,8 @@
             <h1>The<br>DevFool<br>Journal</h1>
         </header>
         <!-- The end of the navigation bar section -->
+        
+        
         <div class="content">
             <div class="content-title" id="conetentBegin">
                 <h1 >Deploying Resource Group using CI/CD with Terraform and Github Action</h1>
@@ -42,6 +46,7 @@
                 <button>Terraform</button>
                 <button>Github Action</button>
             </div>
+            
             <div class="content-section">
                 <h2>Step 01 | Setting up Service Princple</h2>
                 <p class="note">
@@ -272,9 +277,6 @@ terraform {
             <section id="commentsSection">
 
             </section>
-        </div>
-        <div>
-            <button onclick="location.href='#conetentBegin'" class="topSection">Rack to Top</button>
         </div>
 
         <!-- The end of content section -->
