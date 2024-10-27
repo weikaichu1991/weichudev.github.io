@@ -54,10 +54,6 @@ router.put('/:id', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
   try {
-    const comment = await Comment.findById(id);
-    if (comment.email !== email) {
-      return res.status(403).json({ error: 'Unauthorized: Email does not match' });
-    }
     const updatedComment = await Comment.findByIdAndUpdate(
       id,
       { name, email, subject, comment_text, date: new Date() },
