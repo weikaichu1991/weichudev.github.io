@@ -95,22 +95,32 @@ function showEmailVerification(commentId, action){
     `
 }
 
-function verifyEmail(commentId, action){
-    const verifyInput = document.getElementById(`verifyInput-${commentId}`).value;
-    fetch(`${APILINK}/${commentId}`)
-    .then(response => response.json())
-    .then(comment => {
-            if (comment.email === verifyInput) {
-                if (action === 'edit') {
-                    editComment(commentId, element.name, element.email, element.subject, element.comment_text);
-                } else if (action === 'delete') {
-                    deleteComment(commentId);
-                }
-            } else {
-                alert('Email verification failed. Please enter the correct email.');
-            }
+async function verifyEmail(commentId, action){
+    const verifyInput = document.getElementById(`verifyInput-${commentId}`).value.trim().toLowerCase();
+    const url = `${APILINK}/${commentId}`
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
         }
-    )
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        console.log('Comment load successfully');
+        const storedEmail = comment.email.trim().toLowerCase();
+        if (storedEmail === verifyInput) {
+            if (action === 'edit') {
+                editComment(comment._id, comment.name, comment.email, comment.subject, comment.comment_text);
+            } else if (action === 'delete') {
+                deleteComment(commentId, verifyInput);
+            }
+        } else {
+            alert('Email verification failed. Please enter the correct email.');
+        }
+    } else {
+        console.error('Error saving comment:', response.statusText);
+    }
 }
 
 function editComment(id, name, email, subject, comment_text ) {

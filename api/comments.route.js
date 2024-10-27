@@ -1,5 +1,6 @@
 import express from 'express';
 import Comment from '../models/Comment.js'; // Import the Comment model
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -15,14 +16,17 @@ router.get('/', async (req, res) => {
 
 // Get single comment
 router.get('/:id', async (req, res) => {
-  const { id } = req.params;
   try {
-    const comment = await Comment.findById(id);
+    const comment = await Comment.findById(req.params.id);
     if (!comment) {
       return res.status(404).json({ error: 'Comment not found' });
     }
     res.status(200).json(comment);
-  } catch (error) {
+  } catch (err) {
+    console.error(err.message);
+    if(err.kind ==='ObjectId'){
+      return res.status(404).json({msg:'Comment not found'});
+    }
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
