@@ -69,10 +69,6 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const comment = await Comment.findById(id);
-    if (comment.email !== email) {
-      return res.status(403).json({ error: 'Unauthorized: Email does not match' });
-    }
     await Comment.findByIdAndDelete(id);
     res.status(200).json({ message: 'Comment deleted' });
   } catch (error) {
