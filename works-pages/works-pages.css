@@ -70,17 +70,24 @@ header, nav, main, footer, .subpages {
             /* color: white; */
             color: #131e3f;
         }
-        #email{
+        #email, #commentButton, #backButton{
             font-weight: 600;
+        }
+        #backButton{
+            position: fixed;
+            margin-left: 1.2%;
+            scale: 150%;
         }
         .subpages {
             all: unset;
             text-decoration: none;
+            padding-top: ;
         }
-        .menu-icon{
+        .menu-icon, .mobile-top-icon{
             display: none;
         }
     }
+    
     .content{
         width: 80%;
         .content-title{
@@ -104,10 +111,11 @@ header, nav, main, footer, .subpages {
                 border-color: #131e3f;
             }
         }
+
         .content-section, .troubleshooting-zone{
             h2{
                 text-transform: uppercase;
-                margin-top: 10%;
+                margin-top: 5%;
             }
             h3{
                 text-transform: capitalize;
@@ -132,7 +140,7 @@ header, nav, main, footer, .subpages {
                 font-style: italic;
             }
             .code{
-                background-color:#131e3f;
+                background-color:#090e1f;
                 padding: 3%;
                 border-radius: 10px;
                 color:white;
@@ -147,7 +155,7 @@ header, nav, main, footer, .subpages {
         }
         .troubleshooting-zone{
             color: white;
-            background-color:#b49090;
+            background-color:#131e3f;
             padding: 5%;
             border-radius: 10px;
             margin-top: 5%;
@@ -299,7 +307,7 @@ header, nav, main, footer, .subpages {
         height: fit-content;
         nav {
             padding-right:10% ;
-            .menu-icon {
+            .menu-icon, .mobile-top-icon{
                 display: block;
                 cursor: pointer;
                 position: fixed;
@@ -307,6 +315,21 @@ header, nav, main, footer, .subpages {
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
+                font-weight: 600;
+                color:#472525;
+            }
+            .mobile-top-icon{
+                margin-top: 80%;
+                scale: 120%;
+                padding: 0.8%;
+                button{
+                    background:none;
+                    border-style: none;
+                    text-align: center;
+                    font-size: 110%;
+                    color:#472525;
+                    font-weight: 600;
+                }
             }
             .nav-links {
                 display: none;
@@ -330,15 +353,25 @@ header, nav, main, footer, .subpages {
                     text-decoration: none;
                     color:#472525;
                 }
-                #email {
+                #email, #commentButton {
                     font-weight: 900;
                 }
-    
+                #commentButton{
+                    background: none;
+                    border-style: none;
+                    color: #472525;
+                    text-align: right;
+                    padding: 0%;
+                    cursor: pointer;
+                }
+                #backButton{
+                    display: none;
+                }
             }
-        
             .nav-links.active {
                 display: flex;
             }
+            
         }
     }
     .content{
@@ -393,7 +426,7 @@ header, nav, main, footer, .subpages {
                 font-style: italic;
             }
             .code{
-                background-color:#131e3f;
+                background-color:#090e1f;
                 padding: 3%;
                 border-radius: 10px;
                 color:white;
@@ -408,7 +441,7 @@ header, nav, main, footer, .subpages {
         }
         .troubleshooting-zone{
             color: white;
-            background-color:#b49090;
+            background-color:#131e3f;
             padding: 5%;
             border-radius: 10px;
             margin-top: 5%;
@@ -478,7 +511,6 @@ header, nav, main, footer, .subpages {
         padding: 5%;
         .form-group {
             margin-bottom: 15px;
-            
             label {
                 display: block;
                 margin-bottom: 5px;
@@ -500,11 +532,41 @@ header, nav, main, footer, .subpages {
             border: none;
             cursor: pointer;
         }
-        
         button:hover {
             background-color:#b49090;
         }
-    
+    }
+    #commentsSection{
+        margin-top: 5%;
+        border-style: solid;
+        border-width: 2px;
+        border-color:#131e3f;
+        padding: 3%;
+        border-radius: 10px;
+        h1{
+            text-transform: uppercase;
+        }
+        hr{
+            border-width: 1px;
+            fill: none;
+            border-color: #131e3f;
+        }
+        .div_card{
+            margin-top: 10%;
+            a{
+                text-decoration: none;
+                font-size: 80%;
+                color: #b49090;
+                font-weight: 900;
+            }
+            .comment_subject{
+                text-transform: uppercase;
+                font-weight: 900;
+            }
+            .commentator{
+                font-size: 80%;
+            }
+        }
     }
 
     .footer{
