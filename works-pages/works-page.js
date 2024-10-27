@@ -48,7 +48,7 @@ div_new.innerHTML = `
             <p><strong>Comment: </strong>
                 <input type="text" id="new_comment" value="">
             </p>
-            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')">Submit</a>
+            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" target="_blank">Submit</a>
             </p>
         </div>
     </div>
@@ -56,15 +56,16 @@ div_new.innerHTML = `
 `
 main.appendChild(div_new)
 
-returnComments(APILINK);
+// returnComments(APILINK);
 function returnComments(url) {
     fetch(url)
     .then(response => response.json())
     .then(function(data){
         console.log(data);
+        // main.innerHTML = '';
         data.forEach(comment => {
             const div_card = document.createElement('div');
-            const comment_id = comment._id
+            const comment_id = comment._id;
             div_card.innerHTML = `
                     <div class = "row">
                         <div class = "column">
@@ -72,14 +73,17 @@ function returnComments(url) {
                                 <p><strong>Subject: </strong>${comment.subject}</p>
                                 <p><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p>${comment.name} - ${comment.date}</p>
-                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')">Edit</a>  <a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')">Delete</a></p>
+                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" target="_blank">Edit</a>  <a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target="_blank">Delete</a></p>
                             </div>
                         </div>
                     </div>
-                `
-
-            main.appendChild(div_card);
+                `;
+                main.appendChild(div_card);
         });
+    })
+    .catch(error => {
+        console.error('Error fetching comments:', error);
+        alert('Error fetching comments. Please try again.');
     });
 }
 
@@ -89,7 +93,7 @@ function showEmailVerification(commentId, action){
         <div id="verifyEmail-${commentId}">
             <p><strong>Verify Email: </strong>
                 <input type= "text" id = "verifyInput-${commentId}" placeholder="Enter your email to verify">
-                <a href="#" onclick="verifyEmail('${commentId}', '${action}')">Verify</a>
+                <a href="#" onclick="verifyEmail('${commentId}', '${action}')" target="_blank">Verify</a>
             </p>
         </div>
     `
@@ -144,7 +148,7 @@ function editComment(id, name, email, subject, comment_text ) {
         <p><strong>Comment: </strong>
         <input type="text" id="${commentInputId}" value="${comment_text}">
         </p>
-        <p><a href = "#" onclick = "saveComment('${nameInputId}', '${emailInputId}', '${subjectInputId}', '${commentInputId}', '${id}')">Save</a>
+        <p><a href = "#" onclick = "saveComment('${nameInputId}', '${emailInputId}', '${subjectInputId}', '${commentInputId}', '${id}')" target="_blank">Save</a>
         </p>
     `
 }
@@ -169,7 +173,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
 
     if (response.ok) {
         console.log('Comment saved successfully');
-        location.reload();
+        location.reload(main);
     } else {
         console.error('Error saving comment:', response.statusText);
     }
@@ -182,12 +186,12 @@ async function deleteComment(id) {
 
     if (response.ok) {
         console.log('Comment deleted successfully');
-        location.reload();
+        location.reload(main);
     } else {
         console.error('Error deleting comment:', response.statusText);
     }
 }
 
 // Load comments when the page loads
-document.addEventListener('DOMContentLoaded');
+document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
 // document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
