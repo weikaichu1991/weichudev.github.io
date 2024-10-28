@@ -35,16 +35,16 @@ const dbPassword = process.env.DB_PASSWORD;
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
 const connectDB = async () => {
-    try {
+  try {
     await mongoose.connect(mongoURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     console.log("MongoDB connected");
-    } catch (err) {
+  } catch (err) {
     console.error(err.message);
     process.exit(1);
-    }
+  }
 };
 connectDB();
 
