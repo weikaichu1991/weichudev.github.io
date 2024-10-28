@@ -20,9 +20,10 @@ const logger = require("firebase-functions/logger");
 const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
+import bodyParser from 'body-parser';
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const comments = require('../public/api/comments.route'); 
+const comments = require('../public/api/comments.route');
 
 dotenv.config();
 
