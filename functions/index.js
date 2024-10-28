@@ -34,11 +34,21 @@ const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
-mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log(err));
+const connectDB = async () => {
+    try {
+    await mongoose.connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected");
+    } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+    }
+};
+connectDB();
 
 app.use("/api/v1/comments", comments);
-app.use("*", (req, res) => res.status(404).json({error: 'not found'}));
+app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 
 exports.app = functions.https.onRequest(app);
