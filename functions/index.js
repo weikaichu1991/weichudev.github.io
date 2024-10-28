@@ -30,10 +30,6 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-
-// app.get('/dynamic', (req, res) => {
-//     res.send('This is a dynamic response!');
-// });
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
