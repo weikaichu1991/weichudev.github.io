@@ -32,8 +32,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // require('dotenv').config();
-const dbUsername = process.env.DB_username;
-const dbPassword = process.env.DB_passwords;
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
 
