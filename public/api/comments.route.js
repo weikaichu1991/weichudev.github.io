@@ -1,6 +1,6 @@
-const express = require("express");
-const Comment = require("../models/Comment.js"); // Import the Comment model
-const mongoose = require("mongoose");
+const express = require('express');
+const Comment = require('../models/Comment.js'); // Import the Comment model
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
