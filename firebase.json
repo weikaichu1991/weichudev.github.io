@@ -19,7 +19,7 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/dynamic",
+        "source": "/api/v1/comments/**",
         "function": "app"
       }
     ],

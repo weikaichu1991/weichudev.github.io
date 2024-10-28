@@ -23,12 +23,12 @@ const cors = require('cors');
 import bodyParser from 'body-parser';
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const comments = require('../public/api/comments.route');
+const comments = require('../public/api/comments.route.js');
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(bodyParser.json());
 
 // require('dotenv').config();
