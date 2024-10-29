@@ -51,4 +51,4 @@ connectDB();
 app.use("/api/v1/comments", comments);
 app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 
-exports.app = functions.https.onRequest(app);
+exports.app = functions.region("us-central1").https.onRequest(app);
