@@ -19,13 +19,29 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/api/v1/comments/**",
-        "function": "app"
+        "source": "**",
+        "function": {
+          "functionId": "app",
+          "region": "europe-west1"
+        }
       }
     ],
     "github": {
-    "repo": "weikaichu1991/weichudev.github.io",
-    "branch": "main"
+      "repo": "weikaichu1991/weichudev.github.io",
+      "branch": "main"
     }
+  },
+  "emulators": {
+    "functions": {
+      "port": 5000
+    },
+    "hosting": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    },
+    "singleProjectMode": true
   }
 }

@@ -5,13 +5,13 @@ import app from "./server.js"
 
 dotenv.config();
 // require('dotenv').config();
-const dbUsername = process.env.DB_username;
-const dbPassword = process.env.DB_passwords;
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
 // Connect to MongoDB
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5001;
 
 
 const connectDB = async () => {
