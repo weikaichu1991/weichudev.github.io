@@ -17,7 +17,7 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-const functions = require("firebase-functions");
+const { onRequest } = require('firebase-functions/v2/https');
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -51,4 +51,4 @@ connectDB();
 app.use("/api/v1/comments", comments);
 app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 
-exports.app = functions.region("us-central1").https.onRequest(app);
+exports.app = onRequest({ region: 'us-central1' }, app);
