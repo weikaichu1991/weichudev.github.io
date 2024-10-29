@@ -22,7 +22,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const comments = require("../public/api/comments.route.js");
+const comments = require("./comments.route.js");
 
 dotenv.config();
 
