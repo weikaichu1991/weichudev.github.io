@@ -1,11 +1,12 @@
 const express = require("express");
 const Comment = require("./Comment.js"); // Import the Comment model
 // const mongoose = require('mongoose');
+const app = require("./index.js");
 
-const router = express.Router();
+// const router = express.Router();
 
 // Get all comments
-router.get("/", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const comments = await Comment.find().sort({ date: -1 });
     res.status(200).json(comments);
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get single comment
-router.get("/:id", async (req, res) => {
+app.get("/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     if (!comment) {
@@ -32,7 +33,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a new comment
-router.post("/", async (req, res) => {
+app.post("/", async (req, res) => {
   const { name, email, subject, comment_text } = req.body;
   if (!name || !subject || !comment_text) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -47,7 +48,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update a comment
-router.put("/:id", async (req, res) => {
+app.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, email, subject, comment_text } = req.body;
   if (!name || !subject || !comment_text) {
@@ -66,7 +67,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete a comment
-router.delete("/:id", async (req, res) => {
+app.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     await Comment.findByIdAndDelete(id);
@@ -76,4 +77,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+// module.exports = router;
