@@ -49,8 +49,8 @@ const connectDB = async () => {
 };
 connectDB();
 
-app.use("/api/v1/comments", comments);
-app.use("*", (req, res) => res.status(404).json({error: "not found"}));
+// app.use("/api/v1/comments", comments);
+// app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 
 // functions.https.onRequest(app);
 exports.app = onRequest({ region: 'europe-west1' }, app);
