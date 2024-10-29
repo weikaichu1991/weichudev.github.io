@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
     if(err.kind ==="ObjectId"){
-      return res.status(404).json({msg:"Comment not found"});
+      return res.status(404).json({msg: "Comment not found"});
     }
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -57,7 +57,7 @@ router.put("/:id", async (req, res) => {
     const updatedComment = await Comment.findByIdAndUpdate(
       id,
       { name, email, subject, comment_text, date: new Date() },
-      { new: true }
+      { new: true },
     );
     res.status(200).json(updatedComment);
   } catch (error) {
