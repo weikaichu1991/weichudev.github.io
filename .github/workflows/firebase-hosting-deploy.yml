@@ -31,4 +31,4 @@ jobs:
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Authenticate with Firebase
-        run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only functions,hosting --token ${{ secrets.FIREBASE_TOKEN }}
