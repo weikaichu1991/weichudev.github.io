@@ -1,7 +1,7 @@
 // const express = require("express");
-const Comment = require("./Comment.js"); // Import the Comment model
+const Comment = require("./functions/Comment.js"); // Import the Comment model
 // const mongoose = require('mongoose');
-const app = require("./index.js");
+// const app = require("./index.js");
 
 // const router = express.Router();
 
