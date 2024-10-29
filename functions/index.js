@@ -17,7 +17,7 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-const functions = require('firebase-functions/v2');
+const { onRequest } = require("firebase-functions/v2/https");
 // const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
@@ -51,4 +51,4 @@ connectDB();
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 
 // functions.https.onRequest(app);
-exports.app = functions.region('europe-west1').https.onRequest(app);
+exports.app = onRequest({ region: 'europe-west1' }, app);
