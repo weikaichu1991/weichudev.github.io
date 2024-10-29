@@ -19,7 +19,8 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "**",
+        "source": "/**",
+        "dynamicLinks": true,
         "function": {
           "functionId": "app",
           "region": "europe-west1"
