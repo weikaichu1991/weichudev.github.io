@@ -20,7 +20,8 @@ module.exports = {
     "keyword-spacing": 0,
     "space-before-blocks": 0,
     "camelcase": 0,
-    "indent":0,
+    "indent": 0,
+    "key-spacing": 0,
   },
   overrides: [
     {
