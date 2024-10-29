@@ -51,7 +51,6 @@ const connectDB = async () => {
 connectDB();
 // app.use("/api/v1/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
-
 // Get all comments
 app.get("/", async (req, res) => {
   try {

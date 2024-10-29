@@ -26,8 +26,8 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-// const url = new URL(location.href);
-const APILINK = 'https://app-uh3f3mv4va-ew.a.run.app';
+const url = new URL(location.href);
+const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/app';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -60,8 +60,8 @@ div_new.innerHTML = `
 main.appendChild(div_new)
 
 // returnComments(APILINK);
-function returnComments(APILINK) {
-    fetch(APILINK)
+function returnComments(url) {
+    fetch(url)
     .then(response => response.json())
     .then(function(data){
         console.log(data);
