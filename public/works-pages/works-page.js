@@ -26,7 +26,7 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-const url = new URL(location.href);
+// const url = new URL(location.href);
 const APILINK = 'https://app-uh3f3mv4va-ew.a.run.app';
 const main = document.getElementById("commentsSection");
 
@@ -60,8 +60,8 @@ div_new.innerHTML = `
 main.appendChild(div_new)
 
 // returnComments(APILINK);
-function returnComments(url) {
-    fetch(url)
+function returnComments(APILINK) {
+    fetch(APILINK)
     .then(response => response.json())
     .then(function(data){
         console.log(data);
