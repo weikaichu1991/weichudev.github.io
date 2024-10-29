@@ -14,7 +14,7 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  comment_text:{
+  comment_text: {
     type: String,
     required: true,
   },
@@ -24,5 +24,5 @@ const CommentSchema = new mongoose.Schema({
   },
 });
 
-const Comment = mongoose.model('Comment', CommentSchema);
+const Comment = mongoose.model("Comment", CommentSchema);
 module.exports = Comment;
