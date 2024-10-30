@@ -31,7 +31,9 @@ jobs:
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Run the application
-        run: node index.js
+        run: |
+          cd functions
+          node index.js
         env:
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
