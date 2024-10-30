@@ -66,7 +66,7 @@ app.use(express.json());
 // app.use("/api/v1/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 // Get all comments
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   try {
     const comments = await Comment.find().sort({ date: -1 });
     res.status(200).json(comments);
@@ -76,7 +76,7 @@ app.get("/", async (req, res) => {
 });
 
 // Get single comment
-app.get("/:id", async (req, res) => {
+app.get("/api/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     if (!comment) {
@@ -93,7 +93,7 @@ app.get("/:id", async (req, res) => {
 });
 
 // Create a new comment
-app.post("/", async (req, res) => {
+app.post("/api", async (req, res) => {
   const { name, email, subject, comment_text } = req.body;
   if (!name || !subject || !comment_text) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -108,7 +108,7 @@ app.post("/", async (req, res) => {
 });
 
 // Update a comment
-app.put("/:id", async (req, res) => {
+app.put("/api/:id", async (req, res) => {
   const { id } = req.params;
   const { name, email, subject, comment_text } = req.body;
   if (!name || !subject || !comment_text) {
@@ -127,7 +127,7 @@ app.put("/:id", async (req, res) => {
 });
 
 // Delete a comment
-app.delete("/:id", async (req, res) => {
+app.delete("/api/:id", async (req, res) => {
   const { id } = req.params;
   try {
     await Comment.findByIdAndDelete(id);

@@ -19,7 +19,7 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/**",
+        "source": "api/**",
         "dynamicLinks": true,
         "function": {
           "functionId": "app",
