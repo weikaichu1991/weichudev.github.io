@@ -56,11 +56,7 @@ const connectDB = async () => {
 connectDB();
 
 
-app.use(cors({
-  origin: 'https://weichudev.uk',
-  methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-}));
+app.use(cors());
 
 app.use(express.json());
 // app.use("/api/v1/comments", comments);
