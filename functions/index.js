@@ -33,6 +33,8 @@ dotenv.config();
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
 
+// debugging
+console.log('Environment Variables:', process.env);
 console.log('DB_USERNAME:', dbUsername);
 console.log('DB_PASSWORD:', dbPassword);
 
