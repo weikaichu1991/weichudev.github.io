@@ -30,5 +30,11 @@ jobs:
           echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> $GITHUB_ENV
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
 
+      - name: Run the application
+        run: node index.js
+        env:
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
       - name: Authenticate with Firebase
         run: firebase deploy --only functions,hosting --token ${{ secrets.FIREBASE_TOKEN }}
