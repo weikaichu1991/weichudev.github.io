@@ -32,6 +32,10 @@ dotenv.config();
 
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
+
+console.log('DB_USERNAME:', dbUsername);
+console.log('DB_PASSWORD:', dbPassword);
+
 const mongoURI = `mongodb+srv://${dbUsername}:${dbPassword}@comments.hzn16.mongodb.net/?retryWrites=true&w=majority&appName=comments`;
 
 const connectDB = async () => {
@@ -49,7 +53,12 @@ const connectDB = async () => {
 connectDB();
 
 
-app.use(cors({origin: true}));
+app.use(cors({
+  origin: 'https://weichudev.uk',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+}));
+
 app.use(express.json());
 // app.use("/api/v1/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
