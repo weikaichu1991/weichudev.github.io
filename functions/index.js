@@ -17,20 +17,17 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-const { onRequest } = require("firebase-functions/v2/https");
-// const functions = require("firebase-functions");
+// const { onRequest } = require("firebase-functions/v2/https");
+const functions = require("firebase-functions/v2");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Comment = require("./Comment.js");
+const app = express();
 
 
 dotenv.config();
-
-const app = express();
-app.use(cors({origin: true}));
-app.use(express.json());
 
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
@@ -49,6 +46,10 @@ const connectDB = async () => {
   }
 };
 connectDB();
+
+
+app.use(cors({origin: true}));
+app.use(express.json());
 // app.use("/api/v1/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
 // Get all comments
@@ -124,5 +125,5 @@ app.delete("/:id", async (req, res) => {
 });
 
 
-// functions.https.onRequest(app);
-exports.app = onRequest({ region: 'europe-west1' }, app);
+exports.app = functions.https.onRequest(app);
+// exports.app = onRequest({ region: 'europe-west1' }, app);
