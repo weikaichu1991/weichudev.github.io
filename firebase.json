@@ -19,9 +19,9 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/api/**",
+        "source": "/api/comments/**",
         "function": {
-          "functionId": "app",
+          "functionId": "api",
           "region": "europe-west1"
         }
       }

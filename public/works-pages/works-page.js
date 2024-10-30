@@ -28,7 +28,7 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 // --- the commeenting sections functions ---
 const currentUrl = window.location.href;
 console.log(currentUrl);
-const APILINK = `${currentUrl}/api`;
+const APILINK = `${currentUrl}/api/comments`;
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -62,6 +62,7 @@ main.appendChild(div_new)
 
 // returnComments(APILINK);
 function returnComments(url) {
+    const url = APILINK;
     fetch(url)
     .then(response => response.json())
     .then(function(data){
