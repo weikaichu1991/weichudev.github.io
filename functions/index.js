@@ -85,7 +85,7 @@ app.get("/api/comments/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     if (!comment) {
-      return res.status(404).send({ error: "Comment not found" }); 
+      return res.status(404).send({ error: "Comment not found" });
     }
     res.status(200).send(api.list(comment));
   } catch (err) {
