@@ -62,7 +62,6 @@ main.appendChild(div_new)
 
 // returnComments(APILINK);
 function returnComments(url) {
-    const url = APILINK;
     fetch(url)
     .then(response => response.json())
     .then(function(data){
