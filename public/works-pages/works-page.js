@@ -26,9 +26,9 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 });
 
 // --- the commeenting sections functions ---
-const currentUrl = window.location.href;
+const url = new URL(location.href);
+const APILINK = 'https://weichudev.uk/api/comments';
 console.log(currentUrl);
-const APILINK = `${currentUrl}/api/comments`;
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');

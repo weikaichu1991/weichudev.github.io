@@ -24,7 +24,7 @@ const { https } = require('firebase-functions');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const Comment = require("./Comment.js");
+const Comment = require("./models/Comment.js");
 const app = express();
 
 
@@ -67,6 +67,7 @@ app.get("/api/comments", async (req, res) => {
     const comments = await Comment.find().sort({ date: -1 });
     res.status(200).json(comments);
   } catch (error) {
+    console.error('Error fetching comments:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -135,4 +136,5 @@ app.delete("/api/comments/:id", async (req, res) => {
 
 
 // exports.app = functions.https.onRequest(app);
-exports.api = https.onRequest({ region: 'europe-west1' }, app);
+// exports.api = https.onRequest({ region: 'europe-west1' }, app);
+exports.api = functions.region('europe-west1').https.onRequest(app);
