@@ -22,6 +22,7 @@ module.exports = {
     "camelcase": 0,
     "indent": 0,
     "key-spacing": 0,
+    "no-undef": 0,
   },
   overrides: [
     {

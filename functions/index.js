@@ -18,9 +18,9 @@
 //   response.send("Hello from Firebase!");
 // });
 // const { onRequest } = require("firebase-functions/v2/https");
-// const functions = require("firebase-functions/v2");
+const functions = require("firebase-functions/v2");
 const express = require("express");
-const { https } = require('firebase-functions');
+// const { https } = require('firebase-functions');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
