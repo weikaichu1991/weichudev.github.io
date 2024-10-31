@@ -62,7 +62,8 @@ app.use(express.json());
 
 // Get all comments
 app.get('/api/comments', async (req, res) => {
-    try {
+  try {
+    await connectDB();
     const comments = await Comment.find(req).sort({ date: -1 });
     res.status(200).send(api.list(comments));
   } catch (error) {
@@ -83,6 +84,7 @@ app.get('/api/comments', async (req, res) => {
 // Get single comment
 app.get("/api/comments/:id", async (req, res) => {
   try {
+    await connectDB()
     const comment = await Comment.findById(req.params.id);
     if (!comment) {
       return res.status(404).send({ error: "Comment not found" });
@@ -121,6 +123,7 @@ app.post("/api/comments", async (req, res) => {
   }
   const newComment = new Comment({ name, email, subject, comment_text });
   try {
+    await connectDB();
     const savedComment = await newComment.save();
     res.status(201).send(api.list(savedComment));
   } catch (error) {
@@ -155,6 +158,7 @@ app.put("/api/comments/:id", async (req, res) => {
       { name, email, subject, comment_text, date: new Date() },
       { new: true },
     );
+    await connectDB();
     res.status(200).send(api.list(updatedComment));
   } catch (error) {
     res.status(500).send({ error: "Internal Server Error" });
@@ -183,6 +187,7 @@ app.put("/api/comments/:id", async (req, res) => {
 app.delete("/api/comments/:id", async (req, res) => {
   const { id } = req.params;
   try {
+    await connectDB();
     await Comment.findByIdAndDelete(id);
     res.status(200).send({ message: "Comment deleted" });
   } catch (error) {
