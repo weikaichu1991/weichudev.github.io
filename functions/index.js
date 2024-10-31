@@ -64,7 +64,7 @@ app.use(express.json());
 app.get('/api/comments', async (req, res) => {
     try {
     const comments = await Comment.find(req).sort({ date: -1 });
-    res.status(200).send(api.list(Comment));
+    res.status(200).send(api.list(comments));
   } catch (error) {
     console.error('Error fetching comments:', error);
     res.status(500).send({ error: "Internal Server Error" });
