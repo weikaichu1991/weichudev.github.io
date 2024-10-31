@@ -63,7 +63,7 @@ app.use(express.json());
 // Get all comments
 app.get('/api/comments', async (req, res) => {
     try {
-    // const comments = await Comment.find().sort({ date: -1 });
+    const comments = await Comment.find(req).sort({ date: -1 });
     res.status(200).send(api.list(Comment));
   } catch (error) {
     console.error('Error fetching comments:', error);
