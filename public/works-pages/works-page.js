@@ -27,8 +27,7 @@ document.getElementById('menu-icon').addEventListener('click', function() {
 
 // --- the commeenting sections functions ---
 const url = new URL(location.href);
-const APILINK = 'https://weichudev.uk';
-console.log(currentUrl);
+const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -58,7 +57,7 @@ div_new.innerHTML = `
     </div>
 </div>
 `
-main.appendChild(div_new)
+main.appendChild(div_new);
 
 // returnComments(APILINK);
 function returnComments(url) {
