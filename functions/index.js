@@ -25,7 +25,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
-const routes = require("./comments.route.js")
+const routes = require("./comments.route.js");
 const app = express();
 
 
