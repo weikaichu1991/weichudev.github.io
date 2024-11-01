@@ -19,7 +19,7 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/api/comments/**",
+        "source": "/**",
         "function": {
           "functionId": "api",
           "region": "europe-west1"

@@ -24,8 +24,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const Comment = require("./models/Comment.js");
+const bodyParser = require("body-parser");
+const routes = require("./comments.route.js")
 const app = express();
+
 
 dotenv.config();
 
@@ -55,155 +57,12 @@ const connectDB = async () => {
 connectDB();
 
 app.use(cors({origin:true}));
-
+app.use(bodyParser.json());
 app.use(express.json());
+app.use('/', routes);
+
 // app.use("/api/v1/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({error: "not found"}));
-
-// Get all comments
-app.get('/api/comments', async (req, res) => {
-  try {
-    await connectDB();
-    const comments = await Comment.find(req).sort({ date: -1 });
-    res.status(200).send(api.list(comments));
-  } catch (error) {
-    console.error('Error fetching comments:', error);
-    res.status(500).send({ error: "Internal Server Error" });
-  }
-});
-// app.get("/api/comments", async (req, res) => {
-//   try {
-//     const comments = await Comment.find().sort({ date: -1 });
-//     res.status(200).json(comments);
-//   } catch (error) {
-//     console.error('Error fetching comments:', error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// Get single comment
-app.get("/api/comments/:id", async (req, res) => {
-  try {
-    await connectDB();
-    const comment = await Comment.findById(req.params.id);
-    if (!comment) {
-      return res.status(404).send({ error: "Comment not found" });
-    }
-    res.status(200).send(api.list(comment));
-  } catch (err) {
-    console.error(err.message);
-    if(err.kind ==="ObjectId"){
-      return res.status(404).send({msg: "Comment not found"});
-    }
-    res.status(500).send({ error: "Internal Server Error" });
-  }
-});
-
-// app.get("/api/comments/:id", async (req, res) => {
-//   try {
-//     const comment = await Comment.findById(req.params.id);
-//     if (!comment) {
-//       return res.status(404).json({ error: "Comment not found" });
-//     }
-//     res.status(200).json(comment);
-//   } catch (err) {
-//     console.error(err.message);
-//     if(err.kind ==="ObjectId"){
-//       return res.status(404).json({msg: "Comment not found"});
-//     }
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// Create a new comment
-app.post("/api/comments", async (req, res) => {
-  const { name, email, subject, comment_text } = req.body;
-  if (!name || !subject || !comment_text) {
-    return res.status(400).send({ error: "Missing required fields" });
-  }
-  const newComment = new Comment({ name, email, subject, comment_text });
-  try {
-    await connectDB();
-    const savedComment = await newComment.save();
-    res.status(201).send(api.list(savedComment));
-  } catch (error) {
-    res.status(500).send({ error: "Internal Server Error" });
-  }
-});
-
-// app.post("/api/comments", async (req, res) => {
-//   const { name, email, subject, comment_text } = req.body;
-//   if (!name || !subject || !comment_text) {
-//     return res.status(400).json({ error: "Missing required fields" });
-//   }
-//   const newComment = new Comment({ name, email, subject, comment_text });
-//   try {
-//     const savedComment = await newComment.save();
-//     res.status(201).json(savedComment);
-//   } catch (error) {
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// Update a comment
-app.put("/api/comments/:id", async (req, res) => {
-  const { id } = req.params;
-  const { name, email, subject, comment_text } = req.body;
-  if (!name || !subject || !comment_text) {
-    return res.status(400).send({ error: "Missing required fields" });
-  }
-  try {
-    const updatedComment = await Comment.findByIdAndUpdate(
-      id,
-      { name, email, subject, comment_text, date: new Date() },
-      { new: true },
-    );
-    await connectDB();
-    res.status(200).send(api.list(updatedComment));
-  } catch (error) {
-    res.status(500).send({ error: "Internal Server Error" });
-  }
-});
-
-// app.put("/api/comments/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const { name, email, subject, comment_text } = req.body;
-//   if (!name || !subject || !comment_text) {
-//     return res.status(400).json({ error: "Missing required fields" });
-//   }
-//   try {
-//     const updatedComment = await Comment.findByIdAndUpdate(
-//       id,
-//       { name, email, subject, comment_text, date: new Date() },
-//       { new: true },
-//     );
-//     res.status(200).json(updatedComment);
-//   } catch (error) {
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// Delete a comment
-app.delete("/api/comments/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    await connectDB();
-    await Comment.findByIdAndDelete(id);
-    res.status(200).send({ message: "Comment deleted" });
-  } catch (error) {
-    res.status(500).send({ error: "Internal Server Error" });
-  }
-});
-
-// app.delete("/api/comments/:id", async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     await Comment.findByIdAndDelete(id);
-//     res.status(200).json({ message: "Comment deleted" });
-//   } catch (error) {
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
 
 
 // exports.app = functions.https.onRequest(app);
