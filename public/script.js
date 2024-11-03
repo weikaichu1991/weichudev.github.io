@@ -24,7 +24,7 @@ ctx.fillStyle = 'rgba(0, 0, 255, 1)'; // Set the fill color (blue with 50% opaci
 ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
 
-document.getElementById('openOverlayBtn').onclick = function() {
+document.getElementById('openOverlayBtn1').onclick = function() {
     document.getElementById('overlay1').style.display = 'flex';
 };
 document.getElementById('openOverlayBtn2').onclick = function() {
