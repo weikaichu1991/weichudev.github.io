@@ -37,7 +37,7 @@ header{
     display: flexbox;
     justify-content: space-between;
     text-align: center;
-    font-size: 50%;
+    font-size: 80%;
     /* display: none; */
     margin-top: 3%;
 }
@@ -110,7 +110,11 @@ nav ul li{
     
 }
 .job-history{
-    h1{text-align: center;}
+    display: block;
+    h1{
+        text-align: center;
+        margin-top: 5%;
+    }
     .history-card{
         height: 180px;
         width: 80%;
@@ -132,26 +136,70 @@ nav ul li{
             }
             .company-role{
                 height: 50px;
-            }    
+            }
+            .skills{
+                font-size: 80%;
+            } 
         }
+    }
+}
+.Quali-history{
+    margin-top: 5%;
+    h1{
+        margin-top: 5%;
+        margin-bottom: 0%;
+        text-align: center;
+    }
+    .badge-catalog{
+        .badge-row{
+            text-align: center;
+            display: inline-block;
+            .badge-card{
+                width: 33.3%;
+                display: inline;
+                float: left;
+                padding-top: 5%;
+                .badge-text{
+                    display: inline;
+                    p{
+                        font-size: 70%;
+                        a{
+                            text-decoration: none;
+                            color: #131e3f;
+                            text-decoration: underline dotted;
+                        }
+                    }
+                }
+                .badge{
+                    display: inline;
+                    padding: 10%;
+                }
+            }
+        }
+    }
+}
+.all-works{
+    padding-top: 15%;
+    text-align: center;
+    a{
+        background-color: #131e3f;
+        text-decoration: none;
+        color: #EBEBEB;
+        border-radius: 10px;
+        padding: 2%;
     }
 }
 .footer{
     margin-top: 10%;
     text-align: center;
     padding-bottom: 10%;
-    h3{
-        display: inline;
-        float: left;
-        margin: 0%;
-        width: 30%;
-        text-align: left;
+    cursor: pointer;
+    hr{
+        margin-bottom: 5%;
     }
     p{
         display: inline;
-        float: right;
         margin: 0%;
-        width: 70%;
         text-align: right;
         a{
             margin: 0% 3%;
