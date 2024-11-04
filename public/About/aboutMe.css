@@ -1,0 +1,256 @@
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+@font-face{
+    font-family: 'Cascadia Code';
+    src: url('./CascadiaCode/woff2/CascadiaCode.woff2'),
+    url('./CascadiaCode/woff2/CascadiaCodeItalic.woff2'),
+    url('./CascadiaCode/woff2/CascadiaCodeNF.woff2'),
+    url('./CascadiaCode/woff2/CascadiaCodeNFItalic.woff2'),
+    url('./CascadiaCode/woff2/CascadiaCodePL.woff2'),
+    url('./CascadiaCode/woff2/CascadiaCodePLItalic.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMono.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMonoItalic.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMonoNF.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMonoNFItalic.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMonoPL.woff2'),
+    url('./CascadiaCode/woff2/CascadiaMonoPLItalic.woff2'),
+    url('./CascadiaCode/ttf/CascadiaCode.ttf');
+}
+body{
+    background-color: #EBEBEB;
+    /* font-family: sans-serif; */
+    color: #131e3f;
+    font-family: 'Cascadia Code', sans-serif;
+    /* border-top: #b49090; */
+    /* border-top-width: 40px; */
+    border-top-style: solid;
+    margin: 0%;
+
+}
+/* header, nav, main, footer, .subpages {
+    margin-bottom: 20px;
+} */
+header{
+    display: flexbox;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 50%;
+    /* display: none; */
+    margin-top: 3%;
+}
+/* Computer & Tablet first styles */
+@media (min-width: 600px) { /* For tablets and larger */
+/* The navigation bar */
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    float: right;
+    /* position: fixed; */
+    /* padding-left: 80%; */
+    margin: 0%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+.menu-icon{
+    display: none;
+}
+nav ul{
+    /* background-color: rgba(180, 144, 144, 0.81); */
+    border-radius: 10px;
+    padding: 10% 20% 10% 10%;
+}
+nav ul li{
+    list-style-type: none;
+    font-weight: 100;
+    padding: 20% 0% 20% 0%;
+    /* color: white; */
+    color: #131e3f;
+}
+#email{
+    font-weight: 600;
+}
+.subpages {
+    all: unset;
+    text-decoration: none;
+}
+/* main intro. */
+.profile-section{
+    margin-top: 5% ;
+    display: flex;
+    width: 70%;
+    height:600px;
+    .headshot {
+        /* background-color: #472525; */
+        img{
+            border-radius: 10px;
+            display: flex;
+            float: left;
+            height: 92%;
+        }
+    }
+    .aboutMe-main{
+        display: flexbox;
+        margin-left: 5%;
+        h1{
+            font-size: 400%;
+            margin: 0%;
+            text-wrap:wrap;
+        }
+        p{
+            text-wrap:wrap;
+            margin: 0%;
+            font-size: 80%;
+        }
+        /* background-color: #b49090; */
+    }
+    
+}
+.job-history{
+    h1{text-align: center;}
+    .history-card{
+        height: 180px;
+        width: 80%;
+        .Experience{
+            .company, .time{
+                width: 50%;
+                display: inline;
+                float: left;
+                text-align: right;
+                margin-right: 5%;
+            };
+            .role, .skills{
+                display: inline;
+                text-align: left;
+                width: 50%;
+            }
+            .time, .skills{
+                height: 100px;
+            }
+            .company-role{
+                height: 50px;
+            }    
+        }
+    }
+}
+.footer{
+    margin-top: 10%;
+    text-align: center;
+    padding-bottom: 10%;
+    h3{
+        display: inline;
+        float: left;
+        margin: 0%;
+        width: 30%;
+        text-align: left;
+    }
+    p{
+        display: inline;
+        float: right;
+        margin: 0%;
+        width: 70%;
+        text-align: right;
+        a{
+            margin: 0% 3%;
+        }
+    }
+}
+/* no more code beyond here */
+}
+
+/* For desktops */
+/* Additional styles for larger screens */
+@media (min-width: 1024px) {
+main {
+    display: flex;
+    justify-content: space-between;
+}
+}
+
+/* For phones */
+/* Additional styles for mobile screens */
+@media (max-width:600px) { 
+    header{
+        display: block;
+        justify-content: space-between;
+        text-align: center;
+        font-size: 40%;
+        display: none;
+    }
+    .topnav{
+        height: fit-content;
+        nav {
+            padding-right:10% ;
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                position: fixed;
+                background-color: #b49090;
+                padding: 2%;
+                border-radius: 10px;
+                margin-left: 80%;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 30%;
+                background-color:rgba(180, 144, 144, 0.9);
+                position: fixed;
+                top: 110px;
+                left: 0;
+                margin-left: 50%;
+                border-radius: 10px;
+            }
+        
+            .nav-links li {
+                text-align: center;
+                margin: 10px 0;
+                list-style-type:none;
+                text-align: right;
+                margin-right: 10%;
+                a{
+                    text-decoration: none;
+                    color:#472525;
+                }
+                #email {
+                    font-weight: 900;
+                }
+    
+            }
+        
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    }
+    
+
+
+    .footer{
+        text-align: center;
+        padding-bottom: 10%;
+        h3{
+            display: inline;
+            float: center;
+            margin: 0%;
+            width: 30%;
+            text-align: left;
+            font-size: 90%;
+        }
+        p{
+            display: none;
+            float: right;
+            margin: 0%;
+            width: 70%;
+            text-align: right;
+            a{
+                margin: 0% 3%;
+            }
+        }
+    }
+    
+}
+    
