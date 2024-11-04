@@ -224,8 +224,13 @@ main {
     header{
         display: block;
         justify-content: space-between;
-        text-align: center;
-        font-size: 40%;
+        text-align: left;
+        font-size: 150%;
+        width: 30%;
+        margin: 10% 5% 0% 5% ;
+
+    }
+    .topnav-hr{
         display: none;
     }
     .topnav{
@@ -236,6 +241,7 @@ main {
                 display: block;
                 cursor: pointer;
                 position: fixed;
+                top:100px;
                 background-color: #b49090;
                 padding: 2%;
                 border-radius: 10px;
@@ -247,9 +253,9 @@ main {
                 width: 30%;
                 background-color:rgba(180, 144, 144, 0.9);
                 position: fixed;
-                top: 110px;
+                top: 130px;
                 left: 0;
-                margin-left: 50%;
+                margin-left: 47%;
                 border-radius: 10px;
             }
         
@@ -275,11 +281,158 @@ main {
         }
     }
     
+/* main intro. */
+.profile-section{
+    display: inline;
+    width: 70%;
+    height:600px;
+    justify-content: center;
 
+    .headshot {
+        width: 100%; /* Desired width */
+        height: 500px; /* Desired height */
+        overflow: hidden; /* Hide overflow */
+        position: relative;
+        border-radius: 10px;
+        z-index: -2;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crop the image */
+            object-position: center;
+        }
+    }
+    .aboutMe-main{
+        display: inline;
+        margin-left: 5%;
+        h1{
+            font-size: 400%;
+            margin: 0%;
+            text-wrap:wrap;
+        }
+        p{
+            text-wrap:wrap;
+            margin: 0%;
+            font-size: 80%;
+            padding-bottom: 10%;
+        }
+        /* background-color: #b49090; */
+    }
+}
+.job-history{
+    display: block;
+    h1{
+        text-align: center;
+        margin-top: 10%;
+    }
+    .line{
+        margin-top: 10%;
+        text-align: center;
+    }
+    .history-card{
+        height: 180px;
+        width: 80%;
+        .Experience{
+            .company, .time{
+                width: 50%;
+                display: inline;
+                float: left;
+                text-align: right;
+                margin-right: 5%;
+            };
+            .role, .skills{
+                display: inline;
+                text-align: left;
+                vertical-align: top;
+                width: 50%;
+            }
+            .time-skills{
+                display: inline-block;
+                padding-top: 2% ;
+            }
+            .company{
+                height: 30px;
+            }
+            .role{
+                font-size: 85%;
+            }
+            .time{
+                font-size: 80%;
+                height: 130px;
+                margin-top: 5%;
+            }
+            .skills{
+                font-size: 80%;
+                vertical-align: top;
+            } 
+        }
+    }
+}
+.Quali-history{
+    margin-top: 15%;
+    h1{
+        margin-top: 10%;
+        margin-bottom: 0%;
+        text-align: center;
+    }
+    .badge-catalog{
+        .badge-row{
+            text-align: center;
+            display: inline-block;
+            .badge-card{
+                width: 33.3%;
+                display: inline;
+                float: left;
+                padding-top: 5%;
+                .badge-text{
+                    display: inline;
+                    h3{
+                        height: 70px;
+                    }
+                    p{
+                        font-size: 70%;
+                        a{
+                            text-decoration: none;
+                            color: #131e3f;
+                            text-decoration: underline dotted;
+                        }
+                    }
+                }
+                .badge{
+                    display: inline;
+                    padding: 10%;
+                }
+                #google-logo{
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+#school-card{
+    height: 250px;
+}
+#school-skills{
+    font-size: 60%;
+}
+.all-works{
+    padding-top: 30%;
+    text-align: center;
+    a{
+        background-color: #131e3f;
+        text-decoration: none;
+        color: #EBEBEB;
+        border-radius: 10px;
+        padding: 2%;
+    }
+}
 
     .footer{
         text-align: center;
         padding-bottom: 10%;
+        hr{
+            display: none;
+        }
         h3{
             display: inline;
             float: center;
