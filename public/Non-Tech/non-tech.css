@@ -20,16 +20,20 @@
     url('./CascadiaCode/ttf/CascadiaCode.ttf');
 }
 body{
-    background-color: #EBEBEB;
+    background-color:rgb(149, 54, 64);
+    background-size: cover; /* Ensure the image covers the entire body */
+    background-position: center;
+    position: relative; /* Ensure the pseudo-element is positioned relative to the body */
+
     /* font-family: sans-serif; */
-    color: #131e3f;
+    color:white;
     font-family: 'Cascadia Code', sans-serif;
     /* border-top: #b49090; */
     /* border-top-width: 40px; */
     border-top-style: solid;
     margin: 0%;
-
 }
+
 /* header, nav, main, footer, .subpages {
     margin-bottom: 20px;
 } */
@@ -39,90 +43,84 @@ header{
     text-align: center;
     font-size: 80%;
     /* display: none; */
-    margin-top: 3%;
+    margin-top: 5%;
 }
 /* Computer & Tablet first styles */
 @media (min-width: 600px) { /* For tablets and larger */
-/* The navigation bar */
-
-nav {
-    display: flex;
-    justify-content: space-evenly;
-    float: right;
-    /* position: fixed; */
-    /* padding-left: 80%; */
-    margin: 0%;
-    margin-right: 5%;
-    cursor: pointer;
-}
-.menu-icon{
-    display: none;
-}
-nav ul{
-    /* background-color: rgba(180, 144, 144, 0.81); */
-    border-radius: 10px;
-    padding: 10% 20% 10% 10%;
-}
-nav ul li{
-    list-style-type: none;
-    font-weight: 100;
-    padding: 20% 0% 20% 0%;
-    /* color: white; */
-    color: #131e3f;
-}
-#email{
-    font-weight: 600;
-}
-.subpages {
-    all: unset;
-    text-decoration: none;
-}
-/* main intro. */
-.blogs-catalogue{
-    width: 80%;
-    margin-bottom: 100%;
-    .blog-card{
-        margin-top: 1%;
-        font-size: 75%;
+    /* The navigation bar */
+.chunk01-Intro{
+    height: 100%;
+    margin-bottom: 30%;
+    .intro-box{
+        margin-top: 3%;
         display: inline;
-        float: left;
-        width: 100%;
-        border-bottom-style: solid;
+        float: right;
+        width: 40%;
+        border-style: solid;
         border-width: 0.75px;
         padding: 2%;
-        .blog-text{
-            width: 60%;
+        border-radius: 10px;
+    }
+}
+
+.chunk02-travel, .chunk03-AnC, .chunk04-food{
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    h1{
+        font-size: 900%;
+        margin-top: 10%;
+    }
+    .travel-catalogue{
+        overflow-x: scroll;
+        scrollbar-width:none ;
+        height: 600px;
+        display: flex;
+        .travel-card{
+            text-align: center;
             display: inline;
             float: left;
-            .tool-icon{
-                margin: 10% 0%;
-                img{
-                    width: 10%;
-                }
-            }
-            a{
-                text-decoration: none;
-                color: #131e3f;
-            }
-        }
-        .blog-pic{
-            width: 35%; /* Desired width */
-            height: 300px; /* Desired height */
-            overflow: hidden; /* Hide overflow */
-            position: relative;
+            width: 400px;
+            height: 500px;
+            border-style: solid;
+            border-width: 0.75px;
             border-radius: 10px;
-            z-index: -2;
-            display: inline;
-            float: right;
+            margin-right: 2%;
+            padding: 2%;
+            h2{
+                margin: 0%;
+                font-size: 250%;
+                text-align: left;
+                height: 40%
+            }
+            p{
+                text-align: left;
+                height: 20%
+            }
             img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover; /* Crop the image */
-                object-position: left;
+                width: 300px;
+                border-radius: 10px;
             }
         }
-        
     }
+}
+.chunk03-AnC{
+    background-image:url('./non-tech-image/PXL_20240907_085803167.jpg');
+    background-size: cover;
+}
+.chunk02-travel{
+    background-image: url('./non-tech-image/PXL_20240617_134404461.jpg');
+}
+.chunk04-food{
+    background-image:url('https://media.cntraveller.com/photos/634d634df774a8ab1b881107/16:9/w_5472,h_3078,c_limit/Borough%20MarketE6BC30.jpeg');
+    background-size: cover;
+}
+.subpagesMenu{
+    display: none;
+}
+.navi-menu{
+    margin-bottom: 0%;
 }
 
 .all-works{
@@ -132,7 +130,7 @@ nav ul li{
     margin-bottom: 10%;
     display: inline-block;
     a{
-        background-color: #131e3f;
+        /* background-color: #131e3f; */
         text-decoration: none;
         color: #EBEBEB;
         border-radius: 10px;
@@ -140,9 +138,9 @@ nav ul li{
     }
 }
 
-.footer{
+.navi-menu, .footer{
     text-align: center;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
     hr{
         display: block;
     }
@@ -160,8 +158,11 @@ nav ul li{
         margin: 2% 0% 0% 0%;
         width: 100%;
         text-align:center;
+        font-size: 80%;
         a{
             margin: 0% 3%;
+            text-decoration: none;
+            color:#EBEBEB;
         }
     }
 }
