@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 // Define the gradient colors and starting/ending points
 const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, 0, canvas.height/2, canvas.width);
 gradient.addColorStop(0, '#b49090'); // Inner color
-gradient.addColorStop(1, '#EBEBEB'); // Outer color
+gradient.addColorStop(1, '#131e3f'); // Outer color
 
 // Draw the filled circle with the gradient
 ctx.fillStyle = gradient;

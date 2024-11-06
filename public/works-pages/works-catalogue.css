@@ -98,6 +98,13 @@ nav ul li{
                 width: 15%;
             }
         }
+        a{
+            text-decoration: none;
+            color:#EBEBEB;
+            padding: 3%;
+            background-color: #131e3f;
+            border-radius: 5px;
+        }
     }
     .work-card-2{
         margin-left: 2%;
@@ -118,18 +125,11 @@ nav ul li{
 }
 
 .footer{
+    margin-top: 10%;
     text-align: center;
     padding-bottom: 10%;
     hr{
         display: block;
-    }
-    h3{
-        display: inline;
-        float: center;
-        margin: 0%;
-        width: 30%;
-        text-align: left;
-        font-size: 90%;
     }
     p{
         display: block;
@@ -138,10 +138,147 @@ nav ul li{
         width: 100%;
         text-align:center;
         a{
-            margin: 0% 3%;
+            margin: 0% 2%;
         }
     }
 }
-
 }
+
+/* For desktops */
+/* Additional styles for larger screens */
+@media (min-width: 1024px) {
+    main {
+        display: flex;
+        justify-content: space-between;
+    }
+    }
+
+/* For phones */
+/* Additional styles for mobile screens */
+@media (max-width:600px) {
+    header{
+        display: block;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 150%;
+        width: 30%;
+        margin: 10% 5% 0% 5% ;
+
+    }
+    .topnav{
+        height: fit-content;
+        nav {
+            padding-right:10% ;
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                position: fixed;
+                top:85px;
+                background-color: #b49090;
+                padding: 2%;
+                border-radius: 10px;
+                margin-left: 80%;
+                color: #EBEBEB;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 30%;
+                background-color:rgba(180, 144, 144, 0.9);
+                position: fixed;
+                top: 110px;
+                left: 0;
+                margin-left: 45%;
+                border-radius: 10px;
+            }
+        
+            .nav-links li {
+                text-align: center;
+                margin: 10px 0;
+                list-style-type:none;
+                text-align: right;
+                margin-right: 10%;
+                a{
+                    text-decoration: none;
+                    color:#EBEBEB;
+                }
+                #email {
+                    font-weight: 900;
+                }
     
+            }
+        
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    }
+    /* main intro. */
+    .works-catalogue{
+        width: 100%;
+        display: block;
+        margin-bottom: 100%;
+        .work-card-1, .work-card-2{
+            margin-top: 5%;
+            font-size: 75%;
+            display: block;
+            /* float: left; */
+            /* width: 100%; */
+            border-style: solid;
+            border-width: 2px;
+            padding: 3%;
+            padding-bottom: 5%;
+            border-radius: 10px;
+            .tool-icon{
+                margin: 10% 0%;
+                img{
+                    width: 10%;
+                }
+            }
+            a{
+                text-decoration: none;
+                color:#EBEBEB;
+                padding: 2%;
+                background-color: #131e3f;
+                border-radius: 5px;
+            }
+        }
+        .work-card-2{
+            margin-left: 2%;
+        }
+    }
+    
+    .all-works{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10%;
+        a{
+            background-color: #131e3f;
+            text-decoration: none;
+            color: #EBEBEB;
+            border-radius: 10px;
+            padding: 2%;
+        }
+    }
+    
+    .footer{
+        margin-top: 10%;
+        text-align: center;
+        padding-bottom: 10%;
+        hr{
+            display: block;
+        }
+        p{
+            display: none;
+            float: right;
+            margin: 2% 0% 0% 0%;
+            width: 100%;
+            text-align:center;
+            a{
+                margin: 0% 2%;
+            }
+        }
+    }
+    }
+
+

@@ -20,9 +20,9 @@
     url('./CascadiaCode/ttf/CascadiaCode.ttf');
 }
 body{
-    background-color: #EBEBEB;
+    background-color:#131e3f;
     /* font-family: sans-serif; */
-    color: #131e3f;
+    color:#EBEBEB;
     font-family: 'Cascadia Code', sans-serif;
     border-top: #b49090;
     border-top-width: 40px;
@@ -67,7 +67,7 @@ nav ul li{
     font-weight: 100;
     padding: 20% 0% 20% 0%;
     /* color: white; */
-    color: #131e3f;
+    color:#EBEBEB;
 }
 #email{
     font-weight: 600;
@@ -106,7 +106,7 @@ nav ul li{
 .siteManifest a{
     display:inline;
     padding: 15px;
-    background-color:hsla(225, 54%, 16%, 0.918);
+    /* background-color:hsla(225, 54%, 16%, 0.918); */
     color: white;
     border-radius: 10px;
 }
@@ -146,7 +146,7 @@ nav ul li{
     padding-top: 5%;
     padding-bottom: 20%;
     /* background-image: url('./images/background_waves-01.svg'); */
-    background-color: #EBEBEB;
+    background-color:#131e3f;
     background-size: cover; /* Optional: Ensure the image covers the entire element */
     background-position: center; /* Optional: Center the background image */
 }
@@ -164,21 +164,20 @@ nav ul li{
 .myWorks_menu{
     overflow-x:scroll;
     /* scrollbar-width:none; */
-    scrollbar-width: thin;
+    scrollbar-width:none;
 }
-
 .myWorks_menu section{
     height: 400px;
     display: inline-flex;
 }
 .work-example{
-    background-color: rgba(235, 235, 235, 0.711);
+    background-color:#0b1227;
     margin: 0.9%;
     width: 400px;
     border-radius: 10px;
     padding-right: 20px;
     padding-left: 20px;
-    border-style: solid;
+    /* border-style: solid; */
     .work-title{
         text-align: center;
         height: 20%;
@@ -206,6 +205,9 @@ nav ul li{
             color:#131e3f;
             font-weight: 900;
             border-radius: 10px;
+        }
+        button{
+            color: #EBEBEB;
         }
         #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5{
             border-style: none;
@@ -448,27 +450,31 @@ nav ul li{
         margin: 0 auto;
         }
     }
-.footer{
-    text-align: center;
-    padding-bottom: 10%;
-    h3{
-        display: inline;
-        float: left;
-        margin: 0%;
-        width: 30%;
-        text-align: left;
-    }
-    p{
-        display: inline;
-        float: right;
-        margin: 0%;
-        width: 70%;
-        text-align: right;
-        a{
-            margin: 0% 3%;
+    .footer{
+        text-align: center;
+        padding-bottom: 10%;
+        hr{
+            display: block;
+        }
+        h3{
+            display: none;
+            float: center;
+            margin: 0%;
+            width: 30%;
+            text-align: left;
+            font-size: 90%;
+        }
+        p{
+            display: block;
+            float: right;
+            margin: 2% 0% 0% 0%;
+            width: 100%;
+            text-align:center;
+            a{
+                margin: 0% 2%;
+            }
         }
     }
-}
 /* no more code beyond here */
 }
 
@@ -512,7 +518,7 @@ main {
                 position: fixed;
                 top: 110px;
                 left: 0;
-                margin-left: 50%;
+                margin-left: 45%;
                 border-radius: 10px;
             }
         
@@ -524,7 +530,7 @@ main {
                 margin-right: 10%;
                 a{
                     text-decoration: none;
-                    color:#472525;
+                    color:#EBEBEB;
                 }
                 #email {
                     font-weight: 900;
@@ -566,8 +572,8 @@ main {
     }
     .siteManifest a{
         display:inline;
-        padding: 15px;
-        background-color:hsla(225, 54%, 16%, 0.918);
+        padding: 15px 0px;
+        /* background-color:hsla(225, 54%, 16%, 0.918); */
         color: white;
         border-radius: 10px;
     }
@@ -595,7 +601,7 @@ main {
         display: block;
         padding-top: 5%;
         padding-bottom: 20%;
-        background-color: #EBEBEB;
+        background-color:#131e3f;
         background-size: cover; /* Optional: Ensure the image covers the entire element */
         background-position: center; /* Optional: Center the background image */
     }
@@ -626,13 +632,13 @@ main {
         display: inline-flex;
     }
     .work-example{
-        background-color: rgba(235, 235, 235, 0.711);
+        background-color:#0b1227;
         margin: 0.9%;
         width: 400px;
         border-radius: 10px;
         padding-right: 20px;
         padding-left: 20px;
-        border-style: solid;
+        /* border-style: solid; */
         .work-title{
             text-align: center;
             height: 20%;
@@ -655,11 +661,14 @@ main {
             margin-top: 8%;
             a{
                 text-decoration: none;
-                /* background-color: #131e3f; */
+                background-color: #131e3f;
                 padding: 3%;
-                color:#131e3f;
+                color:white;
                 font-weight: 900;
                 border-radius: 10px;
+            }
+            button{
+                color: #EBEBEB;
             }
             #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5{
                 border-style: none;

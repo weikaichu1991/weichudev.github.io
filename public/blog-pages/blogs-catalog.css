@@ -129,7 +129,7 @@ nav ul li{
     text-align: center;
     width: 100%;
     margin-top: 20%;
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
     display: inline-block;
     a{
         background-color: #131e3f;
@@ -143,16 +143,9 @@ nav ul li{
 .footer{
     text-align: center;
     padding-bottom: 10%;
+    margin-top: 10%;
     hr{
         display: block;
-    }
-    h3{
-        display: inline;
-        float: center;
-        margin: 0%;
-        width: 30%;
-        text-align: left;
-        font-size: 90%;
     }
     p{
         display: block;
@@ -161,10 +154,9 @@ nav ul li{
         width: 100%;
         text-align:center;
         a{
-            margin: 0% 3%;
+            margin: 0% 2%;
         }
     }
 }
-
 }
     

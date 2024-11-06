@@ -285,7 +285,7 @@ header, nav, main, footer, .subpages {
             width: 70%;
             text-align: right;
             a{
-                margin: 0% 3%;
+                margin: 0% 2%;
                 text-decoration: none;
                 color: #131e3f;
             }
@@ -646,14 +646,6 @@ header, nav, main, footer, .subpages {
     .footer{
         text-align: center;
         padding-bottom: 10%;
-        h3{
-            display: inline;
-            float: center;
-            margin: 0%;
-            width: 30%;
-            text-align: left;
-            font-size: 90%;
-        }
         p{
             display: none;
             float: right;
@@ -661,7 +653,7 @@ header, nav, main, footer, .subpages {
             width: 70%;
             text-align: right;
             a{
-                margin: 0% 3%;
+                margin: 0% 2%;
             }
         }
     }
