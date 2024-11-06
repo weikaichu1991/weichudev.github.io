@@ -162,9 +162,9 @@ nav ul li{
 }
 
 .myWorks_menu{
-    overflow-x:scroll;
-    /* scrollbar-width:none; */
-    scrollbar-width:none;
+    overflow-x:auto;
+    scrollbar-color: #b49090 #131e3f;
+    scrollbar-width: thin;
 }
 .myWorks_menu section{
     height: 400px;
@@ -374,10 +374,11 @@ nav ul li{
     }
     section{
         overflow-y: scroll;
+        scrollbar-color: #b49090 #131e3f;
+        scrollbar-width: thin;
         height: 1200px;
         width: 95%;
         padding: 2.5%;
-        scrollbar-width: thin;
         /* background-color: #131e3f; */
         /* color: white; */
         border-radius: 20px;
