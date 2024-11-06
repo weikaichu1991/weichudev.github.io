@@ -24,7 +24,7 @@ body{
     /* font-family: sans-serif; */
     color:#EBEBEB;
     font-family: 'Cascadia Code', sans-serif;
-    border-top: #b49090;
+    border-top: yellow;
     border-top-width: 40px;
     border-top-style: solid;
     margin: 0%;
@@ -85,16 +85,12 @@ nav ul li{
     line-height:85%;
 
 }
-.siteMainTitle p{
-    display: flexbox;
-    max-width: 40%;
-
-}
 .siteManifest{
     padding-top: 20px;
     display: block;
     font-size: 80%;
     padding-bottom: 150px;
+    width: 40%;
 }
 .siteManifest p{
     padding-bottom: 20px;
@@ -104,10 +100,10 @@ nav ul li{
     font-weight: 800;
 }
 .siteManifest a{
+    text-transform: capitalize;
     display:inline;
-    padding: 15px;
     /* background-color:hsla(225, 54%, 16%, 0.918); */
-    color: white;
+    color: yellow;
     border-radius: 10px;
 }
 
@@ -124,19 +120,6 @@ nav ul li{
     text-align: center;
     justify-content: center;
     z-index: -2;
-}
-.devops-icon{
-    position:absolute;
-    top: 10%;
-
-    scale: 50%;
-    /* /* width: 100%; */
-
-    /* background-color: rgba(0,0,0,0.7); */
-    /* display: none; */
-    align-items: center;
-    justify-content: center;
-    z-index: -1;
 }
 
 /* The main cover - section 02 */
@@ -163,7 +146,8 @@ nav ul li{
 
 .myWorks_menu{
     overflow-x:auto;
-    scrollbar-color: #b49090 #131e3f;
+    scrollbar-color: yellow #131e3f;
+    /* scrollbar-color: #b49090 #131e3f; */
     scrollbar-width: thin;
 }
 .myWorks_menu section{
@@ -207,7 +191,7 @@ nav ul li{
             border-radius: 10px;
         }
         button{
-            color: #EBEBEB;
+            color:#EBEBEB;
         }
         #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5{
             border-style: none;
@@ -272,6 +256,9 @@ nav ul li{
                     }
                     .tags{
                         margin-bottom: 5%;
+                        border-bottom-style: solid;
+                        padding-bottom: 3%;
+                        border-width: 0.75px;
                         button{
                             border-style: dashed;
                             border-width: 1.5px;
@@ -286,14 +273,12 @@ nav ul li{
                         }
                     }
                 }
-
-                hr{
-                    border-width: 0.75%;
-                    border-color: #131e3f;
-                    margin-bottom: 1%;
-                }
                 .content-section{
-                    margin: 0%;
+                    margin:0%;
+                    margin-bottom: 2%;
+                    border-bottom-style:solid;
+                    border-width: 0.75px;
+                    padding-bottom: 5%;
                     .work-title{
                         margin: 0%;
                         width: 60%;
@@ -308,6 +293,16 @@ nav ul li{
                             margin: 0%;
                             text-align: left;
                             margin-bottom: 3%;
+                        }
+                        .read-works{
+                            float: left;
+                            margin: 0%;
+                            text-decoration: none;
+                            color:yellow;
+                            font-weight: 900;
+                            text-align:left;
+                            background-color: #131e3f;
+                            padding: 1%;
                         }
                     }
                     .works-order{
@@ -326,16 +321,8 @@ nav ul li{
                             margin-top: 3%;
                             margin-bottom:15%;
                             font-weight: 300;
-                            color: #b49090;
+                            color:#131e3f;
                         }
-                }
-                .read-works{
-                    display: flex;
-                    margin: 0%;
-                    text-decoration: none;
-                    color:#b49090;
-                    font-weight: 900;
-                    text-align:left;
                 }
             }
         }
@@ -369,12 +356,12 @@ nav ul li{
         background-color: #131e3f;
         padding: 2% ;
         border-radius: 10px;
-        color: white;
+        color: yellow;
         margin: 0 auto;
     }
     section{
         overflow-y: scroll;
-        scrollbar-color: #b49090 #131e3f;
+        scrollbar-color: yellow #131e3f;
         scrollbar-width: thin;
         height: 1200px;
         width: 95%;
@@ -397,6 +384,9 @@ nav ul li{
                 color:#131e3f;
                 font-weight: 900;
             }
+            .coming-soon{
+                color: yellow;
+            }
         }
         .blogs-order{
             display: inline;
@@ -418,7 +408,6 @@ nav ul li{
             border: 0; /* Remove the default border */
             border-top: 1px dashed #131e3f; /* Add a dashed border on the top */
             margin: 5% 40%;
-
         }
     }
 
@@ -447,7 +436,7 @@ nav ul li{
         background-color: #131e3f;
         padding: 2% ;
         border-radius: 10px;
-        color: white;
+        color: yellow;
         margin: 0 auto;
         }
     }
@@ -473,6 +462,7 @@ nav ul li{
             text-align:center;
             a{
                 margin: 0% 2%;
+                cursor: pointer;
             }
         }
     }
@@ -506,16 +496,17 @@ main {
                 display: block;
                 cursor: pointer;
                 position: fixed;
-                background-color: #b49090;
+                background-color: yellow;
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
+                color: #131e3f;
             }
             .nav-links {
                 display: none;
                 flex-direction: column;
                 width: 30%;
-                background-color:rgba(180, 144, 144, 0.9);
+                background-color:yellow;
                 position: fixed;
                 top: 110px;
                 left: 0;
@@ -531,7 +522,7 @@ main {
                 margin-right: 10%;
                 a{
                     text-decoration: none;
-                    color:#EBEBEB;
+                    color:#131e3f;
                 }
                 #email {
                     font-weight: 900;
@@ -551,31 +542,31 @@ main {
         text-align: left;
         display: flex;
         line-height:85%;
-    
-    }
-    .siteMainTitle p{
-        display: flexbox;
-        max-width: 60%;
-    
     }
     .siteManifest{
         padding-top: 20px;
-        display: block;
         font-size: 80%;
+        margin-top: 30%;
         padding-bottom: 150px;
+        padding: 5% 5% 40% 5% ;
+        width: 80%;
+        background-color:rgb(19, 30, 63, 0.7);
+        border-radius: 10px;
     }
     .siteManifest p{
         padding-bottom: 20px;
+        text-wrap:wrap ;
     }
     .siteManifest quote{
         font-style: italic;
         font-weight: 800;
     }
     .siteManifest a{
+        text-transform: capitalize;
         display:inline;
         padding: 15px 0px;
         /* background-color:hsla(225, 54%, 16%, 0.918); */
-        color: white;
+        color: yellow;
         border-radius: 10px;
     }
     
@@ -625,6 +616,7 @@ main {
     .myWorks_menu{
         overflow-x:scroll;
         /* scrollbar-width:none; */
+        scrollbar-color: yellow #131e3f;
         scrollbar-width: thin;
     }
     
@@ -752,6 +744,10 @@ main {
                 }
                 .content-section{
                     margin: 0%;
+                    margin-bottom: 10%;
+                    border-bottom-style:solid ;
+                    border-width: 0.75px;
+                    padding-bottom: 15%;
                     .work-title{
                         margin: 0%;
                         width: 60%;
@@ -766,6 +762,15 @@ main {
                             margin: 0%;
                             text-align: left;
                             margin-bottom: 3%;
+                        }
+                        .read-works{
+                            display: inline;
+                            float: left;
+                            margin: 0%;
+                            text-decoration: none;
+                            color:yellow;
+                            font-weight: 900;
+                            text-align:left;
                         }
                     }
                     .works-order{
@@ -784,16 +789,8 @@ main {
                             margin-top: 3%;
                             margin-bottom:15%;
                             font-weight: 300;
-                            color: #b49090;
+                            color: #131e3f;
                         }
-                    }
-                    .read-works{
-                        display: flex;
-                        margin: 0%;
-                        text-decoration: none;
-                        color:#b49090;
-                        font-weight: 900;
-                        text-align:left;
                     }
                 }
             }
@@ -842,6 +839,7 @@ main {
             width: 95%;
             padding: 2.5%;
             scrollbar-width: thin;
+            scrollbar-color: yellow #131e3f;
             /* background-color: #131e3f; */
             /* color: white; */
             border-radius: 20px;
