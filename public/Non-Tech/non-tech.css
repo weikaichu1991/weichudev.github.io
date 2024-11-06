@@ -51,8 +51,9 @@ header{
 .chunk01-Intro{
     height: 100%;
     margin-bottom: 30%;
+    padding: 10%;
     .intro-box{
-        margin-top: 3%;
+        margin-top: 2%;
         display: inline;
         float: right;
         width: 40%;
