@@ -187,3 +187,8 @@ function formatDate(dateString) {
 // Load comments when the page loads
 document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
 // document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
+
+document.getElementById('menu-icon').addEventListener('click', function() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active');
+});
