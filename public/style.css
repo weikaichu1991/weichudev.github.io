@@ -363,7 +363,7 @@ nav ul li{
         overflow-y: scroll;
         scrollbar-color: yellow #131e3f;
         scrollbar-width: thin;
-        height: 1200px;
+        height: 700px;
         width: 95%;
         padding: 2.5%;
         /* background-color: #131e3f; */
@@ -424,49 +424,46 @@ nav ul li{
         /* width: 50%; */
         word-wrap: break-word;
         padding: 0% 10%;
+        font-weight: 100;
     }
     .to-linkedin{
         text-align: center;
         padding: 5% 0%;
-    }
-    .to-linkedin a{
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-        background-color: #131e3f;
-        padding: 2% ;
-        border-radius: 10px;
-        color: yellow;
-        margin: 0 auto;
-        }
-    }
-    .footer{
-        text-align: center;
-        padding-bottom: 10%;
-        hr{
-            display: block;
-        }
-        h3{
-            display: none;
-            float: center;
-            margin: 0%;
-            width: 30%;
-            text-align: left;
-            font-size: 90%;
-        }
-        p{
-            display: block;
-            float: right;
-            margin: 2% 0% 0% 0%;
-            width: 100%;
-            text-align:center;
-            a{
-                margin: 0% 2%;
-                cursor: pointer;
+        a{
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            background-color: #131e3f;
+            padding: 2% ;
+            border-radius: 10px;
+            color: yellow;
+            margin: 0 auto;
             }
+        p{
+            color: yellow;
         }
     }
+}
 /* no more code beyond here */
+.footer{
+    text-align: center;
+    padding-bottom: 10%;
+    hr{
+        display: block;
+    }
+    p{
+        display: block;
+        float: right;
+        margin: 2% 0% 0% 0%;
+        width: 100%;
+        text-align:center;
+        a{
+            margin: 0% 2%;
+            cursor: pointer;
+            font-weight: 100;
+        }
+    }
+}
 }
 
 /* For desktops */
@@ -835,7 +832,7 @@ main {
         }
         section{
             overflow-y: scroll;
-            height: 1000px;
+            height: 700px;
             width: 95%;
             padding: 2.5%;
             scrollbar-width: thin;
@@ -901,6 +898,7 @@ main {
             /* width: 50%; */
             word-wrap: break-word;
             padding: 0% 10%;
+            font-weight: 100;
         }
         .to-linkedin{
             text-align: center;
@@ -939,6 +937,4 @@ main {
             }
         }
     }
-    
 }
-    

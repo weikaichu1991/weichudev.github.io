@@ -363,10 +363,6 @@ main {
         text-align: center;
         justify-content: center;
         z-index: -2;
-        p{
-            /* display: inline;
-            vertical-align: middle; */
-        }
         #myCanvas, #myCanvas-2, #myCanvas-3, #myCanvas-4, #myCanvas-5, #myCanvas-6, #myCanvas-7{
             margin-top: 5%;
         }
