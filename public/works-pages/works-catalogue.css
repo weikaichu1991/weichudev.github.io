@@ -82,20 +82,30 @@ nav ul li{
     width: 80%;
     display: block;
     margin-bottom: 100%;
-    .work-card-1, .work-card-2{
+    height: 100%;
+    .work-card-1, .work-card-2, .work-placeholder_1, .work-placeholder_2{
         margin-top: 5%;
         font-size: 75%;
         display: inline;
         float: left;
         width: 25%;
+        height: 400px;
         border-style: solid;
-        border-width: 2px;
+        border-width: 1px;
         padding: 3%;
         border-radius: 10px;
+        h1{
+            height: 40%;
+        }
+        p{
+            height: 35%;
+        }
         .tool-icon{
-            margin: 10% 0%;
+            margin: 0% 0% 0% 0%;
+            height: 12%;
             img{
-                width: 15%;
+                height: 50%;
+                padding-right: 5%;
             }
         }
         a{
@@ -106,14 +116,21 @@ nav ul li{
             border-radius: 5px;
         }
     }
-    .work-card-2{
+    .work-card-2, .work-placeholder_2{
         margin-left: 2%;
+    }
+    .work-placeholder_1, .work-placeholder_2{
+        border-style: 1px;
+        border-color: #EBEBEB;
+        background: linear-gradient(to bottom, rgba(255, 255, 0, 0.356), #EBEBEB);
     }
 }
 
 .all-works{
     text-align: center;
     width: 100%;
+    display: inline-block;
+    margin-top: 10%;
     margin-bottom: 10%;
     a{
         background-color: #131e3f;
@@ -130,6 +147,7 @@ nav ul li{
     padding-bottom: 10%;
     hr{
         display: block;
+        margin-top: 10%;
     }
     p{
         display: block;
@@ -140,6 +158,10 @@ nav ul li{
         a{
             margin: 0% 2%;
         }
+    }
+    h4{
+        padding-top: 5%;
+        font-size: 70%;
     }
 }
 }
@@ -174,17 +196,17 @@ nav ul li{
                 cursor: pointer;
                 position: fixed;
                 top:85px;
-                background-color: #b49090;
+                background-color: yellow;
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
-                color: #EBEBEB;
+                color:#131e3f;
             }
             .nav-links {
                 display: none;
                 flex-direction: column;
                 width: 30%;
-                background-color:rgba(180, 144, 144, 0.9);
+                background-color:yellow;
                 position: fixed;
                 top: 110px;
                 left: 0;
@@ -200,7 +222,7 @@ nav ul li{
                 margin-right: 10%;
                 a{
                     text-decoration: none;
-                    color:#EBEBEB;
+                    color:#131e3f;
                 }
                 #email {
                     font-weight: 900;
@@ -225,15 +247,24 @@ nav ul li{
             /* float: left; */
             /* width: 100%; */
             border-style: solid;
-            border-width: 2px;
+            border-width: 1px;
             padding: 3%;
             padding-bottom: 5%;
             border-radius: 10px;
+            height: 300px;
             .tool-icon{
-                margin: 10% 0%;
+                margin: 8% 0% 8% 0%;
+                height: 10%;
                 img{
-                    width: 10%;
+                    width: 8%;
+                    padding-right: 3%;
                 }
+            }
+            h1{
+                height: 20%;
+            }
+            p{
+                height: 30%;
             }
             a{
                 text-decoration: none;
@@ -242,9 +273,6 @@ nav ul li{
                 background-color: #131e3f;
                 border-radius: 5px;
             }
-        }
-        .work-card-2{
-            margin-left: 2%;
         }
     }
     
@@ -277,6 +305,10 @@ nav ul li{
             a{
                 margin: 0% 2%;
             }
+        }
+        h4{
+            padding-top: 5%;
+            font-size: 70%;
         }
     }
     }
