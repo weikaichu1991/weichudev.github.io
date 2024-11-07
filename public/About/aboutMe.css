@@ -226,6 +226,10 @@ nav ul li{
             margin: 0% 2%;
         }
     }
+    h4{
+        padding-top: 5%;
+        font-size: 70%;
+    }
 }
 /* no more code beyond here */
 }
@@ -481,6 +485,10 @@ main {
             margin: 0% 3%;
             text-decoration: none;
         }
+    }
+    h4{
+        padding-top: 5%;
+        font-size: 70%;
     }
 }
     

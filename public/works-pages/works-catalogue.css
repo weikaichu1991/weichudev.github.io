@@ -2,6 +2,9 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    border-top-style: solid ;
+    border-top-width: 1px;
+    margin-top: 2%;
 }
 @font-face{
     font-family: 'Cascadia Code';
@@ -122,7 +125,8 @@ nav ul li{
     .work-placeholder_1, .work-placeholder_2{
         border-style: 1px;
         border-color: #EBEBEB;
-        background: linear-gradient(to bottom, rgba(255, 255, 0, 0.356), #EBEBEB);
+        /* background: linear-gradient(to bottom, rgba(255, 255, 0, 0.356), #EBEBEB); */
+        background-color: #dfdfdf;
     }
 }
 

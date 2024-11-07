@@ -463,6 +463,10 @@ nav ul li{
             font-weight: 100;
         }
     }
+    h4{
+        padding-top: 5%;
+        font-size: 70%;
+    }
 }
 }
 
@@ -935,6 +939,10 @@ main {
             a{
                 margin: 0% 3%;
             }
+        }
+        h4{
+            padding-top: 5%;
+            font-size: 70%;
         }
     }
 }
