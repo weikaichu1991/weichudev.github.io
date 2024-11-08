@@ -754,7 +754,7 @@ main {
                         width: 60%;
                         h2{
                             text-transform: capitalize;
-                            font-size: 150%;
+                            font-size: 130%;
                             margin: 0%;
                             text-align: left;
 
@@ -763,6 +763,7 @@ main {
                             margin: 0%;
                             text-align: left;
                             margin-bottom: 3%;
+                            font-size: 70%;
                         }
                         .read-works{
                             display: inline;
@@ -772,6 +773,7 @@ main {
                             color:yellow;
                             font-weight: 900;
                             text-align:left;
+                            font-size: 70%;
                         }
                     }
                     .works-order{

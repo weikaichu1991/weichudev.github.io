@@ -24,9 +24,7 @@ body{
     /* font-family: sans-serif; */
     color: #131e3f;
     font-family: 'Cascadia Code', sans-serif;
-    border-top: #b49090;
-    border-top-width: 40px;
-    border-top-style: solid;
+    border-top: none;
     margin: 0%;
 
 }
@@ -293,6 +291,10 @@ header, nav, main, footer, .subpages {
                 font-weight: 900;
             }
         }
+        h4{
+            padding-top: 5%;
+            font-size: 70%;
+        }
     }
     .comments_form {
         margin: 20px 0;
@@ -364,15 +366,15 @@ header, nav, main, footer, .subpages {
                 display: block;
                 cursor: pointer;
                 position: fixed;
-                background-color: #b49090;
+                background-color: yellow;
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
                 font-weight: 600;
-                color:#472525;
+                color:#131e3f;
             }
             .mobile-top-icon{
-                margin-top: 80%;
+                margin-top: 150%;
                 scale: 120%;
                 padding: 0.8%;
                 button{
@@ -380,7 +382,7 @@ header, nav, main, footer, .subpages {
                     border-style: none;
                     text-align: center;
                     font-size: 110%;
-                    color:#472525;
+                    color:#131e3f;
                     font-weight: 600;
                 }
             }
@@ -388,9 +390,9 @@ header, nav, main, footer, .subpages {
                 display: none;
                 flex-direction: column;
                 width: 30%;
-                background-color:rgba(180, 144, 144, 0.9);
+                background-color:yellow;
                 position: fixed;
-                top: 110px;
+                top: 90px;
                 left: 0;
                 margin-left: 50%;
                 border-radius: 10px;
@@ -404,7 +406,7 @@ header, nav, main, footer, .subpages {
                 margin-right: 10%;
                 a{
                     text-decoration: none;
-                    color:#472525;
+                    color:#131e3f;
                 }
                 #email, #commentButton {
                     font-weight: 900;
@@ -655,6 +657,10 @@ header, nav, main, footer, .subpages {
             a{
                 margin: 0% 2%;
             }
+        }
+        h4{
+            padding-top: 5%;
+            font-size: 70%;
         }
     }
 }
