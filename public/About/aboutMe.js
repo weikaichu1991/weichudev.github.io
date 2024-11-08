@@ -3,6 +3,15 @@ document.getElementById('menu-icon').addEventListener('click', function() {
     navLinks.classList.toggle('active');
 });
 
+document.addEventListener('click', function(event) {
+    const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (navLinks && !navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
 const canvasIds = ['myCanvas', 'myCanvas-2', 'myCanvas-3', 'myCanvas-4', 'myCanvas-5', 'myCanvas-6', 'myCanvas-7'];
 
 canvasIds.forEach(id => {

@@ -267,17 +267,17 @@ main {
                 cursor: pointer;
                 position: fixed;
                 top:100px;
-                background-color: #b49090;
+                background-color: yellow;
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
-                color: #EBEBEB;
+                color: #131e3f;
             }
             .nav-links {
                 display: none;
                 flex-direction: column;
                 width: 30%;
-                background-color:rgba(180, 144, 144, 0.9);
+                background-color:yellow;
                 position: fixed;
                 top: 130px;
                 left: 0;
@@ -293,7 +293,7 @@ main {
                 margin-right: 10%;
                 a{
                     text-decoration: none;
-                    color:#EBEBEB;
+                    color:#131e3f;
                 }
                 #email {
                     font-weight: 900;

@@ -381,7 +381,7 @@ nav ul li{
             }
             .read-more{
                 text-decoration: none;
-                color:#131e3f;
+                color:yellow;
                 font-weight: 900;
             }
             .coming-soon{
@@ -798,11 +798,6 @@ main {
         }
     }
 }
-
-    
-    
-    
-    
     .journals{
             text-transform:capitalize;
             h1{
@@ -820,6 +815,7 @@ main {
     }
     .articles{
         padding-bottom: 10%;
+        width: 95%;
         .All-Blogs{
             text-align: center;
             padding: 7% 0%;
@@ -831,7 +827,7 @@ main {
             background-color: #131e3f;
             padding: 2% ;
             border-radius: 10px;
-            color: white;
+            color: yellow;
             margin: 0 auto;
         }
         section{
@@ -862,7 +858,7 @@ main {
                 }
                 .coming-soon{
                     text-decoration: none;
-                    color:#131e3f;
+                    color:yellow;
                     font-weight: 900;
                 }
             }
@@ -907,6 +903,7 @@ main {
         .to-linkedin{
             text-align: center;
             padding: 5% 0%;
+            color: yellow;
         }
         .to-linkedin a{
             display: inline-block;
@@ -915,7 +912,7 @@ main {
             background-color: #131e3f;
             padding: 2% ;
             border-radius: 10px;
-            color: white;
+            color: yellow;
             margin: 0 auto;
             }
         }
