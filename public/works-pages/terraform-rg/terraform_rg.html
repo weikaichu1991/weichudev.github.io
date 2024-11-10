@@ -24,7 +24,7 @@
                     <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email</a></li>
                 </ul>
                 <div class="mobile-top-icon" id="mobile-top-icon">
-                    <button onclick="location.href='#container'">&#8657</button>
+                    <button onclick="location.href='#container'"><img src="../../images/back-to-top-svgrepo-com.svg"></button>
                 </div>
             </nav>
         </div>
@@ -200,77 +200,79 @@ terraform {
                 <div id="imageModal" class="modal">
                     <span class="close">&times;</span>
                     <img class="modal-content" id="modalImage">
+                    <div id="caption"></div>
+                    <button class="zoomIn" id="zoomIn">+</button><br>
+                    <button class="zoomOut" id="zoomOut">-</button>
                 </div>
             </div>
             <div class="troubleshooting-zone">
                 <h1>troubleshoot Notes</h1>
                 <hr/>
                 <h2>Issue 01 | Wrong Authentication Configuration</h2>
-                <p class="note">
-                    In order to let <strong>GitHub Workflow</strong>  and <strong>Terraform</strong> to work with <strong>Azure Resource Management</strong>, the <code>CLIENT_ID</code>, <code>CLIENT_SECRET_VALUE</code>, <code>TENANT_ID</code> and <code>SUBSCRIPTION_ID</code> will have to be assigned in the workflow files. Therefore, setting up a <strong>Service Principle</strong> with a <strong>AZ Subscription</strong> assigned is the first step of the RG creation. The 2 methods I know of setting up the Service Principle is through <strong>EntraID App Registration</strong> & <strong>Azure Arc</strong>. I have tried the EntraID App registration with an Azure Enterprise Tenant and tried the Azure Arc with my personal Azure free account. Here I am demonstrating the later method:
-                </p>
-                <h3>Error message from GitHub Action</h3>
-                <p class="note">
-                    Go to Azure Portal and find Azure Arc in the Azure services catalogue.
-                </p>
+                <h3>Error: No subscription found.</h3>
                 <img src="../terraform-rg/rg_images/image 11.png" class="enlargeable-image" alt="finding azure arc">
-                <h3>Solving Process</h3>
-                <p class="note">
-                    Go to Azure Portal and find Azure Arc in the Azure services catalogue.
+                <h3>Fix:</h3>
+                <p class="description">
+                    In the beginning, I used the service principle created through App Registration under the Microsoft Entra ID and the credentials cant be captured.
                 </p>
                 <img src="../terraform-rg/rg_images/image 12_edited-01.jpg" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 13_edited-01.jpg" class="enlargeable-image" alt="Image 6">
+                <p class="description">
+                    I then checked one Azure portal and discovered that Service Principle can also be set-up under Azure Arc. I set up the SPN and changed the value under the GitHub Action secret. This time is works and the authentication was able to be pushed through.
+                </p>
                 <img src="../terraform-rg/rg_images/image 14-01.jpg" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 16_edited-01.jpg" class="enlargeable-image" alt="Image 6">
+                <h3>Further Investigation:</h3>
+                <p class="description">
+                    At the moment I am still investigating why it wouldn’t work SPN set up with App Registration. Few direction for testing:
+                    <ul class="description">
+                        <li><p><strong>User privilege</strong> - at the moment there are no role has been assigned under my Azure Arc SPN, and I am the contributor to the App Registration SPN. I am the owner to both. But I am able to login to Azure Cli with former method, and was failed to login in with the later method.</p></li>
+                        <li><p><strong>Difference of the 2 methods</strong> - From what I have understood, Azure Arc seems is more for multiple cloud resource management. The app registration is more specific app and function oriented. It makes more sense to go with SPN created by Azure Arc as I am aiming for creating an Azure cloud resource. But more need to be investigated.</p></li>
+                    </ul>
+                </p>
                 <!-- The end of issue 01 -->
 
                 <hr/>
-                <h2>Issue 02 | Wrong Authentication Configuration</h2>
-                <p class="note">
-                    In order to let <strong>GitHub Workflow</strong>  and <strong>Terraform</strong> to work with <strong>Azure Resource Management</strong>, the <code>CLIENT_ID</code>, <code>CLIENT_SECRET_VALUE</code>, <code>TENANT_ID</code> and <code>SUBSCRIPTION_ID</code> will have to be assigned in the workflow files. Therefore, setting up a <strong>Service Principle</strong> with a <strong>AZ Subscription</strong> assigned is the first step of the RG creation. The 2 methods I know of setting up the Service Principle is through <strong>EntraID App Registration</strong> & <strong>Azure Arc</strong>. I have tried the EntraID App registration with an Azure Enterprise Tenant and tried the Azure Arc with my personal Azure free account. Here I am demonstrating the later method:
-                </p>
-                <h3>Error message from GitHub Action</h3>
-                <p class="note">
-                    Go to Azure Portal and find Azure Arc in the Azure services catalogue.
-                </p>
+                <h2>Issue 02 | No permissions to register Resource Providers.</h2>
+                <h3>Error:</h3> 
+                <p class="description">Terraform does not have the necessary permissions to register Resource Providers. Terraform automatically attempts to register the Azure Resource Providers it supports, to ensure it is able to provision resources.</p>
                 <img src="../terraform-rg/rg_images/image 17.png" class="enlargeable-image" alt="finding azure arc">
                 <img src="../terraform-rg/rg_images/image 18.png" class="enlargeable-image" alt="Image 6">
-                <h3>Solving Process</h3>
-                <p class="note">
-                    Go to Azure Portal and find Azure Arc in the Azure services catalogue.
+                <h3>Fix:</h3>
+                <p class="description">
+                    At the moment, I simply disable the Resource Provider Registration by modifying the code in the provider.tf file.
                 </p>
-                <p class="code-file">provider.tf</p>
-                <pre class="code"><code>
-provider "azurerm" {
-    features {}
-    resource_provider_registrations = "none"
-}
-
-# Set the Azure Provider source and version being used
-terraform {
-    required_version = ">= 0.14"
-
-    required_providers {
-        azurerm = {
-            source  = "hashicorp/azurerm"
-            version = ">= 3.0.0"
-        }
-    }
-}
-                </code></pre>
+                <img src="../terraform-rg/rg_images/image_20.png" class="enlargeable-image" alt="finding azure arc">
+                <img src="../terraform-rg/rg_images/image_21.png" class="enlargeable-image" alt="Image 6">
+                <h3>Further Investigation:</h3>
+                <p class="description">
+                    I found out that the error indicates that SPN does not have authorization to perform certain actions over the specified scope. Investigation direction:
+                    <ul class="description">
+                        <li><p>Configuring the necessary permissions under the SPN so that the privilege to registering resource provider is assigned</p></li>
+                        <li><p>Double checking <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#resource-provider-registrations">Azure Resource Provider Registrations</a> documentation and see if re-registering the resource providers is needed.</p></li>
+                    </ul>
+                </p>
                 <!-- The end of issue 02 -->
                 
                 <hr/>
-                <h2>Issue 03 | Wrong Authentication Configuration</h2>
-                <p class="note">
-                    In order to let <strong>GitHub Workflow</strong>  and <strong>Terraform</strong> to work with <strong>Azure Resource Management</strong>, the <code>CLIENT_ID</code>, <code>CLIENT_SECRET_VALUE</code>, <code>TENANT_ID</code> and <code>SUBSCRIPTION_ID</code> will have to be assigned in the workflow files. Therefore, setting up a <strong>Service Principle</strong> with a <strong>AZ Subscription</strong> assigned is the first step of the RG creation. The 2 methods I know of setting up the Service Principle is through <strong>EntraID App Registration</strong> & <strong>Azure Arc</strong>. I have tried the EntraID App registration with an Azure Enterprise Tenant and tried the Azure Arc with my personal Azure free account. Here I am demonstrating the later method:
+                <h2>Issue 03 | Role Assignment is Missing</h2>
+                <h3>Error:</h3>
+                <p class="description">
+                    The client does not have authorization to perform action 'Microsoft.Resources/subscriptions/ resourcegroups/ read' over scope '/ subscriptions/ ***/ resourcegroups/weichudev_terraform_RG' or the scope is invalid.
                 </p>
-                <h3>Error message from GitHub Action</h3>
-                <p class="note">
-                    Go to Azure Portal and find Azure Arc in the Azure services catalogue.
-                </p>
-
                 <img src="../terraform-rg/rg_images/image 19.png" class="enlargeable-image" alt="Image 6">
+                <h3>Fix:</h3>
+                <p class="description">
+                    Using the following command line to assign Contributor role to the SPN. 
+                </p>
+                <pre class="code"><code>
+$ az role assignment create --assignee "(SPN ObjectID)" -
+-role "Contributor" --scope "/subscriptions/(SubscriptionID)
+                </code></pre>
+                <h3>Note:</h3>
+                <p class="description">
+                    I noticed that the Client ID and Object ID that has been mentioned in the GitHub job error message actually means the Object ID of SPN from an Enterprise Application under EntraID which was created at the same time when a SPN was created in Azure Arc. But when assigning the role to the SPN, the Object ID from the Azure ARC is still targeted which is stored in the GitHub Action Secret.
+                </p>
             </div>
             
             <section id="commentsSection">

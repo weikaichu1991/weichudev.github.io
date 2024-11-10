@@ -4,6 +4,9 @@ var modal = document.getElementById("imageModal");
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var images = document.getElementsByClassName("enlargeable-image");
 var modalImg = document.getElementById("modalImage");
+const zoomInButton = document.getElementById('zoomIn');
+const zoomOutButton = document.getElementById('zoomOut');
+let scale = 1;
 
 for (var i = 0; i < images.length; i++) {
     images[i].onclick = function() {
@@ -11,19 +14,37 @@ for (var i = 0; i < images.length; i++) {
         modalImg.src = this.src;
     }
 }
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
 }
+document.addEventListener('DOMContentLoaded', function() {
+    zoomInButton.addEventListener('click', function() {
+        scale += 0.1;
+        modalImg.style.transform = `scale(${scale})`;
+    });
+    zoomOutButton.addEventListener('click', function() {
+        scale = Math.max(1, scale - 0.1); // Prevent scaling below 1
+        modalImg.style.transform = `scale(${scale})`;
+    });
+});
 
 document.getElementById('menu-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('active');
 });
+
+document.addEventListener('click', function(event) {
+    const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (navLinks && !navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
 
 // --- the commeenting sections functions ---
 const url = new URL(location.href);

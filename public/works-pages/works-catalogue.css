@@ -195,7 +195,7 @@ nav ul li{
         height: fit-content;
         nav {
             padding-right:10% ;
-            .menu-icon {
+            .menu-icon, .mobile-top-icon{
                 display: block;
                 cursor: pointer;
                 position: fixed;
@@ -204,7 +204,28 @@ nav ul li{
                 padding: 2%;
                 border-radius: 10px;
                 margin-left: 80%;
+                font-weight: 600;
                 color:#131e3f;
+            }
+            .mobile-top-icon{
+                margin-top: 160%;
+                scale: 120%;
+                padding: 0.4% 0.2%;
+                width: 6%;
+                button{
+                    background:none;
+                    border-style: none;
+                    text-align: center;
+                    font-size: 130%;
+                    color:#131e3f;
+                    font-weight: 600;
+                    cursor: pointer;
+                    img{
+                        width: 80%;
+                        margin: 0.3% 0%;
+                        padding: 0%;
+                    }
+                }
             }
             .nav-links {
                 display: none;
@@ -233,7 +254,6 @@ nav ul li{
                 }
     
             }
-        
             .nav-links.active {
                 display: flex;
             }

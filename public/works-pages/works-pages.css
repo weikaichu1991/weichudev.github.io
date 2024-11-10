@@ -166,6 +166,15 @@ header, nav, main, footer, .subpages {
                 margin-top: 5%;
                 border-color: white;
             }
+            .description{
+                font-weight:100 ;
+                font-size: 90%;
+                a{
+                    text-decoration: none;
+                    color: #EBEBEB;
+                    text-decoration: underline;
+                }
+            }
         }
         img{
             width: 100%;
@@ -193,7 +202,27 @@ header, nav, main, footer, .subpages {
             width: 80%;
             max-width: 1200px;
         }
-
+        #zoomIn, #zoomOut {
+            position: fixed;
+            bottom: 50px;
+            /* margin: 5px; */
+            padding: 10px 15px;
+            background-color:none;
+            background: none;
+            border-style: solid;
+            border-color: #EBEBEB;
+            border-radius: 30%;
+            left: 50%;
+            color: #EBEBEB;
+            cursor: pointer;
+            z-index: 2;
+        }
+        #zoomIn{
+            left:55%;
+        }
+        #zoomIn:hover, #zoomOut:hover {
+            background-color: #131e3f;
+        }
         /* Style for the close button */
         .close {
             position: absolute;
@@ -366,6 +395,7 @@ header, nav, main, footer, .subpages {
                 display: block;
                 cursor: pointer;
                 position: fixed;
+                top:85px;
                 background-color: yellow;
                 padding: 2%;
                 border-radius: 10px;
@@ -374,16 +404,23 @@ header, nav, main, footer, .subpages {
                 color:#131e3f;
             }
             .mobile-top-icon{
-                margin-top: 150%;
+                margin-top: 160%;
                 scale: 120%;
-                padding: 0.8%;
+                padding: 0.4% 0.2%;
+                width: 6%;
                 button{
                     background:none;
                     border-style: none;
                     text-align: center;
-                    font-size: 110%;
+                    font-size: 130%;
                     color:#131e3f;
                     font-weight: 600;
+                    cursor: pointer;
+                    img{
+                        width: 80%;
+                        margin: 0.3% 0%;
+                        padding: 0%;
+                    }
                 }
             }
             .nav-links {
@@ -392,9 +429,9 @@ header, nav, main, footer, .subpages {
                 width: 30%;
                 background-color:yellow;
                 position: fixed;
-                top: 90px;
+                top: 110px;
                 left: 0;
-                margin-left: 50%;
+                margin-left: 45%;
                 border-radius: 10px;
             }
         
@@ -510,6 +547,16 @@ header, nav, main, footer, .subpages {
                 margin-top: 5%;
                 border-color: white;
             }
+            .description{
+                font-weight:100 ;
+                font-size: 90%;
+                text-wrap: wrap;
+                a{
+                    text-decoration: none;
+                    color: #EBEBEB;
+                    text-decoration: underline;
+                }
+            }
         }
         img{
             width: 100%;
@@ -520,7 +567,7 @@ header, nav, main, footer, .subpages {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
-            padding-top: 60px; /* Location of the box */
+            padding-top: 50%; /* Location of the box */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
@@ -547,6 +594,7 @@ header, nav, main, footer, .subpages {
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
+            z-index: +2;
         }
 
         .close:hover,
@@ -554,6 +602,27 @@ header, nav, main, footer, .subpages {
             color: #bbb;
             text-decoration: none;
             cursor: pointer;
+        }
+        #zoomIn, #zoomOut {
+            position: fixed;
+            bottom: 50px;
+            /* margin: 5px; */
+            padding: 10px 15px;
+            background-color:none;
+            background: none;
+            border-style: solid;
+            border-color: #EBEBEB;
+            border-radius: 30%;
+            left: 45%;
+            color: #EBEBEB;
+            cursor: pointer;
+            z-index: 2;
+        }
+        #zoomIn{
+            left:55%;
+        }
+        #zoomIn:hover, #zoomOut:hover {
+            background-color: #131e3f;
         }
     }
     .comments_form {
