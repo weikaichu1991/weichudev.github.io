@@ -187,7 +187,7 @@ function formatDate(dateString) {
 
 
 // Load comments when the page loads
-document.addEventListener('DOMContentLoaded', () => returnComments(APILINK_article));
+document.addEventListener('DOMContentLoaded', () => returnComments(APILINK_ARTICLE));
 // document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
 
 document.getElementById('menu-icon').addEventListener('click', function() {
