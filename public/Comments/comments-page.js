@@ -1,6 +1,7 @@
 const url = new URL(location.href);
 const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
-const APILINK_article = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api/all-comments';
+const article = "all-comments"
+const APILINK_ARTICLE = `${APILINK}/${article}`;
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -135,7 +136,6 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
     const comment_text = document.getElementById(commentInputId).value;
     const name = document.getElementById(nameInputId).value;
     const email = document.getElementById(emailInputId).value;
-    const article = "all-comments"
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${APILINK}/${id}` : APILINK;
