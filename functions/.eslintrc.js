@@ -23,6 +23,7 @@ module.exports = {
     "indent": 0,
     "key-spacing": 0,
     "no-undef": 0,
+    "max-len":0,
   },
   overrides: [
     {
