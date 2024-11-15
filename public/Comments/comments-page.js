@@ -1,6 +1,6 @@
 const url = new URL(location.href);
 const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
-const APILINK_article = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/all-comments';
+const APILINK_article = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api/all-comments';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
