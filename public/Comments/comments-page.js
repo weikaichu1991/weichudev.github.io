@@ -1,5 +1,6 @@
 const url = new URL(location.href);
 const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
+const APILINK_article = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/all-comments';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -134,6 +135,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
     const comment_text = document.getElementById(commentInputId).value;
     const name = document.getElementById(nameInputId).value;
     const email = document.getElementById(emailInputId).value;
+    const article = "all-comments"
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${APILINK}/${id}` : APILINK;
@@ -144,7 +146,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, subject, comment_text })
+        body: JSON.stringify({ name, email, subject, comment_text, article })
     });
 
     if (response.ok) {
@@ -185,7 +187,7 @@ function formatDate(dateString) {
 
 
 // Load comments when the page loads
-document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
+document.addEventListener('DOMContentLoaded', () => returnComments(APILINK_article));
 // document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
 
 document.getElementById('menu-icon').addEventListener('click', function() {
