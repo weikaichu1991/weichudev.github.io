@@ -135,6 +135,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
     const comment_text = document.getElementById(commentInputId).value;
     const name = document.getElementById(nameInputId).value;
     const email = document.getElementById(emailInputId).value;
+    const article = "all-comments"
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${APILINK}/${id}` : APILINK;
