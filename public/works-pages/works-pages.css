@@ -296,6 +296,7 @@ header, nav, main, footer, .subpages {
         }
     }
     .footer{
+        margin-top: 10%;
         text-align: center;
         padding-bottom: 10%;
         h3{
@@ -308,9 +309,9 @@ header, nav, main, footer, .subpages {
         p{
             display: inline;
             float: right;
-            margin: 0%;
-            width: 70%;
-            text-align: right;
+            margin: 2% 0% 0% 0%;
+            width: 100%;
+            text-align: center;
             a{
                 margin: 0% 2%;
                 text-decoration: none;
