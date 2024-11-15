@@ -22,7 +22,7 @@ div_new.innerHTML = `
                 <input type="text" id="new_comment" value="" placeholder="*Required">
             </p>
             <br>
-            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" >Submit</a>
+            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" target="_parent">Submit</a>
             </p>
             <p class="terms">* Email address is only for validation purpose which will be required when you need to edit or delete your comment. Therefore, for security reason, it is recommended to provide email address. The address won't be used for any marketing or social communication without your consent.  </p>
             <hr>
@@ -50,7 +50,7 @@ function returnComments(url) {
                                 <p class="comment_subject"><strong>Subject: </strong>${comment.subject}</p>
                                 <p class="comment_text"><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p class="commentator">${comment.name} - ${formattedDate}</p>
-                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn ">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" >Delete</a></p>
+                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn" target="_parent">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target="_parent">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ function showEmailVerification(commentId, action){
         <div id="verifyEmail-${commentId}">
             <p><strong>Verify Email: </strong>
                 <input type= "text" id = "verifyInput-${commentId}" placeholder="Enter your email to verify">
-                <a href="#" onclick="verifyEmail('${commentId}', '${action}')">Verify</a>
+                <a href="#" onclick="verifyEmail('${commentId}', '${action}')" target="_parent">Verify</a>
             </p>
         </div>
     `
