@@ -18,11 +18,16 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  article:{
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,
   },
-});
+},
+{ collection: 'comments-DB'});
 
 const Comment = mongoose.model("Comment", CommentSchema);
 module.exports = Comment;
