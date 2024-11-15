@@ -26,7 +26,7 @@ router.get("/:article", async (req, res) => {
 });
 
 // Get single comment
-router.get("/:id", async (req, res) => {
+router.get("/id/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     if (!comment) {

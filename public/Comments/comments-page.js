@@ -78,7 +78,7 @@ function showEmailVerification(commentId, action){
 
 async function verifyEmail(commentId, action){
     const verifyInput = document.getElementById(`verifyInput-${commentId}`).value.trim().toLowerCase();
-    const url = `${APILINK}/${commentId}`
+    const url = `${APILINK}/id/${commentId}`
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -98,6 +98,11 @@ async function verifyEmail(commentId, action){
             }
         } else {
             alert('Email verification failed. Please enter the correct email.');
+            const alertMessage = document.createElement('div');
+            alertMessage.className = 'alert-danger';
+            alertMessage.innerText = 'Email verification failed. Please enter the correct email.';
+            const element = document.getElementById(commentId);
+            element.appendChild(alertMessage);
         }
     } else {
         console.error('Error saving comment:', response.statusText);
