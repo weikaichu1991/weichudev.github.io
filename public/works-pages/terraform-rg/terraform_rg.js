@@ -49,6 +49,7 @@ document.addEventListener('click', function(event) {
 // --- the commeenting sections functions ---
 const url = new URL(location.href);
 const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
+const APILINK_ARTICLE = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api/terraform_rg';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -70,7 +71,7 @@ div_new.innerHTML = `
                 <input type="text" id="new_comment" value="" placeholder="*Required">
             </p>
             <br>
-            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" >Submit</a>
+            <p><a href="#" onclick="saveComment('new_name', 'new_email', 'new_subject', 'new_comment')" target = "_parent">Submit</a>
             </p>
             <p class="terms">* Email address is only for validation purpose which will be required when you need to edit or delete your comment. Therefore, for security reason, it is recommended to provide email address. The address won't be used for any marketing or social communication without your consent.</p>
             <hr>
@@ -98,7 +99,7 @@ function returnComments(url) {
                                 <p class="comment_subject"><strong>Subject: </strong>${comment.subject}</p>
                                 <p class="comment_text"><strong>Comment: </strong>${comment.comment_text}</p>
                                 <p class="commentator">${comment.name} - ${formattedDate}</p>
-                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn ">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" >Delete</a></p>
+                                <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn " target = "_parent">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target = "_parent">Delete</a></p>
                             </div>
                         </div>
                     </div>
@@ -118,7 +119,7 @@ function showEmailVerification(commentId, action){
         <div id="verifyEmail-${commentId}">
             <p><strong>Verify Email: </strong>
                 <input type= "text" id = "verifyInput-${commentId}" placeholder="Enter your email to verify">
-                <a href="#" onclick="verifyEmail('${commentId}', '${action}')" >Verify</a>
+                <a href="#" onclick="verifyEmail('${commentId}', '${action}')" target = "_parent">Verify</a>
             </p>
         </div>
     `
@@ -126,7 +127,7 @@ function showEmailVerification(commentId, action){
 
 async function verifyEmail(commentId, action){
     const verifyInput = document.getElementById(`verifyInput-${commentId}`).value.trim().toLowerCase();
-    const url = `${APILINK}/${commentId}`
+    const url = `${APILINK}/id/${commentId}`
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -146,6 +147,11 @@ async function verifyEmail(commentId, action){
             }
         } else {
             alert('Email verification failed. Please enter the correct email.');
+            const alertMessage = document.createElement('div');
+            alertMessage.className = 'alert-danger';
+            alertMessage.innerText = 'Email verification failed. Please enter the correct email.';
+            const element = document.getElementById(commentId);
+            element.appendChild(alertMessage);
         }
     } else {
         console.error('Error saving comment:', response.statusText);
@@ -173,7 +179,7 @@ function editComment(id, name, email, subject, comment_text ) {
         <p><strong>Comment: </strong>
         <input type="text" id="${commentInputId}" value="${comment_text}">
         </p>
-        <p><a href = "#" onclick = "saveComment('${nameInputId}', '${emailInputId}', '${subjectInputId}', '${commentInputId}', '${id}')" >Save</a>
+        <p><a href = "#" onclick = "saveComment('${nameInputId}', '${emailInputId}', '${subjectInputId}', '${commentInputId}', '${id}')" target = "_parent">Save</a>
         </p>
     `
 }
@@ -183,6 +189,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
     const comment_text = document.getElementById(commentInputId).value;
     const name = document.getElementById(nameInputId).value;
     const email = document.getElementById(emailInputId).value;
+    const article = "terraform_rg"
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${APILINK}/${id}` : APILINK;
@@ -193,7 +200,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, subject, comment_text })
+        body: JSON.stringify({ name, email, subject, comment_text, article })
     });
 
     if (response.ok) {
@@ -234,5 +241,5 @@ function formatDate(dateString) {
 
 
 // Load comments when the page loads
-document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
+document.addEventListener('DOMContentLoaded', () => returnComments(APILINK_ARTICLE));
 // document.addEventListener('DOMContentLoaded', () => returnComments(APILINK));
