@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
 
 // Get comments of an article.
 router.get("/:article", async (req, res) => {
+  const { article } = req.params;
   try {
     const comments = await Comment.find({article:article}).sort({ date: -1 });
     res.status(200).json(comments);
