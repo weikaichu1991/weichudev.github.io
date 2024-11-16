@@ -257,7 +257,7 @@ nav ul li{
     }
     /* main intro. */
     .comments-catalogue{
-        width: 80%;
+        width: 100%;
         margin-bottom: 5%;
         .blog-card{
             margin-top: 1%;
@@ -281,6 +281,95 @@ nav ul li{
             color: #EBEBEB;
             border-radius: 10px;
             padding: 2%;
+        }
+    }
+    
+    .comments_form {
+        margin: 20px 0;
+        border-style: solid;
+        border-radius: 10px;
+        margin: 20px 0;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 5%;
+        .form-group {
+            margin-bottom: 15px;
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                background-color:#c9c9c900;
+                border-style:none;
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+        }
+        button {
+            padding: 10px 15px;
+            background-color:#131e3f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:#b49090;
+        }
+    }
+    #commentsSection{
+        margin-top: 5%;
+        border-style: solid;
+        border-width: 2px;
+        border-color:#131e3f;
+        padding: 3%;
+        border-radius: 10px;
+        h1{
+            text-transform: uppercase;
+        }
+        hr{
+            border-width: 1px;
+            fill: none;
+            border-color: #131e3f;
+        }
+        .card{
+            input{
+                border-style: none;
+                background: none;
+            }
+            a{
+                text-decoration: none;
+                font-size: 80%;
+                color: white;
+                font-weight: 900;
+                background-color: #131e3f;
+                padding: 1%;
+                border-radius: 5px;
+            }
+            .terms{
+                text-wrap:wrap;
+                font-size: 70%;
+                font-style: italic;
+                padding: 2% 0%;
+            }
+        }
+        .div_card{
+            margin-top: 10%;
+            a{
+                text-decoration: none;
+                font-size: 80%;
+                color: #b49090;
+                font-weight: 900;
+            }
+            .comment_subject{
+                text-transform: uppercase;
+                font-weight: 900;
+            }
+            .commentator{
+                font-size: 80%;
+            }
         }
     }
     

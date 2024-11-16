@@ -8,7 +8,7 @@ div_new.innerHTML = `
 <div class="row">
     <div class="column">
         <div class="card">
-            <h1>New Comment</h1>
+            <h1>New Feedback</h1>
             <p><strong>Name: </strong>
                 <input type="text" id="new_name" value="" placeholder="*Required">
             </p>
@@ -18,7 +18,7 @@ div_new.innerHTML = `
             <p><strong>Subject: </strong>
                 <input type="text" id="new_subject" value="" placeholder="*Required">
             </p>
-            <p><strong>Comment: </strong>
+            <p><strong>Feedback: </strong>
                 <input type="text" id="new_comment" value="" placeholder="*Required">
             </p>
             <br>
@@ -48,7 +48,7 @@ function returnComments(url) {
                         <div class = "column">
                             <div class = "div_card" id = "${comment_id}">
                                 <p class="comment_subject"><strong>Subject: </strong>${comment.subject}</p>
-                                <p class="comment_text"><strong>Comment: </strong>${comment.comment_text}</p>
+                                <p class="comment_text"><strong>Feedback: </strong>${comment.comment_text}</p>
                                 <p class="commentator">${comment.name} - ${formattedDate}</p>
                                 <p><a href="#" onclick="showEmailVerification('${comment._id}', 'edit')" class="verifyBtn" target="_parent">Edit | </a><a href = "#" onclick="showEmailVerification('${comment._id}', 'delete')" target="_parent">Delete</a></p>
                             </div>
