@@ -148,6 +148,12 @@ header, nav, main, footer, .subpages {
                     font-size: 110%;
                 }
             }
+            ol{
+                list-style-type: lower-alpha;
+                li{
+                    padding-top: 3%;
+                }
+            }
             
         }
         .troubleshooting-zone{
@@ -232,6 +238,7 @@ header, nav, main, footer, .subpages {
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
+            z-index: +2;
         }
 
         .close:hover,
@@ -512,6 +519,12 @@ header, nav, main, footer, .subpages {
                     border-radius: 5px;
                     font-weight: 900;
                     color: white;
+                }
+            }
+            ol{
+                list-style-type: lower-alpha;
+                li{
+                    padding-bottom: 3%;
                 }
             }
             .code-file{

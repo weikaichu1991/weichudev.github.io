@@ -71,143 +71,110 @@
                 <p class="note">
                     <strong>Description:</strong>
                     <ul>
-                        <li>The HTML, CSS & JS files for the main page are saved in the root directory of the website.</li>
-                        <li>The sub-directory “works-pages”  and other sub-dir. are created to store the web files of other sub sections of the website.</li>
-                        <li>Templating subpages responsive behaviours and style - In each sub-dir., a mutual CSS file and JavaScript file will be shared by different article HTML hosted in the children folder (ex: “terraform-rg”) of the sub-directory.</li>
+                        <li><h4>The HTML, CSS & JS files for the main page are saved in the root directory of the website.</h4></li>
+                        <li><h4>The sub-directory “works-pages”  and other sub-dir. are created to store the web files of other sub sections of the website.</h4></li>
+                        <li><h4>Templating subpages responsive behaviours and style - In each sub-dir., a mutual CSS file and JavaScript file will be shared by different article HTML hosted in the children folder (ex: “terraform-rg”) of the sub-directory.</h4></li>
                     </ul>
                 </p>
                 <h3>2. Using Github Page to host the static version of my website</h3>
                 <p class="note">
-                    I started to building my website as a static website, and I was eager to find a free of cost method of hosting my website so that I can review my website through mobile devices when I am not at the computer desk. Github Page itself is also a CI/CD solution. The page will be automatically redeployed after newly edited code has been pushed. Here what I have done:
+                    <p>I started to building my website as a static website, and I was eager to find a free of cost method of hosting my website so that I can review my website through mobile devices when I am not at the computer desk. Github Page itself is also a CI/CD solution. The page will be automatically redeployed after newly edited code has been pushed. Here what I have done:</p>
                 </p>
-                <img src="../terraform-rg/rg_images/image 1_edited-01.jpg" class="enlargeable-image" alt="Service Principle page on azure portal">
-                <h3>3. Configuring The New Service Principle</h3>
                 <p class="note">
-                    After the Add New Azure Arc Service Principle (a.k.a SPN) comes up, filling the name of the SPN you like. Choosing Subscription for the scope assignment level as we are trying to create a Resource Group (RG), therefore we don’t have any resource group we would like to use yet. For the expiry date, I chose 3 months time for general reason.
+                    <ol>
+                        <li>
+                            <h4>Go to ‘setting’ of the Github repository containing the HTML, CSS and JS files of the website. </h4><br>
+                            <img src="./article-01-image/image-0.png" class="enlargeable-image" alt="Github Page under Setting Section">
+                        </li>
+                        <li>
+                            <h4>Change the “Branch” to main (or other desired branch) and assign the folder (’ /root ‘ in this case) containing the website files. Then click “save.”</h4><br>
+                            <img src="./article-01-image/image-1.png" class="enlargeable-image" alt="Github Page main portal to setup deploy branch">
+                        </li>
+                        <li>
+                            <h4>Navigating to Github Action, and you will find the website has been automatically built and deployed. </h4><br>
+                            <img src="./article-01-image/image-2.png" class="enlargeable-image" alt="Github Page main portal to setup deploy branch">
+                        </li>
+                        <li>
+                            <h4>Click the completed job and the url to access the website will be found under the deploy job node.
+                            </h4><br>
+                            <img src="./article-01-image/image-3.png" class="enlargeable-image" alt="Github Page main portal to setup deploy branch">
+                            <p>Now I can use the url to check the deployed website wherever and however I want! </p>
+                        </li>
+                    </ol>
                 </p>
-                <img src="../terraform-rg/rg_images/image 2_edited-01.jpg" class="enlargeable-image" alt="spn config page">
-                <h3>4. Finding the Credential Values</h3>
+                <h3>3. Using The VS Code Extension ‘ Live Preview’ to Review the Visual Result In Real Time As Soon As The code files are edited.</h3>
                 <p class="note">
-                    After creating the SPN, you will then have the <code>CLIENT_ID</code>, <code>CLIENT_SECRET_VALUE</code>, <code>TENANT_ID</code>(Manually creating one by clicking into the Client Credentials if Secret Value creation is not included in the SPN configuration process.)
+                    <ul>
+                        <li>
+                            <h4>The extension installation page in VS Code</h4>
+                            <img src="./article-01-image/image-4.png" class="enlargeable-image" alt="The screenshot of extension'Live Preview'">
+                        </li>
+                        <li>
+                            <h4>The application of the extension.</h4>
+                            <p>To preview the web page, clicking the window with magnifyinf gladd icon"</p>
+                            <img src="./article-01-image/image-5.png" class="enlargeable-image" alt="The screenshot of using the extension'Live Preview'">
+                        </li>
+                    </ul>
                 </p>
-                <img src="../terraform-rg/rg_images/image 3_edited-01.jpg" class="enlargeable-image" alt="Image 6">
-                <h3>5. Finding the Subscription ID</h3>
-                <p class="note">
-                    For the Subscription, it will be found at the Subscription management page. 
-                </p>
-                <img src="../terraform-rg/rg_images/image 4_edited.jpg" class="enlargeable-image" alt="Image 6">
-                <img src="../terraform-rg/rg_images/image 5_edited-01.jpg" class="enlargeable-image" alt="Image 6">                
-                <br>
                 <!-- The end of the step 01 -->
-                <h2>Step 02 | Hiding the Azure User Credential in Github Secret</h2>
-                <h3>1. Hiding the SPN Values on GitHub</h3>
+                
+                <h2>Step 02 | Creating container for limiting the width of the viewport</h2>
                 <p class="note">
-                    Go to the repository where I am storing my terrafrom and workflow files and have the 4 variables I need for interacting with Azure assigned as Secrets for Github Actions. 
+                    <p>In order to make sure the web elements that I have included not overflow outside the viewport, I created a viewport container overarching the web page interface to constrain the size of the area where the elements can reach by specifying the max-width or min-width of the media. The following code showcase the code that I have included in the project file:</p>
                 </p>
-                <img src="../terraform-rg/rg_images/image 6.png" class="enlargeable-image" alt="Image 6">
-                <img src="../terraform-rg/rg_images/image 7.png" class="enlargeable-image" alt="Image 6">
-                <h3>2. Setting Up Automation workflow</h3>
+                <h3>HTML:</h3>
                 <p class="note">
-                    Configuring the workflow file for triggering GitHub Action.
+                    <p>Initiating the viewport container in the meta section of the HTML file.</p>
                 </p>
-                <p class="code-file">workflows.yml</p>
-                <pre class="code"><code>
-name: 'Terraform'
-
-on:
-    push:
-        branches: [ "main" ]
-    pull_request:
-    workflow_dispatch:
-
-permissions:
-    contents: read
-
-env:
-    ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-    ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET_VALUE }}
-    ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-
-jobs:
-    terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
-    environment: testing
-
-    <sub class="anno"># Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest</sub>
-    defaults:
-        run:
-        shell: bash
-
-    steps:
-    <sub class="anno"># Checkout the repository to the GitHub Actions runner</sub>
-    - name: Checkout
-        uses: actions/checkout@v4
-
-    <sub class="anno"># Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token</sub>
-    - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-    <sub class="anno"># Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.</sub>
-    - name: Terraform Init
-        run: terraform init
-
-    <sub class="anno">#Azure Environment Variables</sub>
-    - name: Set Azure credentials
-        run: |
-        echo "AZURE_CREDENTIALS={ \"clientId\": \"${{ secrets.AZURE_CLIENT_ID }}\", \"clientSecret\": \"${{ secrets.AZURE_CLIENT_SECRET_VALUE }}\", \"subscriptionId\": \"${{ secrets.AZURE_SUBSCRIPTION_ID }}\", \"tenantId\": \"${{ secrets.AZURE_TENANT_ID }}\" }" >> $GITHUB_ENV
-
-    - name: Azure Login
-        uses: azure/login@v1
-        with:
-        creds: ${{ env.AZURE_CREDENTIALS }}
-
-    <sub class="anno"># Checks that all Terraform configuration files adhere to a canonical format</sub>
-    - name: Terraform Format
-        run: terraform fmt
-
-    <sub class="anno"># Generates an execution plan for Terraform</sub>
-    - name: Terraform Plan
-        run: terraform plan -input=false
-
-        <sub class="anno"># On push to "main", build or change infrastructure according to Terraform configuration files</sub>
-        <sub class="anno"># Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks</sub>
-    - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
-                </code></pre>
-                <br>
+                <p class="code-file">index.html</p>
+                <script src="https://gist.github.com/weikaichu1991/910f3488693147fae4bad16074b7db57.js"></script>
+                <h3>CSS:</h3>
+                <p class="code-file">style.css</p>
+                <script src="https://gist.github.com/weikaichu1991/cf2da1b643d738214b9ca3ff13f72baa.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>Firstly, assigning the maximum viewport width that you want the container to impose on the webpage visual.</li>
+                        <li>Secondly, before diving into the detail setting of each content module of the webpage, setting up the parameters that will apply to the whole body of the website regardless the media viewport size, such as webpage’s foundational colour, thematic font family, padding size to the edge of the screen.</li>
+                        <li>Thirdly, with @media() media queries, specifying the max-width or min-width of the viewport in accordance to the size of the device screen to setup the foundation of the responsive mechanism of web viewing.</li>
+                        <li>Last but not least, starting to style content modules and elements by placing the styling code in the media query bucket. </li>
+                    </ol>
+                </p>
                 <!-- The end of step 02 -->
-                <h2>Step 03 | Preparing Terraform files for Deploying Resource Group</h2>
-                <h3>1. Configuring the main terraform file</h3>
-                <p class="code-file">main.tf</p>
-                <pre class="code"><code>
-<sub class="anno"># Create a Resource Group (if it doesn’t exist)</sub>
-resource "azurerm_resource_group" "wcdev_tf_rg" {
-    name     = "weichudev_terraform_RG"
-    location = "UK South"
-}
-                </code></pre>
-                <h3>2. Configuring the terraform provider file</h3>
-                <p class="code-file">provider.tf</p>
-                <pre class="code"><code>
-provider "azurerm" {
-    features {}
-    resource_provider_registrations = "none"
-}
-
-<sub class="anno"># Set the Azure Provider source and version being used</sub>
-terraform {
-    required_version = ">= 0.14"
-
-    required_providers {
-        azurerm = {
-            source  = "hashicorp/azurerm"
-            version = ">= 3.0.0"
-        }
-    }
-}
-                </code></pre>
+                
+                <h2>Step 03 | Creating the Navigation Bar</h2>
+                <h3>HTML:</h3>
+                <p class="note">
+                    <ol>
+                        <li>Creating a module with <code>div</code> element for the whole navigation bar secsion.</li>
+                        <li>using <code>nav</code> and <code>ul</code> to define the navigations links connecting to the subpages, my Linkedin page and triggering the emailing function.</li>
+                    </ol>
+                </p>
+                <p class="code-file">index.html</p>
+                <script src="https://gist.github.com/weikaichu1991/c389f4200db48f8adf7c7ca680c187fe.js"></script>
+                
+                <h3>CSS:</h3>
+                <p class="note">
+                    <ol>
+                        <li>Starting styling the navigation module in the media query bucket for the computer or tablet-friendly viewport size (<code>@media (min-width: 600px)</code>).</li>
+                        <li>After finishing styling the elements for the computer or tablet-friendly viewport size, moving on to the media query bucket that is for mobile-friendly viewport size (<code>@media (max-width:600px)</code>).</li>
+                        <li>Moving on to the JavaScript & come back to the CSS file later to further edit the menu-icon and navigation links. Making sure the menu-icon is hidden within the bigger viewport and shown in the smaller viewport.</li>
+                    </ol>
+                </p>
+                <p class="code-file">style.css</p>
+                <script src="https://gist.github.com/weikaichu1991/0e17a7c96f0d07eefbccf7961afcd8f6.js"></script>
+                <h3>JS:</h3>
+                <p class="note">
+                    <ol>
+                        <li>This code show or hide navigation links when a menu icon is clicked. This a responsive web navigation menu for mobile screen.</li>
+                        <li>Firstly, selecting the HTML element with the ID menu-icon using document.getElementById() function.</li>
+                        <li>Adding  an event listener .addEventListener('click', function() { ... })to the selected element that listens for a click event. When the element is clicked, the function inside the event listener is executed.</li>
+                        <li>Inside the event listener function, using document.getElementById()again to select the element  nav-links and assigns it to the constant navLinks.</li>
+                        <li>Using navLinks.classList.toggle('active')to create the mechanism of showing and hiding the menu list.</li>
+                    </ol>
+                </p>
+                <p class="code-file">script.js</p>
+                <script src="https://gist.github.com/weikaichu1991/f9fa890edd5b468c3f4c7ae86cf7053a.js"></script>
+                <!-- The end of step 03 -->
                 <br>
                 <h2>Step 04 | Run the GitHub Workflow</h2>
                 <p class="note">
@@ -319,5 +286,5 @@ $ az role assignment create --assignee "(SPN ObjectID)" -
     </div>
 </body>
 
-<script src="./terraform_rg.js"></script>
+<script src="./article-01-firstFrontend.js"></script>
 </html>
