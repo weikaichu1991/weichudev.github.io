@@ -61,6 +61,9 @@ nav {
 .menu-icon{
     display: none;
 }
+.mobile-top-icon{
+    display: none;
+}
 nav ul{
     /* background-color: rgba(180, 144, 144, 0.81); */
     border-radius: 10px;
