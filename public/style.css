@@ -108,7 +108,7 @@ nav ul li{
 }
 
 /* The site back ground */
-.gradient-circle{
+.background-circle{
     position: absolute;
     top: 20%;
     right:1%;
@@ -572,7 +572,7 @@ main {
     }
     
     /* The site back ground */
-    .gradient-circle{
+    .background-circle{
         position: absolute;
         top: 20%;
         right:20%;
