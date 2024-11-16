@@ -5,19 +5,19 @@
 }
 @font-face{
     font-family: 'Cascadia Code';
-    src: url('./CascadiaCode/woff2/CascadiaCode.woff2'),
-    url('./CascadiaCode/woff2/CascadiaCodeItalic.woff2'),
-    url('./CascadiaCode/woff2/CascadiaCodeNF.woff2'),
-    url('./CascadiaCode/woff2/CascadiaCodeNFItalic.woff2'),
-    url('./CascadiaCode/woff2/CascadiaCodePL.woff2'),
-    url('./CascadiaCode/woff2/CascadiaCodePLItalic.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMono.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMonoItalic.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMonoNF.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMonoNFItalic.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMonoPL.woff2'),
-    url('./CascadiaCode/woff2/CascadiaMonoPLItalic.woff2'),
-    url('./CascadiaCode/ttf/CascadiaCode.ttf');
+    src: url('../CascadiaCode/woff2/CascadiaCode.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeNF.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodeNFItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodePL.woff2'),
+    url('../CascadiaCode/woff2/CascadiaCodePLItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMono.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoNF.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoNFItalic.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoPL.woff2'),
+    url('../CascadiaCode/woff2/CascadiaMonoPLItalic.woff2'),
+    url('../CascadiaCode/ttf/CascadiaCode.ttf');
 }
 body{
     background-color: #EBEBEB;
