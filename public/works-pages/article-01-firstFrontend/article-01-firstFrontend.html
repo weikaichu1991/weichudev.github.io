@@ -162,27 +162,198 @@
                 </p>
                 <p class="code-file">style.css</p>
                 <script src="https://gist.github.com/weikaichu1991/0e17a7c96f0d07eefbccf7961afcd8f6.js"></script>
-                <h3>JS:</h3>
+                <h3>JavaScript:</h3>
                 <p class="note">
                     <ol>
                         <li>This code show or hide navigation links when a menu icon is clicked. This a responsive web navigation menu for mobile screen.</li>
-                        <li>Firstly, selecting the HTML element with the ID menu-icon using document.getElementById() function.</li>
-                        <li>Adding  an event listener .addEventListener('click', function() { ... })to the selected element that listens for a click event. When the element is clicked, the function inside the event listener is executed.</li>
-                        <li>Inside the event listener function, using document.getElementById()again to select the element  nav-links and assigns it to the constant navLinks.</li>
-                        <li>Using navLinks.classList.toggle('active')to create the mechanism of showing and hiding the menu list.</li>
+                        <li>Firstly, selecting the HTML element with the ID <code>menu-icon</code> using <code>document.getElementById()</code> function.</li>
+                        <li>Adding  an event listener <code>.addEventListener('click', function() { ... })</code>to the selected element that listens for a <code>click</code> event. When the element is clicked, the function inside the event listener is executed.</li>
+                        <li>Inside the event listener function, using <code>document.getElementById()</code> again to select the element <code>nav-links</code> and assigns it to the constant navLinks.</li>
+                        <li>Using <code>navLinks.classList.toggle('active')</code>to create the mechanism of showing and hiding the menu list.</li>
                     </ol>
                 </p>
                 <p class="code-file">script.js</p>
                 <script src="https://gist.github.com/weikaichu1991/f9fa890edd5b468c3f4c7ae86cf7053a.js"></script>
                 <!-- The end of step 03 -->
                 <br>
-                <h2>Step 04 | Run the GitHub Workflow</h2>
+                <h2>Step 04 | Creating my project works intro. section</h2>
+                <h3>HTML:</h3>
                 <p class="note">
-                    Commit & Sync the changes to the repository, the workflow will then be triggered.
+                    <ol>
+                        <li>Creating the main title and subtitle of this module. (class:  workintro-title )</li>
+                        <li>Using multiple <div> elements to create cards  (class:  work-example ) in a technical topic catalogue (class:  myWorks_menu ) which links to various work example articles. </li>
+                        <li>Creating buttons linking to pop out pages (class: overlay1 - overlay5). Each pop-out page will overlay on main page containing work examples menu related to 1 of the 5 technical topics.</li>
+                    </ol>
                 </p>
-                <img src="../terraform-rg/rg_images/image 8.png" class="enlargeable-image" alt="Image 6">
-                <img src="../terraform-rg/rg_images/image 9.png" class="enlargeable-image" alt="Image 6">
-                <img src="../terraform-rg/rg_images/image 10_edited-01.jpg" class="enlargeable-image" alt="Image 6">
+                <div class="call-out">
+                    <p>&#128161 The code snippet here only demonstrates the HTML code belonging to one of the technical topics. Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html">my repository</a> for the full HTML code.</p>
+                </div>
+                <p class="code-file">index.html</p>
+                <script src="https://gist.github.com/weikaichu1991/6ff58074dcf45a43335a7249fcdd287b.js"></script>
+                <h3>JavaScript:</h3>
+                <p class="note">
+                    <ol>
+                        <li><h4>Overlay Button Click Handlers:</h4>
+                            <ul>
+                                <li>Adds click event listeners to buttons with IDs openOverlayBtn1 to openOverlayBtn5.</li>
+                                <li>When a button is clicked, it sets the display style of the corresponding overlay (overlay1 to overlay5) to flex, making it visible.</li>
+                            </ul>
+                        </li>
+                        <li><h4>Overlay Close Functions:</h4>
+                            <ul>
+                                <li>Defines functions closeOverlay1 to closeOverlay5 that set the display style of the corresponding overlay to none, which will hide the pop-out page.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <p class="code-file">script.js</p>
+                <script src="https://gist.github.com/weikaichu1991/0e880172277489aa2280afea8b9abd9f.js"></script>
+                <!-- The end of step 04 -->
+                <br>
+                <h2>Step 05-1 | Creating the web background geometry using JavaScript - Wave Noise Pattern</h2>
+                <h3>HTML:</h3>
+                <p class="note">
+                    <ol>
+                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
+                            <ul>
+                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <p class="code-file">index.html</p>
+                <script src="https://gist.github.com/weikaichu1991/735acf11a07801a3e156491e306e15ab.js"></script>
+                <h3>JavaScript:</h3>
+                <p class="code-file">script.js</p>
+                <script src="https://gist.github.com/weikaichu1991/1331bee49d36b5f89af0aebb10a7132a.js"></script>
+                <p class="note">
+                    <ol>
+                        <li><h4>Canvas Setup:</h4>
+                            <ul>
+                                <li><code>const canvas = document.getElementById('myCanvas');</code> : Get the canvas element by its ID.</li>
+                                <li><code>const ctx = canvas.getContext('2d');</code> : Get the 2D drawing context of the canvas.</li>
+                                <li><code>const width = canvas.width;</code> : Get the width of the canvas.</li>
+                                <li><code>const height = canvas.height;</code> : Get the height of the canvas.</li>
+                                <li><code>const centerX = width / 2;</code> : Calculate the X-coordinate of the canvas center.</li>
+                                <li><code>const centerY = height / 2;</code> : Calculate the Y-coordinate of the canvas center.</li>
+                                <li><code>const radius = width / 2;</code> : Set the radius for the circle to half the canvas width.</li>
+                            </ul>
+                        </li>
+                        <li><h4>Function Definition:</h4>
+                            <ul>
+                                <li><code>function drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length)</code> : Define a function to draw a wave curve.
+                                    <ul>
+                                        <li><code>ctx.beginPath();</code>: Start a new path.</li>
+                                        <li><code>ctx.moveTo(startX, startY);</code>: Move to the starting point of the wave.</li>
+                                        <li>Loop through the X-coordinates to draw the wave:
+                                            <ul>
+                                                <li><code>const y = startY + amplitude * Math.sin(frequency * (x - startX) + phase);</code>: Calculate the Y-coordinate using a sine function.</li>
+                                                <li><code>ctx.lineTo(x, y);</code>: Draw a line to the calculated point.</li>
+                                            </ul>
+                                        </li>
+                                        <li><code>ctx.stroke();</code>: Render the wave curve.</li>
+                                    </ul></li>
+                            </ul>
+                        </li>
+                        <li><h4>Canvas Drawing:</h4>
+                            <ul>
+                                <li><code>ctx.clearRect(0, 0, width, height);</code>: Clear the entire canvas.</li>
+                                <li><code>ctx.save();</code>: Save the current context state.</li>
+                                <li><code>ctx.translate(centerX, centerY);</code>: Translate the context to the center of the canvas.</li>
+                                <li><code>ctx.rotate(30 * Math.PI / 180);</code>: Rotate the context by 30 degrees (converted to radians).</li>
+                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                            </ul>
+                        </li>
+                        <li><h4>Draw Circle and Waves:</h4>
+                            <ul>
+                                <li><code>ctx.beginPath();</code>: Start a new path for the circle.</li>
+                                <li><code>ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);</code>: Draw a circle centered at the canvas center.</li>
+                                <li><code>ctx.clip();</code>: Clip the drawing area to the circle.</li>
+                                <li>Loop to draw multiple wave curves:
+                                    <ul>
+                                        <li>Calculate random starting Y-coordinate, amplitude, frequency, and phase for each wave.</li>
+                                        <li><code>ctx.strokeStyle = rgba(255, 255, 0, ${Math.random() * 0.5 + 0.5});</code>: Set a random stroke color with random opacity.</li>
+                                        <li><code>ctx.lineWidth = 1;</code>: Set the line width to 1.</li>
+                                        <li><code>drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length);</code>: Draw the wave curve using the defined function.</li>
+                                    </ul>
+                                </li>
+                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <h3>CSS:</h3>
+                <p class="code-file">script.js</p>
+                <script src="https://gist.github.com/weikaichu1991/3751ac901000f28164daa65dfd9e9bf1.js"></script>
+                <p class="note">
+                    <ol>
+                        <li><h4>Configuring the position and the size of the webpage background geometry:</h4>
+                            <ul>
+                                <li>Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <h2>Step 05-2 | Creating the web background geometry using JavaScript - Gradients Moons</h2>
+                <h3>HTML:</h3>
+                <p class="note">
+                    <ol>
+                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
+                            <ul>
+                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <p class="code-file">index.html</p>
+                <script src="https://gist.github.com/weikaichu1991/68d733f444f4d06f1cf795237e39b32d.js"></script>
+                <h3>JavaScript:</h3>
+                <p class="code-file">script.js</p>
+                <script src="https://gist.github.com/weikaichu1991/507fe339da0115f1301ef8d475facf21.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>Firstly, using Canvas API to set up a 2D canvas that placed at the placeholder created by the <code>canvas</code>element in the HTML file. This will be the virtual drawing board for JavaScript to generate the graphical  content.</li>
+                        <li>Secondly, creating a radial gradient property using <code>ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)</code>method. The parameters define two circles: the inner circle with center (x0, y0) and radius r0, and the outer circle with center (x1, y1) and radius r1. The parameters canvas.width/2, canvas.height/2, 0define the inner circle, centered at the middle of the canvas with a radius of 0. These parameters 0, canvas.height/2, canvas.widthdefine the outer circle, centered at the left edge of the canvas vertically centered, with a radius equal to the canvas width.</li>
+                        <li><h4>Canvas Drawing:</h4>
+                            <ul>
+                                <li><code>ctx.clearRect(0, 0, width, height);</code>: Clear the entire canvas.</li>
+                                <li><code>ctx.save();</code>: Save the current context state.</li>
+                                <li><code>ctx.translate(centerX, centerY);</code>: Translate the context to the center of the canvas.</li>
+                                <li><code>ctx.rotate(30 * Math.PI / 180);</code>: Rotate the context by 30 degrees (converted to radians).</li>
+                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                            </ul>
+                        </li>
+                        <li><h4>Draw Circle and Waves:</h4>
+                            <ul>
+                                <li><code>ctx.beginPath();</code>: Start a new path for the circle.</li>
+                                <li><code>ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);</code>: Draw a circle centered at the canvas center.</li>
+                                <li><code>ctx.clip();</code>: Clip the drawing area to the circle.</li>
+                                <li>Loop to draw multiple wave curves:
+                                    <ul>
+                                        <li>Calculate random starting Y-coordinate, amplitude, frequency, and phase for each wave.</li>
+                                        <li><code>ctx.strokeStyle = rgba(255, 255, 0, ${Math.random() * 0.5 + 0.5});</code>: Set a random stroke color with random opacity.</li>
+                                        <li><code>ctx.lineWidth = 1;</code>: Set the line width to 1.</li>
+                                        <li><code>drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length);</code>: Draw the wave curve using the defined function.</li>
+                                    </ul>
+                                </li>
+                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <h3>CSS:</h3>
+                <p class="code-file"><style class="css"></style></p>
+                <script src="https://gist.github.com/weikaichu1991/3751ac901000f28164daa65dfd9e9bf1.js"></script>
+                <p class="note">
+                    <ol>
+                        <li><h4>Configuring the position and the size of the webpage background geometry:</h4>
+                            <ul>
+                                <li>Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+
                 <!-- Modal structure -->
                 <div id="imageModal" class="modal">
                     <span class="close">&times;</span>
