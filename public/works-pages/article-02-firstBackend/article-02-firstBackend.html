@@ -48,11 +48,11 @@
             
             <div class="content-section">
                 <p class="note">
-                    <p>After I created my frontend content ( see the article [<a href="../article-01-firstFrontend/article-01-firstFrontend.html">Creating the frontend of my website with Github Page</a>]), I decided to add a commenting function for more audience interaction, and also thought this would be an amazing idea to practice backend creation. ( According to some of the definition I have read, I guess this makes my website dynamic? Let me know if you think it is not. I understand the comment function is very basic for a dynamic website compared with website like Amzon or Tripadvisor, etc.)
+                    <p>After I created my frontend content ( see the article [<a href="../article-01-firstFrontend/article-01-firstFrontend.html" target="_blank">Creating the frontend of my website with Github Page</a>]), I decided to add a commenting function for more audience interaction, and also thought this would be an amazing idea to practice backend creation. ( According to some of the definition I have read, I guess this makes my website dynamic? Let me know if you think it is not. I understand the comment function is very basic for a dynamic website compared with website like Amzon or Tripadvisor, etc.)
                     <br><br>Without further ado, let’s go!</p>
                 </p>
                 <img src="./article-02-image/image-23.webp" class="enlargeable-image" alt="api concept">
-                <p class="footnote">source: <a href="https://medium.com/@adityagaba1322/streamlining-backend-frontend-integration-a-quick-guide-145eca3cca05">Streamlining Backend-Frontend Integration: A Quick Guide</a></p>
+                <p class="footnote">Image source: <a href="https://medium.com/@adityagaba1322/streamlining-backend-frontend-integration-a-quick-guide-145eca3cca05">Streamlining Backend-Frontend Integration: A Quick Guide</a></p>
                 <h2>Step 01 | Preparation - Document Management</h2>
                 <h3>1. Brief:</h3>
                 <p class="note">
@@ -91,7 +91,7 @@
                         <li>
                             <h4>Connection Form</h4>
                             <p>A connection form will pop-up after “Create Deployment” is clicked. Memo down the “Username” & “Password”, this will be needed as the environment variables for connecting to the database. Click the “Create Database User” before proceeding to “Choose a connection method”</p>
-                            <img src="./article-02-image/image 6.png" class="enlargeable-image" alt="mongodb connection form">
+                            <img src="./article-02-image/image 6-01.png" class="enlargeable-image" alt="mongodb connection form">
                         </li>
                         <li>
                             <h4>Connection Method</h4>
@@ -118,202 +118,103 @@
                 <p class="note">
                     <ol>
                         <li>
-                            <h4>Setup environment variable </h4>
-                            <img src="./article-02-image/image-0.png" class="enlargeable-image" alt="mongodb setup 01">
-                            <img src="./article-02-image/image 1.png" class="enlargeable-image" alt="mongodb setup 02">
-                            <img src="./article-02-image/image 2.png" class="enlargeable-image" alt="mongodb setup 03">
-                        </li>
-                        <li>
-                            <h4>Creating a cluster</h4>
+                            <h4>Setup environment variable</h4>
                             <p>creating .env (specified in .gitignore) file for storing the user credential to the DB.</p>
-                            <img src="./article-02-image/image 3.png" class="enlargeable-image" alt="mongodb cluster setup 01">
-                            <img src="./article-02-image/image 4.png" class="enlargeable-image" alt="mongodb cluster setup 02">
-                            <img src="./article-02-image/image 5.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                            <p class="code-file">.env</p>
+                            <script src="https://gist.github.com/weikaichu1991/99c8c968e51de5ebb09edf8db7af5ae6.js"></script>
                         </li>
                         <li>
-                            <h4>Connection Form</h4>
-                            <p>A connection form will pop-up after “Create Deployment” is clicked. Memo down the “Username” & “Password”, this will be needed as the environment variables for connecting to the database. Click the “Create Database User” before proceeding to “Choose a connection method”</p>
-                            <img src="./article-02-image/image 6.png" class="enlargeable-image" alt="mongodb connection form">
+                            <h4>Set Up Mongoose and Connect to MongoDB Atlas</h4>
+                            <p>Create a file named <code>server.js</code> to set up the Express server. </p>
+                            <p class="code-file">server.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/6645759233458e2a2615ed09c39ea2cc.js"></script>
+                            <p>Create a file named <code>db.js</code> to set up Mongoose and connect to MongoDB Atlas. The configuration will use the credentials from environment variables, and then starting the Express server on a specified port as well as handling any connection errors.</p>
+                            <p class="code-file">db.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/c19ac0f3ad88ca6a55ef0e5ba8ade47a.js"></script>
                         </li>
-                        <li>
-                            <h4>Connection Method</h4>
-                            <p>Choosing the Connection Method. Choosing “Drivers” option as the connection method, which will allow us to access the database with native drivers, like Node.js, Go, etc.</p>
-                            <img src="./article-02-image/image 7.png" class="enlargeable-image" alt="mongodb connection method">
-                        </li>
-                        <li>
-                            <h4>Connection String</h4>
-                            <p>In the next connection step, set the choice of the driver / version as <code>Node.js / v 5.5</code> or later. Following the instruction of installing the driver. Memo down the connection string which will be needed to include in the server routing file.</p>
-                            <img src="./article-02-image/image 8.png" class="enlargeable-image" alt="mongodb connection string">
-                        </li>
-                        <li>
-                            <h4>Cluster & Collection</h4>
-                            <p>Go to the “Clusters” pane in the menu on the left side of the screen, the newly created cluster will be found. In each cluster, the data will be stored as a collection, which will be found by clicking “Browse Collections” (At the moment no data can be found in there).</p>
-                            <img src="./article-02-image/image 9.png" class="enlargeable-image" alt="mongodb cluster & collection 01">
-                            <img src="./article-02-image/image 10.png" class="enlargeable-image" alt="mongodb cluster & collection 02">
-                        </li>
+                        
                     </ol>
                 </p>
                 <!-- The end of step 03 -->
                 <br>
-                <h2>Step 04 | Creating my project works intro. section</h2>
-                <h3>HTML:</h3>
+                <h2>Step 04 | Creating API endpoints based on the CRUD methods.</h2>
                 <p class="note">
                     <ol>
-                        <li>Creating the main title and subtitle of this module. (class:  workintro-title )</li>
-                        <li>Using multiple <div> elements to create cards  (class:  work-example ) in a technical topic catalogue (class:  myWorks_menu ) which links to various work example articles. </li>
-                        <li>Creating buttons linking to pop out pages (class: overlay1 - overlay5). Each pop-out page will overlay on main page containing work examples menu related to 1 of the 5 technical topics.</li>
-                    </ol>
-                </p>
-                <div class="call-out">
-                    <p>&#128161 The code snippet here only demonstrates the HTML code belonging to one of the technical topics. Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html">my repository</a> for the full HTML code.</p>
-                </div>
-                <p class="code-file">index.html</p>
-                <script src="https://gist.github.com/weikaichu1991/6ff58074dcf45a43335a7249fcdd287b.js"></script>
-                <h3>JavaScript:</h3>
-                <p class="note">
-                    <ol>
-                        <li><h4>Overlay Button Click Handlers:</h4>
-                            <ul>
-                                <li>Adds click event listeners to buttons with IDs openOverlayBtn1 to openOverlayBtn5.</li>
-                                <li>When a button is clicked, it sets the display style of the corresponding overlay (overlay1 to overlay5) to flex, making it visible.</li>
-                            </ul>
+                        <li>
+                            <h4>Define the Comment Model</h4>
+                            <p>Create a file named <code>Comment.js</code> to define the Comment schema and model.</p>
+                            <p class="code-file">Comment.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/38d8f8fc9b9e1fac33da6b3ff940e2ba.js"></script>
                         </li>
-                        <li><h4>Overlay Close Functions:</h4>
-                            <ul>
-                                <li>Defines functions closeOverlay1 to closeOverlay5 that set the display style of the corresponding overlay to none, which will hide the pop-out page.</li>
-                            </ul>
+                        <li>
+                            <h4>Defining API Endpoints Routing</h4>
+                            <p>Create a file named <code>comments.route.js</code> to set up the Express server and define the API endpoints.</p>
+                            <p class="code-file">comments.route.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/572abebabf0b39f1f501f4e8efe16ead.js"></script>
                         </li>
                     </ol>
                 </p>
-                <p class="code-file">script.js</p>
-                <script src="https://gist.github.com/weikaichu1991/0e880172277489aa2280afea8b9abd9f.js"></script>
                 <!-- The end of step 04 -->
                 <br>
-                <h2>Step 05-1 | Creating the web background geometry using JavaScript - Wave Noise Pattern</h2>
-                <h3>HTML:</h3>
+                <h2>Step 05 | Run the connection code file with Node.js.</h2>
                 <p class="note">
                     <ol>
-                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
-                            <ul>
-                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
-                            </ul>
+                        <li>
+                            Running the node module for testing the api connection, using the command:
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/ebb449f1f522894b3c22e391400c4ea8.js"></script>
+                            <img src="./article-02-image/image 11-01.png" class="enlargeable-image" alt="mongodb cluster setup 03">
                         </li>
-                    </ol>
-                </p>
-                <p class="code-file">index.html</p>
-                <script src="https://gist.github.com/weikaichu1991/735acf11a07801a3e156491e306e15ab.js"></script>
-                <h3>JavaScript:</h3>
-                <p class="code-file">script.js</p>
-                <script src="https://gist.github.com/weikaichu1991/1331bee49d36b5f89af0aebb10a7132a.js"></script>
-                <p class="note">
-                    <ol>
-                        <li><h4>Canvas Setup:</h4>
+                        <li>
+                            <h4>5-1. Testing the API with Postman</h4>
+                            <p>Using Postman to checking if the data has been successfully stored, updated, added in or deleted at MongoDB Portal.</p>
                             <ul>
-                                <li><code>const canvas = document.getElementById('myCanvas');</code> : Get the canvas element by its ID.</li>
-                                <li><code>const ctx = canvas.getContext('2d');</code> : Get the 2D drawing context of the canvas.</li>
-                                <li><code>const width = canvas.width;</code> : Get the width of the canvas.</li>
-                                <li><code>const height = canvas.height;</code> : Get the height of the canvas.</li>
-                                <li><code>const centerX = width / 2;</code> : Calculate the X-coordinate of the canvas center.</li>
-                                <li><code>const centerY = height / 2;</code> : Calculate the Y-coordinate of the canvas center.</li>
-                                <li><code>const radius = width / 2;</code> : Set the radius for the circle to half the canvas width.</li>
-                            </ul>
-                        </li>
-                        <li><h4>Function Definition:</h4>
-                            <ul>
-                                <li><code>function drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length)</code> : Define a function to draw a wave curve.
-                                    <ul>
-                                        <li><code>ctx.beginPath();</code>: Start a new path.</li>
-                                        <li><code>ctx.moveTo(startX, startY);</code>: Move to the starting point of the wave.</li>
-                                        <li>Loop through the X-coordinates to draw the wave:
-                                            <ul>
-                                                <li><code>const y = startY + amplitude * Math.sin(frequency * (x - startX) + phase);</code>: Calculate the Y-coordinate using a sine function.</li>
-                                                <li><code>ctx.lineTo(x, y);</code>: Draw a line to the calculated point.</li>
-                                            </ul>
-                                        </li>
-                                        <li><code>ctx.stroke();</code>: Render the wave curve.</li>
-                                    </ul></li>
-                            </ul>
-                        </li>
-                        <li><h4>Canvas Drawing:</h4>
-                            <ul>
-                                <li><code>ctx.clearRect(0, 0, width, height);</code>: Clear the entire canvas.</li>
-                                <li><code>ctx.save();</code>: Save the current context state.</li>
-                                <li><code>ctx.translate(centerX, centerY);</code>: Translate the context to the center of the canvas.</li>
-                                <li><code>ctx.rotate(30 * Math.PI / 180);</code>: Rotate the context by 30 degrees (converted to radians).</li>
-                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
-                            </ul>
-                        </li>
-                        <li><h4>Draw Circle and Waves:</h4>
-                            <ul>
-                                <li><code>ctx.beginPath();</code>: Start a new path for the circle.</li>
-                                <li><code>ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);</code>: Draw a circle centered at the canvas center.</li>
-                                <li><code>ctx.clip();</code>: Clip the drawing area to the circle.</li>
-                                <li>Loop to draw multiple wave curves:
-                                    <ul>
-                                        <li>Calculate random starting Y-coordinate, amplitude, frequency, and phase for each wave.</li>
-                                        <li><code>ctx.strokeStyle = rgba(255, 255, 0, ${Math.random() * 0.5 + 0.5});</code>: Set a random stroke color with random opacity.</li>
-                                        <li><code>ctx.lineWidth = 1;</code>: Set the line width to 1.</li>
-                                        <li><code>drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length);</code>: Draw the wave curve using the defined function.</li>
-                                    </ul>
+                                <li><strong>GET the whole data collection in the MongoDB cluster.</strong>
+                                    <img src="./article-02-image/image 12.png" class="enlargeable-image" alt="mongodb cluster setup 03">
                                 </li>
-                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                                <li><strong>POST / Adding various strings of new data to the collection based on the data model schema that has been setup.</strong>
+                                    <img src="./article-02-image/image 13.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 14.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>GET + data ID/ Retrieving single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 15.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>PUT + data ID/ Updating single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 16.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 17.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>DELETE + data ID/ Deleting single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 18.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 19.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
                             </ul>
                         </li>
-                    </ol>
-                </p>
-                <h3>CSS:</h3>
-                <p class="code-file">style.css</p>
-                <script src="https://gist.github.com/weikaichu1991/3751ac901000f28164daa65dfd9e9bf1.js"></script>
-                <p class="note">
-                    <ol>
-                        <li><h4>Configuring the position and the size of the webpage background geometry:</h4>
+                        <li>
+                            <h4>5-2. Testing the API with a terminal.</h4>
+                            <p><strong>Command line for testing the api functions POST GET PUT DELETE:</strong></p>
                             <ul>
-                                <li>Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.</li>
+                                <li><strong>POST</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/d0a7f21d4003669fb46c609e1ac1d26b.js"></script>
+                                </li>
+                                <li><strong>GET</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/74658609399456c39c8e2eb00eb988b2.js"></script>
+                                </li>
+                                <li><strong>PUT</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/049b5eca618af7b558efb4f56b2e8b75.js"></script>
+                                </li>
+                                <li><strong>DELETE</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/67ce8d1b4a80c25d64558ee51e6e675f.js"></script>
+                                </li>
                             </ul>
                         </li>
                     </ol>
-                </p>
-                <h2>Step 05-2 | Creating the web background geometry using JavaScript - Gradients Moons</h2>
-                <h3>HTML:</h3>
-                <p class="note">
-                    <ol>
-                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
-                            <ul>
-                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </p>
-                <p class="code-file">aboutMe.html</p>
-                <script src="https://gist.github.com/weikaichu1991/68d733f444f4d06f1cf795237e39b32d.js"></script>
-                <h3>JavaScript:</h3>
-                <p class="code-file">aboutMe.js</p>
-                <script src="https://gist.github.com/weikaichu1991/507fe339da0115f1301ef8d475facf21.js"></script>
-                <p class="note">
-                    <ol>
-                        <li>Firstly, using Canvas API to set up a 2D canvas that placed at the placeholder created by the <code>canvas</code>element in the HTML file. This will be the virtual drawing board for JavaScript to generate the graphical  content.</li>
-                        <li>Secondly, creating a radial gradient property using <code>ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)</code>method. The parameters define two circles: the inner circle with center <code>(x0, y0)</code>and radius <code>r0</code>, and the outer circle with center <code>(x1, y1)</code> and radius <code>r1</code>. The parameters <code>canvas.width/2, canvas.height/2, 0</code>define the inner circle, centered at the middle of the canvas with a radius of 0. These parameters <code>0, canvas.height/2, canvas.width</code>define the outer circle, centered at the left edge of the canvas vertically centered, with a radius equal to the canvas width.</li>
-                        <li>Lastly, start drawing the shape using the method <code>beginPath()</code>. Using <code>arc(x, y, radius, startAngle, endAngle)</code>method to define the the radius and angles of the arc in radians. The parameters <code>canvas.width / 2, canvas.height / 2</code> set the center of the arc to the middle of the canvas. <code>canvas.width / 2</code> sets the radius of the arc to half the width of the canvas, making it a circle that fits within the canvas.  The parameters <code>0, 2 * Math.PI</code> define the start and end angles of the arc in radians. <code>0</code>is the start angle, and<code>2 * Math.PI</code>is the end angle, which completes a full circle.</li>
-                    </ol>
-                </p>
-                <h3>CSS:</h3>
-                <p class="code-file">aboutMe.css</p>
-                <script src="https://gist.github.com/weikaichu1991/412533f81a1f833bb345c9ea66e26354.js"></script>
-                <p class="note">
-                    <ol>
-                        <li><h4>Configuring the position and the size of the webpage background geometry:</h4>
-                            <ul>
-                                <li>Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </p>
-                <h2>Step 06 | Others</h2>
-                <p class="note">
-                    <p>By using HTML and CSS code, I also created  a web page module for showing my selected blogs, my career interest with the link to my LinkedIn profile and a footer of my website providing another set of identical navigation bar.</p>
                 </p>
                 <div class="call-out">
-                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html">my GitHub repository </a> to look at the full code.</p>
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
                 </div>
 
                 <!-- Modal structure -->
@@ -328,36 +229,92 @@
             <div class="troubleshooting-zone">
                 <h1>troubleshoot Notes</h1>
                 <hr/>
-                <h2>Issue 01 | Forcing Fonts</h2>
-                <p>I used a font-family called ‘ Cascadia Code ’ and somehow I noticed that the website is not displaying the right font-family on google browser and iOS Safari browser.</p>
+                <h2>Issue 01 | [ERR_MODULE_NOT_FOUND]</h2>
+                <h3>Error:</h3> 
+                <p class="description">Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'mongoose' imported </p>
                 <h3>Fix:</h3>
                 <p class="description">
-                    I used the <code>@font-face</code> rule in CSS to make sure the font-family is loaded when my website is accessed.
-                </p>
-                <div class="call-out">
-                    <h3>&#128161 Note:</h3>
+                    Installing the package in the root directory of the local machine. Here are the steps:
                     <ol>
-                        <li>Making sure the "Cascadia Code" font files are in the formats needed. <code>.woff</code>, <code>.woff2</code> formats have better compatibility across browsers.</li>
-                        <li>Placing font-face rule at the very beginning of the CSS file to make sure it is loaded across the website as soon as the website has been loaded.</li>
-                        <li>Making sure the reference URL is set correctly based on the web files directory structure. (./ or ../ to begin with)</li>
+                        <li>
+                            Run the command line
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/2d5645ca116addebbab504b65a269061.js"></script>
+                        </li>
+                        <li>
+                            Run the following command line if npm needs to be updated. Replace <code>version of npm</code> with the latest LTS version.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/0258449bec139b3c8fc5af80a75fb26b.js"></script>
+                        </li>
+                        <li>Run the following steps if the node.js version installed in the local machine needs to be updated.
+                            <ol>
+                                <li>
+                                    Install <code>nvm</code> (if not already installed):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/834ef9d17a8ce3486eea6a028aa14d7d.js"></script>
+                                </li>
+                                <li>
+                                    Load <code>nvm</code> into your shell session:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/92eae35b80afd83e1d34f39bacb7a1aa.js"></script>
+                                </li>
+                                <li>
+                                    List available Node.js versions:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/694f50ed9efe340d0a78640ed03ca818.js"></script>
+                                </li>
+                                <li>
+                                    Install a specific version of Node.js (e.g., version 18.0.0):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c8fbfc40060985356db191c4f2e73b61.js"></script>
+                                </li>
+                                <li>
+                                    Use the installed version:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c6959536236b5fe29dddcd1ca8cf074c.js"></script>
+                                </li>
+                                <li>
+                                    Set the default Node.js version (optional):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/b61d7be8a24ce1203ea9fe8bf35a0efc.js"></script>
+                                </li>
+                            </ol>
+                        </li>
                     </ol>
-                </div>
-                <script src="https://gist.github.com/weikaichu1991/801c17e0a34377a084f25de784a2be52.js"></script>
+                </p>
                 <!-- The end of issue 01 -->
 
                 <hr/>
-                <h2>Issue 02 | Missing Zooming Control for Image Focus View</h2>
+                <h2>Issue 02 | Connection to MongoDB Failed</h2>
                 <h3>Error:</h3> 
-                <p class="description">Image can't be zoomed in and out after entering the the focus view </p>
-                <h3>Fix:</h3>
+                <p class="description">Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/</p>
+                <h3>Potential Fix 01:</h3>
                 <p class="description">
-                    I added the following JS code to create zooming buttons displaying in the image focus view. 
+                    Including the IP address into the ‘Network Access List’
                 </p>
-                <p class="code-file">article-01-firstFrontend.js</p>
-                <script src="https://gist.github.com/weikaichu1991/ed87aa8b5acc8c4dc56478c6702514b2.js"></script>
-                <p class="code-file">result</p>
-                <img src="./article-01-image/image-06.png" class="enlargeable-image" alt="overlayed image focus view after adding zoom in and out buttons">
-                
+                <img src="./article-02-image/image 20.png" class="enlargeable-image" alt="mongodb network access list page">
+                <img src="./article-02-image/image 21.png" class="enlargeable-image" alt="mongodb network access list page">
+                <img src="./article-02-image/image 22.png" class="enlargeable-image" alt="mongodb network access list page">
+                <h3>Potential Fix 02:</h3>
+                <p class="description">
+                    Updating the version of Node.js to v.22.11.01, the latest LTS version.
+                    <ol>
+                        <li>
+                            Using the intalling-via-nvm steps mentioned in the Troubleshooting Issue 1 to install the laster LTS version of Node.js and use the follwing command line to ask the system to use the version after the installation.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/7bf863dda1b78f8a58374ea03aa9ff81.js"></script>
+                        </li>
+                        <li>
+                            Double check if the current default version is correct.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/e92e8c36ae3af939ad826352a9e1c3e0.js"></script>
+                        </li>
+                        <li>Run the connection node file again.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/c58f0724d2fd304992dde675fd9afc2e.js"></script>
+                        </li>
+                    </ol>
+                </p>
                 <!-- The end of issue 02 -->
             </div>
             

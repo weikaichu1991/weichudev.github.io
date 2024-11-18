@@ -156,7 +156,7 @@ header, nav, main, footer, .subpages {
             ol{
                 list-style-type: lower-alpha;
                 li{
-                    padding-top: 3%;
+                    padding-top: 1%;
                     line-height: 140%;
                 }
             }
@@ -166,6 +166,11 @@ header, nav, main, footer, .subpages {
                 border-radius: 10px;
                 color: #EBEBEB;
                 margin-bottom: 5%;
+                a{
+                    text-decoration: none;
+                    text-decoration: underline;
+                    color: #EBEBEB;
+                }
             }
             a{
                 text-decoration: none;
@@ -533,11 +538,11 @@ header, nav, main, footer, .subpages {
                 }
             }
             code{
-                background-color: #838383;
+                background-color: #dbdbdb;
                 padding: 0.5%;
                 border-radius: 5px;
                 font-weight: 900;
-                color: white;
+                color: #472525;
             }
             ol{
                 list-style-type: lower-alpha;
@@ -567,6 +572,11 @@ header, nav, main, footer, .subpages {
                 border-radius: 10px;
                 color: #EBEBEB;
                 margin-bottom: 5%;
+                a{
+                    text-decoration: none;
+                    text-decoration: underline;
+                    color: #EBEBEB;
+                }
             }
             a{
                 text-decoration: none;
