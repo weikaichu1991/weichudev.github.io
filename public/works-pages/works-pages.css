@@ -125,6 +125,11 @@ header, nav, main, footer, .subpages {
                 }
                 
             }
+            .footnote{
+                font-style: italic;
+                text-align: right;
+                font-size: 70%;
+            }
             code{
                 background-color: #dbdbdb;
                 padding: 0.5%;
