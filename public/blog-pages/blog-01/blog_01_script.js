@@ -49,7 +49,7 @@ document.addEventListener('click', function(event) {
 // --- the commeenting sections functions ---
 const url = new URL(location.href);
 const APILINK = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api';
-const APILINK_ARTICLE = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api/article-01-first-frontend';
+const APILINK_ARTICLE = 'https://europe-west1-weichudev-web2024.cloudfunctions.net/api/blog-01';
 const main = document.getElementById("commentsSection");
 
 const div_new = document.createElement('div');
@@ -189,7 +189,7 @@ async function saveComment(nameInputId, emailInputId, subjectInputId, commentInp
     const comment_text = document.getElementById(commentInputId).value;
     const name = document.getElementById(nameInputId).value;
     const email = document.getElementById(emailInputId).value;
-    const article = "article-01-first-frontend"
+    const article = "blog-01"
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${APILINK}/${id}` : APILINK;

@@ -96,13 +96,13 @@ header, nav, main, footer, .subpages {
         .tags{
             margin-bottom: 5%;
             button{
-                border-style: dashed;
+                border-style: none;
                 border-width: 1.5px;
                 padding: 1%;
                 margin-right: 1%;
                 border-radius: 3px;
                 background: none;
-                font-size: 60%;
+                font-size: 70%;
                 font-weight: 900;
                 color: #131e3f;
                 border-color: #131e3f;
@@ -517,13 +517,13 @@ header, nav, main, footer, .subpages {
         .tags{
             margin-bottom: 5%;
             button{
-                border-style: dashed;
+                border-style: none;
                 border-width: 1.5px;
                 padding: 1%;
                 margin-right: 1%;
                 border-radius: 3px;
                 background: none;
-                font-size: 60%;
+                font-size: 70%;
                 font-weight: 900;
                 color: #131e3f;
                 border-color: #131e3f;
