@@ -53,17 +53,29 @@
                 </p>
                 <img src="./article-02-image/image-23.webp" class="enlargeable-image" alt="api concept">
                 <p class="footnote">Image source: <a href="https://medium.com/@adityagaba1322/streamlining-backend-frontend-integration-a-quick-guide-145eca3cca05">Streamlining Backend-Frontend Integration: A Quick Guide</a></p>
-                <h2>Step 01 | Preparation - Document Management</h2>
-                <h3>1. Brief:</h3>
+                <h2>Table:</h2>
                 <p class="note">
                     <ul>
+                        <li><button onclick="location.href='#step01'">Step 01 | Preparation - Document Management</li>
+                        <li><button onclick="location.href='#step02'">Step 02 | Setting up a MongoDB Atlas account, project and new cluster.</li>
+                        <li><button onclick="location.href='#step03'">Step 03 | Start configuring the routing mechanism for accessing the database</li>
+                        <li><button onclick="location.href='#step04'">Step 04 | Creating API endpoints based on the CRUD methods.</li>
+                        <li><button onclick="location.href='#step05'">Step 05 | Run the connection code file with Node.js.</li>
+                        <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li>
+                        <li><button onclick="location.href='#commentsSection'">Comments</li>
+                    </ul>
+                </p>
+                <h2 id="step01">Step 01 | Preparation - Document Management</h2>
+                <h3>1. Brief:</h3>
+                <p class="note">
+                    <ol>
                         <li>Setting up server files for configuring a CRUD methods based REST API</li>
                         <li>Setting up a MongoDB Atlas account, project and new cluster.</li>
                         <li>Start configuring the routing mechanism for accessing the database.</li>
                         <li>Creating API endpoints based on the CRUD methods.</li>
                         <li>Run the connection code file with Node.js.</li>
                         <li>Testing the API with Postman or Termnals.</li>
-                    </ul>
+                    </ol>
                 </p>
                 <h3>2. Directory File Structure:</h3>
                 <p class="note">
@@ -72,7 +84,7 @@
                 <script src="https://gist.github.com/weikaichu1991/112413de69c21b788d78cb0eb4b6410f.js"></script>
                 <!-- The end of the step 01 -->
                 
-                <h2>Step 02 | Setting up a MongoDB Atlas account, project and new cluster.</h2>
+                <h2 id="step02">Step 02 | Setting up a MongoDB Atlas account, project and new cluster.</h2>
                 <h3>Key Steps:</h3>
                 <p class="note">
                     <ol>
@@ -113,7 +125,7 @@
                 </p>
                 <!-- The end of step 02 -->
                 
-                <h2>Step 03 | Start configuring the routing mechanism for accessing the database</h2>
+                <h2 id="step03">Step 03 | Start configuring the routing mechanism for accessing the database</h2>
                 <h3>Key Steps:</h3>
                 <p class="note">
                     <ol>
@@ -137,7 +149,7 @@
                 </p>
                 <!-- The end of step 03 -->
                 <br>
-                <h2>Step 04 | Creating API endpoints based on the CRUD methods.</h2>
+                <h2 id="step04">Step 04 | Creating API endpoints based on the CRUD methods.</h2>
                 <p class="note">
                     <ol>
                         <li>
@@ -156,7 +168,7 @@
                 </p>
                 <!-- The end of step 04 -->
                 <br>
-                <h2>Step 05 | Run the connection code file with Node.js.</h2>
+                <h2 id="step05">Step 05 | Run the connection code file with Node.js.</h2>
                 <p class="note">
                     <ol>
                         <li>
@@ -214,7 +226,7 @@
                     </ol>
                 </p>
                 <div class="call-out">
-                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.web.local" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
                 </div>
 
                 <!-- Modal structure -->
@@ -226,14 +238,14 @@
                     <button class="zoomOut" id="zoomOut">-</button>
                 </div>
             </div>
-            <div class="troubleshooting-zone">
+            <div class="troubleshooting-zone" id="troubleS">
                 <h1>troubleshoot Notes</h1>
                 <hr/>
                 <h2>Issue 01 | [ERR_MODULE_NOT_FOUND]</h2>
                 <h3>Error:</h3> 
-                <p class="description">Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'mongoose' imported </p>
+                <p>Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'mongoose' imported </p>
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     Installing the package in the root directory of the local machine. Here are the steps:
                     <ol>
                         <li>
@@ -287,16 +299,16 @@
                 <hr/>
                 <h2>Issue 02 | Connection to MongoDB Failed</h2>
                 <h3>Error:</h3> 
-                <p class="description">Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/</p>
+                <p>Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/</p>
                 <h3>Potential Fix 01:</h3>
-                <p class="description">
+                <p>
                     Including the IP address into the ‘Network Access List’
                 </p>
                 <img src="./article-02-image/image 20.png" class="enlargeable-image" alt="mongodb network access list page">
                 <img src="./article-02-image/image 21.png" class="enlargeable-image" alt="mongodb network access list page">
                 <img src="./article-02-image/image 22.png" class="enlargeable-image" alt="mongodb network access list page">
                 <h3>Potential Fix 02:</h3>
-                <p class="description">
+                <p>
                     Updating the version of Node.js to v.22.11.01, the latest LTS version.
                     <ol>
                         <li>
