@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party in the front</title>
+    <link rel="stylesheet" href="../blog-page.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class = "topnav">
+            <nav class = "subpagesMenu">
+                <div class="menu-icon" id="menu-icon">
+                    &#9776; <!-- Unicode for the menu icon -->
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class = "subpages" href="../../index.html">Home</a></li>
+                    <li><a class = "subpages" href="../../About/aboutMe.html">About</a></li>
+                    <li><a class = "subpages" href="../../works-pages/works-catalogue.html">Works</a></li>
+                    <li><a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a></li>
+                    <li><a class = "subpages" id = "comments" href="../../Comments/comments-page.html">Feedbacks</a></li>
+                    <li><a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a></li>
+                    <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email</a></li>
+                </ul>
+                <div class="mobile-top-icon" id="mobile-top-icon">
+                    <button onclick="location.href='#container'"><img src="../../images/back-to-top-svgrepo-com.svg"></button>
+                </div>
+            </nav>
+        </div>
+        <header class = "siteName" href="../../index.html">
+            <h1>Wei's<br>Dev<br>Journal</h1>
+        </header>
+        <!-- The end of the navigation bar section -->
+        
+        
+        <div class="content">
+            <div class="content-title" id="conetentBegin">
+                <h1 >Party in the front, Business in the Back!</h1>
+            </div>
+            <div class="tags">
+                <button>#personalDevelopment</button>
+                <button>#techBlog</button>
+                <button>#platform</button>
+                <button>#developerLife</button>
+            </div>
+            <div class="date">
+                <p>20 Nov 2024</p>
+            </div>
+            <div class="content-section">
+                <p class="note">
+                    <p>The title is inspired by the actual saying “Party in the front, business in the back” which used to describe the mullet hair. but why call it “Party in the front, business in the back”?</p>
+                </p>
+                <h2>Step 01 | Preparation - Document Management</h2>
+                <h3>1. Brief:</h3>
+                <p class="note">
+                    <ul>
+                        <li>Setting up server files for configuring a CRUD methods based REST API</li>
+                        <li>Setting up a MongoDB Atlas account, project and new cluster.</li>
+                        <li>Start configuring the routing mechanism for accessing the database.</li>
+                        <li>Creating API endpoints based on the CRUD methods.</li>
+                        <li>Run the connection code file with Node.js.</li>
+                        <li>Testing the API with Postman or Termnals.</li>
+                    </ul>
+                </p>
+                <h3>2. Directory File Structure:</h3>
+                <p class="note">
+                    <p>In the same directory of my HTML, CSS and JS files, I created the following objects for the backend.</p>
+                </p>
+                <script src="https://gist.github.com/weikaichu1991/112413de69c21b788d78cb0eb4b6410f.js"></script>
+                <!-- The end of the step 01 -->
+                
+                <h2>Step 02 | Setting up a MongoDB Atlas account, project and new cluster.</h2>
+                <h3>Key Steps:</h3>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <h4>Creating a new project</h4>
+                            <img src="./article-02-image/image-0.png" class="enlargeable-image" alt="mongodb setup 01">
+                            <img src="./article-02-image/image 1.png" class="enlargeable-image" alt="mongodb setup 02">
+                            <img src="./article-02-image/image 2.png" class="enlargeable-image" alt="mongodb setup 03">
+                        </li>
+                        <li>
+                            <h4>Creating a cluster</h4>
+                            <img src="./article-02-image/image 3.png" class="enlargeable-image" alt="mongodb cluster setup 01">
+                            <img src="./article-02-image/image 4.png" class="enlargeable-image" alt="mongodb cluster setup 02">
+                            <img src="./article-02-image/image 5.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                        </li>
+                        <li>
+                            <h4>Connection Form</h4>
+                            <p>A connection form will pop-up after “Create Deployment” is clicked. Memo down the “Username” & “Password”, this will be needed as the environment variables for connecting to the database. Click the “Create Database User” before proceeding to “Choose a connection method”</p>
+                            <img src="./article-02-image/image 6-01.png" class="enlargeable-image" alt="mongodb connection form">
+                        </li>
+                        <li>
+                            <h4>Connection Method</h4>
+                            <p>Choosing the Connection Method. Choosing “Drivers” option as the connection method, which will allow us to access the database with native drivers, like Node.js, Go, etc.</p>
+                            <img src="./article-02-image/image 7.png" class="enlargeable-image" alt="mongodb connection method">
+                        </li>
+                        <li>
+                            <h4>Connection String</h4>
+                            <p>In the next connection step, set the choice of the driver / version as <code>Node.js / v 5.5</code> or later. Following the instruction of installing the driver. Memo down the connection string which will be needed to include in the server routing file.</p>
+                            <img src="./article-02-image/image 8.png" class="enlargeable-image" alt="mongodb connection string">
+                        </li>
+                        <li>
+                            <h4>Cluster & Collection</h4>
+                            <p>Go to the “Clusters” pane in the menu on the left side of the screen, the newly created cluster will be found. In each cluster, the data will be stored as a collection, which will be found by clicking “Browse Collections” (At the moment no data can be found in there).</p>
+                            <img src="./article-02-image/image 9.png" class="enlargeable-image" alt="mongodb cluster & collection 01">
+                            <img src="./article-02-image/image 10.png" class="enlargeable-image" alt="mongodb cluster & collection 02">
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 02 -->
+                
+                <h2>Step 03 | Start configuring the routing mechanism for accessing the database</h2>
+                <h3>Key Steps:</h3>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <h4>Setup environment variable</h4>
+                            <p>creating .env (specified in .gitignore) file for storing the user credential to the DB.</p>
+                            <p class="code-file">.env</p>
+                            <script src="https://gist.github.com/weikaichu1991/99c8c968e51de5ebb09edf8db7af5ae6.js"></script>
+                        </li>
+                        <li>
+                            <h4>Set Up Mongoose and Connect to MongoDB Atlas</h4>
+                            <p>Create a file named <code>server.js</code> to set up the Express server. </p>
+                            <p class="code-file">server.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/6645759233458e2a2615ed09c39ea2cc.js"></script>
+                            <p>Create a file named <code>db.js</code> to set up Mongoose and connect to MongoDB Atlas. The configuration will use the credentials from environment variables, and then starting the Express server on a specified port as well as handling any connection errors.</p>
+                            <p class="code-file">db.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/c19ac0f3ad88ca6a55ef0e5ba8ade47a.js"></script>
+                        </li>
+                        
+                    </ol>
+                </p>
+                <!-- The end of step 03 -->
+                <br>
+                <h2>Step 04 | Creating API endpoints based on the CRUD methods.</h2>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <h4>Define the Comment Model</h4>
+                            <p>Create a file named <code>Comment.js</code> to define the Comment schema and model.</p>
+                            <p class="code-file">Comment.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/38d8f8fc9b9e1fac33da6b3ff940e2ba.js"></script>
+                        </li>
+                        <li>
+                            <h4>Defining API Endpoints Routing</h4>
+                            <p>Create a file named <code>comments.route.js</code> to set up the Express server and define the API endpoints.</p>
+                            <p class="code-file">comments.route.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/572abebabf0b39f1f501f4e8efe16ead.js"></script>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 04 -->
+                <br>
+                <h2>Step 05 | Run the connection code file with Node.js.</h2>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Running the node module for testing the api connection, using the command:
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/ebb449f1f522894b3c22e391400c4ea8.js"></script>
+                            <img src="./article-02-image/image 11-01.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                        </li>
+                        <li>
+                            <h4>5-1. Testing the API with Postman</h4>
+                            <p>Using Postman to checking if the data has been successfully stored, updated, added in or deleted at MongoDB Portal.</p>
+                            <ul>
+                                <li><strong>GET the whole data collection in the MongoDB cluster.</strong>
+                                    <img src="./article-02-image/image 12.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>POST / Adding various strings of new data to the collection based on the data model schema that has been setup.</strong>
+                                    <img src="./article-02-image/image 13.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 14.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>GET + data ID/ Retrieving single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 15.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>PUT + data ID/ Updating single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 16.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 17.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                                <li><strong>DELETE + data ID/ Deleting single string of data  from the collection using ObjectID as the reference.</strong>
+                                    <img src="./article-02-image/image 18.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                    <img src="./article-02-image/image 19.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>5-2. Testing the API with a terminal.</h4>
+                            <p><strong>Command line for testing the api functions POST GET PUT DELETE:</strong></p>
+                            <ul>
+                                <li><strong>POST</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/d0a7f21d4003669fb46c609e1ac1d26b.js"></script>
+                                </li>
+                                <li><strong>GET</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/74658609399456c39c8e2eb00eb988b2.js"></script>
+                                </li>
+                                <li><strong>PUT</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/049b5eca618af7b558efb4f56b2e8b75.js"></script>
+                                </li>
+                                <li><strong>DELETE</strong>
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/67ce8d1b4a80c25d64558ee51e6e675f.js"></script>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <div class="call-out">
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/public/index.html" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                </div>
+
+                <!-- Modal structure -->
+                <div id="imageModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modalImage">
+                    <div id="caption"></div>
+                    <button class="zoomIn" id="zoomIn">+</button><br>
+                    <button class="zoomOut" id="zoomOut">-</button>
+                </div>
+            </div>
+            <div class="troubleshooting-zone">
+                <h1>troubleshoot Notes</h1>
+                <hr/>
+                <h2>Issue 01 | [ERR_MODULE_NOT_FOUND]</h2>
+                <h3>Error:</h3> 
+                <p class="description">Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'mongoose' imported </p>
+                <h3>Fix:</h3>
+                <p class="description">
+                    Installing the package in the root directory of the local machine. Here are the steps:
+                    <ol>
+                        <li>
+                            Run the command line
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/2d5645ca116addebbab504b65a269061.js"></script>
+                        </li>
+                        <li>
+                            Run the following command line if npm needs to be updated. Replace <code>version of npm</code> with the latest LTS version.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/0258449bec139b3c8fc5af80a75fb26b.js"></script>
+                        </li>
+                        <li>Run the following steps if the node.js version installed in the local machine needs to be updated.
+                            <ol>
+                                <li>
+                                    Install <code>nvm</code> (if not already installed):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/834ef9d17a8ce3486eea6a028aa14d7d.js"></script>
+                                </li>
+                                <li>
+                                    Load <code>nvm</code> into your shell session:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/92eae35b80afd83e1d34f39bacb7a1aa.js"></script>
+                                </li>
+                                <li>
+                                    List available Node.js versions:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/694f50ed9efe340d0a78640ed03ca818.js"></script>
+                                </li>
+                                <li>
+                                    Install a specific version of Node.js (e.g., version 18.0.0):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c8fbfc40060985356db191c4f2e73b61.js"></script>
+                                </li>
+                                <li>
+                                    Use the installed version:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c6959536236b5fe29dddcd1ca8cf074c.js"></script>
+                                </li>
+                                <li>
+                                    Set the default Node.js version (optional):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/b61d7be8a24ce1203ea9fe8bf35a0efc.js"></script>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of issue 01 -->
+
+                <hr/>
+                <h2>Issue 02 | Connection to MongoDB Failed</h2>
+                <h3>Error:</h3> 
+                <p class="description">Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/</p>
+                <h3>Potential Fix 01:</h3>
+                <p class="description">
+                    Including the IP address into the ‘Network Access List’
+                </p>
+                <img src="./article-02-image/image 20.png" class="enlargeable-image" alt="mongodb network access list page">
+                <img src="./article-02-image/image 21.png" class="enlargeable-image" alt="mongodb network access list page">
+                <img src="./article-02-image/image 22.png" class="enlargeable-image" alt="mongodb network access list page">
+                <h3>Potential Fix 02:</h3>
+                <p class="description">
+                    Updating the version of Node.js to v.22.11.01, the latest LTS version.
+                    <ol>
+                        <li>
+                            Using the intalling-via-nvm steps mentioned in the Troubleshooting Issue 1 to install the laster LTS version of Node.js and use the follwing command line to ask the system to use the version after the installation.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/7bf863dda1b78f8a58374ea03aa9ff81.js"></script>
+                        </li>
+                        <li>
+                            Double check if the current default version is correct.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/e92e8c36ae3af939ad826352a9e1c3e0.js"></script>
+                        </li>
+                        <li>Run the connection node file again.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/c58f0724d2fd304992dde675fd9afc2e.js"></script>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of issue 02 -->
+            </div>
+            
+            <section id="commentsSection">
+
+            </section>
+        </div>
+
+        <!-- The end of content section -->
+        <div>
+            <div class="footer">
+                <hr>
+                <p>
+                    <a class = "subpages" href="../../index.html">Home</a>
+                    <a class = "subpages" href="../../About/aboutMe.html" >About</a>
+                    <a class = "subpages" href="../works-catalogue.html" >Works</a>
+                    <a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a>
+                    <a class = "subpages" id = "comments" href="../../Comments/comments-page.html" >Feedbacks</a>
+                    <a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a>
+                    <a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email-Me</a>
+                </p>
+                <h4>*<br><br>Designed by Wei Chu</h4>
+                </div>
+            </div>
+    </div>
+</body>
+
+<script src="./blog-01.js"></script>
+</html>
