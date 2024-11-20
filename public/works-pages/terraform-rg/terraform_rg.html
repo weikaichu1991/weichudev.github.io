@@ -45,9 +45,19 @@
                 <button>Terraform</button>
                 <button>Github Action</button>
             </div>
-            
             <div class="content-section">
-                <h2>Step 01 | Setting up Service Princple</h2>
+                <h2>Table:</h2>
+                <p class="note">
+                    <ul>
+                        <li><button onclick="location.href='#step01'">Step 01 | Setting up Service Princple</li>
+                        <li><button onclick="location.href='#step02'">Step 02 | Hiding the Azure User Credential in Github Secret</li>
+                        <li><button onclick="location.href='#step03'">Step 03 | Preparing Terraform files for Deploying Resource Group</li>
+                        <li><button onclick="location.href='#step04'">Step 04 | Run the GitHub Workflow</li>
+                        <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li>
+                        <li><button onclick="location.href='#commentsSection'">Comments</li>
+                    </ul>
+                </p>
+                <h2 id="step01">Step 01 | Setting up Service Princple</h2>
                 <p class="note">
                     In order to let <strong>GitHub Workflow</strong>  and <strong>Terraform</strong> to work with <strong>Azure Resource Management</strong>, the <code>CLIENT_ID</code>, <code>CLIENT_SECRET_VALUE</code>, <code>TENANT_ID</code> and <code>SUBSCRIPTION_ID</code> will have to be assigned in the workflow files. Therefore, setting up a <strong>Service Principle</strong> with a <strong>AZ Subscription</strong> assigned is the first step of the RG creation. The 2 methods I know of setting up the Service Principle is through <strong>EntraID App Registration</strong> & <strong>Azure Arc</strong>. I have tried the EntraID App registration with an Azure Enterprise Tenant and tried the Azure Arc with my personal Azure free account. Here I am demonstrating the later method:
                 </p>
@@ -79,7 +89,7 @@
                 <img src="../terraform-rg/rg_images/image 5_edited-01.jpg" class="enlargeable-image" alt="Image 6">                
                 <br>
                 <!-- The end of the step 01 -->
-                <h2>Step 02 | Hiding the Azure User Credential in Github Secret</h2>
+                <h2 id="step02">Step 02 | Hiding the Azure User Credential in Github Secret</h2>
                 <h3>1. Hiding the SPN Values on GitHub</h3>
                 <p class="note">
                     Go to the repository where I am storing my terrafrom and workflow files and have the 4 variables I need for interacting with Azure assigned as Secrets for Github Actions. 
@@ -91,111 +101,28 @@
                     Configuring the workflow file for triggering GitHub Action.
                 </p>
                 <p class="code-file">workflows.yml</p>
-                <pre class="code"><code>
-name: 'Terraform'
-
-on:
-    push:
-        branches: [ "main" ]
-    pull_request:
-    workflow_dispatch:
-
-permissions:
-    contents: read
-
-env:
-    ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-    ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET_VALUE }}
-    ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-
-jobs:
-    terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
-    environment: testing
-
-    <sub class="anno"># Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest</sub>
-    defaults:
-        run:
-        shell: bash
-
-    steps:
-    <sub class="anno"># Checkout the repository to the GitHub Actions runner</sub>
-    - name: Checkout
-        uses: actions/checkout@v4
-
-    <sub class="anno"># Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token</sub>
-    - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-    <sub class="anno"># Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.</sub>
-    - name: Terraform Init
-        run: terraform init
-
-    <sub class="anno">#Azure Environment Variables</sub>
-    - name: Set Azure credentials
-        run: |
-        echo "AZURE_CREDENTIALS={ \"clientId\": \"${{ secrets.AZURE_CLIENT_ID }}\", \"clientSecret\": \"${{ secrets.AZURE_CLIENT_SECRET_VALUE }}\", \"subscriptionId\": \"${{ secrets.AZURE_SUBSCRIPTION_ID }}\", \"tenantId\": \"${{ secrets.AZURE_TENANT_ID }}\" }" >> $GITHUB_ENV
-
-    - name: Azure Login
-        uses: azure/login@v1
-        with:
-        creds: ${{ env.AZURE_CREDENTIALS }}
-
-    <sub class="anno"># Checks that all Terraform configuration files adhere to a canonical format</sub>
-    - name: Terraform Format
-        run: terraform fmt
-
-    <sub class="anno"># Generates an execution plan for Terraform</sub>
-    - name: Terraform Plan
-        run: terraform plan -input=false
-
-        <sub class="anno"># On push to "main", build or change infrastructure according to Terraform configuration files</sub>
-        <sub class="anno"># Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks</sub>
-    - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
-                </code></pre>
+                <script src="https://gist.github.com/weikaichu1991/f029bfbe4c7ccfac4c11a2f3c0eed8bd.js"></script>
                 <br>
                 <!-- The end of step 02 -->
-                <h2>Step 03 | Preparing Terraform files for Deploying Resource Group</h2>
+                <h2 id="step03">Step 03 | Preparing Terraform files for Deploying Resource Group</h2>
                 <h3>1. Configuring the main terraform file</h3>
                 <p class="code-file">main.tf</p>
-                <pre class="code"><code>
-<sub class="anno"># Create a Resource Group (if it doesn’t exist)</sub>
-resource "azurerm_resource_group" "wcdev_tf_rg" {
-    name     = "weichudev_terraform_RG"
-    location = "UK South"
-}
-                </code></pre>
+                <script src="https://gist.github.com/weikaichu1991/8aec52b6b24782efbcc7e593b8ded750.js"></script>
                 <h3>2. Configuring the terraform provider file</h3>
                 <p class="code-file">provider.tf</p>
-                <pre class="code"><code>
-provider "azurerm" {
-    features {}
-    resource_provider_registrations = "none"
-}
-
-<sub class="anno"># Set the Azure Provider source and version being used</sub>
-terraform {
-    required_version = ">= 0.14"
-
-    required_providers {
-        azurerm = {
-            source  = "hashicorp/azurerm"
-            version = ">= 3.0.0"
-        }
-    }
-}
-                </code></pre>
+                <script src="https://gist.github.com/weikaichu1991/52ab369d7186925d155bc7f4337594ec.js"></script>
                 <br>
-                <h2>Step 04 | Run the GitHub Workflow</h2>
+                <h2 id="step04">Step 04 | Run the GitHub Workflow</h2>
                 <p class="note">
                     Commit & Sync the changes to the repository, the workflow will then be triggered.
                 </p>
                 <img src="../terraform-rg/rg_images/image 8.png" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 9.png" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 10_edited-01.jpg" class="enlargeable-image" alt="Image 6">
+
+                <div class="call-out">
+                    <p>&#128161 Please refer to <a href="https://github.com/weichu-dev/terraform-training-public/tree/main" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                </div>
                 <!-- Modal structure -->
                 <div id="imageModal" class="modal">
                     <span class="close">&times;</span>
@@ -205,27 +132,27 @@ terraform {
                     <button class="zoomOut" id="zoomOut">-</button>
                 </div>
             </div>
-            <div class="troubleshooting-zone">
+            <div class="troubleshooting-zone" id="troubleS">
                 <h1>troubleshoot Notes</h1>
                 <hr/>
                 <h2>Issue 01 | Wrong Authentication Configuration</h2>
                 <h3>Error: No subscription found.</h3>
                 <img src="../terraform-rg/rg_images/image 11.png" class="enlargeable-image" alt="finding azure arc">
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     In the beginning, I used the service principle created through App Registration under the Microsoft Entra ID and the credentials cant be captured.
                 </p>
                 <img src="../terraform-rg/rg_images/image 12_edited-01.jpg" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 13_edited-01.jpg" class="enlargeable-image" alt="Image 6">
-                <p class="description">
+                <p>
                     I then checked one Azure portal and discovered that Service Principle can also be set-up under Azure Arc. I set up the SPN and changed the value under the GitHub Action secret. This time is works and the authentication was able to be pushed through.
                 </p>
                 <img src="../terraform-rg/rg_images/image 14-01.jpg" class="enlargeable-image" alt="Image 6">
                 <img src="../terraform-rg/rg_images/image 16_edited-01.jpg" class="enlargeable-image" alt="Image 6">
                 <h3>Further Investigation:</h3>
-                <p class="description">
+                <p>
                     At the moment I am still investigating why it wouldn’t work SPN set up with App Registration. Few direction for testing:
-                    <ul class="description">
+                    <ul>
                         <li><p><strong>User privilege</strong> - at the moment there are no role has been assigned under my Azure Arc SPN, and I am the contributor to the App Registration SPN. I am the owner to both. But I am able to login to Azure Cli with former method, and was failed to login in with the later method.</p></li>
                         <li><p><strong>Difference of the 2 methods</strong> - From what I have understood, Azure Arc seems is more for multiple cloud resource management. The app registration is more specific app and function oriented. It makes more sense to go with SPN created by Azure Arc as I am aiming for creating an Azure cloud resource. But more need to be investigated.</p></li>
                     </ul>
@@ -235,21 +162,21 @@ terraform {
                 <hr/>
                 <h2>Issue 02 | No permissions to register Resource Providers.</h2>
                 <h3>Error:</h3> 
-                <p class="description">Terraform does not have the necessary permissions to register Resource Providers. Terraform automatically attempts to register the Azure Resource Providers it supports, to ensure it is able to provision resources.</p>
+                <p>Terraform does not have the necessary permissions to register Resource Providers. Terraform automatically attempts to register the Azure Resource Providers it supports, to ensure it is able to provision resources.</p>
                 <img src="../terraform-rg/rg_images/image 17.png" class="enlargeable-image" alt="finding azure arc">
                 <img src="../terraform-rg/rg_images/image 18.png" class="enlargeable-image" alt="Image 6">
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     At the moment, I simply disable the Resource Provider Registration by modifying the code in the provider.tf file.
                 </p>
                 <img src="../terraform-rg/rg_images/image_20.png" class="enlargeable-image" alt="finding azure arc">
                 <img src="../terraform-rg/rg_images/image_21.png" class="enlargeable-image" alt="Image 6">
                 <h3>Further Investigation:</h3>
-                <p class="description">
+                <p>
                     I found out that the error indicates that SPN does not have authorization to perform certain actions over the specified scope. Investigation direction:
-                    <ul class="description">
+                    <ul>
                         <li><p>Configuring the necessary permissions under the SPN so that the privilege to registering resource provider is assigned</p></li>
-                        <li><p>Double checking <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#resource-provider-registrations">Azure Resource Provider Registrations</a> documentation and see if re-registering the resource providers is needed.</p></li>
+                        <li><p class="description">Double checking <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#resource-provider-registrations">Azure Resource Provider Registrations</a> documentation and see if re-registering the resource providers is needed.</p></li>
                     </ul>
                 </p>
                 <!-- The end of issue 02 -->
@@ -257,20 +184,17 @@ terraform {
                 <hr/>
                 <h2>Issue 03 | Role Assignment is Missing</h2>
                 <h3>Error:</h3>
-                <p class="description">
+                <p>
                     The client does not have authorization to perform action 'Microsoft.Resources/subscriptions/ resourcegroups/ read' over scope '/ subscriptions/ ***/ resourcegroups/weichudev_terraform_RG' or the scope is invalid.
                 </p>
                 <img src="../terraform-rg/rg_images/image 19.png" class="enlargeable-image" alt="Image 6">
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     Using the following command line to assign Contributor role to the SPN. 
                 </p>
-                <pre class="code"><code>
-$ az role assignment create --assignee "(SPN ObjectID)" -
--role "Contributor" --scope "/subscriptions/(SubscriptionID)
-                </code></pre>
+                <script src="https://gist.github.com/weikaichu1991/dfff07f1f70042fded1d371fd6a63437.js"></script>
                 <h3>Note:</h3>
-                <p class="description">
+                <p>
                     I noticed that the Client ID and Object ID that has been mentioned in the GitHub job error message actually means the Object ID of SPN from an Enterprise Application under EntraID which was created at the same time when a SPN was created in Azure Arc. But when assigning the role to the SPN, the Object ID from the Azure ARC is still targeted which is stored in the GitHub Action Secret.
                 </p>
             </div>

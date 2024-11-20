@@ -233,7 +233,6 @@ header, nav, main, footer, .subpages {
                 border-color: white;
             }
             .description{
-                font-weight:100 ;
                 font-size: 90%;
                 a{
                     text-decoration: none;
