@@ -47,21 +47,35 @@
             </div>
             
             <div class="content-section">
-                <h2>Step 01 | Preparation - Document Management</h2>
+                <h2>Table:</h2>
+                <p class="note">
+                    <ul>
+                        <li><button onclick="location.href='#step01'">Step 01 | Preparation - Document Management</li>
+                        <li><button onclick="location.href='#step02'">Step 02 | Creating container for limiting the width of the viewport</li>
+                        <li><button onclick="location.href='#step03'">Step 03 | Creating the Navigation Bar</li>
+                        <li><button onclick="location.href='#step04'">Step 04 | Creating my project works intro. section</li>
+                        <li><button onclick="location.href='#step05-1'">Step 05-1 | Creating the web background geometry using JavaScript - Wave Noise Pattern</li>
+                        <li><button onclick="location.href='#step05-2'">Step 05-2 | Creating the web background geometry using JavaScript - Gradients Moons</li>
+                        <li><button onclick="location.href='#step06'">Step 06 | Others</li>
+                        <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li>
+                        <li><button onclick="location.href='#commentsSection'">Comments</li>
+                    </ul>
+                </p>
+                <h2 id="step01">Step 01 | Preparation - Document Management</h2>
                 <h3>1. Directory File Structure:</h3>
                 <!-- <p class="code-file">workflows.yml</p> -->
                 <script src="https://gist.github.com/weikaichu1991/ac324dbfdf6772c0d9e7ae2e3ff158e2.js"></script>
                 <p class="note">
                     <strong>Description:</strong>
-                    <ul>
+                    <ol>
                         <li>The HTML, CSS & JS files for the main page are saved in the root directory of the website.</li>
                         <li>The sub-directory “works-pages”  and other sub-dir. are created to store the web files of other sub sections of the website.</li>
                         <li>Templating subpages responsive behaviours and style - In each sub-dir., a mutual CSS file and JavaScript file will be shared by different article HTML hosted in the children folder (ex: “terraform-rg”) of the sub-directory.</li>
-                    </ul>
+                    </ol>
                 </p>
                 <h3>2. Using Github Page to host the static version of my website</h3>
                 <p class="note">
-                    <p>I started to building my website as a static website, and I was eager to find a free of cost method of hosting my website so that I can review my website through mobile devices when I am not at the computer desk. Github Page itself is also a CI/CD solution. The page will be automatically redeployed after newly edited code has been pushed. Here what I have done:</p>
+                    I started to building my website as a static website, and I was eager to find a free of cost method of hosting my website so that I can review my website through mobile devices when I am not at the computer desk. Github Page itself is also a CI/CD solution. The page will be automatically redeployed after newly edited code has been pushed. Here what I have done:
                 </p>
                 <p class="note">
                     <ol>
@@ -101,7 +115,7 @@
                 </p>
                 <!-- The end of the step 01 -->
                 
-                <h2>Step 02 | Creating container for limiting the width of the viewport</h2>
+                <h2 id="step02">Step 02 | Creating container for limiting the width of the viewport</h2>
                 <p class="note">
                     <p>In order to make sure the web elements that I have included not overflow outside the viewport, I created a viewport container overarching the web page interface to constrain the size of the area where the elements can reach by specifying the max-width or min-width of the media. The following code showcase the code that I have included in the project file:</p>
                 </p>
@@ -124,7 +138,7 @@
                 </p>
                 <!-- The end of step 02 -->
                 
-                <h2>Step 03 | Creating the Navigation Bar</h2>
+                <h2 id="step03">Step 03 | Creating the Navigation Bar</h2>
                 <h3>HTML:</h3>
                 <p class="note">
                     <ol>
@@ -159,7 +173,7 @@
                 <script src="https://gist.github.com/weikaichu1991/f9fa890edd5b468c3f4c7ae86cf7053a.js"></script>
                 <!-- The end of step 03 -->
                 <br>
-                <h2>Step 04 | Creating my project works intro. section</h2>
+                <h2 id="step04">Step 04 | Creating my project works intro. section</h2>
                 <h3>HTML:</h3>
                 <p class="note">
                     <ol>
@@ -193,16 +207,13 @@
                 <script src="https://gist.github.com/weikaichu1991/0e880172277489aa2280afea8b9abd9f.js"></script>
                 <!-- The end of step 04 -->
                 <br>
-                <h2>Step 05-1 | Creating the web background geometry using JavaScript - Wave Noise Pattern</h2>
+                <h2 id="step05-1">Step 05-1 | Creating the web background geometry using JavaScript - Wave Noise Pattern</h2>
                 <img src="./article-01-image/image-24.png" class="enlargeable-image" alt="background of main page cover">
                 <p class="footnote">Image : Wave Noise from Home Page Cover</p>
                 <h3>HTML:</h3>
                 <p class="note">
                     <ol>
-                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
-                            <ul>
-                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
-                            </ul>
+                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.
                         </li>
                     </ol>
                 </p>
@@ -211,99 +222,88 @@
                 <h3>JavaScript:</h3>
                 <p class="code-file">script.js</p>
                 <script src="https://gist.github.com/weikaichu1991/1331bee49d36b5f89af0aebb10a7132a.js"></script>
-                <p class="note">
-                    <ol>
-                        <li><h4>Canvas Setup:</h4>
-                            <ul>
-                                <li><code>const canvas = document.getElementById('myCanvas');</code> : Get the canvas element by its ID.</li>
-                                <li><code>const ctx = canvas.getContext('2d');</code> : Get the 2D drawing context of the canvas.</li>
-                                <li><code>const width = canvas.width;</code> : Get the width of the canvas.</li>
-                                <li><code>const height = canvas.height;</code> : Get the height of the canvas.</li>
-                                <li><code>const centerX = width / 2;</code> : Calculate the X-coordinate of the canvas center.</li>
-                                <li><code>const centerY = height / 2;</code> : Calculate the Y-coordinate of the canvas center.</li>
-                                <li><code>const radius = width / 2;</code> : Set the radius for the circle to half the canvas width.</li>
-                            </ul>
-                        </li>
-                        <li><h4>Function Definition:</h4>
-                            <ul>
-                                <li><code>function drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length)</code> : Define a function to draw a wave curve.
-                                    <ul>
-                                        <li><code>ctx.beginPath();</code>: Start a new path.</li>
-                                        <li><code>ctx.moveTo(startX, startY);</code>: Move to the starting point of the wave.</li>
-                                        <li>Loop through the X-coordinates to draw the wave:
-                                            <ul>
-                                                <li><code>const y = startY + amplitude * Math.sin(frequency * (x - startX) + phase);</code>: Calculate the Y-coordinate using a sine function.</li>
-                                                <li><code>ctx.lineTo(x, y);</code>: Draw a line to the calculated point.</li>
-                                            </ul>
-                                        </li>
-                                        <li><code>ctx.stroke();</code>: Render the wave curve.</li>
-                                    </ul></li>
-                            </ul>
-                        </li>
-                        <li><h4>Canvas Drawing:</h4>
-                            <ul>
-                                <li><code>ctx.clearRect(0, 0, width, height);</code>: Clear the entire canvas.</li>
-                                <li><code>ctx.save();</code>: Save the current context state.</li>
-                                <li><code>ctx.translate(centerX, centerY);</code>: Translate the context to the center of the canvas.</li>
-                                <li><code>ctx.rotate(30 * Math.PI / 180);</code>: Rotate the context by 30 degrees (converted to radians).</li>
-                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
-                            </ul>
-                        </li>
-                        <li><h4>Draw Circle and Waves:</h4>
-                            <ul>
-                                <li><code>ctx.beginPath();</code>: Start a new path for the circle.</li>
-                                <li><code>ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);</code>: Draw a circle centered at the canvas center.</li>
-                                <li><code>ctx.clip();</code>: Clip the drawing area to the circle.</li>
-                                <li>Loop to draw multiple wave curves:
-                                    <ul>
-                                        <li>Calculate random starting Y-coordinate, amplitude, frequency, and phase for each wave.</li>
-                                        <li><code>ctx.strokeStyle = rgba(255, 255, 0, ${Math.random() * 0.5 + 0.5});</code>: Set a random stroke color with random opacity.</li>
-                                        <li><code>ctx.lineWidth = 1;</code>: Set the line width to 1.</li>
-                                        <li><code>drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length);</code>: Draw the wave curve using the defined function.</li>
-                                    </ul>
-                                </li>
-                                <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </p>
+                <ol>
+                    <li><h4>Canvas Setup:</h4>
+                        <ul>
+                            <li><code>const canvas = document.getElementById('myCanvas');</code> : Get the canvas element by its ID.</li>
+                            <li><code>const ctx = canvas.getContext('2d');</code> : Get the 2D drawing context of the canvas.</li>
+                            <li><code>const width = canvas.width;</code> : Get the width of the canvas.</li>
+                            <li><code>const height = canvas.height;</code> : Get the height of the canvas.</li>
+                            <li><code>const centerX = width / 2;</code> : Calculate the X-coordinate of the canvas center.</li>
+                            <li><code>const centerY = height / 2;</code> : Calculate the Y-coordinate of the canvas center.</li>
+                            <li><code>const radius = width / 2;</code> : Set the radius for the circle to half the canvas width.</li>
+                        </ul>
+                    </li>
+                    <li><h4>Function Definition:</h4>
+                        <ul>
+                            <li><code>function drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length)</code> : Define a function to draw a wave curve.
+                                <ul>
+                                    <li><code>ctx.beginPath();</code>: Start a new path.</li>
+                                    <li><code>ctx.moveTo(startX, startY);</code>: Move to the starting point of the wave.</li>
+                                    <li>Loop through the X-coordinates to draw the wave:<br><br>
+                                        <code>const y = startY + amplitude * Math.sin(frequency * (x - startX) + phase);</code>: Calculate the Y-coordinate using a sine function.<br><br>
+                                        <code>ctx.lineTo(x, y);</code>: Draw a line to the calculated point.
+                                    </li>
+                                    <li><code>ctx.stroke();</code>: Render the wave curve.</li>
+                                </ul></li>
+                        </ul>
+                    </li>
+                    <li><h4>Canvas Drawing:</h4>
+                        <ul>
+                            <li><code>ctx.clearRect(0, 0, width, height);</code>: Clear the entire canvas.</li>
+                            <li><code>ctx.save();</code>: Save the current context state.</li>
+                            <li><code>ctx.translate(centerX, centerY);</code>: Translate the context to the center of the canvas.</li>
+                            <li><code>ctx.rotate(30 * Math.PI / 180);</code>: Rotate the context by 30 degrees (converted to radians).</li>
+                            <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                        </ul>
+                    </li>
+                    <li><h4>Draw Circle and Waves:</h4>
+                        <ul>
+                            <li><code>ctx.beginPath();</code>: Start a new path for the circle.</li>
+                            <li><code>ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);</code>: Draw a circle centered at the canvas center.</li>
+                            <li><code>ctx.clip();</code>: Clip the drawing area to the circle.</li>
+                            <li>Loop to draw multiple wave curves:
+                                <ul>
+                                    <li>Calculate random starting Y-coordinate, amplitude, frequency, and phase for each wave.</li>
+                                    <li><code>ctx.strokeStyle = rgba(255, 255, 0, ${Math.random() * 0.5 + 0.5});</code>: Set a random stroke color with random opacity.</li>
+                                    <li><code>ctx.lineWidth = 1;</code>: Set the line width to 1.</li>
+                                    <li><code>drawWaveCurve(ctx, startX, startY, amplitude, frequency, phase, length);</code>: Draw the wave curve using the defined function.</li>
+                                </ul>
+                            </li>
+                            <li><code>ctx.translate(-centerX, -centerY);</code>: Translate back to the original position.</li>
+                        </ul>
+                    </li>
+                </ol>
                 <h3>CSS:</h3>
                 <p class="code-file">style.css</p>
                 <script src="https://gist.github.com/weikaichu1991/3751ac901000f28164daa65dfd9e9bf1.js"></script>
                 <p class="note">
                     <ol>
                         <li><h4>Configuring the position and the size of the webpage background geometry:</h4>
-                            <ul>
-                                <li>Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.</li>
-                            </ul>
+                            Using styling to customise the position and size of the JavaScript generated graphic elements. The <code>z-index</code>attribute allows the image move backward becoming the backdrop of other HTML elements overlapping on the top of it.
                         </li>
                     </ol>
                 </p>
-                <h2>Step 05-2 | Creating the web background geometry using JavaScript - Gradients Moons</h2>
+                <h2 id="step05-2">Step 05-2 | Creating the web background geometry using JavaScript - Gradients Moons</h2>
                 <img src="./article-01-image/image-25.png" class="enlargeable-image" alt="background of main page cover">
                 <p class="footnote">Image : Gradient Moon in "About Me" Page</p>
                 <h3>HTML:</h3>
-                <p class="note">
-                    <ol>
-                        <li><h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
-                            <ul>
-                                <li>Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </p>
+                <ol>
+                    <li>
+                        <h4>Creating Canvas Placeholder for the JS Generated Geometry</h4>
+                            Creating a module using div with a class called “background-circle”. In side the <code>div</code> module, <code>canvas</code> element creates a placeholder to create visualisation space for the JavaScript generated graphic elements, which is a gradient circle here in my website.
+                    </li>
+                </ol>
                 <p class="code-file">aboutMe.html</p>
                 <script src="https://gist.github.com/weikaichu1991/68d733f444f4d06f1cf795237e39b32d.js"></script>
                 <h3>JavaScript:</h3>
                 <p class="code-file">aboutMe.js</p>
                 <script src="https://gist.github.com/weikaichu1991/507fe339da0115f1301ef8d475facf21.js"></script>
-                <p class="note">
-                    <ol>
-                        <li>Firstly, using Canvas API to set up a 2D canvas that placed at the placeholder created by the <code>canvas</code>element in the HTML file. This will be the virtual drawing board for JavaScript to generate the graphical  content.</li>
-                        <li>Secondly, creating a radial gradient property using <code>ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)</code>method. The parameters define two circles: the inner circle with center <code>(x0, y0)</code>and radius <code>r0</code>, and the outer circle with center <code>(x1, y1)</code> and radius <code>r1</code>. The parameters <code>canvas.width/2, canvas.height/2, 0</code>define the inner circle, centered at the middle of the canvas with a radius of 0. These parameters <code>0, canvas.height/2, canvas.width</code>define the outer circle, centered at the left edge of the canvas vertically centered, with a radius equal to the canvas width.</li>
-                        <li>Lastly, start drawing the shape using the method <code>beginPath()</code>. Using <code>arc(x, y, radius, startAngle, endAngle)</code>method to define the the radius and angles of the arc in radians. The parameters <code>canvas.width / 2, canvas.height / 2</code> set the center of the arc to the middle of the canvas. <code>canvas.width / 2</code> sets the radius of the arc to half the width of the canvas, making it a circle that fits within the canvas.  The parameters <code>0, 2 * Math.PI</code> define the start and end angles of the arc in radians. <code>0</code>is the start angle, and<code>2 * Math.PI</code>is the end angle, which completes a full circle.</li>
-                    </ol>
-                </p>
+                <ol>
+                    <li><strong>Firstly, using Canvas API to set up a 2D canvas that placed at the placeholder created by the <code>canvas</code>element in the HTML file. </strong><br><br>This will be the virtual drawing board for JavaScript to generate the graphical  content.</li>
+                    <li><strong>Secondly, creating a radial gradient property using <code>ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)</code>method.</strong> <br><br>The parameters define two circles: the inner circle with center <code>(x0, y0)</code>and radius <code>r0</code>, and the outer circle with center <code>(x1, y1)</code> and radius <code>r1</code>.<br><br>The parameters <code>canvas.width/2, canvas.height/2, 0</code>define the inner circle, centered at the middle of the canvas with a radius of 0.<br><br>These parameters <code>0, canvas.height/2, canvas.width</code>define the outer circle, centered at the left edge of the canvas vertically centered, with a radius equal to the canvas width.</li>
+                    <li><strong>Lastly, start drawing the shape using the method <code>beginPath()</code>. Using <code>arc(x, y, radius, startAngle, endAngle)</code>method to define the the radius and angles of the arc in radians.</strong><br><br>The parameters <code>canvas.width / 2, canvas.height / 2</code> set the center of the arc to the middle of the canvas. <code>canvas.width / 2</code> sets the radius of the arc to half the width of the canvas, making it a circle that fits within the canvas.<br><br>The parameters <code>0, 2 * Math.PI</code> define the start and end angles of the arc in radians. <code>0</code>is the start angle, and<code>2 * Math.PI</code>is the end angle, which completes a full circle.</li>
+                </ol>
                 <h3>CSS:</h3>
                 <p class="code-file">aboutMe.css</p>
                 <script src="https://gist.github.com/weikaichu1991/412533f81a1f833bb345c9ea66e26354.js"></script>
@@ -316,7 +316,7 @@
                         </li>
                     </ol>
                 </p>
-                <h2>Step 06 | Others</h2>
+                <h2 id="step06">Step 06 | Others</h2>
                 <p class="note">
                     <p>By using HTML and CSS code, I also created  a web page module for showing my selected blogs, my career interest with the link to my LinkedIn profile and a footer of my website providing another set of identical navigation bar.</p>
                 </p>
@@ -333,13 +333,13 @@
                     <button class="zoomOut" id="zoomOut">-</button>
                 </div>
             </div>
-            <div class="troubleshooting-zone">
+            <div class="troubleshooting-zone" id="troubleS">
                 <h1>troubleshoot Notes</h1>
                 <hr/>
                 <h2>Issue 01 | Forcing Fonts</h2>
                 <p>I used a font-family called ‘ Cascadia Code ’ and somehow I noticed that the website is not displaying the right font-family on google browser and iOS Safari browser.</p>
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     I used the <code>@font-face</code> rule in CSS to make sure the font-family is loaded when my website is accessed.
                 </p>
                 <div class="call-out">
@@ -356,9 +356,9 @@
                 <hr/>
                 <h2>Issue 02 | Missing Zooming Control for Image Focus View</h2>
                 <h3>Error:</h3> 
-                <p class="description">Image can't be zoomed in and out after entering the the focus view </p>
+                <p>Image can't be zoomed in and out after entering the the focus view </p>
                 <h3>Fix:</h3>
-                <p class="description">
+                <p>
                     I added the following JS code to create zooming buttons displaying in the image focus view. 
                 </p>
                 <p class="code-file">article-01-firstFrontend.js</p>

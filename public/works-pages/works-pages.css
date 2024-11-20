@@ -121,12 +121,20 @@ header, nav, main, footer, .subpages {
                 font-size: 85%;
             }
             .note{
-                font-family:Arial, Helvetica, sans-serif;
+                font-family:'Cascadia Code', sans-serif;
                 line-height: 130%;
                 strong{
                     text-transform: capitalize;
                 }
                 
+            }
+            button{
+                border-style: none;
+                background: none;
+                text-transform: uppercase;
+                font-family:'Cascadia Code', sans-serif;
+                color: #131e3f;
+                cursor: pointer;
             }
             .footnote{
                 font-style: italic;
@@ -157,15 +165,12 @@ header, nav, main, footer, .subpages {
                     font-size: 110%;
                 }
             }
-            ul, ol{
+            ol{
                 li{
                     padding-top: 1%;
                     line-height: 140%;
                     font-size: 85%;
                 }
-            }
-            ol{
-                list-style-type: lower-alpha;
             }
             .call-out{
                 padding: 1% 5%;
@@ -216,6 +221,7 @@ header, nav, main, footer, .subpages {
         img{
             width: 100%;
             border-radius: 10px;
+            margin-top: 2%;
         }
         /* Style for the modal - The image enlarging function */
         .modal {
@@ -538,14 +544,24 @@ header, nav, main, footer, .subpages {
                 text-transform: capitalize;
             }
             p{
-                font-size: 85%;
+                font-size: 80%;
             }
             .note{
-                font-family: Arial, Helvetica, sans-serif;
                 line-height: 150%;
                 strong{
                     text-transform: capitalize;
                 }
+            }
+            button{
+                border-style: none;
+                background: none;
+                text-transform: uppercase;
+                font-family:'Cascadia Code', sans-serif;
+                color: #131e3f;
+                cursor: pointer;
+                font-size: 70%;
+                text-align: left;
+                margin-bottom: 2%;
             }
             .footnote{
                 font-style: italic;
@@ -558,15 +574,16 @@ header, nav, main, footer, .subpages {
                 border-radius: 5px;
                 font-weight: 900;
                 color: #472525;
-            }
-            ul, ol{
-                li{
-                    padding-bottom: 3%;
-                    font-size: 85%;
-                }
+                font-size: 110%;
             }
             ol{
-                list-style-type: lower-alpha;
+                li{
+                    padding-bottom: 3%;
+                    font-size: 80%;
+                }
+                ul{
+                    font-size: 120%;
+                }
             }
             .code-file{
                 text-align: right;
@@ -636,6 +653,7 @@ header, nav, main, footer, .subpages {
         img{
             width: 100%;
             border-radius: 10px;
+            margin-top: 2%;
         }
         /* Style for the modal - The image enlarging function */
         .modal {
