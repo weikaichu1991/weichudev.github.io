@@ -86,18 +86,15 @@ for (let i = 0; i < 50; i++) {
 document.getElementById('openOverlayBtn1').onclick = function() {
     document.getElementById('overlay1').style.display = 'flex';
 };
-document.getElementById('openOverlayBtn2').onclick = function() {
-    document.getElementById('overlay2').style.display = 'flex';
-};
+// document.getElementById('openOverlayBtn2').onclick = function() {
+//     document.getElementById('overlay2').style.display = 'flex';
+// };
 document.getElementById('openOverlayBtn3').onclick = function() {
     document.getElementById('overlay3').style.display = 'flex';
 };
-document.getElementById('openOverlayBtn4').onclick = function() {
-    document.getElementById('overlay4').style.display = 'flex';
-};
-document.getElementById('openOverlayBtn5').onclick = function() {
-    document.getElementById('overlay5').style.display = 'flex';
-};
+// document.getElementById('openOverlayBtn4').onclick = function() {
+//     document.getElementById('overlay4').style.display = 'flex';
+// };
 
 function closeOverlay1() {
     document.getElementById('overlay1').style.display = 'none';
@@ -111,9 +108,7 @@ function closeOverlay3() {
 function closeOverlay4() {
     document.getElementById('overlay4').style.display = 'none';
 }
-function closeOverlay5() {
-    document.getElementById('overlay5').style.display = 'none';
-}
+
 
 document.getElementById('menu-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');

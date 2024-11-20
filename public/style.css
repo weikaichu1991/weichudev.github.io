@@ -193,7 +193,7 @@ nav ul li{
         button{
             color:#EBEBEB;
         }
-        #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5{
+        #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5, #temp-button{
             border-style: none;
             cursor:alias;
             font-weight: 900;
@@ -664,7 +664,7 @@ main {
             button{
                 color: #EBEBEB;
             }
-            #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5{
+            #openOverlayBtn1, #openOverlayBtn2, #openOverlayBtn3, #openOverlayBtn4, #openOverlayBtn5, #temp-button{
                 border-style: none;
                 cursor:alias;
                 font-weight: 900;
@@ -855,7 +855,7 @@ main {
                 }
                 .read-more{
                     text-decoration: none;
-                    color:#131e3f;
+                    color:yellow;
                     font-weight: 900;
                 }
                 .coming-soon{
