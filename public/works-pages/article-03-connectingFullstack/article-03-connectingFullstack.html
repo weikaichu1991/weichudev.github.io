@@ -117,105 +117,173 @@
                 <!-- The end of step 02 -->
                 
                 <h2 id="step03">Step 03 | Create Function to Display all the Feedbacks</h2>
-                <h3>Key Steps:</h3>
+                <script src="https://gist.github.com/weikaichu1991/d807ee5106ba7b826a0dadd826ae1a7f.js"></script>
                 <p class="note">
                     <ol>
                         <li>
-                            <h4>Setup environment variable</h4>
-                            <p>creating .env (specified in .gitignore) file for storing the user credential to the DB.</p>
-                            <p class="code-file">.env</p>
-                            <script src="https://gist.github.com/weikaichu1991/99c8c968e51de5ebb09edf8db7af5ae6.js"></script>
+                            In general, the function fetches feedback data from an API url endpoint and dynamically creates HTML elements to display those feedbacks on a webpage.
+                        </li>
+                        <li>Fetch API Call:
+                            <ul>
+                                <li><code>fetch(url)</code> initiates an HTTP GET request to the specified URL.</li>
+                                <li>The response is then converted to JSON using <code>response.json()</code>.</li>
+                            </ul>
+                        <li>Handling the Fetched Data:
+                            <ul>
+                                <li>The fetched array of feedback data is processed in the <code>.then(function(data){...})</code> block. <code>console.log(data);</code> logs the fetched data to the console for debugging purposes.</li>
+                            </ul>
+                        </li>
+                        <li>Iterating Over Comments:
+                            <ul>
+                                <li><code>data.forEach(comment => {...})</code> iterates over each comment in the fetched data array. For each comment, a new <code>div</code> element (<code>div_card</code>) is created to hold the comment details.</li>
+                            </ul>
                         </li>
                         <li>
-                            <h4>Set Up Mongoose and Connect to MongoDB Atlas</h4>
-                            <p>Create a file named <code>server.js</code> to set up the Express server. </p>
-                            <p class="code-file">server.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/6645759233458e2a2615ed09c39ea2cc.js"></script>
-                            <p>Create a file named <code>db.js</code> to set up Mongoose and connect to MongoDB Atlas. The configuration will use the credentials from environment variables, and then starting the Express server on a specified port as well as handling any connection errors.</p>
-                            <p class="code-file">db.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/c19ac0f3ad88ca6a55ef0e5ba8ade47a.js"></script>
+                            Formatting and Inserting Comment Data:
+                            <ul>
+                                <li><code>const comment_id = comment._id;</code> extracts the feedback's unique ID in the MongoDB.</li>
+                                <li><code>const formattedDate = formatDate(comment.date); </code> formats the comment's date using a <code>formatDate</code> function (defined later).</li>
+                                <li><code>div_card.innerHTML = ...</code> sets the inner HTML of the <code>div_card</code> with the comment's details, including subject, text, commentator's name, and formatted date.</li>
+                                <li>The HTML also includes "Edit" and "Delete" links with <code>onclick</code> handlers to trigger <code>showEmailVerification</code> function (defined later) with appropriate parameters.</li>
+                            </ul>
                         </li>
-                        
+                        <li>
+                            Appending to Main Container:
+                            <ul>
+                                <li><code>main.appendChild(div_card);</code> appends the newly created <code>div_card</code> to a main container element (<code>main</code>), the connected HTML web page in this case.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Error Handling:
+                            <ul>
+                                <li><code>.catch(error => {...})</code> handles any errors that occur during the fetch operation.</li>
+                                <li><code>console.error('Error fetching comments:', error);</code> logs the error to the console.</li>
+                                <li><code>alert('Error fetching comments. Please try again.');</code> displays an alert to the user indicating that there was an error fetching the comments.</li>
+                            </ul>
+                        </li>
                     </ol>
                 </p>
                 <!-- The end of step 03 -->
                 <br>
-                <h2 id="step04">Step 04 | Creating API endpoints based on the CRUD methods.</h2>
+                <h2 id="step04">Step 04 | Create Function for Feedback Editing Form</h2>
+                <script src="https://gist.github.com/weikaichu1991/28f2970fc1e3d3e8107a5efcbf545888.js"></script>
                 <p class="note">
                     <ol>
                         <li>
-                            <h4>Define the Comment Model</h4>
-                            <p>Create a file named <code>Comment.js</code> to define the Comment schema and model.</p>
-                            <p class="code-file">Comment.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/38d8f8fc9b9e1fac33da6b3ff940e2ba.js"></script>
+                            This function is designed to enable the editing of a comment on a webpage.
                         </li>
                         <li>
-                            <h4>Defining API Endpoints Routing</h4>
-                            <p>Create a file named <code>comments.route.js</code> to set up the Express server and define the API endpoints.</p>
-                            <p class="code-file">comments.route.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/572abebabf0b39f1f501f4e8efe16ead.js"></script>
+                            Element Selection:
+                            <ul>
+                                <li>An HTML element is selected by its <code>id</code> using <code>document.getElementById(id)</code> and assigns it to the variable <code>element</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Input IDs Creation:
+                            <ul>
+                                <li>Unique IDs are assigned for the input fields by concatenating the <code>id</code> parameter with specific strings (<code>subject</code>, <code>comment_text</code>, <code>name</code>, <code>email</code>, <code>verify_email</code>).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Inner HTML Update:
+                            <ul>
+                                <li>The function updates the <code>innerHTML</code> of the selected element to include input fields pre-filled with the provided <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code> values.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Save Link: It adds a "Save" link that, when clicked, calls the <code>saveComment</code> function (defined later) with the IDs of the input fields and the original <code>id</code>. The edited comment then will be saved.
                         </li>
                     </ol>
                 </p>
                 <!-- The end of step 04 -->
+                
                 <br>
-                <h2 id="step05">Step 05 | Run the connection code file with Node.js.</h2>
+                <h2 id="step05">Step 05 | Create Function to Save the Updated or Newly Added Feedback</h2>
+                <script src="https://gist.github.com/weikaichu1991/76745383de1f564db8b246c73e9c3ff5.js"></script>
                 <p class="note">
                     <ol>
                         <li>
-                            Running the node module for testing the api connection, using the command:
-                            <p class="code-file">terminal</p>
-                            <script src="https://gist.github.com/weikaichu1991/ebb449f1f522894b3c22e391400c4ea8.js"></script>
-                            <img src="./article-02-image/image 11-01.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                            The function is designed to save a comment/ feedback to a backend server.
                         </li>
                         <li>
-                            <h4>5-1. Testing the API with Postman</h4>
-                            <p>Using Postman to checking if the data has been successfully stored, updated, added in or deleted at MongoDB Portal.</p>
+                            Function Parameters:
                             <ul>
-                                <li><strong>GET the whole data collection in the MongoDB cluster.</strong>
-                                    <img src="./article-02-image/image 12.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                </li>
-                                <li><strong>POST / Adding various strings of new data to the collection based on the data model schema that has been setup.</strong>
-                                    <img src="./article-02-image/image 13.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                    <img src="./article-02-image/image 14.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                </li>
-                                <li><strong>GET + data ID/ Retrieving single string of data  from the collection using ObjectID as the reference.</strong>
-                                    <img src="./article-02-image/image 15.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                </li>
-                                <li><strong>PUT + data ID/ Updating single string of data  from the collection using ObjectID as the reference.</strong>
-                                    <img src="./article-02-image/image 16.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                    <img src="./article-02-image/image 17.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                </li>
-                                <li><strong>DELETE + data ID/ Deleting single string of data  from the collection using ObjectID as the reference.</strong>
-                                    <img src="./article-02-image/image 18.png" class="enlargeable-image" alt="mongodb cluster setup 03">
-                                    <img src="./article-02-image/image 19.png" class="enlargeable-image" alt="mongodb cluster setup 03">
+                                <li>Inherit the IDs of the HTML input elements  <code>nameInputId</code>, <code>emailInputId</code>, <code>subjectInputId</code>, <code>commentInputId</code> defined in the editComment function, from which the function will retrieve values.</li>
+                                <li><code>id</code>: An optional parameter that, if provided, indicates an existing comment to update; otherwise, a new comment will be created.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Retrieve Input Values:
+                            <ul>
+                                <li>The function retrieves the values from the HTML input elements using <code>document.getElementById().value</code> for <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Determine HTTP Method and URL:
+                            <ul>
+                                <li>If <code>id</code> is provided, the HTTP method is set to <code>'PUT'</code> (for updating an existing comment) and the URL is constructed using the <code>id</code>.</li>
+                                <li>If <code>id</code> is not provided, the HTTP method is set to <code>'POST'</code> (for creating a new comment) and the URL is set to <code>APILINK</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Send HTTP Request:
+                            <ul>
+                                <li>An HTTP request then will be sent to the server using the <code>fetch</code> API.</li>
+                                <li>
+                                    - The request includes:
+                                    <ul>
+                                        <li><code>method</code>: Either `'PUT'` or `'POST'`.</li>
+                                        <li><code>headers</code>: Specifies the content type as JSON.</li>
+                                        <li><code>body</code>: A JSON string containing the <code>name</code>, <code>email</code>, <code>subject</code>, <code>comment_text</code>, and <code>article</code>.</li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <h4>5-2. Testing the API with a terminal.</h4>
-                            <p><strong>Command line for testing the api functions POST GET PUT DELETE:</strong></p>
+                            Error Handling:
                             <ul>
-                                <li><strong>POST</strong>
-                                    <p class="code-file">terminal</p>
-                                    <script src="https://gist.github.com/weikaichu1991/d0a7f21d4003669fb46c609e1ac1d26b.js"></script>
-                                </li>
-                                <li><strong>GET</strong>
-                                    <p class="code-file">terminal</p>
-                                    <script src="https://gist.github.com/weikaichu1991/74658609399456c39c8e2eb00eb988b2.js"></script>
-                                </li>
-                                <li><strong>PUT</strong>
-                                    <p class="code-file">terminal</p>
-                                    <script src="https://gist.github.com/weikaichu1991/049b5eca618af7b558efb4f56b2e8b75.js"></script>
-                                </li>
-                                <li><strong>DELETE</strong>
-                                    <p class="code-file">terminal</p>
-                                    <script src="https://gist.github.com/weikaichu1991/67ce8d1b4a80c25d64558ee51e6e675f.js"></script>
-                                </li>
+                                <li>If the response is successful (<code>response.ok</code>), it logs a success message to the console and reloads the page.</li>
+                                <li>- If the response is not successful, it logs an error message to the console with the response status text.</li>
                             </ul>
                         </li>
                     </ol>
+                    <div class="call-out">
+                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
+                    </div>
                 </p>
+                <!-- The end of step 05 -->
+                
+                <br>
+                <h2 id="step06">Step 06 | Create Function to Delete a Comment</h2>
+                <script src="https://gist.github.com/weikaichu1991/bf44a5e498ca6cc4bad43a1b4c53120b.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The function deletes a comment by its <code>id</code>.
+                        </li>
+                        <li>
+                            Fetch API Call: 
+                            <ul>
+                                <li>The function uses the <code>fetch</code> API to send an HTTP DELETE request to a specified URL, constructed using a base <code>APILINK</code> and the provided <code>id</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Await Response: As this is an asynchronous function, the <code>await</code> keyword paring with <code>async</code> pauses the function execution until the <code>fetch</code> request completes and returns a response.
+                        </li>
+                        <li>
+                            Error Handling:
+                            <ul>
+                                <li>The function checks if the response is successful (<code>response.ok</code>).</li>
+                                <li><strong>Success Case:</strong> If the response is successful, it logs a success message to the console and reloads the page using <code>location.reload(main)</code>.</li>
+                                <li><strong>Failure Case:</strong> If the response is not successful, it logs an error message to the console with the response's status text.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="call-out">
+                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
+                    </div>
+                </p>
+                <!-- The end of step 06 -->
                 <div class="call-out">
                     <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.web.local" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
                 </div>
