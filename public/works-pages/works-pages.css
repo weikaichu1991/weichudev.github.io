@@ -601,6 +601,7 @@ header, nav, main, footer, .subpages {
                 font-weight: 900;
                 color: #472525;
                 font-size: 110%;
+                word-wrap: break-word;
             }
             ol{
                 li{
