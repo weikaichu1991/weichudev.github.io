@@ -125,40 +125,40 @@
                         </li>
                         <li>Fetch API Call:
                             <ul>
-                                <li><code>fetch(url)</code> initiates an HTTP GET request to the specified URL.</li>
-                                <li>The response is then converted to JSON using <code>response.json()</code>.</li>
+                                <li><code>fetch(url)</code> initiates an HTTP GET request to the specified URL.</li>
+                                <li>The response is then converted to JSON using <code>response.json()</code>.</li>
                             </ul>
                         <li>Handling the Fetched Data:
                             <ul>
-                                <li>The fetched array of feedback data is processed in the <code>.then(function(data){...})</code> block. <code>console.log(data);</code> logs the fetched data to the console for debugging purposes.</li>
+                                <li>The fetched array of feedback data is processed in the <code>.then(function(data){...})</code> block. <code>console.log(data);</code> logs the fetched data to the console for debugging purposes.</li>
                             </ul>
                         </li>
                         <li>Iterating Over Comments:
                             <ul>
-                                <li><code>data.forEach(comment => {...})</code> iterates over each comment in the fetched data array. For each comment, a new <code>div</code> element (<code>div_card</code>) is created to hold the comment details.</li>
+                                <li><code>data.forEach(comment => {...})</code> iterates over each comment in the fetched data array. For each comment, a new <code>div</code> element (<code>div_card</code>) is created to hold the comment details.</li>
                             </ul>
                         </li>
                         <li>
                             Formatting and Inserting Comment Data:
                             <ul>
-                                <li><code>const comment_id = comment._id;</code> extracts the feedback's unique ID in the MongoDB.</li>
-                                <li><code>const formattedDate = formatDate(comment.date); </code> formats the comment's date using a <code>formatDate</code> function (defined later).</li>
-                                <li><code>div_card.innerHTML = ...</code> sets the inner HTML of the <code>div_card</code> with the comment's details, including subject, text, commentator's name, and formatted date.</li>
-                                <li>The HTML also includes "Edit" and "Delete" links with <code>onclick</code> handlers to trigger <code>showEmailVerification</code> function (defined later) with appropriate parameters.</li>
+                                <li><code>const comment_id = comment._id;</code> extracts the feedback's unique ID in the MongoDB.</li>
+                                <li><code>const formattedDate = formatDate(comment.date); </code> formats the comment's date using a <code>formatDate</code> function (defined later).</li>
+                                <li><code>div_card.innerHTML = ...</code> sets the inner HTML of the <code>div_card</code> with the comment's details, including subject, text, commentator's name, and formatted date.</li>
+                                <li>The HTML also includes "Edit" and "Delete" links with <code>onclick</code> handlers to trigger <code>showEmailVerification</code> function (defined later) with appropriate parameters.</li>
                             </ul>
                         </li>
                         <li>
                             Appending to Main Container:
                             <ul>
-                                <li><code>main.appendChild(div_card);</code> appends the newly created <code>div_card</code> to a main container element (<code>main</code>), the connected HTML web page in this case.</li>
+                                <li><code>main.appendChild(div_card);</code> appends the newly created <code>div_card</code> to a main container element (<code>main</code>), the connected HTML web page in this case.</li>
                             </ul>
                         </li>
                         <li>
                             Error Handling:
                             <ul>
-                                <li><code>.catch(error => {...})</code> handles any errors that occur during the fetch operation.</li>
-                                <li><code>console.error('Error fetching comments:', error);</code> logs the error to the console.</li>
-                                <li><code>alert('Error fetching comments. Please try again.');</code> displays an alert to the user indicating that there was an error fetching the comments.</li>
+                                <li><code>.catch(error => {...})</code> handles any errors that occur during the fetch operation.</li>
+                                <li><code>console.error('Error fetching comments:', error);</code> logs the error to the console.</li>
+                                <li><code>alert('Error fetching comments. Please try again.');</code> displays an alert to the user indicating that there was an error fetching the comments.</li>
                             </ul>
                         </li>
                     </ol>
@@ -170,28 +170,28 @@
                 <p class="note">
                     <ol>
                         <li>
-                            This function is designed to enable the editing of a comment on a webpage.
+                            This function is designed to enable the editing of a comment on a webpage.
                         </li>
                         <li>
                             Element Selection:
                             <ul>
-                                <li>An HTML element is selected by its <code>id</code> using <code>document.getElementById(id)</code> and assigns it to the variable <code>element</code>.</li>
+                                <li>An HTML element is selected by its <code>id</code> using <code>document.getElementById(id)</code> and assigns it to the variable <code>element</code>.</li>
                             </ul>
                         </li>
                         <li>
                             Input IDs Creation:
                             <ul>
-                                <li>Unique IDs are assigned for the input fields by concatenating the <code>id</code> parameter with specific strings (<code>subject</code>, <code>comment_text</code>, <code>name</code>, <code>email</code>,<br> <code>verify_email</code>).</li>
+                                <li>Unique IDs are assigned for the input fields by concatenating the <code>id</code> parameter with specific strings (<code>subject</code>, <code>comment_text</code>, <code>name</code>, <code>email</code>, <code>verify_email</code>).</li>
                             </ul>
                         </li>
                         <li>
                             Inner HTML Update:
                             <ul>
-                                <li>The function updates the <code>innerHTML</code> of the selected element to include input fields pre-filled with the provided <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code> values.</li>
+                                <li>The function updates the <code>innerHTML</code> of the selected element to include input fields pre-filled with the provided <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code> values.</li>
                             </ul>
                         </li>
                         <li>
-                            Save Link: It adds a "Save" link that, when clicked, calls the <code>saveComment</code> function (defined later) with the IDs of the input fields and the original <code>id</code>. The edited comment then will be saved.
+                            Save Link: It adds a "Save" link that, when clicked, calls the <code>saveComment</code> function (defined later) with the IDs of the input fields and the original <code>id</code>. The edited comment then will be saved.
                         </li>
                     </ol>
                 </p>
@@ -215,26 +215,26 @@
                         <li>
                             Retrieve Input Values:
                             <ul>
-                                <li>The function retrieves the values from the HTML input elements using <code>document.getElementById().value</code> for <code>name</code>,<br> <code>email</code>, <code>subject</code>, and <code>comment_text</code>.</li>
+                                <li>The function retrieves the values from the HTML input elements using <code>document.getElementById().value</code> for <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code>.</li>
                             </ul>
                         </li>
                         <li>
                             Determine HTTP Method and URL:
                             <ul>
-                                <li>If <code>id</code> is provided, the HTTP method is set to <code>'PUT'</code> (for updating an existing comment) and the URL is constructed using the <code>id</code>.</li>
-                                <li>If <code>id</code> is not provided, the HTTP method is set to <code>'POST'</code> (for creating a new comment) and the URL is set to <code>APILINK</code>.</li>
+                                <li>If <code>id</code> is provided, the HTTP method is set to <code>'PUT'</code> (for updating an existing comment) and the URL is constructed using the <code>id</code>.</li>
+                                <li>If <code>id</code> is not provided, the HTTP method is set to <code>'POST'</code> (for creating a new comment) and the URL is set to <code>APILINK</code>.</li>
                             </ul>
                         </li>
                         <li>
                             Send HTTP Request:
                             <ul>
-                                <li>An HTTP request then will be sent to the server using the <code>fetch</code> API.</li>
+                                <li>An HTTP request then will be sent to the server using the <code>fetch</code> API.</li>
                                 <li>
                                     - The request includes:
                                     <ul>
-                                        <li><code>method</code>: Either `'PUT'` or `'POST'`.</li>
+                                        <li><code>method</code>: Either `'PUT'` or `'POST'`.</li>
                                         <li><code>headers</code>: Specifies the content type as JSON.</li>
-                                        <li><code>body</code>: A JSON string containing the <code>name</code>, <code>email</code>, <code>subject</code>, <code>comment_text</code>, and <code>article</code>.</li>
+                                        <li><code>body</code>: A JSON string containing the <code>name</code>, <code>email</code>, <code>subject</code>, <code>comment_text</code>, and <code>article</code>.</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -256,28 +256,28 @@
                 <p class="note">
                     <ol>
                         <li>
-                            The function deletes a comment by its <code>id</code>.
+                            The function deletes a comment by its <code>id</code>.
                         </li>
                         <li>
                             Fetch API Call: 
                             <ul>
-                                <li>The function uses the <code>fetch</code> API to send an HTTP DELETE request to a specified URL, constructed using a base <code>APILINK</code> and the provided <code>id</code>.</li>
+                                <li>The function uses the <code>fetch</code> API to send an HTTP DELETE request to a specified URL, constructed using a base <code>APILINK</code> and the provided <code>id</code>.</li>
                             </ul>
                         </li>
                         <li>
-                            Await Response: As this is an asynchronous function, the <code>await</code> keyword paring with <code>async</code> pauses the function execution until the <code>fetch</code> request completes and returns a response.
+                            Await Response: As this is an asynchronous function, the <code>await</code> keyword paring with <code>async</code> pauses the function execution until the <code>fetch</code> request completes and returns a response.
                         </li>
                         <li>
                             Error Handling:
                             <ul>
                                 <li>The function checks if the response is successful (<code>response.ok</code>).</li>
-                                <li><strong>Success Case:</strong> If the response is successful, it logs a success message to the console and reloads the page using <code>location.reload(main)</code>.</li>
+                                <li><strong>Success Case:</strong> If the response is successful, it logs a success message to the console and reloads the page using <code>location.reload(main)</code>.</li>
                                 <li><strong>Failure Case:</strong> If the response is not successful, it logs an error message to the console with the response's status text.</li>
                             </ul>
                         </li>
                     </ol>
                     <div class="call-out">
-                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
+                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
                     </div>
                 </p>
                 <!-- The end of step 06 -->
@@ -293,18 +293,18 @@
                             <code>showEmailVerification(commentId, action)</code> Function:
                             <ul>
                                 <li>Get the Element by ID:
-                                    <br>The function takes two parameters: <code>commentId</code>  and <code>action</code>. It retrieves the Feedback HTML element with the ID ( <code>commentId</code> defined in the <code>returnComments(url)</code> function) using <code>document.getElementById(commentId)</code>.</li>
+                                    <br>The function takes two parameters: <code>commentId</code>  and <code>action</code>. It retrieves the Feedback HTML element with the ID ( <code>commentId</code> defined in the <code>returnComments(url)</code> function) using <code>document.getElementById(commentId)</code>.</li>
                                 <li>Append HTML for Email Verification:
-                                    <br>It appends a new HTML block which contains an input field for the user to enter their email and a link that triggers the <code>verifyEmail</code> function when clicked.</li>
+                                    <br>It appends a new HTML block which contains an input field for the user to enter their email and a link that triggers the <code>verifyEmail</code> function when clicked.</li>
                             </ul>
                         </li>
                         <li>
                             <code>verifyEmail(commentId, action)</code>
                             <ul>
                                 <li>Retrieve and Process Input:
-                                    <br>The function takes two parameters: <code>commentId</code> and <code>action</code>to retrieve the value from the input field with the ID <code>verifyInput-${commentId}</code>.</li>
+                                    <br>The function takes two parameters: <code>commentId</code> and <code>action</code>to retrieve the value from the input field with the ID <code>verifyInput-${commentId}</code>.</li>
                                 <li>Fetch Comment Data:
-                                    <br>It sends a GET request to API endpoint to fetch the comment data via  <code>commentId</code>.</li>
+                                    <br>It sends a GET request to API endpoint to fetch the comment data via  <code>commentId</code>.</li>
                                 <li>Handle Response:
                                     <br>If the response is successful (<code>response.ok</code>), it parses the response as JSON to get the comment data. It logs a success message to the console.
                                 </li>
@@ -312,14 +312,14 @@
                                     Email Verification:
                                     <ol>
                                         <li>It compares the stored email (from the fetched comment data) with the input email.</li>
-                                        <li>If they match, it performs the action specified by the <code>action</code> parameter:
+                                        <li>If they match, it performs the action specified by the <code>action</code> parameter:
                                             <ol>
-                                                <li>If <code>action</code> is 'edit', it calls <code>editComment</code> with the comment details.</li>
-                                                <li>If <code>action</code> is 'delete', it calls <code>deleteComment</code> with the <code>commentId</code> and input email.</li>
+                                                <li>If <code>action</code> is 'edit', it calls <code>editComment</code> with the comment details.</li>
+                                                <li>If <code>action</code> is 'delete', it calls <code>deleteComment</code> with the <code>commentId</code> and input email.</li>
                                             </ol>
                                         </li>
                                         <li>
-                                            If they do not match, it alerts the user and appends an error message to the HTML element with the ID <code>commentId</code>.
+                                            If they do not match, it alerts the user and appends an error message to the HTML element with the ID <code>commentId</code>.
                                         </li>
                                     </ol>
                                 </li>
@@ -341,12 +341,12 @@
                             The function takes the date string stored in the MongoDB collection as input and returns a formatted date string.
                         </li>
                         <li>
-                            Options Object: An <code>options</code> object is created to specify the formatting options for the date.
+                            Options Object: An <code>options</code> object is created to specify the formatting options for the date.
                         </li>
                         <li>
-                            Date Object: A <code>Date</code> object is created from the input <code>dateString</code>.
+                            Date Object: A <code>Date</code> object is created from the input <code>dateString</code>.
                         </li>
-                        <li>Regional Standard Format Enforcing: The <code>toLocaleDateString</code> method is called on the <code>Date</code> object, with <code>'en-GB'</code> (British English) as the locale and the <code>options</code> object to specify the format.</li>
+                        <li>Regional Standard Format Enforcing: The <code>toLocaleDateString</code> method is called on the <code>Date</code> object, with <code>'en-GB'</code> (British English) as the locale and the <code>options</code> object to specify the format.</li>
                     </ol>
                 </p>
                 <!-- The end of step 08 -->
@@ -356,10 +356,10 @@
                 <p class="note">
                     <ol>
                         <li>
-                            The syntax adds an event listener to the connected web page that listens for the <code>DOMContentLoaded event</code>.
+                            The syntax adds an event listener to the connected web page that listens for the <code>DOMContentLoaded event</code>.
                         </li>
                         <li>
-                            <code>() => returnComments(APILINK)</code>: When the initial HTML document has been completely loaded and parsed, it calls the <code>returnComments</code> function with the API url.
+                            <code>() => returnComments(APILINK)</code>: When the initial HTML document has been completely loaded and parsed, it calls the <code>returnComments</code> function with the API url.
                         </li>
                     </ol>
                 </p>
