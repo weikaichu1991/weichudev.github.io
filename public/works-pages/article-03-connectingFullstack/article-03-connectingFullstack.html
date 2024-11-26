@@ -247,9 +247,6 @@
                             </ul>
                         </li>
                     </ol>
-                    <div class="call-out">
-                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
-                    </div>
                 </p>
                 <!-- The end of step 05 -->
                 
@@ -284,8 +281,139 @@
                     </div>
                 </p>
                 <!-- The end of step 06 -->
+                <br>
+                <h2 id="step07">Step 07 | Create a Simple Verification Function to enhance security</h2>
+                <script src="https://gist.github.com/weikaichu1991/2040bc0407dfe2961a560912d0423cb3.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            This pair of functions are used to verify a user's email before allowing them to perform actions such as editing or deleting a comment.
+                        </li>
+                        <li>
+                            <code>showEmailVerification(commentId, action)</code> Function:
+                            <ul>
+                                <li>Get the Element by ID:
+                                    <br>The function takes two parameters: <code>commentId</code>  and <code>action</code>. It retrieves the Feedback HTML element with the ID ( <code>commentId</code> defined in the <code>returnComments(url)</code> function) using <code>document.getElementById(commentId)</code>.</li>
+                                <li>Append HTML for Email Verification:
+                                    <br>It appends a new HTML block which contains an input field for the user to enter their email and a link that triggers the <code>verifyEmail</code> function when clicked.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <code>verifyEmail(commentId, action)</code>
+                            <ul>
+                                <li>Retrieve and Process Input:
+                                    <br>The function takes two parameters: <code>commentId</code> and <code>action</code>to retrieve the value from the input field with the ID <code>verifyInput-${commentId}</code>.</li>
+                                <li>Fetch Comment Data:
+                                    <br>It sends a GET request to API endpoint to fetch the comment data via  <code>commentId</code>.</li>
+                                <li>Handle Response:
+                                    <br>If the response is successful (<code>response.ok</code>), it parses the response as JSON to get the comment data. It logs a success message to the console.
+                                </li>
+                                <li>
+                                    Email Verification:
+                                    <ol>
+                                        <li>It compares the stored email (from the fetched comment data) with the input email.</li>
+                                        <li>If they match, it performs the action specified by the <code>action</code> parameter:
+                                            <ol>
+                                                <li>If <code>action</code> is 'edit', it calls <code>editComment</code> with the comment details.</li>
+                                                <li>If <code>action</code> is 'delete', it calls <code>deleteComment</code> with the <code>commentId</code> and input email.</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            If they do not match, it alerts the user and appends an error message to the HTML element with the ID <code>commentId</code>.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Error Handling:
+                                    <br>If the response is not successful, it logs an error message to the console.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 07 -->
+                <br>
+                <h2 id="step08">Step 08 | Forcing Date Format Shown in the Display From</h2>
+                <script src="https://gist.github.com/weikaichu1991/f49b61965aa5aca3eae8a6d4d9cbed4e.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The function takes the date string stored in the MongoDB collection as input and returns a formatted date string.
+                        </li>
+                        <li>
+                            Options Object: An <code>options</code> object is created to specify the formatting options for the date.
+                        </li>
+                        <li>
+                            Date Object: A <code>Date</code> object is created from the input <code>dateString</code>.
+                        </li>
+                        <li>Regional Standard Format Enforcing: The <code>toLocaleDateString</code> method is called on the <code>Date</code> object, with <code>'en-GB'</code> (British English) as the locale and the <code>options</code> object to specify the format.</li>
+                    </ol>
+                </p>
+                <!-- The end of step 08 -->
+                <br>
+                <h2 id="step09">Step 09 | Calling the function for returning all relevant Data</h2>
+                <script src="https://gist.github.com/weikaichu1991/8442b247716cfa94e4621fabe97adb57.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The syntax adds an event listener to the connected web page that listens for the <code>DOMContentLoaded event</code>.
+                        </li>
+                        <li>
+                            <code>() => returnComments(APILINK)</code>: When the initial HTML document has been completely loaded and parsed, it calls the <code>returnComments</code> function with the API url.
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 09 -->
+                <br>
+                <h2 id="step10">Step 10 | Run the Node.js Engine to activate the api connection for testing the functions</h2>
+                <script src="https://gist.github.com/weikaichu1991/c0957b8769f6b7415d58564fada7b818.js"></script>
+                <!-- The end of step 10 -->
+                <br>
+                <h2 id="step11">Step 11 | Test through the frontend interface</h2>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Filling in the comment form in the webpage to see if the value is returned and displayed below the form. This means the GET and POST API endpoints are working as well as the saveComment function.
+                            <img src="./article03-image/image-01.png" class="enlargeable-image" alt="api concept">
+                            <img src="./article03-image/image_1-01.png" class="enlargeable-image" alt="api concept">
+                        </li>
+                        <li>
+                            You will find the raw data has now showed up in the data collection on MongoDB portal. Making sure you are at the right project, cluster and data collection.
+                            <img src="./article03-image/image_2-01.png" class="enlargeable-image" alt="api concept">
+                        </li>
+                        <li>
+                            Try to update it to test the verification function and the function associating with the PUT API endpoint.
+                            <img src="./article03-image/image_3-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>click “Edit”.</li>
+                                <li>Filling the email that is the same as the one when the comment was made, and then click “Verify”.</li>
+                            </ol>
+                            <img src="./article03-image/image_4-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The form will enter the editable mode if the verification is successful. Clicking “Save ” after the comment has been updated.</li>
+                            </ol>
+                            <img src="./article03-image/image_5-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The comment now had been updated.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            Trying to delete it, which will also allow you to test the verification function.
+                            <img src="./article03-image/image_6-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>click “Delete”.</li>
+                                <li>Filling the email that is the same as the one when the comment was made, and then click “Verify”.</li>
+                            </ol>
+                            <img src="./article03-image/image_7.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The comment now had been deleted.</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 11 -->
                 <div class="call-out">
-                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.web.local" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.web.local/blob/main/works-pages/works-page.js" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
                 </div>
 
                 <!-- Modal structure -->
@@ -297,8 +425,8 @@
                     <button class="zoomOut" id="zoomOut">-</button>
                 </div>
             </div>
-            <div class="troubleshooting-zone" id="troubleS">
-                <h1>troubleshoot Notes</h1>
+            <!-- <div class="troubleshooting-zone" id="troubleS"> -->
+                <!-- <h1>troubleshoot Notes</h1>
                 <hr/>
                 <h2>Issue 01 | [ERR_MODULE_NOT_FOUND]</h2>
                 <h3>Error:</h3> 
@@ -352,42 +480,9 @@
                             </ol>
                         </li>
                     </ol>
-                </p>
+                </p> -->
                 <!-- The end of issue 01 -->
-
-                <hr/>
-                <h2>Issue 02 | Connection to MongoDB Failed</h2>
-                <h3>Error:</h3> 
-                <p>Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/</p>
-                <h3>Potential Fix 01:</h3>
-                <p>
-                    Including the IP address into the ‘Network Access List’
-                </p>
-                <img src="./article-02-image/image 20.png" class="enlargeable-image" alt="mongodb network access list page">
-                <img src="./article-02-image/image 21.png" class="enlargeable-image" alt="mongodb network access list page">
-                <img src="./article-02-image/image 22.png" class="enlargeable-image" alt="mongodb network access list page">
-                <h3>Potential Fix 02:</h3>
-                <p>
-                    Updating the version of Node.js to v.22.11.01, the latest LTS version.
-                    <ol>
-                        <li>
-                            Using the intalling-via-nvm steps mentioned in the Troubleshooting Issue 1 to install the laster LTS version of Node.js and use the follwing command line to ask the system to use the version after the installation.
-                            <p class="code-file">terminal</p>
-                            <script src="https://gist.github.com/weikaichu1991/7bf863dda1b78f8a58374ea03aa9ff81.js"></script>
-                        </li>
-                        <li>
-                            Double check if the current default version is correct.
-                            <p class="code-file">terminal</p>
-                            <script src="https://gist.github.com/weikaichu1991/e92e8c36ae3af939ad826352a9e1c3e0.js"></script>
-                        </li>
-                        <li>Run the connection node file again.
-                            <p class="code-file">terminal</p>
-                            <script src="https://gist.github.com/weikaichu1991/c58f0724d2fd304992dde675fd9afc2e.js"></script>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of issue 02 -->
-            </div>
+            <!-- </div> -->
             
             <section id="commentsSection">
 
@@ -413,5 +508,5 @@
     </div>
 </body>
 
-<script src="./article-02-firstBackend.js"></script>
+<script src="./article-03-connectingFullstack.js"></script>
 </html>
