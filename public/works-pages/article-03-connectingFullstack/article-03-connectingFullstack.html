@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Backend & Frontend</title>
+    <link rel="icon" type="image/x-icon" href="../../images/w-alphabet-icon.svg">
+    <link rel="stylesheet" href="../works-pages.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class = "topnav">
+            <nav class = "subpagesMenu">
+                <div class="menu-icon" id="menu-icon">
+                    &#9776; <!-- Unicode for the menu icon -->
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class = "subpages" href="../../index.html">Home</a></li>
+                    <li><a class = "subpages" href="../../About/aboutMe.html">About</a></li>
+                    <li><a class = "subpages" href="../../works-pages/works-catalogue.html">Works</a></li>
+                    <li><a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a></li>
+                    <li><a class = "subpages" id = "comments" href="../../Comments/comments-page.html">Feedbacks</a></li>
+                    <li><a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a></li>
+                    <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email</a></li>
+                </ul>
+                <div class="mobile-top-icon" id="mobile-top-icon">
+                    <button onclick="location.href='#container'"><img src="../../images/back-to-top-svgrepo-com.svg"></button>
+                </div>
+            </nav>
+        </div>
+        <header class = "siteName" href="../../index.html">
+            <h1>Wei's<br>Dev<br>Journal</h1>
+        </header>
+        <!-- The end of the navigation bar section -->
+        
+        
+        <div class="content">
+            <div class="content-title" id="conetentBegin">
+                <h1>Connecting My frontend and backend (testing via local server)</h1>
+            </div>
+            <div class="tags">
+                <button>Node.js</button>
+                <button>REST API</button>
+                <button>JavaScript</button>
+                <button>HTML</button>
+                <button>MongoDB</button>
+            </div>
+            
+            <div class="content-section">
+                <img src="https://cdn.dribbble.com/users/439816/screenshots/2089555/media/00f629f0eaea261860310180b600cdd6.gif" class="enlargeable-image" alt="api concept">
+                <p class="footnote">Image source: <a href="https://dribbble.com/shots/2089555-Inframe-Identity-001?1433257755">Dribbble / Artist: Vucko</a></p>
+
+                <h2>Table:</h2>
+                <p class="note">
+                    <ul>
+                        <li><button onclick="location.href='#step00'">Step 00 | Preparation</button></li>
+                        <li><button onclick="location.href='#step01'">Step 01 | Configuring Base Variables</button></li>
+                        <li><button onclick="location.href='#step02'">Step 02 | Creating the form for collecting the data</button></li>
+                        <li><button onclick="location.href='#step03'">Step 03 | Create Function to Display all the Feedbacks</button></li>
+                        <li><button onclick="location.href='#step04'">Step 04 | Create Function for Feedback Editing Form</button></li>
+                        <li><button onclick="location.href='#step05'">Step 05 | Create Function to Save the Updated or Newly Added Feedback</button></li>
+                        <li><button onclick="location.href='#step06'">Step 06 | Create Function to Delete a Comment</button></li>
+                        <li><button onclick="location.href='#step07'">Step 07 | Create a Simple Verification Function to enhance security</button></li>
+                        <li><button onclick="location.href='#step08'">Step 08 | Forcing Date Format Shown in the Display From</button></li>
+                        <li><button onclick="location.href='#step09'">Step 09 | Calling the function for returning all relevant Data</button></li>
+                        <li><button onclick="location.href='#step10'">Step 10 | Run the Node.js Engine to activate the api connection for testing the functions</button></li>
+                        <li><button onclick="location.href='#step11'">Step 11 | Test through the frontend interface</button></li>
+                        <!-- <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li> -->
+                        <li><button onclick="location.href='#commentsSection'">Comments</li>
+                    </ul>
+                </p>
+                <h2 id="step00">Step 00 | Preparation</h2>
+                <ol>
+                    <li>
+                            <p>After I created my frontend content ( see the article [<a href="../article-01-firstFrontend/article-01-firstFrontend.html" target="_blank">Creating the frontend of my website with Github Page</a>]), and configuring backend API endpoints ( see the article [<a href="../article-02-firstBackend/article-02-firstBackend.html" target="_blank">Creating backend for my website</a>]), it is time to connect them !</p>
+                        <div class="call-out">
+                            <p>&#128161 At the moment, everything will still be tested locally with a local server IP address. The HTML website that is deployed through GitHub Page will only still remain as a pure static frontend website. In the next article I will show how configure an API with your own DNS.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Opening up the JavaScript connected to the HTML file of the web page and adding the following functions step by step, which will allow the web page show all the comments, update a comment, add a comment and delete a comment.
+                    </li>
+                </ol>
+                <!-- The end of the step 01 -->
+                
+                <h2 id="step01">Step 01 | Configuring Base Variables</h2>
+                <script src="https://gist.github.com/weikaichu1991/80277f8bfc301f0abafa018aacd17f67.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <code>const url = new URL(location.href);</code> : Creating new URL to interact with the API.
+                            <ul>
+                                <li><strong>Extracting Query Parameters</strong>: You can extract query parameters from the URL to send them as part of an API request.</li>
+                                <li><strong>API Endpoints</strong>: You can use parts of the current URL to construct API endpoints dynamically.</li>
+                                <li><strong>URL Components</strong>: You can parse and manipulate different components of the URL (e.g., protocol, hostname, pathname) to use in API requests.</li>
+                            </ul>
+                        </li>
+                        <li><code>const APILINK = 'https://localhost:8000/api/v1/comments';</code> : The base URL of the API that endpoints will use to interact with data.</li>
+                        <li><code>const main = document.getElementById("commentsSection");</code> : Referencing to the placeholder in the web-page where the requested data will be displayed.</li>
+                    </ol>
+                </p>
+                <!-- The end of the step 01 -->
+                
+                <h2 id="step02">Step 02 | Creating the form for collecting the data</h2>
+                <script src="https://gist.github.com/weikaichu1991/1a856fe14a2d25467d51b86eca1da759.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <code>const div_new = document.createElement('div');</code> : The syntax will dynamically create a new web section using HTML <code>div</code> which contains the web-form. The div will be stored in the variable <code>div_new</code>.
+                        </li>
+                        <li><code>innerHTML</code> is the property of <code>div_new</code>, which contains a string parsing a series of HTML elements that forms the comments (or feedback) form.</li>
+                        <li><code>main.appendChild(div_new)</code> is the step that will add the new created section into the DOM of the main HTML body.</li>
+                    </ol>
+                </p>
+                
+                <!-- The end of step 02 -->
+                
+                <h2 id="step03">Step 03 | Create Function to Display all the Feedbacks</h2>
+                <script src="https://gist.github.com/weikaichu1991/d807ee5106ba7b826a0dadd826ae1a7f.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            In general, the function fetches feedback data from an API url endpoint and dynamically creates HTML elements to display those feedbacks on a webpage.
+                        </li>
+                        <li>Fetch API Call:
+                            <ul>
+                                <li><code>fetch(url)</code> initiates an HTTP GET request to the specified URL.</li>
+                                <li>The response is then converted to JSON using <code>response.json()</code>.</li>
+                            </ul>
+                        <li>Handling the Fetched Data:
+                            <ul>
+                                <li>The fetched array of feedback data is processed in the <code>.then(function(data){...})</code> block. <code>console.log(data);</code> logs the fetched data to the console for debugging purposes.</li>
+                            </ul>
+                        </li>
+                        <li>Iterating Over Comments:
+                            <ul>
+                                <li><code>data.forEach(comment => {...})</code> iterates over each comment in the fetched data array. For each comment, a new <code>div</code> element (<code>div_card</code>) is created to hold the comment details.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Formatting and Inserting Comment Data:
+                            <ul>
+                                <li><code>const comment_id = comment._id;</code> extracts the feedback's unique ID in the MongoDB.</li>
+                                <li><code>const formattedDate = formatDate(comment.date); </code> formats the comment's date using a <code>formatDate</code> function (defined later).</li>
+                                <li><code>div_card.innerHTML = ...</code> sets the inner HTML of the <code>div_card</code> with the comment's details, including subject, text, commentator's name, and formatted date.</li>
+                                <li>The HTML also includes "Edit" and "Delete" links with <code>onclick</code> handlers to trigger <code>showEmailVerification</code> function (defined later) with appropriate parameters.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Appending to Main Container:
+                            <ul>
+                                <li><code>main.appendChild(div_card);</code> appends the newly created <code>div_card</code> to a main container element (<code>main</code>), the connected HTML web page in this case.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Error Handling:
+                            <ul>
+                                <li><code>.catch(error => {...})</code> handles any errors that occur during the fetch operation.</li>
+                                <li><code>console.error('Error fetching comments:', error);</code> logs the error to the console.</li>
+                                <li><code>alert('Error fetching comments. Please try again.');</code> displays an alert to the user indicating that there was an error fetching the comments.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 03 -->
+                <br>
+                <h2 id="step04">Step 04 | Create Function for Feedback Editing Form</h2>
+                <script src="https://gist.github.com/weikaichu1991/28f2970fc1e3d3e8107a5efcbf545888.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            This function is designed to enable the editing of a comment on a webpage.
+                        </li>
+                        <li>
+                            Element Selection:
+                            <ul>
+                                <li>An HTML element is selected by its <code>id</code> using <code>document.getElementById(id)</code> and assigns it to the variable <code>element</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Input IDs Creation:
+                            <ul>
+                                <li>Unique IDs are assigned for the input fields by concatenating the <code>id</code> parameter with specific strings (<code>subject</code>, <code>comment_text</code>, <code>name</code>, <code>email</code>, <code>verify_email</code>).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Inner HTML Update:
+                            <ul>
+                                <li>The function updates the <code>innerHTML</code> of the selected element to include input fields pre-filled with the provided <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code> values.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Save Link: It adds a "Save" link that, when clicked, calls the <code>saveComment</code> function (defined later) with the IDs of the input fields and the original <code>id</code>. The edited comment then will be saved.
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 04 -->
+                
+                <br>
+                <h2 id="step05">Step 05 | Create Function to Save the Updated or Newly Added Feedback</h2>
+                <script src="https://gist.github.com/weikaichu1991/76745383de1f564db8b246c73e9c3ff5.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The function is designed to save a comment/ feedback to a backend server.
+                        </li>
+                        <li>
+                            Function Parameters:
+                            <ul>
+                                <li>Inherit the IDs of the HTML input elements  <code>nameInputId</code>, <code>emailInputId</code>, <code>subjectInputId</code>, <code>commentInputId</code> defined in the editComment function, from which the function will retrieve values.</li>
+                                <li><code>id</code>: An optional parameter that, if provided, indicates an existing comment to update; otherwise, a new comment will be created.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Retrieve Input Values:
+                            <ul>
+                                <li>The function retrieves the values from the HTML input elements using <code>document.getElementById().value</code> for <code>name</code>, <code>email</code>, <code>subject</code>, and <code>comment_text</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Determine HTTP Method and URL:
+                            <ul>
+                                <li>If <code>id</code> is provided, the HTTP method is set to <code>'PUT'</code> (for updating an existing comment) and the URL is constructed using the <code>id</code>.</li>
+                                <li>If <code>id</code> is not provided, the HTTP method is set to <code>'POST'</code> (for creating a new comment) and the URL is set to <code>APILINK</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Send HTTP Request:
+                            <ul>
+                                <li>An HTTP request then will be sent to the server using the <code>fetch</code> API.</li>
+                                <li>
+                                    - The request includes:
+                                    <ul>
+                                        <li><code>method</code>: Either `'PUT'` or `'POST'`.</li>
+                                        <li><code>headers</code>: Specifies the content type as JSON.</li>
+                                        <li><code>body</code>: A JSON string containing the <code>name</code>, <code>email</code>, <code>subject</code>, <code>comment_text</code>, and <code>article</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Error Handling:
+                            <ul>
+                                <li>If the response is successful (<code>response.ok</code>), it logs a success message to the console and reloads the page.</li>
+                                <li>- If the response is not successful, it logs an error message to the console with the response status text.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 05 -->
+                
+                <br>
+                <h2 id="step06">Step 06 | Create Function to Delete a Comment</h2>
+                <script src="https://gist.github.com/weikaichu1991/bf44a5e498ca6cc4bad43a1b4c53120b.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The function deletes a comment by its <code>id</code>.
+                        </li>
+                        <li>
+                            Fetch API Call: 
+                            <ul>
+                                <li>The function uses the <code>fetch</code> API to send an HTTP DELETE request to a specified URL, constructed using a base <code>APILINK</code> and the provided <code>id</code>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Await Response: As this is an asynchronous function, the <code>await</code> keyword paring with <code>async</code> pauses the function execution until the <code>fetch</code> request completes and returns a response.
+                        </li>
+                        <li>
+                            Error Handling:
+                            <ul>
+                                <li>The function checks if the response is successful (<code>response.ok</code>).</li>
+                                <li><strong>Success Case:</strong> If the response is successful, it logs a success message to the console and reloads the page using <code>location.reload(main)</code>.</li>
+                                <li><strong>Failure Case:</strong> If the response is not successful, it logs an error message to the console with the response's status text.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="call-out">
+                        <p>&#128161 An asynchronous function is a function that operates asynchronously via the <code>async</code> keyword, allowing the use of <code>await</code> within it. This means the function can pause its execution while waiting for a promise to resolve, without blocking the main thread. This is useful for performing tasks like network requests or file I/O, which can take time to complete, without freezing the user interface or other operations.</p>
+                    </div>
+                </p>
+                <!-- The end of step 06 -->
+                <br>
+                <h2 id="step07">Step 07 | Create a Simple Verification Function to enhance security</h2>
+                <script src="https://gist.github.com/weikaichu1991/2040bc0407dfe2961a560912d0423cb3.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            This pair of functions are used to verify a user's email before allowing them to perform actions such as editing or deleting a comment.
+                        </li>
+                        <li>
+                            <code>showEmailVerification(commentId, action)</code> Function:
+                            <ul>
+                                <li>Get the Element by ID:
+                                    <br>The function takes two parameters: <code>commentId</code>  and <code>action</code>. It retrieves the Feedback HTML element with the ID ( <code>commentId</code> defined in the <code>returnComments(url)</code> function) using <code>document.getElementById(commentId)</code>.</li>
+                                <li>Append HTML for Email Verification:
+                                    <br>It appends a new HTML block which contains an input field for the user to enter their email and a link that triggers the <code>verifyEmail</code> function when clicked.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <code>verifyEmail(commentId, action)</code>
+                            <ul>
+                                <li>Retrieve and Process Input:
+                                    <br>The function takes two parameters: <code>commentId</code> and <code>action</code>to retrieve the value from the input field with the ID <code>verifyInput-${commentId}</code>.</li>
+                                <li>Fetch Comment Data:
+                                    <br>It sends a GET request to API endpoint to fetch the comment data via  <code>commentId</code>.</li>
+                                <li>Handle Response:
+                                    <br>If the response is successful (<code>response.ok</code>), it parses the response as JSON to get the comment data. It logs a success message to the console.
+                                </li>
+                                <li>
+                                    Email Verification:
+                                    <ol>
+                                        <li>It compares the stored email (from the fetched comment data) with the input email.</li>
+                                        <li>If they match, it performs the action specified by the <code>action</code> parameter:
+                                            <ol>
+                                                <li>If <code>action</code> is 'edit', it calls <code>editComment</code> with the comment details.</li>
+                                                <li>If <code>action</code> is 'delete', it calls <code>deleteComment</code> with the <code>commentId</code> and input email.</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            If they do not match, it alerts the user and appends an error message to the HTML element with the ID <code>commentId</code>.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Error Handling:
+                                    <br>If the response is not successful, it logs an error message to the console.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 07 -->
+                <br>
+                <h2 id="step08">Step 08 | Forcing Date Format Shown in the Display From</h2>
+                <script src="https://gist.github.com/weikaichu1991/f49b61965aa5aca3eae8a6d4d9cbed4e.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The function takes the date string stored in the MongoDB collection as input and returns a formatted date string.
+                        </li>
+                        <li>
+                            Options Object: An <code>options</code> object is created to specify the formatting options for the date.
+                        </li>
+                        <li>
+                            Date Object: A <code>Date</code> object is created from the input <code>dateString</code>.
+                        </li>
+                        <li>Regional Standard Format Enforcing: The <code>toLocaleDateString</code> method is called on the <code>Date</code> object, with <code>'en-GB'</code> (British English) as the locale and the <code>options</code> object to specify the format.</li>
+                    </ol>
+                </p>
+                <!-- The end of step 08 -->
+                <br>
+                <h2 id="step09">Step 09 | Calling the function for returning all relevant Data</h2>
+                <script src="https://gist.github.com/weikaichu1991/8442b247716cfa94e4621fabe97adb57.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The syntax adds an event listener to the connected web page that listens for the <code>DOMContentLoaded event</code>.
+                        </li>
+                        <li>
+                            <code>() => returnComments(APILINK)</code>: When the initial HTML document has been completely loaded and parsed, it calls the <code>returnComments</code> function with the API url.
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 09 -->
+                <br>
+                <h2 id="step10">Step 10 | Run the Node.js Engine to activate the api connection for testing the functions</h2>
+                <script src="https://gist.github.com/weikaichu1991/c0957b8769f6b7415d58564fada7b818.js"></script>
+                <!-- The end of step 10 -->
+                <br>
+                <h2 id="step11">Step 11 | Test through the frontend interface</h2>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Filling in the comment form in the webpage to see if the value is returned and displayed below the form. This means the GET and POST API endpoints are working as well as the saveComment function.
+                            <img src="./article03-image/image-01.png" class="enlargeable-image" alt="api concept">
+                            <img src="./article03-image/image_1-01.png" class="enlargeable-image" alt="api concept">
+                        </li>
+                        <li>
+                            You will find the raw data has now showed up in the data collection on MongoDB portal. Making sure you are at the right project, cluster and data collection.
+                            <img src="./article03-image/image_2-01.png" class="enlargeable-image" alt="api concept">
+                        </li>
+                        <li>
+                            Try to update it to test the verification function and the function associating with the PUT API endpoint.
+                            <img src="./article03-image/image_3-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>click “Edit”.</li>
+                                <li>Filling the email that is the same as the one when the comment was made, and then click “Verify”.</li>
+                            </ol>
+                            <img src="./article03-image/image_4-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The form will enter the editable mode if the verification is successful. Clicking “Save ” after the comment has been updated.</li>
+                            </ol>
+                            <img src="./article03-image/image_5-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The comment now had been updated.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            Trying to delete it, which will also allow you to test the verification function.
+                            <img src="./article03-image/image_6-01.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>click “Delete”.</li>
+                                <li>Filling the email that is the same as the one when the comment was made, and then click “Verify”.</li>
+                            </ol>
+                            <img src="./article03-image/image_7.png" class="enlargeable-image" alt="api concept">
+                            <ol>
+                                <li>The comment now had been deleted.</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 11 -->
+                <div class="call-out">
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.web.local/blob/main/works-pages/works-page.js" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                </div>
+
+                <!-- Modal structure -->
+                <div id="imageModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modalImage">
+                    <div id="caption"></div>
+                    <button class="zoomIn" id="zoomIn">+</button><br>
+                    <button class="zoomOut" id="zoomOut">-</button>
+                </div>
+            </div>
+            <!-- <div class="troubleshooting-zone" id="troubleS"> -->
+                <!-- <h1>troubleshoot Notes</h1>
+                <hr/>
+                <h2>Issue 01 | [ERR_MODULE_NOT_FOUND]</h2>
+                <h3>Error:</h3> 
+                <p>Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'mongoose' imported </p>
+                <h3>Fix:</h3>
+                <p>
+                    Installing the package in the root directory of the local machine. Here are the steps:
+                    <ol>
+                        <li>
+                            Run the command line
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/2d5645ca116addebbab504b65a269061.js"></script>
+                        </li>
+                        <li>
+                            Run the following command line if npm needs to be updated. Replace <code>version of npm</code> with the latest LTS version.
+                            <p class="code-file">terminal</p>
+                            <script src="https://gist.github.com/weikaichu1991/0258449bec139b3c8fc5af80a75fb26b.js"></script>
+                        </li>
+                        <li>Run the following steps if the node.js version installed in the local machine needs to be updated.
+                            <ol>
+                                <li>
+                                    Install <code>nvm</code> (if not already installed):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/834ef9d17a8ce3486eea6a028aa14d7d.js"></script>
+                                </li>
+                                <li>
+                                    Load <code>nvm</code> into your shell session:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/92eae35b80afd83e1d34f39bacb7a1aa.js"></script>
+                                </li>
+                                <li>
+                                    List available Node.js versions:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/694f50ed9efe340d0a78640ed03ca818.js"></script>
+                                </li>
+                                <li>
+                                    Install a specific version of Node.js (e.g., version 18.0.0):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c8fbfc40060985356db191c4f2e73b61.js"></script>
+                                </li>
+                                <li>
+                                    Use the installed version:
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/c6959536236b5fe29dddcd1ca8cf074c.js"></script>
+                                </li>
+                                <li>
+                                    Set the default Node.js version (optional):
+                                    <p class="code-file">terminal</p>
+                                    <script src="https://gist.github.com/weikaichu1991/b61d7be8a24ce1203ea9fe8bf35a0efc.js"></script>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p> -->
+                <!-- The end of issue 01 -->
+            <!-- </div> -->
+            
+            <section id="commentsSection">
+
+            </section>
+        </div>
+
+        <!-- The end of content section -->
+        <div>
+            <div class="footer">
+                <hr>
+                <p>
+                    <a class = "subpages" href="../../index.html">Home</a>
+                    <a class = "subpages" href="../../About/aboutMe.html" >About</a>
+                    <a class = "subpages" href="../works-catalogue.html" >Works</a>
+                    <a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a>
+                    <a class = "subpages" id = "comments" href="../../Comments/comments-page.html" >Feedbacks</a>
+                    <a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a>
+                    <a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email-Me</a>
+                </p>
+                <h4>*<br><br>Designed by Wei Chu</h4>
+                </div>
+            </div>
+    </div>
+</body>
+
+<script src="./article-03-connectingFullstack.js"></script>
+</html>

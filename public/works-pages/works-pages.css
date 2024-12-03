@@ -159,6 +159,9 @@ header, nav, main, footer, .subpages {
                 font-family:'Cascadia Code', sans-serif;
                 color: #131e3f;
                 cursor: pointer;
+                font-size: 70%;
+                text-align: left;
+                margin-bottom: 2%;
             }
             .footnote{
                 font-style: italic;
@@ -598,6 +601,7 @@ header, nav, main, footer, .subpages {
                 font-weight: 900;
                 color: #472525;
                 font-size: 110%;
+                word-wrap: break-word;
             }
             ol{
                 li{
