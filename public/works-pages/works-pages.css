@@ -85,7 +85,7 @@ header, nav, main, footer, .subpages {
         }
         .mobile-top-icon{
             position: fixed;
-            top: 700px;
+            top: 600px;
             background-color: yellow;
             padding: 2%;
             border-radius: 10px;
@@ -680,6 +680,11 @@ header, nav, main, footer, .subpages {
                     color: #EBEBEB;
                     text-decoration: underline;
                 }
+            }
+            a{
+                color: #EBEBEB;
+                text-decoration: underline;
+                text-underline-offset: 3px;
             }
         }
         img{
