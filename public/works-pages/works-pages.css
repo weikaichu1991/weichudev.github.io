@@ -243,6 +243,11 @@ header, nav, main, footer, .subpages {
                     text-decoration: underline;
                 }
             }
+            a{
+                color: #EBEBEB;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
         }
         img{
             width: 100%;
