@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Backend & Frontend</title>
+    <link rel="icon" type="image/x-icon" href="../../images/w-alphabet-icon.svg">
+    <link rel="stylesheet" href="../works-pages.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class = "topnav">
+            <nav class = "subpagesMenu">
+                <div class="menu-icon" id="menu-icon">
+                    &#9776; <!-- Unicode for the menu icon -->
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class = "subpages" href="../../index.html">Home</a></li>
+                    <li><a class = "subpages" href="../../About/aboutMe.html">About</a></li>
+                    <li><a class = "subpages" href="../../works-pages/works-catalogue.html">Works</a></li>
+                    <li><a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a></li>
+                    <li><a class = "subpages" id = "comments" href="../../Comments/comments-page.html">Feedbacks</a></li>
+                    <li><a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a></li>
+                    <li><a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email</a></li>
+                </ul>
+                <div class="mobile-top-icon" id="mobile-top-icon">
+                    <button onclick="location.href='#container'"><img src="../../images/back-to-top-svgrepo-com.svg"></button>
+                </div>
+            </nav>
+        </div>
+        <header class = "siteName" href="../../index.html">
+            <h1>Wei's<br>Dev<br>Journal</h1>
+        </header>
+        <!-- The end of the navigation bar section -->
+        
+        
+        <div class="content">
+            <div class="content-title" id="conetentBegin">
+                <h1>Cloud Hosting My Website with GCP Firebase Hosting and Functions</h1>
+            </div>
+            <div class="tags">
+                <button>Node.js</button>
+                <button>MongoDB</button>
+                <button>GitHub Action</button>
+                <button>Firebase</button>
+                <button>GCP</button>
+            </div>
+            
+            <div class="content-section">
+                <img src="./article-04-image/article_04_cover-01.png" class="enlargeable-image" alt="article 04 cover">
+                <p class="footnote">Image source: by Wei Chu</p>
+                <p>After developing my website on my local machine and testing the functions with a local server, it is time to find a cloud server that will be able to host my backend components so that data will be requested through https methods when my audiences access my website through my custom DNS.</p>
+                <p>The following is a list of backend components that be needed to complete this backend hosting:</p>
+                <ol>
+                    <li>
+                        <strong>Server</strong>: I chose Firebase as hosting server, which is powered by GCP. The reason why I chose was mainly because of the free-tier credits ($300) given by Google, and I don't really wanna setup another email account to get the free credits from Azure or AWS .
+                    </li>
+                    <li>
+                        <strong>Application</strong>: Continuing using Node.js to handle the core logic of my website and and APIs as it relatively more lightweight and suitable for the simplicity of my web project.
+                    </li>
+                    <li>
+                        <strong>Database</strong>: Continuing using MongoDB Atlas as my database host because I like the flexible schema feature it has as a NoSQL database. NoSQL DB is quite useful when I wasn't sure about my data structure and it paves the way for scaling if the app if moving into bigger and more dynamic design. Another reason why I chose MongoDB is that it also has free tier services.
+                    </li>
+                </ol>
+
+                <h2>Table:</h2>
+                <p class="note">
+                    <ul>
+                        <li><button onclick="location.href='#step00'">Step 00 | Preparation</button></li>
+                        <li><button onclick="location.href='#step01'">Step 01 | Configuring Base Variables</button></li>
+                        <li><button onclick="location.href='#step02'">Step 02 | Creating the form for collecting the data</button></li>
+                        <li><button onclick="location.href='#step03'">Step 03 | Create Function to Display all the Feedbacks</button></li>
+                        <li><button onclick="location.href='#step04'">Step 04 | Create Function for Feedback Editing Form</button></li>
+                        <li><button onclick="location.href='#step05'">Step 05 | Create Function to Save the Updated or Newly Added Feedback</button></li>
+                        <li><button onclick="location.href='#step06'">Step 06 | Create Function to Delete a Comment</button></li>
+                        <li><button onclick="location.href='#step07'">Step 07 | Create a Simple Verification Function to enhance security</button></li>
+                        <li><button onclick="location.href='#step08'">Step 08 | Forcing Date Format Shown in the Display From</button></li>
+                        <li><button onclick="location.href='#step09'">Step 09 | Calling the function for returning all relevant Data</button></li>
+                        <li><button onclick="location.href='#step10'">Step 10 | Run the Node.js Engine to activate the api connection for testing the functions</button></li>
+                        <li><button onclick="location.href='#step11'">Step 11 | Test through the frontend interface</button></li>
+                        <!-- <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li> -->
+                        <li><button onclick="location.href='#commentsSection'">Comments</li>
+                    </ul>
+                </p>
+                
+                <h2 id="step01">Step 01 | Setup a project on Firebase Console</h2>
+                <p class="note">
+                    <img src="./article-04-image/image-01.png" class="enlargeable-image" alt="firebase portal">
+                    <img src="./article-04-image/image 1-01.png" class="enlargeable-image" alt="firebase portal">
+                    <img src="./article-04-image/image 2-01.png" class="enlargeable-image" alt="firebase portal">
+                    <img src="./article-04-image/image 3-01.png" class="enlargeable-image" alt="firebase portal">
+                    <div class="call-out">
+                        <h3>&#128161 What it Firebase? </h3>
+                        <p>Firebase is a mobile and web application development platform provided by Google Cloud Platform (GCP). It offers a range of tools and services to help developers build, deploy, and scale their apps:
+                        </p>
+                        <ol>
+                            <li>Realtime database: A NoSQL database that allows for real-time data synchronization across devices.</li>
+                            <li>Authentication: Provides various authentication methods like email/password, social logins, and phone authentication.</li>
+                            <li>Cloud Storage: Securely stores and serves user-generated content like images and videos.</li>
+                            <li>Cloud Functions: Serverless functions that can be triggered by events in your app or database.</li>
+                            <li>Crashlytics: Monitor and fix app crashes and errors.</li>
+                            <li>Performance Monitoring: Track app performance and identify bottlenecks.</li>
+                            <li>Test Lab: Test your app on a wide range of devices and configurations.</li>
+                        </ol>
+                    </div>
+                </p>
+                <!-- The end of the step 01 -->
+                
+                <h2 id="step02">Step 02 | Setup a new GitHub Repository of hosting the code</h2>
+                <p class="note">
+                    <img src="./article-04-image/image 4-01.png" class="enlargeable-image" alt="Github Portal">
+                    Following-up steps after creating a new repo: 
+                    <ol>
+                        <li>
+                            Go to VS Code and clone the newly created repo to your local machine.
+                        </li>
+                        <li>Open up a new bash terminal in the VS Code and go the major step 03 for starting setting up all you need for Firebase Hosting.</li>
+                    </ol>
+                </p>
+                
+                <!-- The end of step 02 -->
+                
+                <h2 id="step03">Step 03 | Set Up Firebase Hosting</h2>
+                <p>
+                    Before we start doing anything, it is important to acknowledge that which kind of website we are hosting. “Is it static or dynamic? “ (Please see the call out box below.) There are clear instructions from the documents of Firebase.
+                </p>
+                <p>
+                    Firebase Hosting can serve both static and dynamic content. For dynamic content, you can use Firebase Functions (Cloud Functions for Firebase) to handle server-side logic and generate dynamic responses.
+                </p>
+                <p>
+                    Here I followed the instruction that is for hosting a dynamic website as my website requires HTTP request through API. The following are the setting up steps that I have gone through:
+                </p>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Install Firebase CLI: If you haven't installed the Firebase CLI, do so by running:
+                            <script src="https://gist.github.com/weikaichu1991/2bc65dff8dd1d3ae9b4f9f9c58e1a0f0.js"></script>
+                        </li>
+                        <li>
+                            Initialize Firebase Hosting: Navigate to your project directory and run:
+                            <script src="https://gist.github.com/weikaichu1991/fa2a97414d84b70097f80b9e5cad6cc9.js"></script>
+                        </li>
+                        <li>
+                            Initialize Firebase Functions: Navigate to your project directory and run:
+                            <script src="https://gist.github.com/weikaichu1991/c9f381222b6e464100015ae262d781d3.js"></script>
+                        </li>
+                        <li>
+                            Deploy Your Site: Normally deploying your site is by running the following command:
+                            <script src="https://gist.github.com/weikaichu1991/15b7c9dedb4a7cdb5dc30c58e2c1e95c.js"></script>
+                        </li>
+                    </ol>
+                </p>
+                <div class="call-out">
+                    <h3>&#128161 Static vs. Dynamic Hosting</h3>
+                    <p>Firebase is a mobile and web application development platform provided by Google Cloud Platform (GCP). It offers a range of tools and services to help developers build, deploy, and scale their apps:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Static Hosting</strong>: Serves pre-built HTML, CSS, and JavaScript files directly to the client. The content does not change unless the files are manually updated and redeployed.
+                        </li>
+                        <li>
+                            <strong>Dynamic Hosting</strong>: Involves server-side processing to generate content dynamically based on user interactions, database queries, or other server-side logic. This typically involves using server-side languages like Node.js, Python, PHP, etc.
+                        </li>
+                    </ol>
+                </div>
+                <div class="call-out">
+                    <h3>&#128161 Official Firebase Hosting Document</h3>
+                    <p>
+                        Please refer to <a href="https://firebase.google.com/docs/hosting/functions?_gl=1*1o4m8av*_up*MQ" target="_blank">the document link</a> here if you are interested in reading more about the dynamic hosting of Firebase.
+                    </p>
+                </div>
+                <!-- The end of step 03 -->
+                <br>
+                <h2 id="step04">Step 04 | Start Migrating frontend code and backend code to based on Firebase file structure</h2>
+                <img src="./article-04-image/Slide1.png" class="enlargeable-image" alt="Github Portal">
+                <p class="footnote">Image source: by Wei Chu</p>
+                <p>
+                    After the Firebase tools are configured on your machine, you will noticed roughly 3 things in your repository:
+                </p>
+                <p class="note">
+                    <ol>
+                        <li>
+                            “Public” folder - This will be the destination where all the frontend code files should be in. Therefore, the html, css and js files for the main page and subpages will be cloned from the local hosting repo to this folder.
+                        </li>
+                        <li>
+                            “Functions” folder - This will be the destination where all the backend code files should be in. The default name of the backend API connection file is “index.js” in the new repo for Firebase hosting, which is equivalent to the backend API connection file “db.js” in my local hosting repository.
+                        </li>
+                        <li>
+                            firebase.json file - The firebase.json file is the cornerstone of the Firebase Hosting project. It's a configuration file that defines how the web app, static content and dynamic functions is deployed to Firebase architecture. The file will be tailored to meet the needs of my project. It references the files placed in the Public and Functions folder. 
+                        </li>
+                    </ol>
+                    <p>
+                        The following shows the actual file structures of the repository for local hosting and for firbase hosting. 
+                    </p>
+                    <ul>
+                        <li>
+                            <p>Repo for local hosting: weichudev.web.local </p>
+                            <script src="https://gist.github.com/weikaichu1991/db15314231845cd5252dbd3e042d447c.js"></script>
+                        </li>
+                        <li>
+                            <p>Repo for Firebase hosting: weichudev.github.io</p>
+                            <script src="https://gist.github.com/weikaichu1991/7c75a937f654af56e5630e539e6c32f7.js"></script>
+                        </li>
+                    </ul>
+                </p>
+                <!-- The end of step 04 -->
+                
+                <br>
+                <h2 id="step05">Step 05 | Start Tailoring the hosting configuration and Backend Code</h2>
+                <script src="https://gist.github.com/weikaichu1991/76745383de1f564db8b246c73e9c3ff5.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Tailoring the Configuration JSON file
+                            <p class="code-file">firebase.json</p>
+                            <script src="https://gist.github.com/weikaichu1991/a719f2b9d55ea22185befd71acc127a8.js"></script>
+                        </li>
+                        <li>
+                            Configuring The Dynamic Endpoint
+                            <p>The <code>index.js</code> file here is the main entry point for a Node.js application that sets up and configures an Express server. It includes middleware for handling CORS, JSON body parsing, and routing. It exports the Express app as a Firebase Cloud Function named “api”.</p>
+                            <p class="code-file">Index.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/32a55d4f1098395dbcb297254e5339cc.js"></script>
+                            <div class="call-out">
+                                <p>&#128161 Making sure the environment variables like username and password for connecting to the MongoDB are saved in the Github Action secret as part of the deployment automation process.</p>
+                            </div>
+                        </li>
+                        <li>
+                            The HTTP Request Routing File
+                            <p>The code is the same as the local hosting one, the <code>comments.route.js</code> file defines the routes for handling HTTP requests related to comments in the Firebase function app. It uses Express.js to define and handle these routes. Its role is as following:</p>
+                            <ul>
+                                <li><strong>Routing</strong>: Defines endpoints for creating, updating, and deleting comments.</li>
+                                <li><strong>Middleware</strong>: Uses Express.js middleware to handle requests and responses.</li>
+                                <li><strong>Database Operations</strong>: Interacts with the MongoDB database to perform CRUD operations on comments.</li>
+                            </ul>
+                            <p class="code-file">comments.route.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/ea0449b9fce30f41eaa5f9744b93ca13.js"></script>
+                        </li>
+                        <li>
+                            Database Collection Modeling
+                            <p>Same as the local hosting, the Comment.js file in the Models folder defines the schema including collection name, attributes and value types that will be stored in my MongoDB collection.</p>
+                            <p class="code-file">Comment.js</p>
+                            <script src="https://gist.github.com/weikaichu1991/4a24b97ae0f35900369eb4af3aff357d.js"></script>
+                        </li>
+                        <li>
+                            Dependency Configuration for Deploying the Backend Function
+                            <p>Comparing with the dependency for local hosting, the requirement is more specific and complex for deploy Firebase function. Here is the breakdown of the key part in the dependency code: </p>
+                            <ul>
+                                <li>These scripts in the <code>scripts</code> section are used to automate various tasks related to development, testing, and deployment of the Firebase functions. </li>
+                                <li>When testing with local hosting, I found mongoose has compatible issue with the older version of Node.js, and somehow with the latest v.23 version as well.  The package has no problem with v.22 in the end, therefore I specify the <code>Node.js engine</code>  version here to avoid any issues of incompatibility.</li>
+                                <li>Making sure all the packages that the index.js is depending on are included in the <code>dependencies</code> section.</li>
+                                <li>The <code>devDependencies</code> section lists the development dependencies for the project. These packages are only needed during the development and testing phases, not in production.</li>
+                                <li>The <code>"private": true</code> field indicates that the project is private and should not be published to the npm registry. This setting is primarily used to prevent accidental publication of the package.</li>
+                            </ul>
+                            <p class="code-file">package.json</p>
+                            <script src="https://gist.github.com/weikaichu1991/cb7dcfbdbef6379819dda1906d11690a.js"></script>
+                        </li>
+                    </ol>
+                    <div class="call-out">
+                        <h3>&#128161 Call functions via HTTP requests</h3>
+                        <p>Please refer to <a href="https://firebase.google.com/docs/functions/http-events?_gl=1*10gdvvo*_up*MQ&gen=2nd">the document link</a> here if you are interested in reading more about how to trigger a Firebase function through an HTTP request with a request handler.</p>
+                    </div>
+                </p>
+                <!-- The end of step 05 -->
+                
+                <br>
+                <h2 id="step06">Step 06 | Setting up GitHub Action workflow for testing deployment</h2>
+                <p class="code-file">firebase-hosting-deploy.yml</p>
+                <script src="https://gist.github.com/weikaichu1991/1b6e8c8fab1d4c6baa317190428633bc.js"></script>
+                <p class="note">
+                    <ol>
+                        <li>
+                            The typical format of a GitHub Action Workflow starts with <code>on</code> section followed by <code>jobs</code> section.
+                        </li>
+                        <li>
+                            In the <code>on</code> section, the trigger behaviour will be defined. Here I simply push the commits into the main branch as there is no collaboration and sophisticated workflow to edit my web code. ( However, there is a plan to stage the development & deployment of my other project with more through approach with GitHub Action. Thus, please watch this space! ).  In order to prevent the updated content of my website from directly being deployed and going live, I am create a manual trigger <code>workflow_dispatch</code>.
+                        </li>
+                        <li>
+                            In the <code>jobs</code> section, the task defined here focuses on the building workflow to deploy the web hosting and API function to firebase.
+                            <ul>
+                                <li><strong>Checkout code</strong>: Uses the <code>actions/checkout@v2</code> action to check out the repository code.</li>
+                                <li><strong>Set up Node.js</strong>: Uses the <code>actions/setup-node@v2</code> action to set up Node.js version 22.</li>
+                                <li><strong>Install dependencies</strong>: Changes directory to functions and runs <code>npm install</code> to install Node.js dependencies.</li>
+                                <li><strong>Install Firebase CLI</strong>: Installs the Firebase CLI globally using <code>npm install -g firebase-tools</code>.</li>
+                                <li><strong>Set environment variables</strong>: Creates a <code>.env</code> file in the functions directory and sets environment variables (<code>DB_USERNAME</code> and <code>DB_PASSWORD</code>) using secrets from the repository.</li>
+                                <li><strong>Authenticate with Firebase</strong>: Deploys the functions and hosting to Firebase using the Firebase CLI and an authentication token stored in the <code>FIREBASE_TOKEN</code> secret.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 06 -->
+                <br>
+                <h2 id="step07">Step 07 | Using my own domain</h2>
+                <img src="./article-04-image/image 5.png" class="enlargeable-image" alt="domain architecture">
+                <p class="footnote">Image source: <a href="https://firebase.google.com/docs/hosting/custom-domain">Firebase Documentation / Hosting</a></p>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Buying my own domain
+                            <p>I started my DNS provider hutting by finding the top 5 providers. I discovered the following ranking of those providers according to <a href="https://www.top10.com/hosting/vps-comparison?utm_source=google&kw=best%20vps%20hosting%20provider&c=682827864909&t=search&p=&m=b&adpos=&dev=c&devmod=&mobval=0&network=g&campaignid=20821800700&groupid=161849830731&targetid=kwd-1632283250&interest=&physical=9044936&feedid=&a=11116&ts=hi&topic=&test=&clicktype=&camtype=&gad_source=1&gclid=CjwKCAiA9bq6BhAKEiwAH6bqoBjGhqvFo0KjEd5LEPJ_Su7N2F5tsEAOVdLfO0W6s4o5fLCUSoqQ-xoCD80QAvD_BwE">Top10.com</a>:
+                                <ul>
+                                    <li>HOSTINGER</li>
+                                    <li>SCALAHOSTING</li>
+                                    <li>FASTHOSTS</li>
+                                    <li>IONOS</li>
+                                    <li>BLUEHOST</li>
+                                </ul></p>
+                            
+                        </li>
+                        <li>
+                            Choosing IONOS
+                            <p>
+                                I narrowed the options down to between Hostinger and IONOS based on how many reviews that was given about these 2 providers. In the end I chose IONOS. I have to be honest, it was because it was the cheapest and most straight forward when I was trying to choose my domain. Technically, Hostinger has better service plan but the scenario is mainly based on if the DNS will be shared between multiple website and other benefits regarding scalability ( watch this <a href="https://www.youtube.com/watch?v=ZbRGXe6EOgM">video</a> if you want to know more about the differences between IONOS' offering and Hostinger's). For my web project, it is a fairly simple project , and I just want to experiment my first project about full-stack development, I think IONOS suits my requirements for now.
+                                <ol>
+                                    <li>Go to IONOS main page and sign in
+                                        <img src="./article-04-image/image 6-01.png" class="enlargeable-image" alt="IONOS DNS">
+                                    </li>
+                                    <li>Click “Add product” after you have successfully logged in. 
+                                        <img src="./article-04-image/image 7-01.png" class="enlargeable-image" alt="IONOS DNS">
+                                    </li>
+                                    <li>Search the domain that you prefer and chose the one that is not registered and matches your budget.
+                                        <img src="./article-04-image/image 8-01.png" class="enlargeable-image" alt="IONOS DNS">
+                                    </li>
+                                    <li>Following the checking out steps and complete the DNS service purchasing.</li>
+                                </ol>
+                            </p>
+                        </li>
+                        <li>
+                            Add Your Custom Domain
+                            <ol>
+                                <li>
+                                    Go to Firebase Console: Open the Firebase Console and select your project.
+                                    <img src="./article-04-image/image 9-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                </li>
+                                <li>
+                                    Navigate to Hosting: In the left-hand menu, click on "Hosting".
+                                    <img src="./article-04-image/image 10-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                </li>
+                                <li>
+                                    Add Custom Domain: Click on "Add custom domain" and enter your custom domain name. 
+                                    <img src="./article-04-image/image 11-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            Verify Domain Ownership
+                            <ol>
+                                <li>Get Verification Code: Firebase will provide you with a TXT record that you need to add to your domain's DNS settings to verify ownership.</li>
+                                <li>
+                                    Add TXT Record: Go to your domain registrar's website (IONOS in this case) and add the provided TXT record to your domain's DNS settings.
+                                    <ol>
+                                        <li>
+                                            Go to IONOS dashboard and choose “Domains & SSL”
+                                            <img src="./article-04-image/image 12-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
+                                        </li>
+                                        <li>
+                                            Click the 3 dots icon at the far end on the right of your domain record, and then choose “Show details”
+                                            <img src="./article-04-image/image 13-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
+                                        </li>
+                                        <li>
+                                            Choose “Modify DNS settings ” under the list item called “Target”
+                                            <img src="./article-04-image/image 14-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
+                                        </li>
+                                        <li>
+                                            The record of your DNS will show up. Adding in the record that firebase has requested in the verification instruction.
+                                            <img src="./article-04-image/image 15-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
+                                        </li>
+                                    </ol>
+                                    <li>Verify: After adding the TXT record, go back to the Firebase Console and click "Verify".</li>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            Update DNS Records
+                            <ol>
+                                <li>Get A Records: Firebase will provide you with A records that you need to add to your domain's DNS settings.</li>
+                                <li>
+                                    Add A Records: Repeating the same steps for “Verifying Domain Ownership”. Go to your domain registrar's website and add the provided A records to your domain's DNS settings.
+                                    <img src="./article-04-image/image 16-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                
+                <!-- The end of step 07 -->
+                
+                <div class="call-out">
+                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
+                </div>
+
+                <!-- Modal structure -->
+                <div id="imageModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modalImage">
+                    <div id="caption"></div>
+                    <button class="zoomIn" id="zoomIn">+</button><br>
+                    <button class="zoomOut" id="zoomOut">-</button>
+                </div>
+            </div>
+            <div class="troubleshooting-zone" id="troubleS">
+                <h1>troubleshoot Notes</h1>
+                <hr/>
+                <h2>Issue 01 | Fulfilling best practices required by eslint</h2>
+                <h3>Error:</h3> 
+                <ol>
+                    <li>
+                        ESLint is a code analysis tool used to identify and fix problems in JavaScript code. It helps maintain code quality and consistency by enforcing coding standards and best practices. When integrated into a Firebase deployment workflow, ESLint ensures that the code being deployed is free of common errors and adheres to specified coding guidelines.
+                    </li>
+                    <li>
+                        The following is an example of error happening to my deployment workflow when eslint discovered issues in my code. I have to say, this tool is a bit petty as it deals into a lot of nitty gritty stuffs and some of them I don't really think it is a genuine mistake.
+                        <img src="./article-04-image/image 17-01.png" class="enlargeable-image" alt="github action error">
+                    </li>
+                </ol>
+                <h3>Fix:</h3>
+                <p>
+                    The code that is called out can be as trivial as the choices of quotation symbols, indentations, ect, even though it doesn't stop the code from running successfully. To correct the errors called out by eslint, the way of writing the code even will have to be fundamentally changed. Thus, I decided to just suspend those unnecessary rules for my project for now. The typical syntax is “ <code>'(rule category)' : 0 </code>“. ex: <code>“key-spacing”: 0</code>.
+                </p>
+                <p class="code-file">.eslintrc.js</p>
+                <script src="https://gist.github.com/weikaichu1991/355ccc01efa1000b980ab0ecceada140.js"></script>
+                <!-- The end of issue 01 -->
+                
+                <hr/>
+                <h2>Issue 02 | Error fetching comments. Please try again. ( The greatest evil of my project making me troubleshoot for days to find out what was going on.)</h2>
+                <h3>Error:</h3> 
+                <ol>
+                    <li>
+                        After I deployed the function to the Firebase ( which links to the artefact registry on GCP ), I noticed that an error message still comes back as “error: Error fetching comments. Please try again.” every time when I loaded by website.
+                    </li>
+                    <li>
+                        It is quite hard to directly point out what was the issue in the very beginning apart from diagnosing it with the following possible directions:
+                        <ol>
+                            <li>API request's syntax isn't formatted correctly.</li>
+                            <li>The connection string to the database is not correctly defined.</li>
+                            <li>The environmental variables for connecting to the database are not parsed in successfully to the deployment workflow.</li>
+                            <li>The HTTP request is not correctly routed.</li>
+                            <li>The API endpoint definitions are in similar format for the same type of request method.</li>
+                        </ol>
+                    </li>
+                </ol>
+                <h3>Fix ( This is more like a guideline of steps rather than a single solution.):</h3>
+                <p>
+                    <ol>
+                        <li>Diagnosing what does it mean behind the error message.
+                            <ul>
+                                <li>400 Bad Request Error - This occurs when a server can't parse the request itself. This could be caused by an incorrect URL, something wrong with how the API request was composed, or even an issue within the application itself.</li>
+                                <li>401 Unauthorized Error - This API error occurs when a server cannot authorize the user's credentials. This could be caused by an incorrect username or password or even a lack of permission access.</li>
+                                <li>403 Forbidden Error - This API error occurs when a server refuses to fulfill a request from the client due to authorization issues or other restrictions put in place by the API provider.</li>
+                                <li>500 Internal Server Error - This API error occurs when a server encounters an unexpected condition that prevents it from fulfilling the API request. This could be caused by an issue with the API provider's internal systems or there could be something wrong with how the API request was composed.</li>
+                            </ul>
+                            <br>
+                            <div class="call-out">
+                                <p>&#128161 To read more about different types of errors, please follow <a href="https://blog.hubspot.com/website/api-errors#:~:text=This">this article</a> that was useful to me during troubleshooting to learn more.</p>
+                            </div>
+                        </li>
+                        <li>
+                            Scoping through the fundamental concept of using each package and modules.
+                            <p>When I migrate the codes of my backend function from the project for local hosting to the project for cloud hosting with Firebase, I had to remodel a little it of the way how connection and routing happen. After checking all the syntax are correct and environmental variables are parsed through , but they still didn't solve the issue, I then suspect there is something wrong how I composed the code snippets. I decided to research a bit deeper and properly understand how does every module that I have used in this project interact with each other. ex:</p>
+                            <ol>
+                                <li>Knowing more about <a href="https://dev.to/alexmercedcoder/basics-of-expressjs-todo-list-tutorial-1a4d">Express.js</a></li>
+                                <li><a href="https://medium.com/gist-for-js/use-of-res-json-vs-res-send-vs-res-end-in-express-b50688c0cddf">The difference between <code>res.send()</code> and <code>res.json()</code></a></li>
+                            </ol>
+                        </li>
+                        <li>
+                            GOING BACK TO THE BASIC! and finally … THE CODE IS CRACKED!
+                            <p>After trying to fix the error many times and still didn't work… <a href="https://medium.com/@skhans/how-to-build-a-basic-node-js-crud-app-with-mongoose-and-mongodb-3e958a36001d">This article</a> reminds me of going back to the original design of my backend code which I ran it successfully on a local server.</p>
+                        </li>
+                        <li>
+                            Conclusion:
+                            <ol>
+                                <li>In the end I found out that I made a mess when composing the code for request routing. I put the routing definition code file <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/comments.route.js"><code>comments.route.js</code></a> in a child-folder called “api” which works for the project with local hosting, and somehow the firbase function doesn't like it. So I moved it to <a href="https://github.com/weikaichu1991/weichudev.github.io/tree/main/functions">the same level</a> as the main <code>index.js</code> file.</li>
+                                <li>I exported the wrong module at the end of <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/comments.route.js"><code>comments.route.js</code></a> code. I exported the code as “<code>app</code>” instead of “<code>router</code>”, but I imported the router from the comments.route.js code into <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/index.js">the main <code>index.js</code></a> code.</li>
+                                <li>I aligned the app name exported from the index.js code with the <code>functionId</code> under <code>hosting</code> section in <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/firebase.json">the <code>firebase.json</code> configuration file</a>.</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of issue 02 -->
+            </div>
+            
+            <section id="commentsSection">
+
+            </section>
+        </div>
+
+        <!-- The end of content section -->
+        <div>
+            <div class="footer">
+                <hr>
+                <p>
+                    <a class = "subpages" href="../../index.html">Home</a>
+                    <a class = "subpages" href="../../About/aboutMe.html" >About</a>
+                    <a class = "subpages" href="../works-catalogue.html" >Works</a>
+                    <a class = "subpages" href="../../blog-pages/blogs-catalog.html" >Stories</a>
+                    <a class = "subpages" id = "comments" href="../../Comments/comments-page.html" >Feedbacks</a>
+                    <a class = "subpages" href="https://www.linkedin.com/in/wei-chu-2428563a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0NJxcN7wTTO%2FFzOhjPc2rg%3D%3D" target="_blank">LinkedIn</a>
+                    <a class = "subpages" id = "email" href="mailto: weikai.chu.91@outlook.com" target="_blank">Email-Me</a>
+                </p>
+                <h4>*<br><br>Designed by Wei Chu</h4>
+                </div>
+            </div>
+    </div>
+</body>
+
+<script src="./article-04-hostingOnFirebase.js"></script>
+</html>
