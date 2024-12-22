@@ -86,74 +86,71 @@
                         </li>
                         <li>
                             We will see a package.json file is now created in the directory.<script src="https://gist.github.com/weikaichu1991/b0d23f29257362d020bc4bc11442a1d7.js"></script>
+                        </li>#
+                        <li>
+                            creating the express app file - <code>index.js</code>
+                            <script src="https://gist.github.com/weikaichu1991/41cc126e0604e0d47fa493a243f8d6ab.js"></script>
                         </li>
-                    </ol>
+                    </ol>   
                 </p>
                 <!-- The end of the step 01 -->
                 
-                <h2 id="step02">Step 02 | Setup a new GitHub Repository of hosting the code</h2>
+                <h2 id="step02">Step 02 | Setting Docker container</h2>
                 <p class="note">
-                    <img src="./article-04-image/image 4-01.png" class="enlargeable-image" alt="Github Portal">
-                    Following-up steps after creating a new repo: 
                     <ol>
                         <li>
-                            Go to VS Code and clone the newly created repo to your local machine.
+                            Installing docker on the local machine .
                         </li>
-                        <li>Open up a new bash terminal in the VS Code and go the major step 03 for starting setting up all you need for Firebase Hosting.</li>
+                        <li>
+                            Go to hub.docker.com , search “node” .
+                        </li>
+                        <li>
+                            As the default image of node in the hub won't have every dependencies we will need for our app, we are going to write our own customised image but based on the image that is shown on the hub.
+                            <img src="./docker-beginner-01-image/image.png" class="enlargeable-image" alt="node.js docker plugin">
+                        </li>
+                        <li>
+                            Creating a Dockerfile
+                            <p>
+                                <code>. ./</code> This will cache all the docker build result, which will allow speed up next time when run the image build again.
+                            </p>
+                            <script src="https://gist.github.com/weikaichu1991/b3e63aa0f353bc1ad949c3bd9162bfac.js"></script>
+                        </li>
+                        <li>
+                            Run the command to build the docker image
+                            <script src="https://gist.github.com/weikaichu1991/20d207897f092adc0c52c7539e25a7f1.js"></script>
+                            <img src="./docker-beginner-01-image/image 1.png" class="enlargeable-image" alt="docker build command">
+                            <img src="./docker-beginner-01-image/image 2.png" class="enlargeable-image" alt="docker build command">
+                        </li>
+                        <li>
+                            Check the now existed docker image to see if it has successfully created.
+                            <script src="https://gist.github.com/weikaichu1991/80c8e2bb2eb8102b6bbbb73ece217b0b.js"></script>
+                            <img src="./docker-beginner-01-image/image 3.png" class="enlargeable-image" alt="listing docker image">
+                        </li>
+                        <li>
+                            (Optional) you can also remove the image by specifying the image ID.
+                            <script src="https://gist.github.com/weikaichu1991/801ef388f82366a022db34543ec345ec.js"></script>
+                            <img src="./docker-beginner-01-image/image 4.png" class="enlargeable-image" alt="removing docker image">
+                        </li>
+                        <li>
+                            (Optional) you can rebuild the image again but specifying a name for the docker image this time by adding a flag -t in the command. 
+                            <script src="https://gist.github.com/weikaichu1991/9b179f817c261f0df127a652fb0ed540.js"></script>
+                            <img src="./docker-beginner-01-image/image 5.png" class="enlargeable-image" alt="naming docker image">
+                            <p>Now go ahead and run it.</p>
+                            <script src="https://gist.github.com/weikaichu1991/a8a02fb15f43760923a9f6d49b7436b7.js"></script>
+                            <img src="./docker-beginner-01-image/image 6.png" class="enlargeable-image" alt="naming docker image">
+                            <p>Double check.</p>
+                            <script src="https://gist.github.com/weikaichu1991/eb23f95b3eccfe56f621f3d600af8bd4.js"></script>
+                            <img src="./docker-beginner-01-image/image 7.png" class="enlargeable-image" alt="naming docker image">
+                            <p>Go to the browser and check it, the website should be not working just yet . Go to the next major step about the port and how network can talk to the container.</p>
+                            <img src="./docker-beginner-01-image/image 8.png" class="enlargeable-image" alt="browser error result.">
+                        </li>
                     </ol>
                 </p>
-                
                 <!-- The end of step 02 -->
                 
-                <h2 id="step03">Step 03 | Set Up Firebase Hosting</h2>
-                <p>
-                    Before we start doing anything, it is important to acknowledge that which kind of website we are hosting. “Is it static or dynamic? “ (Please see the call out box below.) There are clear instructions from the documents of Firebase.
-                </p>
-                <p>
-                    Firebase Hosting can serve both static and dynamic content. For dynamic content, you can use Firebase Functions (Cloud Functions for Firebase) to handle server-side logic and generate dynamic responses.
-                </p>
-                <p>
-                    Here I followed the instruction that is for hosting a dynamic website as my website requires HTTP request through API. The following are the setting up steps that I have gone through:
-                </p>
-                <p class="note">
-                    <ol>
-                        <li>
-                            Install Firebase CLI: If you haven't installed the Firebase CLI, do so by running:
-                            <script src="https://gist.github.com/weikaichu1991/2bc65dff8dd1d3ae9b4f9f9c58e1a0f0.js"></script>
-                        </li>
-                        <li>
-                            Initialize Firebase Hosting: Navigate to your project directory and run:
-                            <script src="https://gist.github.com/weikaichu1991/fa2a97414d84b70097f80b9e5cad6cc9.js"></script>
-                        </li>
-                        <li>
-                            Initialize Firebase Functions: Navigate to your project directory and run:
-                            <script src="https://gist.github.com/weikaichu1991/c9f381222b6e464100015ae262d781d3.js"></script>
-                        </li>
-                        <li>
-                            Deploy Your Site: Normally deploying your site is by running the following command:
-                            <script src="https://gist.github.com/weikaichu1991/15b7c9dedb4a7cdb5dc30c58e2c1e95c.js"></script>
-                        </li>
-                    </ol>
-                </p>
-                <div class="call-out">
-                    <h3>&#128161 Static vs. Dynamic Hosting</h3>
-                    <p>Firebase is a mobile and web application development platform provided by Google Cloud Platform (GCP). It offers a range of tools and services to help developers build, deploy, and scale their apps:
-                    </p>
-                    <ol>
-                        <li>
-                            <strong>Static Hosting</strong>: Serves pre-built HTML, CSS, and JavaScript files directly to the client. The content does not change unless the files are manually updated and redeployed.
-                        </li>
-                        <li>
-                            <strong>Dynamic Hosting</strong>: Involves server-side processing to generate content dynamically based on user interactions, database queries, or other server-side logic. This typically involves using server-side languages like Node.js, Python, PHP, etc.
-                        </li>
-                    </ol>
-                </div>
-                <div class="call-out">
-                    <h3>&#128161 Official Firebase Hosting Document</h3>
-                    <p>
-                        Please refer to <a href="https://firebase.google.com/docs/hosting/functions?_gl=1*1o4m8av*_up*MQ" target="_blank">the document link</a> here if you are interested in reading more about the dynamic hosting of Firebase.
-                    </p>
-                </div>
+                <h2 id="step03">Step 03 | Container and Network Traffic Management</h2>
+                <script src="https://gist.github.com/weikaichu1991/b36be6d35adc01385549367fb3a85cd6.js"></script>
+                
                 <!-- The end of step 03 -->
                 <br>
                 <h2 id="step04">Step 04 | Start Migrating frontend code and backend code to based on Firebase file structure</h2>
