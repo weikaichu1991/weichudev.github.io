@@ -60,17 +60,19 @@
                         <li><button onclick="location.href='#commentsSection'">Comments</li>
                     </ul>
                 </p>
-                <img src="./docker-beginner-01-image/cover.png" class="enlargeable-image" alt="article 04 cover">
-                <p class="footnote">Image source: by Wei Chu, Made with Dall-E</p>
+                <img src="./docker-beginner-01-image/article 05 cover-01.png" class="enlargeable-image" alt="article 04 cover">
+                <p class="footnote">Image source: by Wei Chu</p>
                 <h2 id="step01">Step 00 | Prerequisite</h2>
                 <p class="note">
                     <ol>
                         <li>
                             Installing <code>npm</code>
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/fdacdb9a7ad5e1e9ed10162d786030b6.js"></script>
                         </li>
                         <li>
                             Installing the <code>node.js</code> module
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/ae6d88780fbb269ce18ee69e1d59a0cc.js"></script>
                         </li>                        
                     </ol>
@@ -82,13 +84,17 @@
                     <ol>
                         <li>
                             Using the <code>npm init</code>to create a new package.json file for a Node.js project.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/78897e7fbf47d70c26f8fc07c3b36d45.js"></script>
                         </li>
                         <li>
-                            We will see a package.json file is now created in the directory.<script src="https://gist.github.com/weikaichu1991/b0d23f29257362d020bc4bc11442a1d7.js"></script>
-                        </li>#
+                            We will see a <code>package.json</code> file is now created in the directory.
+                            <p class="code-file">package.json</p>
+                            <script src="https://gist.github.com/weikaichu1991/b0d23f29257362d020bc4bc11442a1d7.js"></script>
+                        </li>
                         <li>
                             creating the express app file - <code>index.js</code>
+                            <p class="code-file">index.js</p>
                             <script src="https://gist.github.com/weikaichu1991/41cc126e0604e0d47fa493a243f8d6ab.js"></script>
                         </li>
                     </ol>   
@@ -109,39 +115,43 @@
                             <img src="./docker-beginner-01-image/image.png" class="enlargeable-image" alt="node.js docker plugin">
                         </li>
                         <li>
-                            Creating a Dockerfile
-                            <p>
-                                <code>. ./</code> This will cache all the docker build result, which will allow speed up next time when run the image build again.
-                            </p>
+                            Creating a Dockerfile, <code>. ./</code> will cache all the docker build result, which will allow speed up next time when run the image build again.
+                            <p class="code-file">Dockerfile</p>
                             <script src="https://gist.github.com/weikaichu1991/b3e63aa0f353bc1ad949c3bd9162bfac.js"></script>
                         </li>
                         <li>
                             Run the command to build the docker image
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/20d207897f092adc0c52c7539e25a7f1.js"></script>
                             <img src="./docker-beginner-01-image/image 1.png" class="enlargeable-image" alt="docker build command">
                             <img src="./docker-beginner-01-image/image 2.png" class="enlargeable-image" alt="docker build command">
                         </li>
                         <li>
                             Check the now existed docker image to see if it has successfully created.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/80c8e2bb2eb8102b6bbbb73ece217b0b.js"></script>
                             <img src="./docker-beginner-01-image/image 3.png" class="enlargeable-image" alt="listing docker image">
                         </li>
                         <li>
                             (Optional) you can also remove the image by specifying the image ID.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/801ef388f82366a022db34543ec345ec.js"></script>
                             <img src="./docker-beginner-01-image/image 4.png" class="enlargeable-image" alt="removing docker image">
                         </li>
                         <li>
-                            (Optional) you can rebuild the image again but specifying a name for the docker image this time by adding a flag -t in the command. 
+                            (Optional) you can rebuild the image again but specifying a name for the docker image this time by adding a flag -t in the command.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/9b179f817c261f0df127a652fb0ed540.js"></script>
                             <img src="./docker-beginner-01-image/image 5.png" class="enlargeable-image" alt="naming docker image">
-                            <p>Now go ahead and run it.</p>
+                            Now go ahead and run it.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/a8a02fb15f43760923a9f6d49b7436b7.js"></script>
                             <img src="./docker-beginner-01-image/image 6.png" class="enlargeable-image" alt="naming docker image">
-                            <p>Double check.</p>
+                            Double check.
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/eb23f95b3eccfe56f621f3d600af8bd4.js"></script>
                             <img src="./docker-beginner-01-image/image 7.png" class="enlargeable-image" alt="naming docker image">
-                            <p>Go to the browser and check it, the website should be not working just yet . Go to the next major step about the port and how network can talk to the container.</p>
+                            Go to the browser and check it, the website should be not working just yet . Go to the next major step about the port and how network can talk to the container.
                             <img src="./docker-beginner-01-image/image 8.png" class="enlargeable-image" alt="browser error result.">
                         </li>
                     </ol>
@@ -149,226 +159,285 @@
                 <!-- The end of step 02 -->
                 
                 <h2 id="step03">Step 03 | Container and Network Traffic Management</h2>
+                <p class="code-file">bash</p>
                 <script src="https://gist.github.com/weikaichu1991/b36be6d35adc01385549367fb3a85cd6.js"></script>
                 
                 <!-- The end of step 03 -->
                 <br>
-                <h2 id="step04">Step 04 | Start Migrating frontend code and backend code to based on Firebase file structure</h2>
-                <img src="./article-04-image/Slide1.png" class="enlargeable-image" alt="Github Portal">
-                <p class="footnote">Image source: by Wei Chu</p>
-                <p>
-                    After the Firebase tools are configured on your machine, you will noticed roughly 3 things in your repository:
-                </p>
+                <h2 id="step04">Step 04 | Starting a exited container</h2>
                 <p class="note">
                     <ol>
                         <li>
-                            “Public” folder - This will be the destination where all the frontend code files should be in. Therefore, the html, css and js files for the main page and subpages will be cloned from the local hosting repo to this folder.
+                            The following command will only show the container is currently running.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/9dc9c69390556015882909b434f8287a.js"></script>
+                            <img src="./docker-beginner-01-image/image 9.png" class="enlargeable-image" alt="terminal result">
                         </li>
                         <li>
-                            “Functions” folder - This will be the destination where all the backend code files should be in. The default name of the backend API connection file is “index.js” in the new repo for Firebase hosting, which is equivalent to the backend API connection file “db.js” in my local hosting repository.
+                            The following command will show all the containers including the one that is not active.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/b005b7f62e7122804ecfc0845ba8952d.js"></script>
+                            <img src="./docker-beginner-01-image/image 10.png" class="enlargeable-image" alt="terminal result">
                         </li>
                         <li>
-                            firebase.json file - The firebase.json file is the cornerstone of the Firebase Hosting project. It's a configuration file that defines how the web app, static content and dynamic functions is deployed to Firebase architecture. The file will be tailored to meet the needs of my project. It references the files placed in the Public and Functions folder. 
-                        </li>
-                    </ol>
-                    <p>
-                        The following shows the actual file structures of the repository for local hosting and for firbase hosting. 
-                    </p>
-                    <ul>
-                        <li>
-                            <p>Repo for local hosting: weichudev.web.local </p>
-                            <script src="https://gist.github.com/weikaichu1991/db15314231845cd5252dbd3e042d447c.js"></script>
-                        </li>
-                        <li>
-                            <p>Repo for Firebase hosting: weichudev.github.io</p>
-                            <script src="https://gist.github.com/weikaichu1991/7c75a937f654af56e5630e539e6c32f7.js"></script>
-                        </li>
-                    </ul>
-                </p>
-                <!-- The end of step 04 -->
-                
-                <br>
-                <h2 id="step05">Step 05 | Start Tailoring the hosting configuration and Backend Code</h2>
-                <script src="https://gist.github.com/weikaichu1991/76745383de1f564db8b246c73e9c3ff5.js"></script>
-                <p class="note">
-                    <ol>
-                        <li>
-                            Tailoring the Configuration JSON file
-                            <p class="code-file">firebase.json</p>
-                            <script src="https://gist.github.com/weikaichu1991/a719f2b9d55ea22185befd71acc127a8.js"></script>
-                        </li>
-                        <li>
-                            Configuring The Dynamic Endpoint
-                            <p>The <code>index.js</code> file here is the main entry point for a Node.js application that sets up and configures an Express server. It includes middleware for handling CORS, JSON body parsing, and routing. It exports the Express app as a Firebase Cloud Function named “api”.</p>
-                            <p class="code-file">Index.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/32a55d4f1098395dbcb297254e5339cc.js"></script>
+                            Run the following command start running the exited container again.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/d0df6ff411b323f2da5c37cd74cf7d7a.js"></script>
+                            <img src="./docker-beginner-01-image/image 11.png" class="enlargeable-image" alt="terminal result">
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/9dc9c69390556015882909b434f8287a.js"></script>
+                            <img src="./docker-beginner-01-image/image 12.png" class="enlargeable-image" alt="terminal result">
                             <div class="call-out">
-                                <p>&#128161 Making sure the environment variables like username and password for connecting to the MongoDB are saved in the Github Action secret as part of the deployment automation process.</p>
+                                <p>
+                                    &#128161 If you want to start the container and attach to it, you can use:
+                                    <p class="code-file">bash</p>
+                                    <script src="https://gist.github.com/weikaichu1991/21abcfcc977077a6341612b25c5e9214.js"></script>
+                                </p>
+                                <p>
+                                    &#128161 If you need to run a new container from an image, you can use the <code>docker run</code> command:
+                                    <p class="code-file">bash</p>
+                                    <script src="https://gist.github.com/weikaichu1991/d3b6d853f792f164fb04ed26df72646d.js"></script>
+                                </p>
                             </div>
                         </li>
-                        <li>
-                            The HTTP Request Routing File
-                            <p>The code is the same as the local hosting one, the <code>comments.route.js</code> file defines the routes for handling HTTP requests related to comments in the Firebase function app. It uses Express.js to define and handle these routes. Its role is as following:</p>
-                            <ul>
-                                <li><strong>Routing</strong>: Defines endpoints for creating, updating, and deleting comments.</li>
-                                <li><strong>Middleware</strong>: Uses Express.js middleware to handle requests and responses.</li>
-                                <li><strong>Database Operations</strong>: Interacts with the MongoDB database to perform CRUD operations on comments.</li>
-                            </ul>
-                            <p class="code-file">comments.route.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/ea0449b9fce30f41eaa5f9744b93ca13.js"></script>
-                        </li>
-                        <li>
-                            Database Collection Modeling
-                            <p>Same as the local hosting, the Comment.js file in the Models folder defines the schema including collection name, attributes and value types that will be stored in my MongoDB collection.</p>
-                            <p class="code-file">Comment.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/4a24b97ae0f35900369eb4af3aff357d.js"></script>
-                        </li>
-                        <li>
-                            Dependency Configuration for Deploying the Backend Function
-                            <p>Comparing with the dependency for local hosting, the requirement is more specific and complex for deploy Firebase function. Here is the breakdown of the key part in the dependency code: </p>
-                            <ul>
-                                <li>These scripts in the <code>scripts</code> section are used to automate various tasks related to development, testing, and deployment of the Firebase functions. </li>
-                                <li>When testing with local hosting, I found mongoose has compatible issue with the older version of Node.js, and somehow with the latest v.23 version as well.  The package has no problem with v.22 in the end, therefore I specify the <code>Node.js engine</code>  version here to avoid any issues of incompatibility.</li>
-                                <li>Making sure all the packages that the index.js is depending on are included in the <code>dependencies</code> section.</li>
-                                <li>The <code>devDependencies</code> section lists the development dependencies for the project. These packages are only needed during the development and testing phases, not in production.</li>
-                                <li>The <code>"private": true</code> field indicates that the project is private and should not be published to the npm registry. This setting is primarily used to prevent accidental publication of the package.</li>
-                            </ul>
-                            <p class="code-file">package.json</p>
-                            <script src="https://gist.github.com/weikaichu1991/cb7dcfbdbef6379819dda1906d11690a.js"></script>
-                        </li>
                     </ol>
-                    <div class="call-out">
-                        <h3>&#128161 Call functions via HTTP requests</h3>
-                        <p>Please refer to <a href="https://firebase.google.com/docs/functions/http-events?_gl=1*10gdvvo*_up*MQ&gen=2nd">the document link</a> here if you are interested in reading more about how to trigger a Firebase function through an HTTP request with a request handler.</p>
-                    </div>
                 </p>
-                <!-- The end of step 05 -->
-                
+                <!-- The end of step 04 -->
                 <br>
-                <h2 id="step06">Step 06 | Setting up GitHub Action workflow for testing deployment</h2>
-                <p class="code-file">firebase-hosting-deploy.yml</p>
-                <script src="https://gist.github.com/weikaichu1991/1b6e8c8fab1d4c6baa317190428633bc.js"></script>
+                <h2 id="step05">Step 05 | .dockerignore to enhance security</h2>
+                Run the following commands, and we will find that the dockerfile is also included in the deployed container, which is not the safest practice:
                 <p class="note">
                     <ol>
                         <li>
-                            The typical format of a GitHub Action Workflow starts with <code>on</code> section followed by <code>jobs</code> section.
+                            Run the follow command to enter the shell of the container node.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/a9c0dc3cd8fe71cfb21bdb09291360de.js"></script>
                         </li>
                         <li>
-                            In the <code>on</code> section, the trigger behaviour will be defined. Here I simply push the commits into the main branch as there is no collaboration and sophisticated workflow to edit my web code. ( However, there is a plan to stage the development & deployment of my other project with more through approach with GitHub Action. Thus, please watch this space! ).  In order to prevent the updated content of my website from directly being deployed and going live, I am create a manual trigger <code>workflow_dispatch</code>.
+                            Run the command <code>ls</code> in the instance shell to check the files that has been synced from the working directory to the container node. We will find the Dockerfile and node.js modules are all synced, which is not necessary for those files existed in there and potentially contain security risk.
+                            <img src="./docker-beginner-01-image/image 13.png" class="enlargeable-image" alt="terminal result">
                         </li>
                         <li>
-                            In the <code>jobs</code> section, the task defined here focuses on the building workflow to deploy the web hosting and API function to firebase.
-                            <ul>
-                                <li><strong>Checkout code</strong>: Uses the <code>actions/checkout@v2</code> action to check out the repository code.</li>
-                                <li><strong>Set up Node.js</strong>: Uses the <code>actions/setup-node@v2</code> action to set up Node.js version 22.</li>
-                                <li><strong>Install dependencies</strong>: Changes directory to functions and runs <code>npm install</code> to install Node.js dependencies.</li>
-                                <li><strong>Install Firebase CLI</strong>: Installs the Firebase CLI globally using <code>npm install -g firebase-tools</code>.</li>
-                                <li><strong>Set environment variables</strong>: Creates a <code>.env</code> file in the functions directory and sets environment variables (<code>DB_USERNAME</code> and <code>DB_PASSWORD</code>) using secrets from the repository.</li>
-                                <li><strong>Authenticate with Firebase</strong>: Deploys the functions and hosting to Firebase using the Firebase CLI and an authentication token stored in the <code>FIREBASE_TOKEN</code> secret.</li>
-                            </ul>
+                            This is when <code>.dockerignore</code> file comes in handy.
+                            <p class="code-file">.dockerignore</p>
+                            <script src="https://gist.github.com/weikaichu1991/b43c87fbb7c535dec635f0ed3f2e29dd.js"></script>
+                        </li>
+                        <li>
+                            After creating the .dockerignore file and specifying the directory item to be ignored, rebuilding the image and then re-deploy the container.
+                            <ol>
+                                <li>Stop the container by running command <code>sudo docker stop node-app</code></li>
+                                <li>Remove the container by running command <code>sudo docker rm node-app</code></li>
+                                <img src="./docker-beginner-01-image/image 14.png" class="enlargeable-image" alt="terminal result">
+                                <li>Run the command <code>sudo docker image ls -a</code> to get the image ID and run the command <code>sudo docker image rm cec14ac641d6</code> to remove the image.</li>
+                                <img src="./docker-beginner-01-image/image 15.png" class="enlargeable-image" alt="terminal result">
+                                <li>Run the command <code>sudo docker build -t node-app-image .</code> to rebuild the image again</li>
+                                <img src="./docker-beginner-01-image/image 16.png" class="enlargeable-image" alt="terminal result">
+                                <li>Run the command <code>sudo docker run -p 3000:3000 -d --name node-app node-app-image</code> to redeploy the container again</li>
+                                <li>Run the command <code>sudo docker exec -it node-app bash</code> to enter the shell of the container, and we will find the items in the <code>.dockerignore</code> file are now ignored while deploying the container.</li>
+                                <img src="./docker-beginner-01-image/image 17.png" class="enlargeable-image" alt="terminal result">
+                                <div class="call-out">
+                                    <p>
+                                        &#128161 We might still be able to find the node_modules in the container's directory even though we asked the modules to be ignored. It is because we specify npm to install the dependencies into the container in the dockerfile (see the screenshot below).
+                                        <img src="./docker-beginner-01-image/image 18.png" style="width: 40%;" class="enlargeable-image" alt="dockerfile screenshot">
+                                    </p>
+                                </div>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 05 -->
+                <br>
+                <h2 id="step06">Step 06 | Docker Bind Mount for Directory Files Synchronisation to the Container Node</h2>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Edit the frontend content in the express app definition file.
+                            <img src="./docker-beginner-01-image/image 19.png" class="enlargeable-image" alt="change of the web source code">
+                        </li>
+                        <li>
+                            We will find the content still looks the same and updated. That means the frontend app file in the work directory is not synced to the frontend app file in the container node.
+                            <img src="./docker-beginner-01-image/image 20.png" class="enlargeable-image" alt="browser preview result">
+                        </li>
+                        <li>
+                            Question is how to not constantly rebuild the container image when something is changed ? - This is when “Bind Mount” comes in handy.
+                            <div class="call-out">
+                                <p>
+                                    <h3>&#128161 What is Bind Mount</h3>
+                                    A bind mount in Docker is a way to mount a directory or file from the host machine into a container. This allows the container to access and modify files on the host system. Bind mounts are useful for development, as changes made on the host are immediately reflected in the container.
+                                </p>
+                            </div>
+                            The following is the command syntax to set up the bind mount mechanism between the working directory and the container node.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/5ebfe0162ab2136f29b4e9169edacede.js"></script>
+                            According to my case, it would be :
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/a8ced009dd5bcfae0b801c0a07828991.js"></script>
+                            To avoid the syntax become too long, it is better to specify the path in the dynamic way as normally docker only accept the full path address and doesn't like relative path.
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/58bdf51c3cb8c300cb2cd622df52a385.js"></script>
+                            Stop and remove the existing container node and redeploy a container with the command syntax above.
+                            <img src="./docker-beginner-01-image/image 21.png" class="enlargeable-image" alt="terminal result">
+                            The new container now should be in sync with the host work directory. Remember to restart the container node process when frontend content is updated.
+                            <img src="./docker-beginner-01-image/image 22.png" class="enlargeable-image" alt="browser preview result">
                         </li>
                     </ol>
                 </p>
                 <!-- The end of step 06 -->
                 <br>
-                <h2 id="step07">Step 07 | Using my own domain</h2>
-                <img src="./article-04-image/image 5.png" class="enlargeable-image" alt="domain architecture">
-                <p class="footnote">Image source: <a href="https://firebase.google.com/docs/hosting/custom-domain">Firebase Documentation / Hosting</a></p>
+                <h2 id="step07">Step 07 | Automatically Restarting the Node Process with Nodemon</h2>
+                Using together with bind mount, when frontend content has been updated and synced to the container node, restarting the node process will be required. In order to prevent from manually running commands to achieve the task, Nodemon will be setup together with Bind Mount.
+                <br><br>
+                <div class="call-out">
+                    <p>
+                        <h3>&#128161 What is Nodemon?</h3>
+                        Nodemon is a utility that helps develop Node.js applications by automatically restarting the application when file changes in the directory are detected. It is particularly useful during development to avoid manually stopping and restarting the server every time you make a change.
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Automatically restarts the Node.js application when file changes are detected.</li>
+                            <li>Monitors all files in the directory by default, but can be configured to watch specific files or directories.</li>
+                            <li>Can be used as a replacement for the "node" command.</li>
+                        </ul>
+                    </p>
+                </div>
+                <p class="note">
+                    <ol>
+                        <li>We need to install nodemon package with <code>npm</code>. Run the command <code>sudo npm install nodemon --save-dev</code>. The flag <code>--save-dev</code> in the command indicates that the package should be added to the devDependencies section of your <code>package.json</code>file. Development dependencies are only needed during development and not in production.</li>
+                        <li>
+                            We will find the devDependencies section is created  in the package.json file
+                            <img src="./docker-beginner-01-image/image 23.png" class="enlargeable-image" alt="package.json screenshot">
+                        </li>
+                        <li>
+                            We need to adding few scripts in the <code>package.json</code> file to make nodemon works properly.
+                            <img src="./docker-beginner-01-image/image 24.png" class="enlargeable-image" alt="package.json screenshot">
+                        </li>
+                        <li>
+                            Update the Dockerfile
+                            <img src="./docker-beginner-01-image/image 25.png" class="enlargeable-image" alt="Dockerfile screenshot">
+                        </li>
+                        <li>Repeat the steps in the previous sections to rebuild the image.(Stop&Remove the running node >> Remove the image with ID >> Rebuild the image )</li>
+                        <li>As <code>package.json</code> is updated, therefore the Bind Mount will need to be conducted again when deploying the container node. The command: <code>sudo docker run -v $(pwd):/app -p 3000:3000 -d --name node-app node-app-image</code></li>
+                        <li>
+                            Now the frontend content should be in sync between the work directory and container node without manually starting the node processes.
+                            <img src="./docker-beginner-01-image/Untitled_video_-_1733891940166.gif" class="enlargeable-image" alt="gif">
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 07 -->
+                <br>
+                <h2 id="step08">Step 08 | Filtering Cached Item</h2>
+                Context:
+                <p class="note">
+                    <ol>
+                        <li>Deleting the node_modules package hosted in the work directory as those node.js package are no longer needed after we containerise the dependency of the app.</li>
+                        <li>
+                            We will then find out the web app is crashed if we will deploy the container node again in the future. This is due to the caching specified in the Dockerfile. Which means that even though npm will install packages in the new container node, the caching means the work directory structure will still override the directory cached in the container node.
+                            <img src="./docker-beginner-01-image/image 26.png" class="enlargeable-image" alt="web browser preview">
+                        </li>
+                    </ol>
+                </p>
+                Fix: Excluding a specific part of the volume from being overwritten by using the following command:
+                <p class="code-file">bash</p>
+                <script src="https://gist.github.com/weikaichu1991/dc4b09c1baa5431e7540f7f6a6695280.js"></script>
+                <code>-v /app/node_modules</code> creates an anonymous volume for the <code>/app/node_modules</code> directory to avoid overwriting it with the host's node_modules.<br><br>
+                <div class="call-out">
+                    <p>
+                        <h3>&#128161 How <code>COPY . ./</code> will impact the caching of the containerisation result</h3>
+                        In Docker, each instruction in the Dockerfile creates a layer in the image. Docker uses a caching mechanism to speed up the build process by reusing layers that have not changed. The <code>COPY . ./</code> instruction can significantly impact caching.
+                        <h4>Caching Behavior:</h4>
+                        <ul>
+                            <li>Layer Caching: Docker caches each layer created by an instruction. If the contents being copied by <code>COPY . ./</code> have not changed since the last build, Docker will reuse the cached layer.</li>
+                            <li>Invalidating Cache: If any file in the source directory changes, the cache for the <code>COPY . ./</code> instruction is invalidated, and Docker will re-execute this instruction and all subsequent instructions.</li>
+                        </ul>
+                        <h4>Best Practices:</h4>
+                        <ul>
+                            <li>Order Matters: Place instructions that change less frequently (e.g., <code>COPY [package.json](http://_vscodecontentref_/0) .</code> and <code>RUN npm install</code>) before instructions that change more frequently (e.g., <code>COPY . ./</code>). This helps maximize cache usage.</li>
+                            <li>Selective Copying: Copy only necessary files to avoid invalidating the cache unnecessarily.</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- The end of step 08 -->
+                <br>
+                <h2 id="step09">Step 09 | Restricting directory management privilege of the container node to avoid the main work directory being corrupted</h2>
+                Context:
+                <p class="note">
+                    <ol>
+                        <li>After the container node has being deployed, you will find that it is possible to create, update or delete files from the container node side because of the bind mount synchronisation</li>
+                        <li>
+                            For example, if we enter the shell of the containder node, and use the command <code>touch test.txt</code> to create a new file. We will find the new file immediately is synced to the root work directory. This will make the root work directory risks from being edited or corrupted.
+                            <img src="./docker-beginner-01-image/image 27.png" class="enlargeable-image" alt="terminal view">
+                        </li>
+                    </ol>
+                </p>
+                Fix: Re-deploy the image by specifying read-only privilege with the following command:
+                <p class="code-file">bash</p>
+                <script src="https://gist.github.com/weikaichu1991/4dc0bc22498f4572685f902dd7710c6d.js"></script>
+                <img src="./docker-beginner-01-image/image 28.png" class="enlargeable-image" alt="terminal view">
+                <!-- The end of step 09 -->
+                <br>
+                <h2 id="step10">Step 10 | Environment variables</h2>
                 <p class="note">
                     <ol>
                         <li>
-                            Buying my own domain
-                            <p>I started my DNS provider hutting by finding the top 5 providers. I discovered the following ranking of those providers according to <a href="https://www.top10.com/hosting/vps-comparison?utm_source=google&kw=best%20vps%20hosting%20provider&c=682827864909&t=search&p=&m=b&adpos=&dev=c&devmod=&mobval=0&network=g&campaignid=20821800700&groupid=161849830731&targetid=kwd-1632283250&interest=&physical=9044936&feedid=&a=11116&ts=hi&topic=&test=&clicktype=&camtype=&gad_source=1&gclid=CjwKCAiA9bq6BhAKEiwAH6bqoBjGhqvFo0KjEd5LEPJ_Su7N2F5tsEAOVdLfO0W6s4o5fLCUSoqQ-xoCD80QAvD_BwE">Top10.com</a>:
-                                <ul>
-                                    <li>HOSTINGER</li>
-                                    <li>SCALAHOSTING</li>
-                                    <li>FASTHOSTS</li>
-                                    <li>IONOS</li>
-                                    <li>BLUEHOST</li>
-                                </ul></p>
-                            
+                            <strong>Setting default <code>ENV</code> value</strong> <br> for example: setting port number at 3000 in the Dockerfile, and then reference the <code>ENV</code> variable <code>PORT by EXPOSE</code> for documentation purpose.
+                            <img src="./docker-beginner-01-image/image 29.png" class="enlargeable-image" alt="Dockerfile screenshot">
                         </li>
                         <li>
-                            Choosing IONOS
-                            <p>
-                                I narrowed the options down to between Hostinger and IONOS based on how many reviews that was given about these 2 providers. In the end I chose IONOS. I have to be honest, it was because it was the cheapest and most straight forward when I was trying to choose my domain. Technically, Hostinger has better service plan but the scenario is mainly based on if the DNS will be shared between multiple website and other benefits regarding scalability ( watch this <a href="https://www.youtube.com/watch?v=ZbRGXe6EOgM">video</a> if you want to know more about the differences between IONOS' offering and Hostinger's). For my web project, it is a fairly simple project , and I just want to experiment my first project about full-stack development, I think IONOS suits my requirements for now.
-                                <ol>
-                                    <li>Go to IONOS main page and sign in
-                                        <img src="./article-04-image/image 6-01.png" class="enlargeable-image" alt="IONOS DNS">
-                                    </li>
-                                    <li>Click “Add product” after you have successfully logged in. 
-                                        <img src="./article-04-image/image 7-01.png" class="enlargeable-image" alt="IONOS DNS">
-                                    </li>
-                                    <li>Search the domain that you prefer and chose the one that is not registered and matches your budget.
-                                        <img src="./article-04-image/image 8-01.png" class="enlargeable-image" alt="IONOS DNS">
-                                    </li>
-                                    <li>Following the checking out steps and complete the DNS service purchasing.</li>
-                                </ol>
-                            </p>
+                            Now killing the existing container and re-build the image. Re-deploy the container after the image is rebuild the with the environment variable referenced in the command line.<br>
+                            The command:
+                            <p class="code-file">bash</p>
+                            <script src="https://gist.github.com/weikaichu1991/4e88bc693f8577ba6d8cb33c0cad4061.js"></script>
+                            <img src="./docker-beginner-01-image/image 30.png" class="enlargeable-image" alt="Terminal View">
                         </li>
                         <li>
-                            Add Your Custom Domain
+                            To check if the environment variables are parsed into the container, enter the container shell and run the command <code>printenv</code>:
+                            <img src="./docker-beginner-01-image/image 31.png" class="enlargeable-image" alt="Terminal View">
+                        </li>
+                        <li>
+                            To set multiple environment variables with their own values, we need set up a <code>.env</code> file and reference it in the container deployment command.
                             <ol>
                                 <li>
-                                    Go to Firebase Console: Open the Firebase Console and select your project.
-                                    <img src="./article-04-image/image 9-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                    Create an <code>.env</code> file
+                                    <img src="./docker-beginner-01-image/image 32.png" class="enlargeable-image" alt=".env file">
                                 </li>
                                 <li>
-                                    Navigate to Hosting: In the left-hand menu, click on "Hosting".
-                                    <img src="./article-04-image/image 10-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                    Delete the existing container and redeploy it with the following command with <code>.env</code> file specified to reference the desired environment variable values.
+                                    <p class="code-file">bash</p>
+                                    <script src="https://gist.github.com/weikaichu1991/4378fb25c70088d7c2280730661dd49a.js"></script>
                                 </li>
                                 <li>
-                                    Add Custom Domain: Click on "Add custom domain" and enter your custom domain name. 
-                                    <img src="./article-04-image/image 11-01.png" class="enlargeable-image" alt="Firebase Portal">
-                                </li>
-                            </ol>
-                        </li>
-                        <li>
-                            Verify Domain Ownership
-                            <ol>
-                                <li>Get Verification Code: Firebase will provide you with a TXT record that you need to add to your domain's DNS settings to verify ownership.</li>
-                                <li>
-                                    Add TXT Record: Go to your domain registrar's website (IONOS in this case) and add the provided TXT record to your domain's DNS settings.
-                                    <ol>
-                                        <li>
-                                            Go to IONOS dashboard and choose “Domains & SSL”
-                                            <img src="./article-04-image/image 12-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
-                                        </li>
-                                        <li>
-                                            Click the 3 dots icon at the far end on the right of your domain record, and then choose “Show details”
-                                            <img src="./article-04-image/image 13-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
-                                        </li>
-                                        <li>
-                                            Choose “Modify DNS settings ” under the list item called “Target”
-                                            <img src="./article-04-image/image 14-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
-                                        </li>
-                                        <li>
-                                            The record of your DNS will show up. Adding in the record that firebase has requested in the verification instruction.
-                                            <img src="./article-04-image/image 15-01.png" class="enlargeable-image" alt="IONOS DNS Portal">
-                                        </li>
-                                    </ol>
-                                    <li>Verify: After adding the TXT record, go back to the Firebase Console and click "Verify".</li>
-                                </li>
-                            </ol>
-                        </li>
-                        <li>
-                            Update DNS Records
-                            <ol>
-                                <li>Get A Records: Firebase will provide you with A records that you need to add to your domain's DNS settings.</li>
-                                <li>
-                                    Add A Records: Repeating the same steps for “Verifying Domain Ownership”. Go to your domain registrar's website and add the provided A records to your domain's DNS settings.
-                                    <img src="./article-04-image/image 16-01.png" class="enlargeable-image" alt="Firebase Portal">
+                                    Run the command <code>printenv</code> again in the container bash shell to check if the environment variables are parsed into the container.
+                                    <img src="./docker-beginner-01-image/image 33.png" class="enlargeable-image" alt="terminal view">
                                 </li>
                             </ol>
                         </li>
                     </ol>
                 </p>
-                
-                <!-- The end of step 07 -->
-                
-                <div class="call-out">
-                    <p>&#128161 Please refer to <a href="https://github.com/weikaichu1991/weichudev.github.io" id="callout-link" target="_blank">my GitHub repository </a> to look at the full code.</p>
-                </div>
+                <!-- The end of step 10 -->
+                <br>
+                <h2 id="step11">Step 11 | Cleaning up redundant volumes built-up</h2>
+                When a container is removed, some of the volumes attached to it will not be removed with it. In our case, we specify volume /app/node_modules when deploying a container, which is a anonymous volume that won't be deleted when a container is removed.
+                <p class="note">
+                    <ol>
+                        <li>
+                            <strong>Check the exiting redundant volumes</strong> <br> Using the command <code>docker volume ls</code> to check what are the volumes existing in our system:
+                            <img src="./docker-beginner-01-image/image 34.png" class="enlargeable-image" alt="terminal view">
+                        </li>
+                        <li>
+                            <strong>There are 2 methods to handle them:</strong>>
+                            <ol>
+                                <li>
+                                    Using the command <code>docker volume prune</code> to trim the redundant volumes.
+                                    <img src="./docker-beginner-01-image/image 35.png" class="enlargeable-image" alt="terminal view">
+                                </li>
+                                <li>
+                                    Using <code>-fv</code> flag when removing a container, which will have the attached volume deleted together with the container to prevent volumes from building up.
+                                    <img src="./docker-beginner-01-image/image 36.png" class="enlargeable-image" alt="terminal view">
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of step 11 -->
 
                 <!-- Modal structure -->
                 <div id="imageModal" class="modal">
@@ -378,85 +447,6 @@
                     <button class="zoomIn" id="zoomIn">+</button><br>
                     <button class="zoomOut" id="zoomOut">-</button>
                 </div>
-            </div>
-            <div class="troubleshooting-zone" id="troubleS">
-                <h1>troubleshoot Notes</h1>
-                <hr/>
-                <h2>Issue 01 | Fulfilling best practices required by eslint</h2>
-                <h3>Error:</h3> 
-                <ol>
-                    <li>
-                        ESLint is a code analysis tool used to identify and fix problems in JavaScript code. It helps maintain code quality and consistency by enforcing coding standards and best practices. When integrated into a Firebase deployment workflow, ESLint ensures that the code being deployed is free of common errors and adheres to specified coding guidelines.
-                    </li>
-                    <li>
-                        The following is an example of error happening to my deployment workflow when eslint discovered issues in my code. I have to say, this tool is a bit petty as it deals into a lot of nitty gritty stuffs and some of them I don't really think it is a genuine mistake.
-                        <img src="./article-04-image/image 17-01.png" class="enlargeable-image" alt="github action error">
-                    </li>
-                </ol>
-                <h3>Fix:</h3>
-                <p>
-                    The code that is called out can be as trivial as the choices of quotation symbols, indentations, ect, even though it doesn't stop the code from running successfully. To correct the errors called out by eslint, the way of writing the code even will have to be fundamentally changed. Thus, I decided to just suspend those unnecessary rules for my project for now. The typical syntax is “ <code>'(rule category)' : 0 </code>“. ex: <code>“key-spacing”: 0</code>.
-                </p>
-                <p class="code-file">.eslintrc.js</p>
-                <script src="https://gist.github.com/weikaichu1991/355ccc01efa1000b980ab0ecceada140.js"></script>
-                <!-- The end of issue 01 -->
-                
-                <hr/>
-                <h2>Issue 02 | Error fetching comments. Please try again. ( The greatest evil of my project making me troubleshoot for days to find out what was going on.)</h2>
-                <h3>Error:</h3> 
-                <ol>
-                    <li>
-                        After I deployed the function to the Firebase ( which links to the artefact registry on GCP ), I noticed that an error message still comes back as “error: Error fetching comments. Please try again.” every time when I loaded by website.
-                    </li>
-                    <li>
-                        It is quite hard to directly point out what was the issue in the very beginning apart from diagnosing it with the following possible directions:
-                        <ol>
-                            <li>API request's syntax isn't formatted correctly.</li>
-                            <li>The connection string to the database is not correctly defined.</li>
-                            <li>The environmental variables for connecting to the database are not parsed in successfully to the deployment workflow.</li>
-                            <li>The HTTP request is not correctly routed.</li>
-                            <li>The API endpoint definitions are in similar format for the same type of request method.</li>
-                        </ol>
-                    </li>
-                </ol>
-                <h3>Fix ( This is more like a guideline of steps rather than a single solution.):</h3>
-                <p>
-                    <ol>
-                        <li>Diagnosing what does it mean behind the error message.
-                            <ul>
-                                <li>400 Bad Request Error - This occurs when a server can't parse the request itself. This could be caused by an incorrect URL, something wrong with how the API request was composed, or even an issue within the application itself.</li>
-                                <li>401 Unauthorized Error - This API error occurs when a server cannot authorize the user's credentials. This could be caused by an incorrect username or password or even a lack of permission access.</li>
-                                <li>403 Forbidden Error - This API error occurs when a server refuses to fulfill a request from the client due to authorization issues or other restrictions put in place by the API provider.</li>
-                                <li>500 Internal Server Error - This API error occurs when a server encounters an unexpected condition that prevents it from fulfilling the API request. This could be caused by an issue with the API provider's internal systems or there could be something wrong with how the API request was composed.</li>
-                            </ul>
-                            <br>
-                            <div class="call-out">
-                                <p>&#128161 To read more about different types of errors, please follow <a href="https://blog.hubspot.com/website/api-errors#:~:text=This">this article</a> that was useful to me during troubleshooting to learn more.</p>
-                            </div>
-                        </li>
-                        <li>
-                            Scoping through the fundamental concept of using each package and modules.
-                            <p>When I migrate the codes of my backend function from the project for local hosting to the project for cloud hosting with Firebase, I had to remodel a little it of the way how connection and routing happen. After checking all the syntax are correct and environmental variables are parsed through , but they still didn't solve the issue, I then suspect there is something wrong how I composed the code snippets. I decided to research a bit deeper and properly understand how does every module that I have used in this project interact with each other. ex:</p>
-                            <ol>
-                                <li>Knowing more about <a href="https://dev.to/alexmercedcoder/basics-of-expressjs-todo-list-tutorial-1a4d">Express.js</a></li>
-                                <li><a href="https://medium.com/gist-for-js/use-of-res-json-vs-res-send-vs-res-end-in-express-b50688c0cddf">The difference between <code>res.send()</code> and <code>res.json()</code></a></li>
-                            </ol>
-                        </li>
-                        <li>
-                            GOING BACK TO THE BASIC! and finally … THE CODE IS CRACKED!
-                            <p>After trying to fix the error many times and still didn't work… <a href="https://medium.com/@skhans/how-to-build-a-basic-node-js-crud-app-with-mongoose-and-mongodb-3e958a36001d">This article</a> reminds me of going back to the original design of my backend code which I ran it successfully on a local server.</p>
-                        </li>
-                        <li>
-                            Conclusion:
-                            <ol>
-                                <li>In the end I found out that I made a mess when composing the code for request routing. I put the routing definition code file <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/comments.route.js"><code>comments.route.js</code></a> in a child-folder called “api” which works for the project with local hosting, and somehow the firbase function doesn't like it. So I moved it to <a href="https://github.com/weikaichu1991/weichudev.github.io/tree/main/functions">the same level</a> as the main <code>index.js</code> file.</li>
-                                <li>I exported the wrong module at the end of <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/comments.route.js"><code>comments.route.js</code></a> code. I exported the code as “<code>app</code>” instead of “<code>router</code>”, but I imported the router from the comments.route.js code into <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/functions/index.js">the main <code>index.js</code></a> code.</li>
-                                <li>I aligned the app name exported from the index.js code with the <code>functionId</code> under <code>hosting</code> section in <a href="https://github.com/weikaichu1991/weichudev.github.io/blob/main/firebase.json">the <code>firebase.json</code> configuration file</a>.</li>
-                            </ol>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of issue 02 -->
             </div>
             
             <section id="commentsSection">
@@ -483,5 +473,5 @@
     </div>
 </body>
 
-<script src="./article-04-hostingOnFirebase.js"></script>
+<script src="./docker-beginner-01.js"></script>
 </html>
