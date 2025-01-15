@@ -68,23 +68,36 @@
                         <li><button onclick="location.href='#commentsSection'">Comments</li>
                     </ul>
                 </p>
-                <h2 id="step00">Step 00 | Prerequisite</h2>
+                <h2 id="step00">Docker Compose - Multiple Containers Configuration</h2>
+                <H3>Definition: </H3>
+                <p>A <CODE>docker-compose.yml</CODE> file is used to define and manage multi-container Docker applications. It allows you to configure your application's services, networks, and volumes in a single file, making it easier to manage and deploy complex applications.</p>
+                <H3>Example: </H3>
+                <h4>Step 1. Creating a Docker-compose.yml in the working directory.</h4>
+                <p>The configuration primarily featuring 2 parts: version & services.</p>
+                <p class="code-file">docker-compose.yml</p>
+                <script src="https://gist.github.com/weikaichu1991/d8b30eed809fc1e93883812b9bb65e05.js"></script>
                 <p class="note">
                     <ol>
                         <li>
-                            Installing <code>npm</code>
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/fdacdb9a7ad5e1e9ed10162d786030b6.js"></script>
+                            <strong>version</strong>: this specifies the version of the docker compose file format.
                         </li>
                         <li>
-                            Installing the <code>node.js</code> module
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/ae6d88780fbb269ce18ee69e1d59a0cc.js"></script>
+                            <strong>services</strong>: this defines the container services that make up the application ( ex: web app, database, etc.)
                         </li>                        
                     </ol>
-                    
                 </p>
-                <!-- The end of the step 00 -->
+                <h4>Step 2. Using commands to run the docker-compose file</h4>
+                <p class="note">
+                    <ol>
+                        <li>
+                            <strong>Run the following command to build the image</strong>
+                        </li>
+                        <li>
+                            <strong>services</strong>: this defines the container services that make up the application ( ex: web app, database, etc.)
+                        </li>                        
+                    </ol>
+                </p>
+                <!-- The end of the section 01 -->
                 <br>
                 <h2 id="step01">Step 01 | Creating an express app with node.js for testing the container function</h2>
                 <p class="note">
