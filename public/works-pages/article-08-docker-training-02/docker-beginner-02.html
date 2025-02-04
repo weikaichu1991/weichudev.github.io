@@ -71,8 +71,8 @@
                 <h2 id="step00">Docker Compose - Multiple Containers Configuration</h2>
                 <H3>Definition: </H3>
                 <p>A <CODE>docker-compose.yml</CODE> file is used to define and manage multi-container Docker applications. It allows you to configure your application's services, networks, and volumes in a single file, making it easier to manage and deploy complex applications.</p>
-                <H3>Example: </H3>
-                <h4>Step 1. Creating a Docker-compose.yml in the working directory.</h4>
+                <H3>Exercise: </H3>
+                <h4 style="text-transform: uppercase;">Step 1. Creating a Docker-compose.yml in the working directory.</h4>
                 <p>The configuration primarily featuring 2 parts: version & services.</p>
                 <p class="code-file">docker-compose.yml</p>
                 <script src="https://gist.github.com/weikaichu1991/d8b30eed809fc1e93883812b9bb65e05.js"></script>
@@ -86,378 +86,236 @@
                         </li>                        
                     </ol>
                 </p>
-                <h4>Step 2. Using commands to run the docker-compose file</h4>
+                <h4 style="text-transform: uppercase;">Step 2. Using commands to run the docker-compose file</h4>
                 <p class="note">
                     <ol>
                         <li>
-                            <strong>Run the following command to build the image</strong>
+                            Run the command <code>$ docker-compose up -d</code> to build the image. The flag <code>-d</code> means starting the services in detached mode, which sill means that the containers will run in the background, allowing you to continue using the terminal for other commands. The image is successfully built shown as below:
+                            <img src="./docker-beginner-02-image/image.png" class="enlargeable-image" alt="docker terminal screenshot">
                         </li>
                         <li>
-                            <strong>services</strong>: this defines the container services that make up the application ( ex: web app, database, etc.)
+                            After the above process, using the command <code>$ docker ps</code> to call the list of existing images to check the newly created image. Shown as below:
+                            <img src="./docker-beginner-02-image/image 1.png" class="enlargeable-image" alt="docker terminal screenshot">
+                        </li>
+                        <li>
+                            Checking with the localhost network on a browser to test the web connection. It should be connected shown as below:
+                            <img src="./docker-beginner-02-image/image 2.png" class="enlargeable-image" alt="browser view">
+                        </li>                 
+                    </ol>
+                </p>
+                <h4 style="text-transform: uppercase;">Step 3. Bringing down the resources</h4>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Using the command <code>$ docker-compose down -v</code> to remove the container built by the image specified in the dockerfile. The flag <code>-v</code> means the anonymous volumes will deleted as well. Using the flag to avoid redundant volumes build up.
+                        </li>
+                        <li>
+                            Using the command <code>$ docker ps</code> to double check if the resource has been removed. The result is shown as below:
+                            <img src="./docker-beginner-02-image/image 3.png" class="enlargeable-image" alt="docker-compose terminal screenshot">
+                        </li>                        
+                    </ol>
+                </p>
+                <h4 style="text-transform: uppercase;">Step 4. Bringing up the docker-compose file to see what happens</h4>
+                <p class="note">
+                    <ol>
+                        <li>
+                            This time, the container building process was <strong>way quicker than the beginning</strong> when the docker-compose file was run for the first time. This is because the process won't rebuild the image <strong>unless the dockerfile was modified before docker-compose file was run</strong>. Building the container this time was a static process.The result is shown as below:
+                            <img src="./docker-beginner-02-image/image 4.png" class="enlargeable-image" alt="docker-compose terminal screenshot">
+                        </li>
+                        <li>
+                            <strong>Forcing Rebuild</strong> - We can run the command <code>$ docker-compose up -d --build</code> to force docker rebuild the image if necessary. 
                         </li>                        
                     </ol>
                 </p>
                 <!-- The end of the section 01 -->
                 <br>
-                <h2 id="step01">Step 01 | Creating an express app with node.js for testing the container function</h2>
-                <p class="note">
-                    <ol>
-                        <li>
-                            Using the <code>npm init</code>to create a new package.json file for a Node.js project.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/78897e7fbf47d70c26f8fc07c3b36d45.js"></script>
-                        </li>
-                        <li>
-                            We will see a <code>package.json</code> file is now created in the directory.
-                            <p class="code-file">package.json</p>
-                            <script src="https://gist.github.com/weikaichu1991/b0d23f29257362d020bc4bc11442a1d7.js"></script>
-                        </li>
-                        <li>
-                            creating the express app file <code>index.js</code> for testing.
-                            <p class="code-file">index.js</p>
-                            <script src="https://gist.github.com/weikaichu1991/41cc126e0604e0d47fa493a243f8d6ab.js"></script>
-                        </li>
-                    </ol>   
+                <h2 id="step01">Docker Compose & Development Staging</h2>
+                <p>
+                    <ul>
+                        <li>Using Docker Compose to build both development environment & production environment. It can be achieved by using 2 docker files, but Docker Compose creates a more integrated workflow.</li>
+                        <li>The exercise here focuses on using Docker Compose configuration to dictate which running environment used rather than explicitly specify in the dockerfile.</li>
+                    </ul>
                 </p>
-                <!-- The end of the step 01 -->
-                
-                <h2 id="step02">Step 02 | Setting Docker container</h2>
+                <h4 style="text-transform: uppercase;">Step 1. Stop explicitly indicating the running environment in the dockerfile</h4>
                 <p class="note">
                     <ol>
                         <li>
-                            Installing docker on the local machine .
+                            Changing the default command executed when a container is started by the Docker Image.
                         </li>
                         <li>
-                            Go to hub.docker.com , search “node” .
+                            Stop explicitly indicating the running environment in the dockerfile by changing the command for running the app from <code>CMD [“npm”, “run”, “dev”]</code> to  <code>CMD [”node”, “index.js”]</code> which is for generally bringing up the app. The running environment will be specified later by Docker Compose.
+                            <img src="./docker-beginner-02-image/image 5.png" class="enlargeable-image" alt="github  commit change">
+                        </li>                        
+                    </ol>
+                </p>
+                <h4 style="text-transform: uppercase;">Step 2. Start writing docker-compose configuration for both dev & prod environment</h4>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Starting with the <code>docker-compose.yml</code> as the base file containing shared configuration variables.
+                            <script src="https://gist.github.com/weikaichu1991/61fa6acc42880c9d6ce06f243c39c34e.js"></script>
                         </li>
                         <li>
-                            As the default image of node in the hub won't have every dependencies we will need for our app, we are going to write our own customised image but based on the image that is shown on the hub.
-                            <img src="./docker-beginner-01-image/image.png" class="enlargeable-image" alt="node.js docker plugin">
+                            For Dev environment, creating another Docker Compose YAML file for dev environment called <code>docker-compose.dev.yml</code>.
+                            <script src="https://gist.github.com/weikaichu1991/194942ff105fc7629502e7237573f0c4.js"></script>
                         </li>
                         <li>
-                            Creating a Dockerfile, <code>. ./</code> will cache all the docker build result, which will allow speed up next time when run the image build again.
-                            <p class="code-file">Dockerfile</p>
-                            <script src="https://gist.github.com/weikaichu1991/b3e63aa0f353bc1ad949c3bd9162bfac.js"></script>
+                            run the following command to bring up the container wit docker compose files for development environment:
+                            <script src="https://gist.github.com/weikaichu1991/b64988e0da07596e87e6838afa174f43.js"></script>
+                            The result:
+                            <img src="./docker-beginner-02-image/image 7.png" class="enlargeable-image" alt="docker compose terminal screenshot">
                         </li>
                         <li>
-                            Run the command to build the docker image
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/20d207897f092adc0c52c7539e25a7f1.js"></script>
-                            <img src="./docker-beginner-01-image/image 1.png" class="enlargeable-image" alt="docker build command">
-                            <img src="./docker-beginner-01-image/image 2.png" class="enlargeable-image" alt="docker build command">
+                            The web page should be working in the browser.
+                            <img src="./docker-beginner-02-image/image 8.png" class="enlargeable-image" alt="browser review">
                         </li>
                         <li>
-                            Check the now existed docker image to see if it has successfully created.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/80c8e2bb2eb8102b6bbbb73ece217b0b.js"></script>
-                            <img src="./docker-beginner-01-image/image 3.png" class="enlargeable-image" alt="listing docker image">
+                            Testing if the bind-mount has been successfully created as well.
+                            <ol class="sub-number-list">
+                                <li>
+                                    current preview content:
+                                    <img src="./docker-beginner-02-image/image 9.png" class="enlargeable-image" alt="browser review">
+                                </li>
+                                <li>
+                                    change the source code of the web page, replacing the “!!!” with a full stop “.”:
+                                    <img src="./docker-beginner-02-image/image 10.png" class="enlargeable-image" alt="index.js code view">
+                                </li>
+                                <li>
+                                    The web preview has been updated as well once the update of the source code has been saved.
+                                    <img src="./docker-beginner-02-image/image 11.png" class="enlargeable-image" alt="browser review">
+                                </li>
+                            </ol>
                         </li>
                         <li>
-                            (Optional) you can also remove the image by specifying the image ID.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/801ef388f82366a022db34543ec345ec.js"></script>
-                            <img src="./docker-beginner-01-image/image 4.png" class="enlargeable-image" alt="removing docker image">
+                            Bringing down the container with the following command:
+                            <script src="https://gist.github.com/weikaichu1991/abc85afe5b7febf750d74185d921b58f.js"></script>
+                            Result:
+                            <img src="./docker-beginner-02-image/image 12.png" class="enlargeable-image" alt="docker compose terminal screenshot">
                         </li>
                         <li>
-                            (Optional) you can rebuild the image again but specifying a name for the docker image this time by adding a flag -t in the command.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/9b179f817c261f0df127a652fb0ed540.js"></script>
-                            <img src="./docker-beginner-01-image/image 5.png" class="enlargeable-image" alt="naming docker image">
-                            Now go ahead and run it.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/a8a02fb15f43760923a9f6d49b7436b7.js"></script>
-                            <img src="./docker-beginner-01-image/image 6.png" class="enlargeable-image" alt="naming docker image">
-                            Double check.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/eb23f95b3eccfe56f621f3d600af8bd4.js"></script>
-                            <img src="./docker-beginner-01-image/image 7.png" class="enlargeable-image" alt="naming docker image">
-                            Go to the browser and check it, the website should be not working just yet . Go to the next major step about the port and how network can talk to the container.
-                            <img src="./docker-beginner-01-image/image 8.png" class="enlargeable-image" alt="browser error result.">
+                            For PROD environment, creating another Docker Compose YAML file for prod environment called <code>docker-compose.prod.yml</code>:
+                            <script src="https://gist.github.com/weikaichu1991/80d2d50f4246a67ea5fb0a1417eda4c0.js"></script>
+                        </li>
+                        <li>
+                            Using the same command as the one for the DEV environment, but this time change the Docker Compose Environment file to <code>docker-compose.prod.yml</code> in the script:
+                            <script src="https://gist.github.com/weikaichu1991/361abda1775eed936f7d1c08b6cfd4b1.js"></script>
+                            Result:
+                            <img src="./docker-beginner-02-image/image 13.png" class="enlargeable-image" alt="docker compose terminal screenshot">
+                        </li>
+                        <li>
+                            You will find that the review page in the browser is not reflecting the changes in the source code from the previous section when we were testing the bind mount of the dev environment:
+                            <img src="./docker-beginner-02-image/image 9.png" class="enlargeable-image" alt="browser review">
+                            That is because <strong>any update to the dockerfile and the source code, the image of the container needs to be rebuilt</strong>.
+                        </li>
+                        <li>
+                            Therefore we will need to bring down the container and run the <code>-- build</code> flag in our command to force the docker compose rebuild the image before bringing up the container:
+                            <ol class="sub-number-list">
+                                <li>
+                                    Run the following command to bring down and remove the containers:
+                                    <script src="https://gist.github.com/weikaichu1991/369d205633e4a651f9611e8914a37c49.js"></script>
+                                </li>
+                                <li>
+                                    Run the following command to force docker compose rebuild the image before deploying the containers:
+                                    <script src="https://gist.github.com/weikaichu1991/e23bca3ffaadc83d0393061b5853a82d.js"></script>
+                                    Result:
+                                    <img src="./docker-beginner-02-image/image 14.png" class="enlargeable-image" alt="docker compose terminal screenshot">
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            We immediately can see that the web preview now has reflected the update of the web page source code done earlier:
+                            <img src="./docker-beginner-02-image/image 11.png" class="enlargeable-image" alt="browser review">
+                        </li>
+                        <li>
+                            Try to change the source code again to see if the preview page is still reflecting the update:
+                            <img src="./docker-beginner-02-image/image 15.png" class="enlargeable-image" alt="index.js code view">
+                            It is not. That proves we have set up the dev and prod environment to pipeline our project development. <strong>It should not be bind-mount to the production, only when the docker image had been rebuilt to deploy new changes to the prod environment</strong>.
+                            <img src="./docker-beginner-02-image/image 11.png" class="enlargeable-image" alt="browser review">
+                        </li>
+                    </ol>
+                </p>
+                <!-- The end of the section 02 -->                
+                <h2 id="step02">Clean-up: Excluding docker-compose files and nodemon module for DEV from the PROD stage container</h2>
+                <h4 style="text-transform: uppercase;">Step 1. Listing files-to-be-excluded in the .dockerignore</h4>
+                <p>
+                    using <code>.dockerignore</code> to exclude any file related to Docker Compose from being parsed into the prod container.
+                </p>
+                <p class="note">
+                    <ol>
+                        <li>
+                            If we enter the PROD node and list out the files existed in the instance directory, we will find docker compose files are parsed into the instance, and we don't want that for security and best practice reason.
+                            <img src="./docker-beginner-02-image/image 16.png" class="enlargeable-image" alt="docker compose terminal screenshot">
+                        </li>
+                        <li>
+                            Exist the instance, and head to the <code>.dockerignore</code> file. Writing in <code>docker-compose*</code> in the list. <code>*</code> will help system to detect and ignore all the files containing phrase docker-compose in their filename.
+                            <img src="./docker-beginner-02-image/image 17.png" class="enlargeable-image" alt="dockerignore screenshot">
+                        </li>                        
+                    </ol>
+                </p>
+                <h4 style="text-transform: uppercase;">Step 2. If statement bash script in dockerfile for choosing installed modules</h4>
+                <p>
+                    We can give bash script if statement in the <code>dockerfile</code> to make Docker Compose have the intelligence of choosing what NODE.js modules should be installed and what shouldn't.
+                </p>
+                <p class="note">
+                    <ol>
+                        <li>
+                            Firstly, we can see the <strong>npm dependency on nodemon</strong> is specified for DEV in the dependency configuration file <code>package.json</code>:
+                            <img src="./docker-beginner-02-image/image 18.png" class="enlargeable-image" alt="package.json file view">
+                        </li>
+                        <li>
+                            However, we can also see the nodemon package in the PROD instance, which is not needed and taking up storage for nothing:
+                            <img src="./docker-beginner-02-image/image 19.png" class="enlargeable-image" alt="PROD node instance installed modules list">
+                        </li>
+                        <li>
+                            Therefore, we need to modify running script in the dockerfile with if statement shown as below:
+                            <img src="./docker-beginner-02-image/image 20.png" class="enlargeable-image" alt="if statement in the docker file">
+                            
+                        </li>
+                        <li>
+                            <code>ARG</code> in the previous script means it will pass the NODE_ENV argument into the process of running a container. Subsequently, The argument then will have to be specified in the Docker Compose DEV environment file:
+                            <img src="./docker-beginner-02-image/image 21.png" class="enlargeable-image" alt="docker-compose dev file">
+                        </li>
+                        <li>
+                            After finishing the configuration change above, testing the workflow of bringing up and down of the app running in the DEV instance:
+                            <ol class="sub-number-list">
+                                <li>
+                                    bringing down the existing container and bringing up again with DEV docker-compose file. Including the flag <code3>--build</code3> to rebuild the image.
+                                    <img src="./docker-beginner-02-image/image 22.png" class="enlargeable-image" alt="docker-compose terminal view">
+                                </li>
+                                <li>
+                                    Check if bind-mount is working.
+                                    <img src="./docker-beginner-02-image/image 23.png" class="enlargeable-image" alt="index.js code view">
+                                    <img src="./docker-beginner-02-image/image 24.png" class="enlargeable-image" alt="browser review">
+                                </li>
+                            </ol> 
+                        </li>
+                        <li>
+                            Now testing the PROD instance side:
+                            <ol class="sub-number-list">
+                                <li>
+                                    Bringing down the container file again and bring up with prod docker-compose file and the flag <code>--build</code> to rebuild the image. 
+                                </li>
+                                <li>
+                                    check if bind amount is working by changing the source code of the web app:
+                                    <img src="./docker-beginner-02-image/image 25.png" class="enlargeable-image" alt="index.js code view">
+                                </li>
+                                <li>
+                                    The web page is not reflecting to the change in the source code. That is correct.
+                                    <img src="./docker-beginner-02-image/image 24.png" class="enlargeable-image" alt="browser review">
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            Check again if docker-compose files are excluded from the PROD instance. Enter the prod container instance to check:
+                            <img src="./docker-beginner-02-image/image 26.png" class="enlargeable-image" alt="docker compose PROD instance terminal view">
+                        </li>
+                        <li>
+                            If statement to make Docker Compose intelligently control dependency is now completed.
                         </li>
                     </ol>
                 </p>
                 <!-- The end of step 02 -->
                 
-                <h2 id="step03">Step 03 | Container and Network Traffic Management</h2>
-                <p class="code-file">bash</p>
-                <script src="https://gist.github.com/weikaichu1991/b36be6d35adc01385549367fb3a85cd6.js"></script>
-                
-                <!-- The end of step 03 -->
-                <br>
-                <h2 id="step04">Step 04 | Starting a exited container</h2>
-                <p class="note">
-                    <ol>
-                        <li>
-                            The following command will only show the container is currently running.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/9dc9c69390556015882909b434f8287a.js"></script>
-                            <img src="./docker-beginner-01-image/image 9.png" class="enlargeable-image" alt="terminal result">
-                        </li>
-                        <li>
-                            The following command will show all the containers including the one that is not active.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/b005b7f62e7122804ecfc0845ba8952d.js"></script>
-                            <img src="./docker-beginner-01-image/image 10.png" class="enlargeable-image" alt="terminal result">
-                        </li>
-                        <li>
-                            Run the following command start running the exited container again.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/d0df6ff411b323f2da5c37cd74cf7d7a.js"></script>
-                            <img src="./docker-beginner-01-image/image 11.png" class="enlargeable-image" alt="terminal result">
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/9dc9c69390556015882909b434f8287a.js"></script>
-                            <img src="./docker-beginner-01-image/image 12.png" class="enlargeable-image" alt="terminal result">
-                            <div class="call-out">
-                                <p>
-                                    &#128161 If you want to start the container and attach to it, you can use:
-                                    <p class="code-file">bash</p>
-                                    <script src="https://gist.github.com/weikaichu1991/21abcfcc977077a6341612b25c5e9214.js"></script>
-                                </p>
-                                <p>
-                                    &#128161 If you need to run a new container from an image, you can use the <code>docker run</code> command:
-                                    <p class="code-file">bash</p>
-                                    <script src="https://gist.github.com/weikaichu1991/d3b6d853f792f164fb04ed26df72646d.js"></script>
-                                </p>
-                            </div>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 04 -->
-                <br>
-                <h2 id="step05">Step 05 | .dockerignore to enhance security</h2>
-                Run the following commands, and we will find that the dockerfile is also included in the deployed container, which is not the safest practice:
-                <p class="note">
-                    <ol>
-                        <li>
-                            Run the follow command to enter the shell of the container node.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/a9c0dc3cd8fe71cfb21bdb09291360de.js"></script>
-                        </li>
-                        <li>
-                            Run the command <code>ls</code> in the instance shell to check the files that has been synced from the working directory to the container node. We will find the Dockerfile and node.js modules are all synced, which is not necessary for those files existed in there and potentially contain security risk.
-                            <img src="./docker-beginner-01-image/image 13.png" class="enlargeable-image" alt="terminal result">
-                        </li>
-                        <li>
-                            This is when <code>.dockerignore</code> file comes in handy.
-                            <p class="code-file">.dockerignore</p>
-                            <script src="https://gist.github.com/weikaichu1991/b43c87fbb7c535dec635f0ed3f2e29dd.js"></script>
-                        </li>
-                        <li>
-                            After creating the .dockerignore file and specifying the directory item to be ignored, rebuilding the image and then re-deploy the container.
-                            <ol>
-                                <li>Stop the container by running command <code>sudo docker stop node-app</code></li>
-                                <li>Remove the container by running command <code>sudo docker rm node-app</code></li>
-                                <img src="./docker-beginner-01-image/image 14.png" class="enlargeable-image" alt="terminal result">
-                                <li>Run the command <code>sudo docker image ls -a</code> to get the image ID and run the command <code>sudo docker image rm cec14ac641d6</code> to remove the image.</li>
-                                <img src="./docker-beginner-01-image/image 15.png" class="enlargeable-image" alt="terminal result">
-                                <li>Run the command <code>sudo docker build -t node-app-image .</code> to rebuild the image again</li>
-                                <img src="./docker-beginner-01-image/image 16.png" class="enlargeable-image" alt="terminal result">
-                                <li>Run the command <code>sudo docker run -p 3000:3000 -d --name node-app node-app-image</code> to redeploy the container again</li>
-                                <li>Run the command <code>sudo docker exec -it node-app bash</code> to enter the shell of the container, and we will find the items in the <code>.dockerignore</code> file are now ignored while deploying the container.</li>
-                                <img src="./docker-beginner-01-image/image 17.png" class="enlargeable-image" alt="terminal result">
-                                <div class="call-out">
-                                    <p>
-                                        &#128161 We might still be able to find the node_modules in the container's directory even though we asked the modules to be ignored. It is because we specify npm to install the dependencies into the container in the dockerfile (see the screenshot below).
-                                        <img src="./docker-beginner-01-image/image 18.png" style="width: 40%;" class="enlargeable-image" alt="dockerfile screenshot">
-                                    </p>
-                                </div>
-                            </ol>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 05 -->
-                <br>
-                <h2 id="step06">Step 06 | Docker Bind Mount for Directory Files Synchronisation to the Container Node</h2>
-                <p class="note">
-                    <ol>
-                        <li>
-                            Edit the frontend content in the express app definition file.
-                            <img src="./docker-beginner-01-image/image 19.png" class="enlargeable-image" alt="change of the web source code">
-                        </li>
-                        <li>
-                            We will find the content still looks the same and updated. That means the frontend app file in the work directory is not synced to the frontend app file in the container node.
-                            <img src="./docker-beginner-01-image/image 20.png" class="enlargeable-image" alt="browser preview result">
-                        </li>
-                        <li>
-                            Question is how to not constantly rebuild the container image when something is changed ? - This is when “Bind Mount” comes in handy.
-                            <div class="call-out">
-                                <p>
-                                    <h3>&#128161 What is Bind Mount</h3>
-                                    A bind mount in Docker is a way to mount a directory or file from the host machine into a container. This allows the container to access and modify files on the host system. Bind mounts are useful for development, as changes made on the host are immediately reflected in the container.
-                                </p>
-                            </div>
-                            The following is the command syntax to set up the bind mount mechanism between the working directory and the container node.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/5ebfe0162ab2136f29b4e9169edacede.js"></script>
-                            According to my case, it would be :
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/a8ced009dd5bcfae0b801c0a07828991.js"></script>
-                            To avoid the syntax become too long, it is better to specify the path in the dynamic way as normally docker only accept the full path address and doesn't like relative path.
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/58bdf51c3cb8c300cb2cd622df52a385.js"></script>
-                            Stop and remove the existing container node and redeploy a container with the command syntax above.
-                            <img src="./docker-beginner-01-image/image 21.png" class="enlargeable-image" alt="terminal result">
-                            The new container now should be in sync with the host work directory. Remember to restart the container node process when frontend content is updated.
-                            <img src="./docker-beginner-01-image/image 22.png" class="enlargeable-image" alt="browser preview result">
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 06 -->
-                <br>
-                <h2 id="step07">Step 07 | Automatically Restarting the Node Process with Nodemon</h2>
-                Using together with bind mount, when frontend content has been updated and synced to the container node, restarting the node process will be required. In order to prevent from manually running commands to achieve the task, Nodemon will be setup together with Bind Mount.
-                <br><br>
-                <div class="call-out">
-                    <p>
-                        <h3>&#128161 What is Nodemon?</h3>
-                        Nodemon is a utility that helps develop Node.js applications by automatically restarting the application when file changes in the directory are detected. It is particularly useful during development to avoid manually stopping and restarting the server every time you make a change.
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>Automatically restarts the Node.js application when file changes are detected.</li>
-                            <li>Monitors all files in the directory by default, but can be configured to watch specific files or directories.</li>
-                            <li>Can be used as a replacement for the "node" command.</li>
-                        </ul>
-                    </p>
-                </div>
-                <p class="note">
-                    <ol>
-                        <li>We need to install nodemon package with <code>npm</code>. Run the command <code>sudo npm install nodemon --save-dev</code>. The flag <code>--save-dev</code> in the command indicates that the package should be added to the devDependencies section of your <code>package.json</code>file. Development dependencies are only needed during development and not in production.</li>
-                        <li>
-                            We will find the devDependencies section is created  in the package.json file
-                            <img src="./docker-beginner-01-image/image 23.png" class="enlargeable-image" alt="package.json screenshot">
-                        </li>
-                        <li>
-                            We need to adding few scripts in the <code>package.json</code> file to make nodemon works properly.
-                            <img src="./docker-beginner-01-image/image 24.png" class="enlargeable-image" alt="package.json screenshot">
-                        </li>
-                        <li>
-                            Update the Dockerfile
-                            <img src="./docker-beginner-01-image/image 25.png" class="enlargeable-image" alt="Dockerfile screenshot">
-                        </li>
-                        <li>Repeat the steps in the previous sections to rebuild the image.(Stop&Remove the running node >> Remove the image with ID >> Rebuild the image )</li>
-                        <li>As <code>package.json</code> is updated, therefore the Bind Mount will need to be conducted again when deploying the container node. The command: <code>sudo docker run -v $(pwd):/app -p 3000:3000 -d --name node-app node-app-image</code></li>
-                        <li>
-                            Now the frontend content should be in sync between the work directory and container node without manually starting the node processes.
-                            <img src="./docker-beginner-01-image/Untitled_video_-_1733891940166.gif" class="enlargeable-image" alt="gif">
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 07 -->
-                <br>
-                <h2 id="step08">Step 08 | Filtering Cached Item</h2>
-                Context:
-                <p class="note">
-                    <ol>
-                        <li>Deleting the node_modules package hosted in the work directory as those node.js package are no longer needed after we containerise the dependency of the app.</li>
-                        <li>
-                            We will then find out the web app is crashed if we will deploy the container node again in the future. This is due to the caching specified in the Dockerfile. Which means that even though npm will install packages in the new container node, the caching means the work directory structure will still override the directory cached in the container node.
-                            <img src="./docker-beginner-01-image/image 26.png" class="enlargeable-image" alt="web browser preview">
-                        </li>
-                    </ol>
-                </p>
-                Fix: Excluding a specific part of the volume from being overwritten by using the following command:
-                <p class="code-file">bash</p>
-                <script src="https://gist.github.com/weikaichu1991/dc4b09c1baa5431e7540f7f6a6695280.js"></script>
-                <code>-v /app/node_modules</code> creates an anonymous volume for the <code>/app/node_modules</code> directory to avoid overwriting it with the host's node_modules.<br><br>
-                <div class="call-out">
-                    <p>
-                        <h3>&#128161 How <code>COPY . ./</code> will impact the caching of the containerisation result</h3>
-                        In Docker, each instruction in the Dockerfile creates a layer in the image. Docker uses a caching mechanism to speed up the build process by reusing layers that have not changed. The <code>COPY . ./</code> instruction can significantly impact caching.
-                        <h4>Caching Behavior:</h4>
-                        <ul>
-                            <li>Layer Caching: Docker caches each layer created by an instruction. If the contents being copied by <code>COPY . ./</code> have not changed since the last build, Docker will reuse the cached layer.</li>
-                            <li>Invalidating Cache: If any file in the source directory changes, the cache for the <code>COPY . ./</code> instruction is invalidated, and Docker will re-execute this instruction and all subsequent instructions.</li>
-                        </ul>
-                        <h4>Best Practices:</h4>
-                        <ul>
-                            <li>Order Matters: Place instructions that change less frequently (e.g., <code>COPY [package.json](http://_vscodecontentref_/0) .</code> and <code>RUN npm install</code>) before instructions that change more frequently (e.g., <code>COPY . ./</code>). This helps maximize cache usage.</li>
-                            <li>Selective Copying: Copy only necessary files to avoid invalidating the cache unnecessarily.</li>
-                        </ul>
-                    </p>
-                </div>
-                <!-- The end of step 08 -->
-                <br>
-                <h2 id="step09">Step 09 | Restricting directory management privilege of the container node to avoid the main work directory being corrupted</h2>
-                Context:
-                <p class="note">
-                    <ol>
-                        <li>After the container node has being deployed, you will find that it is possible to create, update or delete files from the container node side because of the bind mount synchronisation</li>
-                        <li>
-                            For example, if we enter the shell of the containder node, and use the command <code>touch test.txt</code> to create a new file. We will find the new file immediately is synced to the root work directory. This will make the root work directory risks from being edited or corrupted.
-                            <img src="./docker-beginner-01-image/image 27.png" class="enlargeable-image" alt="terminal view">
-                        </li>
-                    </ol>
-                </p>
-                Fix: Re-deploy the image by specifying read-only privilege with the following command:
-                <p class="code-file">bash</p>
-                <script src="https://gist.github.com/weikaichu1991/4dc0bc22498f4572685f902dd7710c6d.js"></script>
-                <img src="./docker-beginner-01-image/image 28.png" class="enlargeable-image" alt="terminal view">
-                <!-- The end of step 09 -->
-                <br>
-                <h2 id="step10">Step 10 | Environment variables</h2>
-                <p class="note">
-                    <ol>
-                        <li>
-                            <strong>Setting default <code>ENV</code> value</strong> <br> for example: setting port number at 3000 in the Dockerfile, and then reference the <code>ENV</code> variable <code>PORT by EXPOSE</code> for documentation purpose.
-                            <img src="./docker-beginner-01-image/image 29.png" class="enlargeable-image" alt="Dockerfile screenshot">
-                        </li>
-                        <li>
-                            Now killing the existing container and re-build the image. Re-deploy the container after the image is rebuild the with the environment variable referenced in the command line.<br>
-                            The command:
-                            <p class="code-file">bash</p>
-                            <script src="https://gist.github.com/weikaichu1991/4e88bc693f8577ba6d8cb33c0cad4061.js"></script>
-                            <img src="./docker-beginner-01-image/image 30.png" class="enlargeable-image" alt="Terminal View">
-                        </li>
-                        <li>
-                            To check if the environment variables are parsed into the container, enter the container shell and run the command <code>printenv</code>:
-                            <img src="./docker-beginner-01-image/image 31.png" class="enlargeable-image" alt="Terminal View">
-                        </li>
-                        <li>
-                            To set multiple environment variables with their own values, we need set up a <code>.env</code> file and reference it in the container deployment command.
-                            <ol>
-                                <li>
-                                    Create an <code>.env</code> file
-                                    <img src="./docker-beginner-01-image/image 32.png" class="enlargeable-image" alt=".env file">
-                                </li>
-                                <li>
-                                    Delete the existing container and redeploy it with the following command with <code>.env</code> file specified to reference the desired environment variable values.
-                                    <p class="code-file">bash</p>
-                                    <script src="https://gist.github.com/weikaichu1991/4378fb25c70088d7c2280730661dd49a.js"></script>
-                                </li>
-                                <li>
-                                    Run the command <code>printenv</code> again in the container bash shell to check if the environment variables are parsed into the container.
-                                    <img src="./docker-beginner-01-image/image 33.png" class="enlargeable-image" alt="terminal view">
-                                </li>
-                            </ol>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 10 -->
-                <br>
-                <h2 id="step11">Step 11 | Cleaning up redundant volumes built-up</h2>
-                When a container is removed, some of the volumes attached to it will not be removed with it. In our case, we specify volume /app/node_modules when deploying a container, which is a anonymous volume that won't be deleted when a container is removed.
-                <p class="note">
-                    <ol>
-                        <li>
-                            <strong>Check the exiting redundant volumes</strong> <br> Using the command <code>docker volume ls</code> to check what are the volumes existing in our system:
-                            <img src="./docker-beginner-01-image/image 34.png" class="enlargeable-image" alt="terminal view">
-                        </li>
-                        <li>
-                            <strong>There are 2 methods to handle them:</strong>>
-                            <ol>
-                                <li>
-                                    Using the command <code>docker volume prune</code> to trim the redundant volumes.
-                                    <img src="./docker-beginner-01-image/image 35.png" class="enlargeable-image" alt="terminal view">
-                                </li>
-                                <li>
-                                    Using <code>-fv</code> flag when removing a container, which will have the attached volume deleted together with the container to prevent volumes from building up.
-                                    <img src="./docker-beginner-01-image/image 36.png" class="enlargeable-image" alt="terminal view">
-                                </li>
-                            </ol>
-                        </li>
-                    </ol>
-                </p>
-                <!-- The end of step 11 -->
 
                 <!-- Modal structure -->
                 <div id="imageModal" class="modal">
