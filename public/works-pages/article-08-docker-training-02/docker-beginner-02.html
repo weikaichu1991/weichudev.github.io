@@ -37,7 +37,7 @@
         
         <div class="content">
             <div class="content-title" id="conetentBegin">
-                <h1>Containerise with Docker Fundamental Part 01</h1>
+                <h1>Containerise with Docker Fundamental Part 02</h1>
             </div>
             <div class="tags">
                 <button>Containerisation</button>
@@ -52,18 +52,9 @@
                 <h2>Table:</h2>
                 <p class="note">
                     <ul>
-                        <li><button onclick="location.href='#step00'">Step 00 | Prerequisite</button></li>
-                        <li><button onclick="location.href='#step01'">Step 01 | Creating an express app with node.js for testing the container function</button></li>
-                        <li><button onclick="location.href='#step02'">Step 02 | Setting up Docker container</button></li>
-                        <li><button onclick="location.href='#step03'">Step 03 | Container and Network Traffic Management</button></li>
-                        <li><button onclick="location.href='#step04'">Step 04 | Starting a exited container</button></li>
-                        <li><button onclick="location.href='#step05'">Step 05 | .dockerignore to enhance security</button></li>
-                        <li><button onclick="location.href='#step06'">Step 06 | Docker Bind Mount for Directory Files Synchronisation to the Container Node</button></li>
-                        <li><button onclick="location.href='#step07'">Step 07 | Automatically Restarting the Node Process with Nodemon</button></li>
-                        <li><button onclick="location.href='#step08'">Step 08 | Filtering Cached Item</button></li>
-                        <li><button onclick="location.href='#step09'">Step 09 | Restricting directory management privilege of the container node to avoid the main work directory being corrupted</button></li>
-                        <li><button onclick="location.href='#step10'">Step 10 | Environment variables</button></li>
-                        <li><button onclick="location.href='#step11'">Step 11 | Cleaning up redundant volumes built-up</button></li>
+                        <li><button onclick="location.href='#step00'">Section 01 | Docker Compose - Multiple Containers Configuration</button></li>
+                        <li><button onclick="location.href='#step01'">Section 02 | Docker Compose & Development Staging</button></li>
+                        <li><button onclick="location.href='#step02'">Section 03 | Clean-up: Excluding docker-compose files and nodemon module for DEV from the PROD stage container</button></li>
                         <!-- <li><button onclick="location.href='#troubleS'">troubleshoot Notes</li> -->
                         <li><button onclick="location.href='#commentsSection'">Comments</li>
                     </ul>
@@ -144,6 +135,7 @@
                         </li>
                         <li>
                             Stop explicitly indicating the running environment in the dockerfile by changing the command for running the app from <code>CMD [“npm”, “run”, “dev”]</code> to  <code>CMD [”node”, “index.js”]</code> which is for generally bringing up the app. The running environment will be specified later by Docker Compose.
+                            <p class="code-file">Dockerfile</p>
                             <img src="./docker-beginner-02-image/image 5.png" class="enlargeable-image" alt="github  commit change">
                         </li>                        
                     </ol>
@@ -153,14 +145,17 @@
                     <ol>
                         <li>
                             Starting with the <code>docker-compose.yml</code> as the base file containing shared configuration variables.
+                            <p class="code-file">docker-compose.yml</p>
                             <script src="https://gist.github.com/weikaichu1991/61fa6acc42880c9d6ce06f243c39c34e.js"></script>
                         </li>
                         <li>
                             For Dev environment, creating another Docker Compose YAML file for dev environment called <code>docker-compose.dev.yml</code>.
+                            <p class="code-file">docker-compose.dev.yml</p>
                             <script src="https://gist.github.com/weikaichu1991/194942ff105fc7629502e7237573f0c4.js"></script>
                         </li>
                         <li>
                             run the following command to bring up the container wit docker compose files for development environment:
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/b64988e0da07596e87e6838afa174f43.js"></script>
                             The result:
                             <img src="./docker-beginner-02-image/image 7.png" class="enlargeable-image" alt="docker compose terminal screenshot">
@@ -178,6 +173,7 @@
                                 </li>
                                 <li>
                                     change the source code of the web page, replacing the “!!!” with a full stop “.”:
+                                    <p class="code-file">index.js</p>
                                     <img src="./docker-beginner-02-image/image 10.png" class="enlargeable-image" alt="index.js code view">
                                 </li>
                                 <li>
@@ -188,16 +184,19 @@
                         </li>
                         <li>
                             Bringing down the container with the following command:
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/abc85afe5b7febf750d74185d921b58f.js"></script>
                             Result:
                             <img src="./docker-beginner-02-image/image 12.png" class="enlargeable-image" alt="docker compose terminal screenshot">
                         </li>
                         <li>
                             For PROD environment, creating another Docker Compose YAML file for prod environment called <code>docker-compose.prod.yml</code>:
+                            <p class="code-file">docker-compose.prod.yml</p>
                             <script src="https://gist.github.com/weikaichu1991/80d2d50f4246a67ea5fb0a1417eda4c0.js"></script>
                         </li>
                         <li>
                             Using the same command as the one for the DEV environment, but this time change the Docker Compose Environment file to <code>docker-compose.prod.yml</code> in the script:
+                            <p class="code-file">bash</p>
                             <script src="https://gist.github.com/weikaichu1991/361abda1775eed936f7d1c08b6cfd4b1.js"></script>
                             Result:
                             <img src="./docker-beginner-02-image/image 13.png" class="enlargeable-image" alt="docker compose terminal screenshot">
@@ -212,10 +211,12 @@
                             <ol class="sub-number-list">
                                 <li>
                                     Run the following command to bring down and remove the containers:
+                                    <p class="code-file">bash</p>
                                     <script src="https://gist.github.com/weikaichu1991/369d205633e4a651f9611e8914a37c49.js"></script>
                                 </li>
                                 <li>
                                     Run the following command to force docker compose rebuild the image before deploying the containers:
+                                    <p class="code-file">bash</p>
                                     <script src="https://gist.github.com/weikaichu1991/e23bca3ffaadc83d0393061b5853a82d.js"></script>
                                     Result:
                                     <img src="./docker-beginner-02-image/image 14.png" class="enlargeable-image" alt="docker compose terminal screenshot">
@@ -228,6 +229,7 @@
                         </li>
                         <li>
                             Try to change the source code again to see if the preview page is still reflecting the update:
+                            <p class="code-file">index.js</p>
                             <img src="./docker-beginner-02-image/image 15.png" class="enlargeable-image" alt="index.js code view">
                             It is not. That proves we have set up the dev and prod environment to pipeline our project development. <strong>It should not be bind-mount to the production, only when the docker image had been rebuilt to deploy new changes to the prod environment</strong>.
                             <img src="./docker-beginner-02-image/image 11.png" class="enlargeable-image" alt="browser review">
@@ -248,6 +250,7 @@
                         </li>
                         <li>
                             Exist the instance, and head to the <code>.dockerignore</code> file. Writing in <code>docker-compose*</code> in the list. <code>*</code> will help system to detect and ignore all the files containing phrase docker-compose in their filename.
+                            <p class="code-file">.dockerignore</p>
                             <img src="./docker-beginner-02-image/image 17.png" class="enlargeable-image" alt="dockerignore screenshot">
                         </li>                        
                     </ol>
@@ -260,6 +263,7 @@
                     <ol>
                         <li>
                             Firstly, we can see the <strong>npm dependency on nodemon</strong> is specified for DEV in the dependency configuration file <code>package.json</code>:
+                            <p class="code-file">package.json</p>
                             <img src="./docker-beginner-02-image/image 18.png" class="enlargeable-image" alt="package.json file view">
                         </li>
                         <li>
@@ -268,11 +272,13 @@
                         </li>
                         <li>
                             Therefore, we need to modify running script in the dockerfile with if statement shown as below:
+                            <p class="code-file">Dockerfile</p>
                             <img src="./docker-beginner-02-image/image 20.png" class="enlargeable-image" alt="if statement in the docker file">
                             
                         </li>
                         <li>
                             <code>ARG</code> in the previous script means it will pass the NODE_ENV argument into the process of running a container. Subsequently, The argument then will have to be specified in the Docker Compose DEV environment file:
+                            <p class="code-file">docker-compose.dev.yml</p>
                             <img src="./docker-beginner-02-image/image 21.png" class="enlargeable-image" alt="docker-compose dev file">
                         </li>
                         <li>
@@ -284,6 +290,7 @@
                                 </li>
                                 <li>
                                     Check if bind-mount is working.
+                                    <p class="code-file">index.js</p>
                                     <img src="./docker-beginner-02-image/image 23.png" class="enlargeable-image" alt="index.js code view">
                                     <img src="./docker-beginner-02-image/image 24.png" class="enlargeable-image" alt="browser review">
                                 </li>
@@ -297,6 +304,7 @@
                                 </li>
                                 <li>
                                     check if bind amount is working by changing the source code of the web app:
+                                    <p class="code-file">index.js</p>
                                     <img src="./docker-beginner-02-image/image 25.png" class="enlargeable-image" alt="index.js code view">
                                 </li>
                                 <li>
@@ -314,7 +322,7 @@
                         </li>
                     </ol>
                 </p>
-                <!-- The end of step 02 -->
+                <!-- The end of the section 03 --> 
                 
 
                 <!-- Modal structure -->
