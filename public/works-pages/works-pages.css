@@ -192,11 +192,14 @@ header, nav, main, footer, .subpages {
                     font-size: 110%;
                 }
             }
-            ol{
+            ol, ul{
                 li{
                     padding-top: 1%;
                     line-height: 140%;
                     font-size: 85%;
+                }
+                .sub-number-list{
+                    list-style-type:lower-latin;
                 }
             }
             .call-out{
@@ -608,13 +611,16 @@ header, nav, main, footer, .subpages {
                 font-size: 110%;
                 word-wrap: break-word;
             }
-            ol{
+            ol, ul{
                 li{
                     padding-bottom: 3%;
                     font-size: 80%;
                 }
                 ul{
                     font-size: 120%;
+                }
+                .sub-number-list{
+                    list-style-type:lower-latin;
                 }
             }
             .code-file{
